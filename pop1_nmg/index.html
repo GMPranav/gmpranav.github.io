@@ -17,6 +17,16 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
 
+<style>
+	a:link {
+	  text-decoration: none;
+	}
+	
+	.runner:hover {
+		text-decoration: underline;
+	}
+</style>
+
 <!-- SRC API fetch script -->
 <script>
 $(function() {
@@ -35,8 +45,8 @@ async function fetchTest() {
 			let responseText = await response.text();
 			const userObj = JSON.parse(responseText);
 			
-			runsObj[key]['run']['players'][0]['id'] = userObj['data']['names']['international'];
-		}
+			runsObj[key]['run']['players'][0]['id'] = '<a href='+userObj['data']['weblink']+' target="_blank">'+userObj['data']['names']['international']+'</a>';
+		}	
 		else{
 			runsObj[key]['run']['players'][0]['id'] = runsObj[key]['run']['players'][0]['name']
 		}
@@ -56,7 +66,7 @@ async function fetchTest() {
 			timespan = secs.toString()+"s";
 		if (ms != 0)
 			timespan += " "+ms.toString()+"ms";
-		runsObj[key]['run']['times']['primary_t'] = timespan;
+		runsObj[key]['run']['times']['primary_t'] = '<a href='+runsObj[key]['run']['weblink']+' target="_blank">'+timespan+'</a>';
 		
 		var hours = Math.floor(musicless / 3600)
 		var mins = Math.floor((musicless % 3600) / 60);
