@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertical Timeline</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .timeline-wrapper {
+            margin: 30px 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* height: 100vh; */
+            /* background-color: #f0f0f0; */
+        }
+
+        .timeline {
+            position: relative;
+            width: 5px;
+            /* Adjust thickness of the timeline */
+            background-color: #ccc;
+        }
+
+        .event {
+            position: absolute;
+            top: 0;
+            width: 10px;
+            /* Adjust size of event points */
+            height: 10px;
+            /* Adjust size of event points */
+            background-color: #007bff;
+            border-radius: 50%;
+            transform: translate(calc(-50% + 2.5px), -50%);
+        }
+
+        .event-description {
+            margin: 0 15px;
+            width: 30vw;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div>Silksong Timeline</div>
+    <div class="timeline-wrapper">
+        <div class="timeline" id="timeline"></div>
+    </div>
+
+    <script>
+        // Sample JSON data for events
+        var events = [
+            { date: "2019-02-14", description: "Hollow Knight: Silksong is revealed" },
+            { date: "2023-05-16T10:30:00", description: "Event 2" },
+            { date: "2023-08-17T08:45:00", description: "Event 3" },
+            // Add more events as needed
+        ];
+
+        // Function to create vertical timeline
+        function createTimeline(events) {
+            var timeline = document.getElementById('timeline');
+            var oldestDate = new Date(events[0].date);
+            var currentDate = new Date();
+            var daysDifference = Math.ceil((currentDate - oldestDate) / (1000 * 60 * 60 * 24)); // Calculate number of days difference
+            var timelineHeight = daysDifference * 5; // Multiply by 5px per day
+
+            timeline.style.height = timelineHeight + 'px'; // Set the height of the timeline
+
+            events.forEach(function (event) {
+                var date = new Date(event.date);
+                var dayDifference = Math.abs(date - oldestDate) / (1000 * 60 * 60 * 24);
+                var eventElement = document.createElement('div');
+                eventElement.className = 'event';
+                eventElement.style.top = (dayDifference * 5) + 'px'; // Each day is 5px in length
+                var descElement = document.createElement('div');
+                descElement.className = 'event-description';
+                const dateDisplay = date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).replace(/ /g, '-');
+                descElement.innerText = `${dateDisplay}: ${event.description}`;
+                eventElement.appendChild(descElement);
+                timeline.appendChild(eventElement);
+            });
+        }
+
+        // Call the function to create the timeline
+        createTimeline(events);
+    </script>
+</body>
+
+</html>
