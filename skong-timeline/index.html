@@ -4,27 +4,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vertical Timeline</title>
+    <title>Silksong Timeline</title>
+    <link rel="icon" href="https://issilksongout.com/favicon.ico" />
     <style>
+        @font-face {
+            font-family: 'Trajan Pro Regular';
+            font-style: normal;
+            font-weight: normal;
+            src: local('Trajan Pro Regular'), url('../static/fonts/TrajanPro-Regular.woff') format('woff');
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Trajan Pro Regular', sans-serif;
             text-align: center;
+            color: #fff;
+            background: #000000 url('../static/images/skong.jpeg') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        td {
+            text-align: left;
+            vertical-align: top;
+            padding: 2px
+        }
+
+        td * {
+            transform: none !important;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #000;
+            box-shadow: #000;
+            z-index: 1000;
+            box-shadow: 0 5px 20px 0 #000;
+        }
+
+        .legend {
+            position: fixed;
+            top: 100px;
+            right: 3vw;
+            background-color: #000;
+            z-index: 1000;
+            font-size: min(2.5vw, 14px);
+            padding: 5px;
+            box-shadow: 0 0 20px 0 #000;
         }
 
         .timeline-wrapper {
-            margin: 30px 0;
+            margin: 120px 0 0 4%;
             padding: 0;
             display: flex;
-            justify-content: center;
+            justify-content: start;
             align-items: center;
-            /* height: 100vh; */
-            /* background-color: #f0f0f0; */
         }
 
         .timeline {
             position: relative;
             width: 5px;
-            /* Adjust thickness of the timeline */
             background-color: #ccc;
         }
 
@@ -32,63 +75,153 @@
             position: absolute;
             top: 0;
             width: 10px;
-            /* Adjust size of event points */
             height: 10px;
-            /* Adjust size of event points */
             background-color: #007bff;
             border-radius: 50%;
+            border: 1px solid black;
             transform: translate(calc(-50% + 2.5px), -50%);
         }
 
         .event-description {
             margin: 0 15px;
-            width: 30vw;
+            width: 90vw;
+            white-space: nowrap;
+            overflow: hidden;
             text-align: left;
+            font-size: min(2.5vw, 14px);
         }
     </style>
 </head>
 
 <body>
-    <div>Silksong Timeline</div>
+    <div class="header">
+        <h1>Silksong Timeline</h1>
+    </div>
+    <div class="legend">
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="event" style="background-color: #49e546; position: static;"></div>
+                    </td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td><div class="event" style="background-color: #e1bb00; position: static;"></div></td>
+                    <td>Kinda</td>
+                </tr>
+                <tr>
+                    <td><div class="event" style="background-color: #fb7700; position: static;"></div></td>
+                    <td>Maybe</td>
+                </tr>
+                <tr>
+                    <td><div class="event" style="background-color: #cb2e4b; position: static;"></div></td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td><div class="event" style="background-color: blue; position: static;"></div></td>
+                    <td>Meta</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <div class="timeline-wrapper">
         <div class="timeline" id="timeline"></div>
     </div>
 
     <script>
-        // Sample JSON data for events
         var events = [
-            { date: "2019-02-14", description: "Hollow Knight: Silksong is revealed" },
-            { date: "2023-05-16T10:30:00", description: "Event 2" },
-            { date: "2023-08-17T08:45:00", description: "Event 3" },
-            // Add more events as needed
+            { date: "2019-02-14", description: "Hollow Knight: Silksong is revealed", type: "yes" },
+            { date: "2019-02-15", description: "Steam Store Page is Live", type: "yes" },
+            { date: "2019-02-16", description: "Sample music removed from Silksong website", type: "kinda" },
+            { date: "2019-03-19", description: "Late anniversary blog post by Team Cherry", type: "yes" },
+            { date: "2019-04-26", description: "Nintendo makes dubious claim of release within the fiscal year", type: "maybe" },
+            { date: "2019-06-11", description: "Nintendo E3 showcase, playable demo announced", type: "yes" },
+            { date: "2019-06-12", description: "Team Cherry retweets about the playable demo", type: "yes" },
+            { date: "2019-06-13", description: "Demo playthrough uploaded to Nintendo YouTube", type: "yes" },
+            { date: "2019-06-25", description: "Post-E3 Wrap blog post by Team Cherry", type: "yes" },
+            { date: "2019-09-19", description: "Steam bug shows a 12-Jun-2020 release date", type: "kinda" },
+            { date: "2019-10-10", description: "Playable demo announced by TC at PAXAus 2019", type: "yes" },
+            { date: "2019-10-28", description: "Steam page updated with a few more assets", type: "kinda" },
+            { date: "2019-12-13", description: "Holidays sign-off blog post by Team Cherry", type: "yes" },
+            { date: "2020-01-20", description: "Nintendo makes another claim of release within the fiscal year", type: "maybe" },
+            { date: "2020-01-26", description: "u/big_boi878 'Seth' Saga begins!", type: "maybe" },
+            { date: "2020-01-31", description: "'Seth' Saga continues", type: "maybe" },
+            { date: "2020-02-04", description: "u/big_boi878 posts about being offered chance to create a character", type: "maybe" },
+            { date: "2020-04-02", description: "u/big_boi878 posts about naming his character 'Seth'", type: "maybe" },
+            { date: "2020-06-15", description: "Leth posts riddle and .7z with info about 'Huntress'", type: "yes" },
+            { date: "2020-06-22", description: "Leth posts riddle and .7z with info about 'Grindle'", type: "yes" },
+            { date: "2020-06-29", description: "Leth posts riddle and .7z with info about 'Caravan'", type: "yes" },
+            { date: "2020-07-05", description: "Leth posts riddle and .7z with info about 'Seth' !!", type: "yes" },
+            { date: "2020-08-21", description: "Silksong logo part of the Nintendo Indie world's infographic", type: "maybe" },
+            { date: "2020-11-30", description: "TC replies to kickstarter backer about lack of updates", type: "kinda" },
+            { date: "2020-12-13", description: "Edge magazine cover speculated to be in shape of Hornet's head", type: "maybe" },
+            { date: "2020-12-24", description: "Edge magazine confirmed to have TC interview", type: "yes" },
+            { date: "2020-12-31", description: "Edge magazine interview published", type: "yes" },
+            { date: "2021-01-16", description: "Daily Silksong News Channel is created", type: "meta" },
+            { date: "2021-08-09", description: "r/Silksong subreddit is created", type: "meta" },
+            { date: "2022-01-23", description: "r/HollowKnight mod informed by a trusted source that there is no expectation of imminent release", type: "no" },
+            { date: "2022-02-12", description: "PC Gamer article quotes TC informing them they are still working hard on the game", type: "no" },
+            { date: "2022-03-15", description: "Makoto Koji replies on intagram saying she finished voicing for the game", type: "kinda" },
+            { date: "2022-04-30", description: "TC acknowleges the fans for winning Most Anticipated game in Unity Awards", type: "kinda" },
+            { date: "2022-06-12", description: "New Trailer at the Xbox Games Showcase with a lot of new footage", type: "yes" },
+            { date: "2022-06-13", description: "One second of footage in the (in)famous 12 months tweet from Xbox", type: "yes" },
+            { date: "2022-06-14", description: "More footage in the Xbox Games Showcase Extended", type: "yes" },
+            { date: "2022-06-16", description: "More footage from the Xbox Day 1 Game Pass video, but it's privated soon", type: "kinda" },
+            { date: "2022-09-16", description: "PS5/PS4 release confirmed", type: "yes" },
+            { date: "2022-09-17", description: "PlayStation store page goes live with new screenshots from the game", type: "yes" },
+            { date: "2022-10-29", description: "Community find out about the named screenshot assets on the Xbox wire website", type: "kinda" },
+            { date: "2023-01-31", description: "Xbox Wire blogpost about Most Anticipated Games", type: "maybe" },
+            { date: "2023-05-10", description: "Leth announces delay from the planned 2023 first half release", type: "yes" },
+            { date: "2023-06-29", description: "'Cogfly' name revealed in official Hornet Nendoroid page", type: "kinda" },
+            { date: "2023-07-22", description: "Ari Gibson answers fan's questions at AVCon", type: "kinda" },
+            { date: "2023-09-23", description: "Steam store page gets some minor updates", type: "kinda" },
+            { date: "2023-12-14", description: "The community extracts individual clip names from meta-data of the reveal trailer in the press kit", type: "kinda" },
+            { date: "2024-03-18", description: "Fan bumps into Leth at Day of the Devs, He says Silksong is definitely before Crowsworn", type: "kinda" },
+            { date: "2024-04-02", description: "New Microsoft Store page is made, ESRB rating is added", type: "kinda" },
+            { date: "2024-04-02", description: "New Microsoft Store page is made, ESRB rating is added", type: "kinda" },
+            { date: "2024-04-04", description: "Silksong gets several age ratings including a Korean site that requires playing the game start to finish", type: "maybe" },
         ];
 
-        // Function to create vertical timeline
+        var colorMapping = {
+            "yes": "#49e546",
+            "kinda": "#e1bb00",
+            "maybe": "#fb7700",
+            "no": "#cb2e4b",
+            "meta": "blue",
+        }
+
+        const DAY_LENGTH = 20;
+
         function createTimeline(events) {
             var timeline = document.getElementById('timeline');
             var oldestDate = new Date(events[0].date);
             var currentDate = new Date();
-            var daysDifference = Math.ceil((currentDate - oldestDate) / (1000 * 60 * 60 * 24)); // Calculate number of days difference
-            var timelineHeight = daysDifference * 5; // Multiply by 5px per day
+            var daysDifference = Math.ceil((currentDate - oldestDate) / (1000 * 60 * 60 * 24));
+            var timelineHeight = daysDifference * DAY_LENGTH;
 
-            timeline.style.height = timelineHeight + 'px'; // Set the height of the timeline
+            timeline.style.height = timelineHeight + 'px';
 
             events.forEach(function (event) {
                 var date = new Date(event.date);
                 var dayDifference = Math.abs(date - oldestDate) / (1000 * 60 * 60 * 24);
                 var eventElement = document.createElement('div');
                 eventElement.className = 'event';
-                eventElement.style.top = (dayDifference * 5) + 'px'; // Each day is 5px in length
+                eventElement.style.top = (dayDifference * DAY_LENGTH) + 'px';
+                eventElement.style.backgroundColor = colorMapping[event.type];
                 var descElement = document.createElement('div');
                 descElement.className = 'event-description';
                 const dateDisplay = date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).replace(/ /g, '-');
-                descElement.innerText = `${dateDisplay}: ${event.description}`;
+                var dateNode = document.createElement('strong');
+                dateNode.textContent = dateDisplay;
+                var descriptionNode = document.createTextNode(`: ${event.description}`);
+                descElement.appendChild(dateNode);
+                descElement.appendChild(descriptionNode);
                 eventElement.appendChild(descElement);
                 timeline.appendChild(eventElement);
             });
         }
 
-        // Call the function to create the timeline
         createTimeline(events);
     </script>
 </body>
