@@ -25,6 +25,10 @@
             background-size: cover;
         }
 
+        a {
+            cursor: pointer;
+        }
+
         td {
             text-align: left;
             vertical-align: top;
@@ -57,6 +61,10 @@
             box-shadow: 0 0 20px 0 #000;
         }
 
+        .controls a {
+            padding: 5px 5px;
+        }
+
         .timeline-wrapper {
             margin: 120px 0 0 4%;
             padding: 0;
@@ -85,10 +93,16 @@
         .event-description {
             margin: 0 15px;
             width: 90vw;
+            display: flex;
             white-space: nowrap;
             overflow: hidden;
             text-align: left;
             font-size: min(2.5vw, 14px);
+            transition: background-color 0.3s ease;
+        }
+
+        .highlight>.event-description {
+            background-color: rgba(255, 255, 0, 0.25)
         }
     </style>
 </head>
@@ -107,23 +121,36 @@
                     <td>Yes</td>
                 </tr>
                 <tr>
-                    <td><div class="event" style="background-color: #e1bb00; position: static;"></div></td>
+                    <td>
+                        <div class="event" style="background-color: #e1bb00; position: static;"></div>
+                    </td>
                     <td>Kinda</td>
                 </tr>
                 <tr>
-                    <td><div class="event" style="background-color: #fb7700; position: static;"></div></td>
+                    <td>
+                        <div class="event" style="background-color: #fb7700; position: static;"></div>
+                    </td>
                     <td>Maybe</td>
                 </tr>
                 <tr>
-                    <td><div class="event" style="background-color: #cb2e4b; position: static;"></div></td>
+                    <td>
+                        <div class="event" style="background-color: #cb2e4b; position: static;"></div>
+                    </td>
                     <td>No</td>
                 </tr>
                 <tr>
-                    <td><div class="event" style="background-color: blue; position: static;"></div></td>
+                    <td>
+                        <div class="event" style="background-color: blue; position: static;"></div>
+                    </td>
                     <td>Meta</td>
                 </tr>
             </tbody>
         </table>
+        <hr />
+        <div class="controls">
+            <a role="button" id="prevButton">Previous</a>
+            <a role="button" id="nextButton">Next</a>
+        </div>
     </div>
     <div class="timeline-wrapper">
         <div class="timeline" id="timeline"></div>
@@ -131,7 +158,21 @@
 
     <script>
         var events = [
-            { date: "2019-02-14", description: "Hollow Knight: Silksong is revealed", type: "yes" },
+            { date: "2014-12-09", description: "Second playable character is added as one of the stretch goals in Hollow Knight kickstarter", type: "yes", sauce: "https://www.kickstarter.com/projects/11662585/hollow-knight/posts/1078719" },
+            { date: "2014-12-15", description: "HK is successfully funded, so the stretch goals start to get some limelight", type: "yes", sauce: "https://www.kickstarter.com/projects/11662585/hollow-knight/posts/1084391" },
+            { date: "2014-12-16", description: "First stretch goal 'The White Palace' is hit", type: "yes", sauce: "https://www.kickstarter.com/projects/11662585/hollow-knight/posts/1085531" },
+            { date: "2014-12-17", description: "Second Stretch Goal '4 Additional Quests' is hit", type: "yes", sauce: "https://www.kickstarter.com/projects/11662585/hollow-knight/posts/1086763" },
+            { date: "2014-12-18", description: "Third Stretch Goal 'Wii U' is hit. Second playable character is revealed to be Hornet!", type: "yes", sauce: "https://www.kickstarter.com/projects/11662585/hollow-knight/posts/1087708" },
+            { date: "2014-12-19", description: "Fourth Stretch Goal 'Playable Hornet' is hit! Funding is closed", type: "yes", sauce: "https://www.kickstarter.com/projects/11662585/hollow-knight/posts/1088384" },
+            { date: "2015-09-10", description: "Hollow Knight beta is released for backers", type: "meta", sauce: "https://www.kickstarter.com/projects/11662585/hollow-knight/posts/1348948" },
+            { date: "2016-09-10", description: "Leth is now a part of Team Cherry", type: "meta", sauce: "https://www.kickstarter.com/projects/11662585/hollow-knight/posts/1621466" },
+            { date: "2017-02-25", description: "Hollow Knight is released", type: "meta", sauce: "https://www.kickstarter.com/projects/11662585/hollow-knight/posts/1816277" },
+            { date: "2017-08-03", description: "Hidden Dreams update is released", type: "meta", sauce: "https://www.kickstarter.com/projects/11662585/hollow-knight/posts/1953984" },
+            { date: "2017-10-19", description: "Grimm Troupe update is released", type: "meta", sauce: "https://www.kickstarter.com/projects/11662585/hollow-knight/posts/2019565" },
+            { date: "2018-04-20", description: "Lifeblood update is released", type: "meta", sauce: "https://www.kickstarter.com/projects/11662585/hollow-knight/posts/2167145" },
+            { date: "2018-06-12", description: "Hollow Knight is released on switch", type: "meta", sauce: "https://www.kickstarter.com/projects/11662585/hollow-knight/posts/2211921" },
+            { date: "2018-08-23", description: "Godmaster update is released", type: "meta", sauce: "https://www.kickstarter.com/projects/11662585/hollow-knight/posts/2270599" },
+            { date: "2019-02-14", description: "Hollow Knight: Silksong is revealed", type: "yes", sauce: "https://www.kickstarter.com/projects/11662585/hollow-knight/posts/2416131" },
             { date: "2019-02-15", description: "Steam Store Page is Live", type: "yes" },
             { date: "2019-02-16", description: "Sample music removed from Silksong website", type: "kinda" },
             { date: "2019-03-19", description: "Late anniversary blog post by Team Cherry", type: "yes" },
@@ -191,6 +232,10 @@
             "meta": "blue",
         }
 
+        var iconMapping = {
+            "kickstarter.com": "https://a.kickstarter.com/favicon.ico",
+        }
+
         const DAY_LENGTH = 20;
 
         function createTimeline(events) {
@@ -214,15 +259,102 @@
                 const dateDisplay = date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).replace(/ /g, '-');
                 var dateNode = document.createElement('strong');
                 dateNode.textContent = dateDisplay;
-                var descriptionNode = document.createTextNode(`: ${event.description}`);
+                const descriptionNode = document.createTextNode(`: ${event.description}`);
                 descElement.appendChild(dateNode);
                 descElement.appendChild(descriptionNode);
+                if (event.sauce) {
+                    var sauceNode = document.createElement('a');
+                    sauceNode.href = event.sauce;
+                    sauceNode.style.paddingLeft = '8px';
+                    sauceNode.innerText = 'Sauce';
+                    sauceNode.target = '_blank';
+                    Object.keys(iconMapping).forEach((text) => {
+                        if (event.sauce.indexOf(text) !== -1) {
+                            var iconNode = document.createElement('img');
+                            sauceNode.innerText = '';
+                            iconNode.src = iconMapping[text];
+                            iconNode.style.height = 'min(2.5vw, 14px)';
+                            iconNode.style.border = '1px dotted white';
+                            iconNode.style.borderRadius = '4px'
+                            sauceNode.appendChild(iconNode);
+                            return;
+                        }
+                    });
+                    descElement.appendChild(sauceNode);
+                }
                 eventElement.appendChild(descElement);
                 timeline.appendChild(eventElement);
             });
         }
 
         createTimeline(events);
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const eventContainer = document.getElementById("timeline");
+            const events = document.querySelectorAll(".timeline>.event");
+            const prevButton = document.getElementById("prevButton");
+            const nextButton = document.getElementById("nextButton");
+
+            // Function to scroll to the previous event
+            prevButton.addEventListener("click", function () {
+                scrollToPreviousEvent();
+            });
+
+            // Function to scroll to the next event
+            nextButton.addEventListener("click", function () {
+                scrollToNextEvent();
+            });
+
+            // Event listener for keydown event
+            document.addEventListener("keydown", function (event) {
+                if (event.key === '[') {
+                    scrollToPreviousEvent();
+                } else if (event.key === ']') {
+                    scrollToNextEvent();
+                }
+            });
+
+            // Function to calculate and scroll to the previous event
+            function scrollToPreviousEvent() {
+                const viewportScrollPos = window.scrollY;
+                for (let i = 0; i < events.length; i++) {
+                    if (events[i].offsetTop >= viewportScrollPos) {
+                        const targetEvent = events[Math.max(i - 1, 0)]
+                        if (i > 0) {
+                            window.scrollTo({
+                                top: targetEvent.offsetTop,
+                                behavior: "smooth"
+                            });
+                        }
+                        highlightEvent(targetEvent);
+                        break;
+                    }
+                }
+            }
+
+            // Function to calculate and scroll to the next event
+            function scrollToNextEvent() {
+                const viewportScrollPos = window.scrollY;
+                for (let i = 0; i < events.length; i++) {
+                    if (events[i].offsetTop > Math.ceil(viewportScrollPos)) {
+                        const targetEvent = events[Math.max(i, 1)]
+                        window.scrollTo({
+                            top: targetEvent.offsetTop,
+                            behavior: "smooth"
+                        });
+                        highlightEvent(targetEvent);
+                        break;
+                    }
+                }
+            }
+
+            function highlightEvent(event) {
+                event.classList.add("highlight");
+                setTimeout(function () {
+                    event.classList.remove("highlight");
+                }, 500);
+            }
+        });
     </script>
 </body>
 
