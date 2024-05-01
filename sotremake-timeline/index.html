@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoT Remake Timeline</title>
+    <link rel="icon" href="https://issilksongout.com/favicon.ico" />
+    <style>
+        @font-face {
+            font-family: 'Trajan Pro Regular';
+            font-style: normal;
+            font-weight: normal;
+            src: local('Trajan Pro Regular'), url('../static/fonts/TrajanPro-Regular.woff') format('woff');
+        }
+
+        body {
+            font-family: 'Trajan Pro Regular', sans-serif;
+            text-align: center;
+            color: #fff;
+            background: #000000 url('https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/1SdA9KBrc6C0B0mPIlLy4a/239db56b9f6e8a8a331b435c13b1aa0c/BrandGuideLineBG1Dark-opti.jpg') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        td {
+            text-align: left;
+            vertical-align: top;
+            padding: 2px
+        }
+
+        td * {
+            transform: none !important;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #000;
+            box-shadow: #000;
+            z-index: 1000;
+            box-shadow: 0 5px 20px 0 #000;
+            color: #ffdb64;
+        }
+
+        .legend {
+            position: fixed;
+            top: 100px;
+            right: 3vw;
+            background-color: #000;
+            z-index: 1000;
+            font-size: min(2.5vw, 14px);
+            padding: 5px;
+            box-shadow: 0 0 20px 0 #000;
+        }
+
+        .timeline-wrapper {
+            margin: 120px 0 0 4%;
+            padding: 0;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+        }
+
+        .timeline {
+            position: relative;
+            width: 5px;
+            background-color: #ccc;
+        }
+
+        .event {
+            position: absolute;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            background-color: #007bff;
+            border-radius: 50%;
+            border: 1px solid black;
+            transform: translate(calc(-50% + 2.5px), -50%);
+        }
+
+        .event-description {
+            margin: 0 15px;
+            width: 90vw;
+            white-space: nowrap;
+            overflow: hidden;
+            text-align: left;
+            font-size: min(2.5vw, 14px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Sands of Time Remake Timeline</h1>
+    </div>
+    <div class="legend">
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="event" style="background-color: #49e546; position: static;"></div>
+                    </td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="event" style="background-color: #e1bb00; position: static;"></div>
+                    </td>
+                    <td>Kinda</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="event" style="background-color: #fb7700; position: static;"></div>
+                    </td>
+                    <td>Maybe</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="event" style="background-color: #cb2e4b; position: static;"></div>
+                    </td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="event" style="background-color: blue; position: static;"></div>
+                    </td>
+                    <td>Meta</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="timeline-wrapper">
+        <div class="timeline" id="timeline"></div>
+    </div>
+
+    <script>
+        var events = [
+            { date: "2020-01-02", description: "John Harker posts on ResetEra that we don't have to wait that long for a remake", type: "kinda" },
+            { date: "2020-09-09", description: "Sands of Time Remake screenshot seen in Ubisoft Instagram story", type: "yes" },
+            { date: "2020-09-10", description: "Sands of Time Remake is revealed at Ubisoft Forward with a January 21, 2021 release date", type: "yes" },
+            { date: "2020-09-11", description: "Cosplay Guide is released", type: "yes" },
+            { date: "2020-12-08", description: "The game gets delayed to March 18, 2021", type: "yes" },
+            { date: "2021-02-05", description: "The game gets delayed indefinitely", type: "yes" },
+            { date: "2021-03-16", description: "PlayStation trophy list gets leaked", type: "kinda" },
+            { date: "2021-05-11", description: "Insiders infrom that Ubisoft aims to release the game before March 31, 2022", type: "kinda" },
+            { date: "2021-06-07", description: "Ubisoft confirm that the game won't be in Forward 2021", type: "yes" },
+            { date: "2021-10-28", description: "Ubisoft reassure that the game is still in development", type: "yes" },
+            { date: "2022-05-03", description: "Ubisoft infrom about the project being shifted to Ubisoft Montreal", type: "yes" },
+            { date: "2022-11-07", description: "Ubisoft post the article with FAQ about the remake", type: "yes" },
+            { date: "2023-05-24", description: "Ubisoft update the article and also publish a Q&A with the producer and the director", type: "yes" },
+            { date: "2023-06-09", description: "Prince of Persia: The Lost Crown is revealed at Summer Games Fest", type: "meta" },
+            { date: "2023-06-12", description: "More Prince of Persia: The Lost Crown at Ubisoft Forward", type: "meta" },
+        ];
+
+        var colorMapping = {
+            "yes": "#49e546",
+            "kinda": "#e1bb00",
+            "maybe": "#fb7700",
+            "no": "#cb2e4b",
+            "meta": "blue",
+        }
+
+        const DAY_LENGTH = 20;
+
+        function createTimeline(events) {
+            var timeline = document.getElementById('timeline');
+            var oldestDate = new Date(events[0].date);
+            var currentDate = new Date();
+            var daysDifference = Math.ceil((currentDate - oldestDate) / (1000 * 60 * 60 * 24));
+            var timelineHeight = daysDifference * DAY_LENGTH;
+
+            timeline.style.height = timelineHeight + 'px';
+
+            events.forEach(function (event) {
+                var date = new Date(event.date);
+                var dayDifference = Math.abs(date - oldestDate) / (1000 * 60 * 60 * 24);
+                var eventElement = document.createElement('div');
+                eventElement.className = 'event';
+                eventElement.style.top = (dayDifference * DAY_LENGTH) + 'px';
+                eventElement.style.backgroundColor = colorMapping[event.type];
+                var descElement = document.createElement('div');
+                descElement.className = 'event-description';
+                const dateDisplay = date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).replace(/ /g, '-');
+                var dateNode = document.createElement('strong');
+                dateNode.textContent = dateDisplay;
+                var descriptionNode = document.createTextNode(`: ${event.description}`);
+                descElement.appendChild(dateNode);
+                descElement.appendChild(descriptionNode);
+                eventElement.appendChild(descElement);
+                timeline.appendChild(eventElement);
+            });
+        }
+
+        createTimeline(events);
+    </script>
+</body>
+
+</html>
