@@ -213,6 +213,7 @@
             { date: "2022-09-16", description: "PS5/PS4 release confirmed", type: "yes", vidya: "https://www.youtube.com/watch?v=lQU9AAU-MwE", sauce: "https://twitter.com/PlayStation/status/1570797280063627264" },
             { date: "2022-09-17", description: "PlayStation store page goes live with new screenshots from the game", type: "yes", vidya: "https://www.youtube.com/watch?v=Rodsb_gAVCU", sauce: "https://store.playstation.com/en-in/concept/10005908/" },
             { date: "2022-10-29", description: "Community find out about the named screenshot assets on the Xbox wire website", type: "kinda", vidya: "https://www.youtube.com/watch?v=4yYBbbNlFxo" },
+            { date: "2022-12-20", description: "'Silksong' trademark filed by Team Cherry", type: "kinda", sauce: "https://search.ipaustralia.gov.au/trademarks/search/view/2323264" },
             { date: "2023-01-31", description: "Xbox Wire blogpost about Most Anticipated Games", type: "maybe", vidya: "https://www.youtube.com/watch?v=Iyq0GW9KtDc", sauce: "https://news.xbox.com/en-us/2023/01/31/most-anticipated-games-2023/" },
             { date: "2023-05-10", description: "Leth announces delay from the planned 2023 first half release", type: "yes", vidya: "https://www.youtube.com/watch?v=dDacZ8u3Obk", sauce: "https://twitter.com/griffinmatta/status/1656106351184199680" },
             { date: "2023-06-29", description: "'Cogfly' name revealed in official Hornet Nendoroid page", type: "kinda", vidya: "https://www.youtube.com/watch?v=5D9i9fX9SGE", sauce: "https://www.goodsmile.info/en/product/14581/Nendoroid+Hornet.html" },
@@ -222,9 +223,9 @@
             { date: "2024-03-18", description: "Fan bumps into Leth at Day of the Devs, He says Silksong is definitely before Crowsworn", type: "kinda", vidya: "https://www.youtube.com/watch?v=ODnG4vjoOuE", sauce: "https://www.reddit.com/r/Silksong/comments/1bhhpf4/i_was_at_day_of_the_devs_today_i_found_someone/" },
             { date: "2024-04-02", description: "New Microsoft Store page is made, ESRB rating is added", type: "kinda", vidya: "https://www.youtube.com/watch?v=CbmtBrOSmlE", sauce: "https://www.xbox.com/en-us/games/store/hollow-knight-silksong/9n116v0599hb" },
             { date: "2024-04-04", description: "Silksong gets several age ratings", type: "maybe", vidya: "https://www.youtube.com/watch?v=SBzSijb7_y8" },
+            { date: "2024-07-08", description: "'Silksong' trademark registered", type: "kinda", sauce: "https://search.ipaustralia.gov.au/trademarks/search/view/2323264" },
         ];
 
-        debugger;
         const todayDateString = (new Date()).toISOString().split('T')[0]
         var noItemsWithTodayDate = events.every(function (event) {
             return event.date !== todayDateString;
@@ -255,6 +256,7 @@
             "goodsmile.info": "https://images.goodsmile.info/media/favicon-2e20e645acced2fd5bc1482f0c4e45e2.ico",
             "steampowered.com": "https://store.steampowered.com/favicon.ico",
             "discord.com": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Discord-icon.png",
+            "ipaustralia.gov.au": "https://search.ipaustralia.gov.au/trademarks/static/images/favicon.png"
         }
 
         const DAY_LENGTH = 20;
