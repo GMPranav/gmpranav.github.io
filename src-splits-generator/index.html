@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Previewer</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            background-color: black;
+            color: white;
+            color-scheme: dark;
+        }
+
+        textarea {
+            width: 45%;
+            height: 400px;
+            font-size: 16px;
+        }
+
+        #preview {
+            width: 45%;
+            height: 400px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            overflow-y: auto;
+        }
+
+        #preview table th {
+            text-align: initial;
+        }
+
+        #preview table th[align="center"] {
+            text-align: center;
+        }
+
+        #preview table th[align="right"] {
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea id="markdown" placeholder="Write Markdown here..."></textarea>
+    <div id="preview"></div>
+
+    <script>
+        const textarea = document.getElementById("markdown");
+        const preview = document.getElementById("preview");
+
+        textarea.addEventListener("input", () => {
+            preview.innerHTML = marked.parse(textarea.value);
+        });
+
+        // Set initial content
+        textarea.value = "# Markdown Previewer\n\nUse this special space!";
+        preview.innerHTML = marked.parse(textarea.value);
+    </script>
+</body>
+
+</html>
