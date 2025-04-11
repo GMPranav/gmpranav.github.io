@@ -18,17 +18,20 @@
         }
 
         textarea {
-            width: 45%;
-            height: 400px;
+            width: 95%;
+            field-sizing: content;
             font-size: 16px;
         }
 
-        #preview {
+        .text-container {
             width: 45%;
-            height: 400px;
+            height: fit-content;
+            overflow-y: auto;
+        }
+
+        #preview {
             border: 1px solid #ccc;
             padding: 10px;
-            overflow-y: auto;
         }
 
         #preview table th {
@@ -46,15 +49,21 @@
 </head>
 
 <body>
-    <textarea id="markdown" placeholder="Write Markdown here..."></textarea>
-    <div id="preview"></div>
+    <div class="text-container">
+        <h2>Source</h2>
+        <textarea id="markdown" placeholder="Write Markdown here..."></textarea>
+    </div>
+    <div class="text-container">
+        <h2>Preview</h2>
+        <div id="preview"></div>
+    </div>
 
     <script>
         const textarea = document.getElementById("markdown");
         const preview = document.getElementById("preview");
 
         textarea.addEventListener("input", () => {
-            preview.innerHTML = marked.parse(textarea.value);
+            preview.innerHTML = marked.parse(textarea.value.replaceAll(" ", "&#8193;"));
         });
 
         // Set initial content
