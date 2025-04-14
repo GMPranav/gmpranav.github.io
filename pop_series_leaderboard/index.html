@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>PoP 1 NMG Legacy</title>
+<link rel="icon" type="image/x-icon" href="https://cdn.discordapp.com/emojis/629434960285270017.webp?size=80&quality=lossless">
+</head>
+
+<!-- Latest compiled and minified Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+
+<!-- Latest compiled Bootstrap js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
+
+<style>
+	a:link {
+	  text-decoration: none;
+	}
+	
+	.runner:hover {
+		text-decoration: underline;
+	}
+</style>
+
+<!-- SRC API fetch script -->
+<script>
+$(function() {
+async function fetchTest() {
+	$(".container").hide();
+	let response = await fetch('https://www.speedrun.com/api/v1/leaderboards/yd4y2wde/category/rklx8pnk?var-ylqj57nr=4qyxp34l');
+    let responseText = await response.text();
+
+    const leaderboardObj = JSON.parse(responseText);
+	const runsObj = leaderboardObj['data']['runs']
+	
+	for (const key in runsObj){
+		if(runsObj[key]['run']['players'][0]['id'] != null){
+			const url = 'https://www.speedrun.com/api/v1/users/'+runsObj[key]['run']['players'][0]['id']
+			let response = await fetch(url);
+			let responseText = await response.text();
+			const userObj = JSON.parse(responseText);
+			
+			runsObj[key]['run']['players'][0]['id'] = '<a href='+userObj['data']['weblink']+' target="_blank">'+userObj['data']['names']['international']+'</a>';
+		}	
+		else{
+			runsObj[key]['run']['players'][0]['id'] = runsObj[key]['run']['players'][0]['name']
+		}
+		var time = runsObj[key]['run']['times']['primary_t'];
+		var musicless = time - 113;
+		
+		var hours = Math.floor(time / 3600)
+		var mins = Math.floor((time % 3600) / 60);
+		var secs = Math.floor(time % 60);
+		var ms = Math.floor((time * 1000) % 1000);
+		var timespan = '';
+		if (hours != 0)
+			timespan = hours+"h "+mins+"m "+secs+"s";
+		else if (mins != 0)
+			timespan = mins.toString()+"m "+secs.toString()+"s";
+		else
+			timespan = secs.toString()+"s";
+		if (ms != 0)
+			timespan += " "+ms.toString()+"ms";
+		runsObj[key]['run']['times']['primary_t'] = '<a href='+runsObj[key]['run']['weblink']+' target="_blank">'+timespan+'</a>';
+		
+		var hours = Math.floor(musicless / 3600)
+		var mins = Math.floor((musicless % 3600) / 60);
+		var secs = Math.floor(musicless % 60);
+		var ms = Math.floor((musicless * 1000) % 1000);
+		var timespan = '';
+		if (hours != 0)
+			timespan = hours+"h "+mins+"m "+secs+"s";
+		else if (mins != 0)
+			timespan = mins.toString()+"m "+secs.toString()+"s";
+		else
+			timespan = secs.toString()+"s";
+		if (ms != 0)
+			timespan += " "+ms.toString()+"ms";
+		runsObj[key]['run']['times']['musicless_t'] = timespan;
+		
+		const date = Date.parse(runsObj[key]['run']['date']);
+		const today = new Date();
+		const oneDay = 24 * 60 * 60 * 1000;
+		const diffDays = Math.round(Math.abs((today - date) / oneDay));
+		
+		if (diffDays == 0)
+			runsObj[key]['run']['date'] = 'today';
+		if (diffDays > 366)
+			runsObj[key]['run']['date'] = Math.round(diffDays/365.25)+" years ago";
+		else if (diffDays > 30)
+			runsObj[key]['run']['date'] = Math.round(diffDays/30)+" months ago";
+		else
+			runsObj[key]['run']['date'] = diffDays+" days ago";
+			
+	}
+	
+	$(function () {
+		$('#table').bootstrapTable({
+			data: runsObj
+		});
+	});
+	$(".container").show();
+	$(".row").hide();
+}
+
+(async() => {
+    await fetchTest();
+})();
+
+function responseHandler(res) {
+		var flatArray = [];
+        $.each(res, function(i, element) { 
+            flatArray.push(JSON.flatten(element));
+        });
+        return flatArray;
+    }
+});	
+</script>
+
+<body>
+
+<div class="d-flex flex-column align-items-center justify-content-center">
+   <div class="row">
+       <div class="spinner-border" role="status">
+           <span class="sr-only"></span>
+       </div>
+    </div>
+    <div class="row">
+      <strong>Loading</strong>
+    </div>
+</div>
+
+<div class="container">
+        <table id="table" data-response-handler="responseHandler">
+        <thead>
+            <tr class="item">
+                <th class='rank' data-field="place">Rank</th>
+				<th class='runner' data-field="run.players.0.id">Runner</th>
+                <th class='igt' data-field="run.times.primary_t">IGT</th>
+				<th class='mst' data-field="run.times.musicless_t">Musicless IGT</th>
+                <th class='date' data-field="run.date">Date</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+	
+</body>
+
+</html>

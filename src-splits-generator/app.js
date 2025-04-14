@@ -100,7 +100,7 @@ function parseXML(xmlString) {
   let result = "";
   let count = 1;
   let prevTime = 0;
-  result += "## Time Splits\n\n";
+  result += "## [Time Splits](https://gmpranav.github.io/src-splits-generator/)\n\n";
   const spaceStr = " ".repeat(spaceValue);
   result += `| **#** | | **Name** | ${spaceStr}| **Finished At** | ${spaceStr}| **Split** |\n`;
   result += "|---|---|---|---|:---:|---|:---:|\n";
