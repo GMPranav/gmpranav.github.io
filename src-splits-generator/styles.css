@@ -1,0 +1,136 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white;
+    color-scheme: dark;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5vw;
+    font-size: 1vw;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    background-color: #222;
+    border: 1px solid #555;
+    border-radius: 0.2vw;
+    display: inline-block;
+    padding: 0.7vw 0.8vw;
+    cursor: pointer;
+    display: flex;
+    gap: 0.5vw;
+}
+
+.custom-file-upload:hover {
+    background-color: #444;
+}
+
+img {
+    width: 1.5vw;
+}
+
+input[type="range"] {
+    width: 10vw;
+}
+
+.select-container {
+    padding: 0.3vw 0.5vw 0.3vw 0.1vw;
+    background-color: #6b6b6b;
+    border-radius: 0.4vw;
+}
+
+select {
+    padding: 0.3vw;
+    background-color: #6b6b6b;
+    /* margin: 0.3vw; */
+    border: none;
+    font-size: 1vw;
+    height: 2vw;
+}
+
+.output-container {
+    margin: auto;
+    width: 95vw;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1vw;
+    padding: 1vw;
+}
+
+.source-header-flex {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    position: relative;
+}
+
+.copy-button {
+    background-color: #222;
+    border: 0.1vw solid #555;
+    border-radius: 0.2vw;
+    height: 1.5vw;
+    padding: 0.5vw 0.5vw 0.3vw 0.5vw;
+    cursor: pointer;
+}
+
+.copy-button:hover {
+    background-color: #444;
+}
+
+#copy-tooltip {
+    visibility: hidden;
+    background-color: #5b00ab;
+    border-radius: 1vw;
+    padding: 0.5vw;
+    transition: all 1s ease;
+}
+
+textarea {
+    resize: none;
+    pointer-events: none;
+    width: 95%;
+    height: 20vw;
+    padding: 1vw;
+    font-size: 1vw;
+}
+
+@supports (field-sizing: content) {
+    textarea {
+        height: auto;
+        field-sizing: content;
+    }
+}
+
+.text-container {
+    width: 45%;
+    height: fit-content;
+    overflow-y: auto;
+    font-size: 1vw;
+}
+
+#preview {
+    border: 1px solid #767676;
+    padding: 1vw;
+}
+
+#preview table th {
+    text-align: initial;
+}
+
+#preview table th[align="center"] {
+    text-align: center;
+}
+
+#preview table th[align="right"] {
+    text-align: right;
+}

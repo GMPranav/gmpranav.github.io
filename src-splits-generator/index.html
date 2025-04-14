@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Time Splits Generator</title>
+  <link rel="icon" href="https://livesplit.org/images/icon.ico" />
+
+  <meta name="description" content="Generate timestamps to use in speedrun.com run descriptions directly using your splits file. This is a replacement for one of the use cases of splits.io (which is now discontinued).">
+  <meta name="keywords" content="src, livesplit, timestamp, time splits, splits.io, speedrun.com">
+  <meta name="author" content="GMP">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Split Timestamps Generator">
+  <meta property="og:description" content="Generate timestamps to use in speedrun.com run descriptions directly using your splits file. This is a replacement for one of the use cases of splits.io (which is now discontinued).">
+  <meta property="og:url" content="https://gmpranav.github.io/src-splits-generator/">
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div style="text-align: center;">
+    <h1>Time Splits Generator</h1>
+    <h2>for <span style="color: gold;">speedrun.com</span></h1>
+  </div>
+  <label class="custom-file-upload">
+    <input type="file" id="fileInput" accept=".lss" onchange="onloadSplitsFile(event)" />
+    <img src="https://livesplit.org/images/icon.ico">
+    <span>Load Splits</span>
+  </label>
+
+  <label>
+    Spacing
+    <input type="range" id="spacing" min="0" max="5" value="1" oninput="onChangeSettings()" />
+  </label>
+
+  <label>
+    Decimals
+    <input type="range" id="decimals" min="0" max="3" value="2" oninput="onChangeSettings()" />
+  </label>
+
+  <div class="select-container">
+    <select id="timing-method" onchange="onChangeSettings()">
+      <option value="RealTime">Real Time</option>
+      <option value="GameTime">Game Time</option>
+    </select>
+  </div>
+
+  <div class="output-container">
+    <div class="text-container">
+      <div class="source-header-flex">
+        <h2>Source</h2>
+        <div class="copy-button" onclick="handleCopyLocation()">Copy</div>
+        <span id="copy-tooltip">Copied!</span>
+      </div>
+      <textarea id="markdown" onchange="populatePreview()"></textarea>
+    </div>
+    <div class="text-container">
+      <h2>Preview *</h2>
+      <div id="preview"></div>
+      <p>* Might not match exactly with speedrun.com, but should give a decent idea.</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
