@@ -2,74 +2,282 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Markdown Previewer</title>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            gap: 20px;
-            padding: 20px;
-            background-color: black;
-            color: white;
-            color-scheme: dark;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Split Timestamps Generator</title>
+  <link rel="icon" href="https://livesplit.org/images/icon.ico" />
 
-        textarea {
-            width: 95%;
-            field-sizing: content;
-            font-size: 16px;
-        }
+  <meta name="description"
+    content="Generate timestamps to use in speedrun.com run descriptions directly using your splits file. This is a replacement for one of the use cases of splits.io (which is now discontinued).">
+  <meta name="keywords" content="src, livesplit, timestamp, time splits, splits.io, speedrun.com">
+  <meta name="author" content="GMP">
 
-        .text-container {
-            width: 45%;
-            height: fit-content;
-            overflow-y: auto;
-        }
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Split Timestamps Generator">
+  <meta property="og:description"
+    content="Generate timestamps to use in speedrun.com run descriptions directly using your splits file. This is a replacement for one of the use cases of splits.io (which is now discontinued).">
+  <meta property="og:url" content="https://gmpranav.github.io/src-splits-generator/">
 
-        #preview {
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-        #preview table th {
-            text-align: initial;
-        }
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: black;
+      color: white;
+      color-scheme: dark;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5vw;
+      font-size: 1vw;
+    }
 
-        #preview table th[align="center"] {
-            text-align: center;
-        }
+    label {
+      display: flex;
+      align-items: center;
+      gap: 1vw;
+    }
 
-        #preview table th[align="right"] {
-            text-align: right;
-        }
-    </style>
+    input[type="file"] {
+      display: none;
+    }
+
+    .custom-file-upload {
+      background-color: #222;
+      border: 1px solid #555;
+      border-radius: 0.2vw;
+      display: inline-block;
+      padding: 0.7vw 0.8vw;
+      cursor: pointer;
+      display: flex;
+      gap: 0.5vw;
+    }
+
+    .custom-file-upload:hover {
+      background-color: #444;
+    }
+
+    img {
+      width: 1.5vw;
+    }
+
+    input[type="range"] {
+      width: 10vw;
+    }
+
+    .select-container {
+      padding: 0.3vw 0.5vw 0.3vw 0.1vw;
+      background-color: #6b6b6b;
+      border-radius: 0.4vw;
+    }
+
+    select {
+      padding: 0.3vw;
+      background-color: #6b6b6b;
+      /* margin: 0.3vw; */
+      border: none;
+      font-size: 1vw;
+      height: 2vw;
+    }
+
+    .output-container {
+      margin: auto;
+      width: 95vw;
+      display: flex;
+      justify-content: space-evenly;
+      gap: 1vw;
+      padding: 1vw;
+    }
+
+    textarea {
+      resize: none;
+      pointer-events: none;
+      width: 95%;
+      height: 20vw;
+      padding: 1vw;
+      font-size: 1vw;
+    }
+
+    @supports (field-sizing: content) {
+      textarea {
+        height: auto;
+        field-sizing: content;
+      }
+    }
+
+    .text-container {
+      width: 45%;
+      height: fit-content;
+      overflow-y: auto;
+      font-size: 1vw;
+    }
+
+    #preview {
+      border: 1px solid #767676;
+      padding: 1vw;
+    }
+
+    #preview table th {
+      text-align: initial;
+    }
+
+    #preview table th[align="center"] {
+      text-align: center;
+    }
+
+    #preview table th[align="right"] {
+      text-align: right;
+    }
+  </style>
 </head>
 
 <body>
+  <div style="text-align: center; padding: 0 !important;">
+    <h1>Split Timestamps Generator</h1>
+    <h2>for <span style="color: gold;">speedrun.com</span></h1>
+  </div>
+  <label class="custom-file-upload">
+    <input type="file" id="fileInput" accept=".lss" onchange="onloadSplitsFile(event)" />
+    <img src="https://livesplit.org/images/icon.ico">
+    <span>Load Splits</span>
+  </label>
+
+  <label for="spacing">
+    Spacing
+    <input type="range" id="spacing" name="spacing" min="0" max="5" value="1" onchange="onChangeSettings()" />
+  </label>
+
+  <div class="select-container">
+    <select id="timing-method" onchange="onChangeSettings()">
+      <option value="RealTime">Real Time</option>
+      <option value="GameTime">Game Time</option>
+    </select>
+  </div>
+
+  <div class="output-container">
     <div class="text-container">
-        <h2>Source</h2>
-        <textarea id="markdown" placeholder="Write Markdown here..."></textarea>
+      <h2>Source</h2>
+      <textarea id="markdown" onchange="populatePreview()"></textarea>
     </div>
     <div class="text-container">
-        <h2>Preview</h2>
-        <div id="preview"></div>
+      <h2>Preview *</h2>
+      <div id="preview"></div>
+      <p>* Might not match exactly with speedrun.com, but should give a decent idea.</p>
     </div>
+  </div>
 
-    <script>
-        const textarea = document.getElementById("markdown");
-        const preview = document.getElementById("preview");
+  <script>
+    const textarea = document.getElementById("markdown");
+    const preview = document.getElementById("preview");
 
-        textarea.addEventListener("input", () => {
-            preview.innerHTML = marked.parse(textarea.value.replaceAll(" ", "&#8193;"));
-        });
+    populateSrc(
+      `## Load a splits file to generate timestamps
+      \nYou can copy the source and paste it under your speedrun.com run description.`
+    );
 
-        // Set initial content
-        textarea.value = "# Markdown Previewer\n\nUse this special space!";
-        preview.innerHTML = marked.parse(textarea.value);
-    </script>
+    function populateSrc(value) {
+      textarea.value = value;
+      populatePreview(value);
+    }
+
+    function populatePreview(value) {
+      preview.innerHTML = marked.parse(value.replaceAll(" ", "&#8193;"));
+    }
+
+    function onloadSplitsFile(e) {
+      var file = e.target.files[0];
+      if (file) {
+        readFile(file);
+      }
+    }
+
+    function onChangeSettings() {
+      var file = document.getElementById("fileInput").files[0];
+      if (file) {
+        readFile(file);
+      }
+    }
+
+    function readFile(file) {
+      let reader = new FileReader();
+      reader.readAsText(file, "UTF-8");
+      reader.onload = function (evt) {
+        parseXML(evt.target.result);
+      };
+      reader.onerror = function (evt) {
+        populateSrc("error reading file");
+      };
+    }
+
+    function parseStime(stime) {
+      const [hh, mm, ssFraction] = stime.split(":");
+      return (
+        parseInt(hh) * 3600000 +
+        parseInt(mm) * 60000 +
+        parseFloat(ssFraction) * 1000
+      );
+    }
+
+    function formatMilliseconds(ms) {
+      const totalSeconds = Math.floor(ms / 1000);
+      const milliseconds = Math.round(ms % 1000);
+
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      let result = "";
+
+      if (hours > 0) {
+        result += `${hours}:${minutes.toString().padStart(2, "0")}:${seconds
+          .toString()
+          .padStart(2, "0")}`;
+      } else if (minutes > 0) {
+        result += `${minutes}:${seconds.toString().padStart(2, "0")}`;
+      } else {
+        result += `${seconds}`;
+      }
+
+      result += `.${milliseconds.toString().padStart(3, "0")}`;
+      return result;
+    }
+
+    function parseXML(xmlString) {
+      let parser = new DOMParser();
+      let xmlDoc = parser.parseFromString(xmlString, "text/xml");
+
+      const spaceValue = parseInt(document.getElementById("spacing").value);
+      debugger;
+      const timingMethod = document.getElementById("timing-method").value;
+
+      let result = "";
+      let count = 1;
+      let prevTime = 0;
+      result += "## Time Splits\n\n";
+      const spaceStr = " ".repeat(spaceValue);
+      result += `| **#** | | **Name** | ${spaceStr}| **Finished At** | ${spaceStr}| **Split** |\n`;
+      result += "|---|---|---|---|:---:|---|:---:|\n";
+
+      xmlDoc.querySelectorAll("Run Segments Segment").forEach((segment) => {
+        const splitName = segment
+          .querySelector("Name")
+          .textContent.split("}")
+          .pop()
+          .replace(/^(\s|-)+/, "");
+        const realTime = segment.querySelector(
+          `SplitTimes SplitTime[name="Personal Best"] ${timingMethod}`
+        ).textContent;
+        const parsedTime = parseStime(realTime);
+        const splitTime = parsedTime - prevTime;
+        result += `| ${count} || ${splitName} || ${formatMilliseconds(parsedTime)} || ${formatMilliseconds(splitTime)} |\n`;
+        prevTime = parsedTime;
+        count++;
+      });
+
+      populateSrc(result);
+    }
+  </script>
 </body>
 
 </html>
