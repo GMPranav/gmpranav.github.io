@@ -248,6 +248,13 @@
             { date: "2025-04-08", description: "Silksong confirmed to appear at ACMI Game Worlds exhibition", type: "kinda", sauce: "https://www.acmi.net.au/whats-on/game-worlds/", vidya: "https://www.youtube.com/watch?v=Sf1SgcVm6mk" },
             { date: "2025-04-29", description: "Silksong appears in Nintendo's Magazine re-affirming the 2025 release window", type: "kinda", sauce: "https://www.nintendo.com/jp/games/feature/magazine_2025special/index.html?page=25&device=pc", vidya: "https://www.youtube.com/watch?v=UDQdwFY6UE8" },
             { date: "2025-05-01", description: "Hornet's sprite-sheet provided to IGN by ACMI curators", type: "yes", sauce: "https://www.ign.com/articles/hollow-knight-silksong-will-be-playable-in-september-2025-at-an-australian-museum", vidya: "https://www.youtube.com/watch?v=-ov5oaqoEr8" },
+            { date: "2025-06-03", description: "More Steam page updates", type: "kinda", sauce: "https://steamdb.info/app/1030300/history/?changeid=U:62989906", vidya: "https://www.youtube.com/watch?v=2RF1Xnfg4dw" },
+            { date: "2025-06-08", description: "New Silksong footage on Xbox Showcase", type: "yes", sauce: "https://twitter.com/Xbox/status/1931760244553863558", vidya: "https://www.youtube.com/watch?v=167tSGgDmW0" },
+            { date: "2025-06-30", description: "New Hornet Sprites and Sketches from ACMI", type: "yes", vidya: "https://www.youtube.com/watch?v=VPJ5kUUbyVY" },
+            { date: "2025-07-03", description: "More details from ACMI and a funny 'Hornet Vlog' video", type: "kinda", sauce: "https://www.instagram.com/acmionline/reel/DLoCDuhqbNc/", vidya: "https://www.youtube.com/watch?v=z-XBjye-zsc" },
+            { date: "2025-07-28", description: "Silksong demo Confirmed for Gamescom", type: "yes", sauce: "https://news.xbox.com/en-us/2025/07/28/xbox-gamescom-2025/", vidya: "https://www.youtube.com/watch?v=FLAbIf3Opf8" },
+            { date: "2025-08-18", description: "Silksong demo booth reveal, Geoff teases Silksong", type: "kinda", sauce: "https://twitter.com/geoffkeighley/status/1957492830374650018", vidya: "https://www.youtube.com/watch?v=3MhUX6Jbv6U" },
+            { date: "2025-08-19", description: "Team Cherry blog post with 48-hour countdown to a ‘special announcement’, new Silksong footage at Gamescom", type: "yes", sauce: "https://www.teamcherry.com.au/blog/11xf7azcuebhybgossfhdc0mphiqbs-en88t", vidya: "https://www.youtube.com/watch?v=JkjebOOXbX4" },
         ];
 
         const todayDateString = (new Date()).toISOString().split('T')[0]
@@ -255,7 +262,7 @@
             return event.date !== todayDateString;
         });
         if (noItemsWithTodayDate) {
-            events.push({ date: todayDateString, description: "Tomorrow for sure", type: "meta" })
+            events.push({ date: todayDateString, description: "We Won!!", type: "meta" })
         }
 
         var colorMapping = {
