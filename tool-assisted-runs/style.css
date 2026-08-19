@@ -1,0 +1,311 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Jost:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap");
+
+:root {
+    --bg: black;
+    --bg-panel: #15171d;
+    --bg-row-alt: #191b22;
+    --rule: #2a2d37;
+    --sand: #cfa736;
+    --sand-dim: #7d6a2e;
+    --parchment: #e9e4d3;
+    --muted: #8b8d9a;
+    --obsolete: #a3564a;
+
+    --font-display: "Cinzel", "Georgia", serif;
+    --font-body: "Jost", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    * {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    background-image:
+        radial-gradient(ellipse at 20% -10%, rgba(207, 167, 54, 0.08), transparent 55%),
+        radial-gradient(ellipse at 90% 0%, rgba(163, 86, 74, 0.05), transparent 45%);
+    color: var(--parchment);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: var(--sand);
+    text-decoration: none;
+}
+
+a:hover,
+a:focus-visible {
+    text-decoration: underline;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--sand);
+    outline-offset: 3px;
+}
+
+.wrap {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+    padding: 30px 0 30px;
+    border-bottom: 1px solid var(--rule);
+}
+
+.hero-grid {
+    display: grid;
+    align-items: center;
+}
+
+.eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--sand);
+    margin: 0 0 18px;
+}
+
+.hero h1 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(20px, 3vw, 32px);
+    line-height: 1.05;
+    margin: 0 0 20px;
+    letter-spacing: 0.01em;
+}
+
+.hero h1 span {
+    color: var(--sand);
+}
+
+.hero p.bio {
+    color: var(--parchment);
+    font-size: 17px;
+    margin: 0;
+}
+
+/* ---------- Section shell ---------- */
+
+section.records {
+    padding: 30px 0 30px;
+}
+
+.section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+.section-head h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 26px;
+    margin: 0;
+    letter-spacing: 0.02em;
+}
+
+.section-head .count {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--muted);
+}
+
+/* ---------- Records table ---------- */
+
+.records-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-panel);
+    border: 1px solid var(--rule);
+}
+
+.records-table caption {
+    caption-side: top;
+    text-align: left;
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--muted);
+    padding: 0 4px 12px;
+}
+
+.records-table thead th {
+    text-align: left;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sand);
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--rule);
+    white-space: nowrap;
+}
+
+.records-table tbody td {
+    padding: 16px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    font-size: 14px;
+}
+
+.records-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.records-table tbody tr:nth-child(even) {
+    background: var(--bg-row-alt);
+}
+
+.records-table tbody tr:hover {
+    background: rgba(207, 167, 54, 0.06);
+}
+
+.cell-game .name {
+    font-weight: 500;
+    color: var(--parchment);
+}
+
+.cell-game .branch {
+    display: block;
+    margin-top: 3px;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    padding: 3px 8px;
+    border: 1px solid var(--sand-dim);
+    color: var(--sand);
+    border-radius: 2px;
+}
+
+.badge.obsolete-tag {
+    border-color: var(--obsolete);
+    color: var(--obsolete);
+    margin-top: 6px;
+}
+
+.time {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--sand);
+    white-space: nowrap;
+}
+
+.emulator {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+}
+
+.links a {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px dotted var(--rule);
+    white-space: nowrap;
+}
+
+.links a:hover,
+.links a:focus-visible {
+    color: var(--sand);
+    border-bottom-color: var(--sand);
+    text-decoration: none;
+}
+
+.links .dash {
+    color: var(--rule);
+    font-family: var(--font-mono);
+    font-size: 11px;
+}
+
+/* ---------- Responsive: card layout on small screens ---------- */
+
+@media (max-width: 760px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .records-table thead {
+        display: none;
+    }
+
+    .records-table,
+    .records-table tbody,
+    .records-table tbody tr,
+    .records-table tbody td {
+        display: block;
+        width: 100%;
+    }
+
+    .records-table tbody tr {
+        padding: 16px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .records-table tbody td {
+        border-bottom: none;
+        padding: 4px 0;
+    }
+
+    .records-table tbody td[data-label]::before {
+        content: attr(data-label);
+        display: block;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--sand);
+        margin-bottom: 4px;
+    }
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+    padding: 32px 0 64px;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    border-top: 1px solid var(--rule);
+}
