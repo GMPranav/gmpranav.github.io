@@ -1,4 +1,5 @@
 import { tasProfileData } from "./data.js";
+import { parseMarkup } from "./markup.js";
 
 function renderBio() {
     var bioEl = document.getElementById("bio");
@@ -48,6 +49,9 @@ function makeLinkCell(record, fieldKey) {
 
 function makeRow(record) {
     var tr = document.createElement("tr");
+    tr.className = "record-row";
+    tr.setAttribute("tabindex", "0");
+    tr.setAttribute("aria-expanded", "false");
 
     var platformTd = document.createElement("td");
     platformTd.setAttribute("data-label", "Platform");
@@ -103,6 +107,63 @@ function makeRow(record) {
     return tr;
 }
 
+function makeNotesRow(record) {
+    var notesTr = document.createElement("tr");
+    notesTr.className = "notes-row";
+    notesTr.hidden = true;
+
+    var td = document.createElement("td");
+    td.setAttribute("colspan", "7");
+
+    var content = document.createElement("div");
+    content.className = "notes-content";
+
+    var header = document.createElement("div");
+    header.className = "notes-header";
+    header.textContent = "Author Notes";
+    content.appendChild(header);
+
+    var body = document.createElement("div");
+    body.className = "notes-body";
+    content.appendChild(body);
+
+    td.appendChild(content);
+    notesTr.appendChild(td);
+
+    var isLoaded = false;
+    var isLoading = false;
+
+    async function loadNotes() {
+        if (isLoaded || isLoading) return;
+        isLoading = true;
+        body.innerHTML = "<p><em>Loading author notes...</em></p>";
+
+        try {
+            var rawNotes = "";
+            if (typeof record.notesLoader === "function") {
+                rawNotes = await record.notesLoader();
+            } else if (typeof record.notes === "function") {
+                rawNotes = await record.notes();
+            } else if (typeof record.notes === "string") {
+                rawNotes = record.notes;
+            }
+
+            body.innerHTML = parseMarkup(rawNotes || "''No author notes provided.''");
+            isLoaded = true;
+        } catch (err) {
+            console.error("Failed to load author notes:", err);
+            body.innerHTML = "<p><em>Failed to load author notes.</em></p>";
+        } finally {
+            isLoading = false;
+        }
+    }
+
+    return {
+        row: notesTr,
+        loadNotes: loadNotes,
+    };
+}
+
 function renderTable() {
     var records = tasProfileData.completedProjects;
 
@@ -111,7 +172,36 @@ function renderTable() {
 
     var tbody = document.getElementById("records-body");
     for (var i = 0; i < records.length; i++) {
-        tbody.appendChild(makeRow(records[i]));
+        (function (record) {
+            var row = makeRow(record);
+            var notesHandle = makeNotesRow(record);
+            var notesRow = notesHandle.row;
+
+            var toggleNotes = function (e) {
+                if (e.target.closest("a")) return;
+                var isExpanded = row.getAttribute("aria-expanded") === "true";
+                var nextExpanded = !isExpanded;
+
+                row.setAttribute("aria-expanded", nextExpanded);
+                notesRow.hidden = !nextExpanded;
+                row.classList.toggle("is-expanded", nextExpanded);
+
+                if (nextExpanded) {
+                    notesHandle.loadNotes();
+                }
+            };
+
+            row.addEventListener("click", toggleNotes);
+            row.addEventListener("keydown", function (e) {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    toggleNotes(e);
+                }
+            });
+
+            tbody.appendChild(row);
+            tbody.appendChild(notesRow);
+        })(records[i]);
     }
 }
 

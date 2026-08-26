@@ -1,0 +1,2 @@
+export default `This run incorporates sword clipping tech, and has a really cool level 9.
+But I didn't make full-fleged notes for it as it was never submitted anywhere, and I waited for a TAS Setup where I don't have to use PC Speaker.`

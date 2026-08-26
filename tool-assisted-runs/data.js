@@ -1,3 +1,5 @@
+import { notesLoaders } from "./notes/notes.js";
+
 const BASE_URL = "https://raw.githubusercontent.com/GMPranav/Tool-Assisted-Runs/refs/heads/main/";
 
 export const tasProfileData = {
@@ -20,6 +22,7 @@ export const tasProfileData = {
             inputFile: { label: "JRSR", href: BASE_URL + "pop1/any_nmg.jrsr" },
             encode: { label: "YouTube", href: "https://www.youtube.com/watch?v=qEUwTODtHLk" },
             commentary: null,
+            notesLoader: notesLoaders.pop1_any_nmg,
         },
         {
             platform: "DOS",
@@ -31,6 +34,7 @@ export const tasProfileData = {
             inputFile: { label: "JRSR", href: BASE_URL + "pop2/any.jrsr" },
             encode: { label: "YouTube", href: "https://www.youtube.com/watch?v=WU8xglub3To" },
             commentary: null,
+            notesLoader: notesLoaders.pop2_any,
         },
         {
             platform: "DOS",
@@ -42,6 +46,7 @@ export const tasProfileData = {
             inputFile: { label: "JRSR", href: BASE_URL + "pop2/any_v2.jrsr", },
             encode: { label: "YouTube", href: "https://www.youtube.com/watch?v=Ga54Iab3NxE" },
             commentary: { label: "YouTube", href: "https://www.youtube.com/watch?v=SMI2d9-YqnI" },
+            notesLoader: notesLoaders.pop2_any_v2,
         },
         {
             platform: "DS",
@@ -53,6 +58,7 @@ export const tasProfileData = {
             inputFile: { label: "DSM", href: BASE_URL + "pop_tfk/any.dsm" },
             encode: { label: "YouTube", href: "https://www.youtube.com/watch?v=OoPWX30wsGA" },
             commentary: { label: "YouTube", href: "https://www.youtube.com/watch?v=MeJ-Le27JuM" },
+            notesLoader: notesLoaders.pop_tfk_any,
         },
         {
             platform: "GBA",
@@ -64,6 +70,7 @@ export const tasProfileData = {
             inputFile: { label: "BK2", href: BASE_URL + "pop_sot_gba/any.bk2" },
             encode: { label: "YouTube", href: "https://www.youtube.com/watch?v=Gmj8rFkf8do" },
             commentary: { label: "YouTube", href: "https://www.youtube.com/watch?v=df-jXeRRQ1w" },
+            notesLoader: notesLoaders.pop_sot_gba_any,
         },
         {
             platform: "Flash",
@@ -86,6 +93,7 @@ export const tasProfileData = {
             inputFile: { label: "LTM", href: BASE_URL + "raftwars/any.ltm" },
             encode: { label: "YouTube", href: "https://www.youtube.com/watch?v=clStfO49h0k" },
             commentary: null,
+            notesLoader: notesLoaders.raftwars_any,
         },
         {
             platform: "Linux",
@@ -97,6 +105,7 @@ export const tasProfileData = {
             inputFile: { label: "LTM", href: BASE_URL + "stick_with_it/any.ltm" },
             encode: { label: "YouTube", href: "https://www.youtube.com/watch?v=uk5uxDvvmBE" },
             commentary: null,
+            notesLoader: notesLoaders.stick_with_it_any,
         },
         {
             platform: "DOS",
@@ -108,6 +117,7 @@ export const tasProfileData = {
             inputFile: { label: "LTM", href: BASE_URL + "pop2/any_v3.ltm" },
             encode: { label: "YouTube", href: "https://www.youtube.com/watch?v=bVoebAC-6GQ" },
             commentary: { label: "YouTube", href: "https://www.youtube.com/watch?v=Ikz2azVfqyc" },
+            notesLoader: notesLoaders.pop2_any_v3,
         },
         {
             platform: "GC",
@@ -119,6 +129,7 @@ export const tasProfileData = {
             inputFile: { label: "DTM", href: BASE_URL + "pop_ww/any_zipless.dtm" },
             encode: { label: "YouTube", href: "https://www.youtube.com/watch?v=HyYQD3EYAPk" },
             commentary: null,
+            notesLoader: notesLoaders.pop_ww_any_zipless,
         },
         {
             platform: "GC",
@@ -130,6 +141,7 @@ export const tasProfileData = {
             inputFile: { label: "DTM", href: BASE_URL + "pop_sot/any_nmg.dtm" },
             encode: { label: "YouTube", href: "https://www.youtube.com/watch?v=tijiavSRDjI" },
             commentary: { label: "YouTube", href: "https://www.youtube.com/watch?v=dS-zpj31Ers" },
+            notesLoader: notesLoaders.pop_sot_any_nmg,
         },
         {
             platform: "GC",
@@ -141,6 +153,7 @@ export const tasProfileData = {
             inputFile: { label: "DTM", href: BASE_URL + "pop_sot/any_zipless.dtm" },
             encode: { label: "YouTube", href: "https://www.youtube.com/watch?v=QraeCWf1cjw" },
             commentary: { label: "YouTube", href: "https://www.youtube.com/watch?v=klUmBuYTLmE" },
+            notesLoader: notesLoaders.pop_sot_any_zipless,
         },
     ],
 };

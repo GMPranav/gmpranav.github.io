@@ -143,6 +143,7 @@ section.records {
 
 .records-table {
     width: 100%;
+    table-layout: fixed;
     border-collapse: collapse;
     background: var(--bg-panel);
     border: 1px solid var(--rule);
@@ -162,16 +163,24 @@ section.records {
     font-family: var(--font-mono);
     font-weight: 600;
     font-size: 11px;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--sand);
-    padding: 14px 16px;
+    padding: 14px 8px;
     border-bottom: 1px solid var(--rule);
     white-space: nowrap;
 }
 
+.records-table thead th:nth-child(1) { width: 75px; }   /* Platform */
+.records-table thead th:nth-child(2) { width: auto; }   /* Game */
+.records-table thead th:nth-child(3) { width: 105px; }  /* Time */
+.records-table thead th:nth-child(4) { width: 135px; }  /* Emulator */
+.records-table thead th:nth-child(5) { width: 100px; }  /* Input File */
+.records-table thead th:nth-child(6) { width: 125px; }  /* Video */
+.records-table thead th:nth-child(7) { width: 125px; }  /* Commentary */
+
 .records-table tbody td {
-    padding: 16px;
+    padding: 16px 8px;
     border-bottom: 1px solid var(--rule);
     vertical-align: top;
     font-size: 14px;
@@ -181,12 +190,27 @@ section.records {
     border-bottom: none;
 }
 
-.records-table tbody tr:nth-child(even) {
+.records-table tbody tr.record-row:nth-child(4n-3) {
+    background: var(--bg-panel);
+}
+
+.records-table tbody tr.record-row:nth-child(4n-1) {
     background: var(--bg-row-alt);
 }
 
-.records-table tbody tr:hover {
-    background: rgba(207, 167, 54, 0.06);
+.records-table tbody tr.record-row {
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.15s ease;
+}
+
+.records-table tbody tr.record-row:hover {
+    background: rgba(207, 167, 54, 0.08);
+}
+
+.records-table tbody tr.record-row.is-expanded {
+    background: rgba(207, 167, 54, 0.12);
+    border-bottom-color: transparent;
 }
 
 .cell-game .name {
@@ -239,7 +263,7 @@ section.records {
 .links a {
     font-family: var(--font-mono);
     font-size: 11px;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.03em;
     text-transform: uppercase;
     color: var(--muted);
     border-bottom: 1px dotted var(--rule);
@@ -259,9 +283,328 @@ section.records {
     font-size: 11px;
 }
 
+/* ---------- Author Notes Container ---------- */
+
+.notes-row[hidden] {
+    display: none;
+}
+
+.notes-row td {
+    padding: 0 !important;
+    background: #111216;
+    border-bottom: 1px solid var(--rule);
+}
+
+.notes-content {
+    padding: 20px 24px;
+    border-left: 3px solid var(--sand);
+    color: var(--parchment);
+    overflow-wrap: break-word;
+}
+
+.notes-header {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sand);
+    margin-bottom: 10px;
+}
+
+/* ---------- Notes Content Spacing & Styling ---------- */
+
+.notes-body h1,
+.notes-body h2,
+.notes-body h3,
+.notes-body h4,
+.notes-body h5,
+.notes-body h6 {
+    clear: both;
+    color: var(--parchment);
+    margin-top: 14px;
+    margin-bottom: 4px;
+    letter-spacing: 0.02em;
+}
+
+.notes-body h1 {
+    font-size: 20px;
+}
+
+.notes-body h2 {
+    font-size: 18px;
+}
+
+.notes-body h3 {
+    font-size: 16px;
+}
+
+.notes-body h4 {
+    font-size: 15px;
+}
+
+.notes-body h5,
+.notes-body h6 {
+    font-size: 14px;
+}
+
+.notes-body p {
+    margin: 6px 0;
+    line-height: 1.5;
+}
+
+.notes-body ul,
+.notes-body ol {
+    margin: 4px 0 8px;
+    padding-left: 20px;
+}
+
+.notes-body li {
+    margin: 2px 0;
+    line-height: 1.45;
+}
+
+.notes-body ul ul {
+    margin: 2px 0;
+    padding-left: 18px;
+}
+
+.notes-body blockquote {
+    margin: 10px 0;
+    padding: 8px 14px;
+    border-left: 2px solid var(--sand-dim);
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.notes-body blockquote cite {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--sand);
+    margin-bottom: 4px;
+}
+
+.notes-body code,
+.notes-body pre {
+    font-family: var(--font-mono);
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 2px;
+}
+
+.notes-body code {
+    padding: 2px 5px;
+    font-size: 13px;
+}
+
+.notes-body pre {
+    padding: 10px;
+    overflow-x: auto;
+}
+
+/* ---------- Notes Tables & Extra Elements ---------- */
+
+.table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    margin: 14px 0;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    background: var(--bg-panel);
+}
+
+.notes-body table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.notes-body th,
+.notes-body td {
+    padding: 8px 12px;
+    border: 1px solid var(--rule);
+    text-align: left;
+    vertical-align: middle;
+}
+
+.notes-body th {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sand);
+    background: var(--bg-row-alt);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.notes-body td {
+    color: var(--parchment);
+}
+
+.notes-body tbody tr:nth-child(even) {
+    background: var(--bg-row-alt);
+}
+
+.notes-body tbody tr:hover {
+    background: rgba(207, 167, 54, 0.06);
+}
+
+.notes-body hr {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 16px 0;
+}
+
+.notes-body dl {
+    margin: 8px 0;
+}
+
+.notes-body dt {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--sand);
+    margin-top: 6px;
+}
+
+.notes-body dd {
+    margin-left: 18px;
+    margin-bottom: 6px;
+    color: var(--parchment);
+}
+
+.notes-body q {
+    font-style: italic;
+    color: var(--parchment);
+}
+
+/* ---------- Table of Contents Card ---------- */
+
+.toc-card {
+    background: var(--bg-panel);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    margin: 14px 0 18px;
+    overflow: hidden;
+}
+
+.toc-header {
+    padding: 9px 14px;
+    background: var(--bg-row-alt);
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sand);
+}
+
+.toc-body {
+    padding: 10px 14px 12px;
+}
+
+.toc-body ul {
+    margin: 0;
+    padding-left: 20px;
+    list-style: disc;
+}
+
+.toc-body ul ul {
+    margin: 2px 0;
+    padding-left: 18px;
+    list-style: circle;
+}
+
+.toc-body ul ul ul {
+    list-style: square;
+}
+
+.toc-body li {
+    margin: 3px 0;
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.toc-body a {
+    color: var(--sand);
+    border-bottom: 1px dotted transparent;
+    text-decoration: none;
+    transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.toc-body a:hover,
+.toc-body a:focus-visible {
+    color: var(--parchment);
+    border-bottom-color: var(--sand);
+    text-decoration: none;
+}
+
+.notes-body::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* ---------- YouTube Module Embeds ---------- */
+
+.youtube-embed {
+    margin: 14px 0;
+    width: 100%;
+}
+
+.youtube-embed.align-left {
+    float: left;
+    margin: 6px 18px 14px 0;
+}
+
+.youtube-embed.align-right {
+    float: right;
+    margin: 6px 0 14px 18px;
+}
+
+.youtube-embed.align-center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.youtube-video {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 4px;
+    background: #000;
+}
+
+.youtube-video iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+.youtube-link {
+    margin-top: 6px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+}
+
+.youtube-link a {
+    color: var(--muted);
+    border-bottom: 1px dotted var(--rule);
+}
+
+.youtube-link a:hover,
+.youtube-link a:focus-visible {
+    color: var(--sand);
+    border-bottom-color: var(--sand);
+    text-decoration: none;
+}
+
 /* ---------- Responsive: card layout on small screens ---------- */
 
-@media (max-width: 760px) {
+@media (max-width: 860px) {
     .hero-grid {
         grid-template-columns: 1fr;
     }
@@ -278,7 +621,7 @@ section.records {
         width: 100%;
     }
 
-    .records-table tbody tr {
+    .records-table tbody tr.record-row {
         padding: 16px;
         border-bottom: 1px solid var(--rule);
     }
@@ -297,6 +640,17 @@ section.records {
         text-transform: uppercase;
         color: var(--sand);
         margin-bottom: 4px;
+    }
+
+    .notes-content {
+        padding: 16px;
+    }
+
+    .youtube-embed.align-left,
+    .youtube-embed.align-right {
+        float: none;
+        margin: 14px 0;
+        max-width: 100% !important;
     }
 }
 
