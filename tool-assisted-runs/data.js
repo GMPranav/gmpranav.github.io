@@ -5,7 +5,7 @@ const BASE_URL = "https://raw.githubusercontent.com/GMPranav/Tool-Assisted-Runs/
 export const tasProfileData = {
     profile: {
         handle: "GMP",
-        hobby: "Tool-Assisted Speedruns",
+        hobby: "Tool Assisted Speedruns",
         bio:
             "Hi, I know one franchise, and you can probably guess what it is based on my activity. " +
             "I got into the formerly niche hobby of speedrunning and still niche hobby of TASing through the PoP speedrunning community.",

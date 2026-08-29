@@ -50,7 +50,85 @@ function buildTocHtml(headings) {
     return html;
 }
 
-// markup.js
+// Tab group preprocessor (%%TAB%%)
+function processTabGroups(text) {
+    const lines = text.split("\n");
+    const out = [];
+    let inTabGroup = false;
+    let tabs = [];
+    let currentTab = null;
+
+    function flushTabGroup() {
+        if (!inTabGroup || tabs.length === 0) {
+            inTabGroup = false;
+            tabs = [];
+            currentTab = null;
+            return;
+        }
+
+        let navHtml = '<div class="tabs-container"><div class="tabs-nav" role="tablist">';
+        tabs.forEach((tab, idx) => {
+            const activeClass = idx === 0 ? " active" : "";
+            const ariaSelected = idx === 0 ? "true" : "false";
+            navHtml += `<button type="button" class="tab-btn${activeClass}" role="tab" aria-selected="${ariaSelected}" data-tab-index="${idx}">${tab.title}</button>`;
+        });
+        navHtml += '</div><div class="tabs-panes">';
+
+        out.push(navHtml);
+
+        tabs.forEach((tab, idx) => {
+            const activeClass = idx === 0 ? " active" : "";
+            const displayStyle = idx === 0 ? "" : ' style="display: none;"';
+            out.push(`<div class="tab-pane${activeClass}" role="tabpanel" data-tab-index="${idx}"${displayStyle}>`);
+            out.push(tab.contentLines.join("\n"));
+            out.push('</div>');
+        });
+
+        out.push('</div></div>');
+
+        inTabGroup = false;
+        tabs = [];
+        currentTab = null;
+    }
+
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        const trimmed = line.trim();
+
+        if (/^%%TAB_[H]?START%?%?$/i.test(trimmed)) {
+            if (inTabGroup) flushTabGroup();
+            inTabGroup = true;
+            continue;
+        }
+
+        const tabMatch = trimmed.match(/^%%TAB\s+([^%\n]+)%?%?$/i);
+        if (tabMatch) {
+            inTabGroup = true;
+            const title = tabMatch[1].trim();
+            currentTab = { title, contentLines: [] };
+            tabs.push(currentTab);
+            continue;
+        }
+
+        if (/^%%TAB_END%?%?$/i.test(trimmed)) {
+            flushTabGroup();
+            continue;
+        }
+
+        if (inTabGroup && currentTab) {
+            currentTab.contentLines.push(line);
+        } else {
+            out.push(line);
+        }
+    }
+
+    if (inTabGroup) {
+        flushTabGroup();
+    }
+
+    return out.join("\n");
+}
+
 export function parseMarkup(input) {
     if (!input) return "";
 
@@ -70,20 +148,29 @@ export function parseMarkup(input) {
         return `<h${level} id="${id}">${cleanTitle}</h${level}>`;
     }
 
-    // 1. Escape literal vertical bar placeholders [|] first
+    // Escape literal vertical bar placeholders [|] first
     text = text.replace(/\[\|\]/g, "%%ESCAPED_PIPE%%");
 
-    // 2. Escape HTML special characters
+    // Angle bracket URLs: <https://...>
+    text = text.replace(/<((?:https?:\/\/)[^\s>]+)>/g, "%%ANGLE_URL_START%%$1%%ANGLE_URL_END%%");
+
+    // Escape HTML special characters
     text = text
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;");
 
-    // 3. Line breaks & horizontal rules
+    // Restore angle bracket URLs as links
+    text = text.replace(/%%ANGLE_URL_START%%([^\s%]+)%%ANGLE_URL_END%%/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+
+    // Tab Groups: %%TAB_START%%, %%TAB Title%%, %%TAB_END%%
+    text = processTabGroups(text);
+
+    // Line breaks & horizontal rules
     text = text.replace(/%%%/g, "<br>");
     text = text.replace(/^----+$/gm, "<hr>");
 
-    // 4. Headings:
+    // Headings
     // Wiki style (===, ==, =)
     text = text.replace(/^======\s*(.*?)\s*======$/gm, (_, t) => makeHeading(6, t));
     text = text.replace(/^=====\s*(.*?)\s*=====/gm, (_, t) => makeHeading(5, t));
@@ -106,14 +193,14 @@ export function parseMarkup(input) {
         text = text.replace(/%%TOC%%/gi, tocHtml);
     }
 
-    // 5. Blockquotes & Code
+    // Blockquotes & Code
     text = text.replace(/\[quote=(.*?)\]([\s\S]*?)\[\/quote\]/gi, "<blockquote><cite>$1 wrote:</cite><p>$2</p></blockquote>");
     text = text.replace(/\[quote\]([\s\S]*?)\[\/quote\]/gi, "<blockquote><p>$1</p></blockquote>");
     text = text.replace(/\[code\]([\s\S]*?)\[\/code\]/gi, "<pre><code>$1</code></pre>");
     text = text.replace(/```([\s\S]*?)```/g, "<pre><code>$1</code></pre>");
     text = text.replace(/`([^`]+)`/g, "<code>$1</code>");
 
-    // 6. Emphasis / Bold / Italic / Strike / Small / Sub / Sup
+    // Emphasis / Bold / Italic / Strike / Small / Sub / Sup
     text = text.replace(/'''''(.*?)'''''/g, "<strong><em>$1</em></strong>");
     text = text.replace(/'''(.*?)'''/g, "<strong>$1</strong>");
     text = text.replace(/''(.*?)''/g, "<em>$1</em>");
@@ -130,7 +217,7 @@ export function parseMarkup(input) {
         text = text.replace(/\(\(([^\n()]+)\)\)/g, "<small>$1</small>");
     }
 
-    // 7. Links & Reference Syntax
+    // Links & Reference Syntax
     // External links with label: [https://url|label] or [https://url label]
     text = text.replace(/\[(https?:\/\/[^\s\]|"\'<]+)(?:\s+|\|)([^\]]+)\]/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$2</a>');
     // External raw link in brackets: [https://url]
@@ -146,6 +233,10 @@ export function parseMarkup(input) {
     text = text.replace(/\[m:(\d+)(?:\s+|\|)([^\]]+)\]/g, '<a href="https://tasvideos.org/$1M" target="_blank" rel="noopener noreferrer">$2</a>');
     text = text.replace(/\[m:(\d+)\]/g, '<a href="https://tasvideos.org/$1M" target="_blank" rel="noopener noreferrer">Publication #$1</a>');
 
+    // Games: [1234G|label] or [1234G]
+    text = text.replace(/\[(\d+)G(?:\s+|\|)([^\]]+)\]/g, '<a href="https://tasvideos.org/$1G" target="_blank" rel="noopener noreferrer">$2</a>');
+    text = text.replace(/\[(\d+)G\]/g, '<a href="https://tasvideos.org/$1G" target="_blank" rel="noopener noreferrer">Game #$1</a>');
+
     // Resources: [r:1234|label] or [r:1234]
     text = text.replace(/\[r:(\d+)(?:\s+|\|)([^\]]+)\]/g, '<a href="https://tasvideos.org/Resource/$1" target="_blank" rel="noopener noreferrer">$2</a>');
     text = text.replace(/\[r:(\d+)\]/g, '<a href="https://tasvideos.org/Resource/$1" target="_blank" rel="noopener noreferrer">Resource #$1</a>');
@@ -154,22 +245,66 @@ export function parseMarkup(input) {
     text = text.replace(/\[user:([a-zA-Z0-9_.-]+)(?:\s+|\|)([^\]]+)\]/g, '<a href="https://tasvideos.org/Users/Profile/$1" target="_blank" rel="noopener noreferrer">$2</a>');
     text = text.replace(/\[user:([a-zA-Z0-9_.-]+)\]/g, '<a href="https://tasvideos.org/Users/Profile/$1" target="_blank" rel="noopener noreferrer">$1</a>');
 
-    // Internal paths: UserFiles, Forum, Games, GameResources, or prefix '='
-    text = text.replace(/\[(?:=)?(UserFiles\/[a-zA-Z0-9_./#?=&%-]+)(?:\s+|\|)([^\]]+)\]/g, '<a href="https://tasvideos.org/$1" target="_blank" rel="noopener noreferrer">$2</a>');
-    text = text.replace(/\[(?:=)?(UserFiles\/[a-zA-Z0-9_./#?=&%-]+)\]/g, '<a href="https://tasvideos.org/$1" target="_blank" rel="noopener noreferrer">$1</a>');
-    text = text.replace(/\[(?:=)?(Forum\/[a-zA-Z0-9_./#?=&%-]+)(?:\s+|\|)([^\]]+)\]/g, '<a href="https://tasvideos.org/$1" target="_blank" rel="noopener noreferrer">$2</a>');
-    text = text.replace(/\[(?:=)?(Forum\/[a-zA-Z0-9_./#?=&%-]+)\]/g, '<a href="https://tasvideos.org/$1" target="_blank" rel="noopener noreferrer">$1</a>');
-    text = text.replace(/\[(?:=)?(Games\/[a-zA-Z0-9_./#?=&%-]+)(?:\s+|\|)([^\]]+)\]/g, '<a href="https://tasvideos.org/$1" target="_blank" rel="noopener noreferrer">$2</a>');
-    text = text.replace(/\[(?:=)?(Games\/[a-zA-Z0-9_./#?=&%-]+)\]/g, '<a href="https://tasvideos.org/$1" target="_blank" rel="noopener noreferrer">$1</a>');
-    text = text.replace(/\[(?:=)?(GameResources\/[a-zA-Z0-9_./#?=&%-]+)(?:\s+|\|)([^\]]+)\]/g, '<a href="https://tasvideos.org/$1" target="_blank" rel="noopener noreferrer">$2</a>');
-    text = text.replace(/\[(?:=)?(GameResources\/[a-zA-Z0-9_./#?=&%-]+)\]/g, '<a href="https://tasvideos.org/$1" target="_blank" rel="noopener noreferrer">$1</a>');
+    // Internal paths: UserFiles, Forum, Games, GameResources, Publications, etc., or prefix '='
+    text = text.replace(/\[(?:=)?((?:UserFiles|Forum|Games|GameResources|Publications|System|Log|Submission|Subs|Queue|Users|Wiki|Search)\/[a-zA-Z0-9_./#?=&%-]+)(?:\s+|\|)([^\]]+)\]/g, '<a href="https://tasvideos.org/$1" target="_blank" rel="noopener noreferrer">$2</a>');
+    text = text.replace(/\[(?:=)?((?:UserFiles|Forum|Games|GameResources|Publications|System|Log|Submission|Subs|Queue|Users|Wiki|Search)\/[a-zA-Z0-9_./#?=&%-]+)\]/g, '<a href="https://tasvideos.org/$1" target="_blank" rel="noopener noreferrer">$1</a>');
     text = text.replace(/\[=([a-zA-Z0-9_./#?=&%-]+)(?:\s+|\|)([^\]]+)\]/g, '<a href="https://tasvideos.org/$1" target="_blank" rel="noopener noreferrer">$2</a>');
     text = text.replace(/\[=([a-zA-Z0-9_./#?=&%-]+)\]/g, '<a href="https://tasvideos.org/$1" target="_blank" rel="noopener noreferrer">$1</a>');
 
     // Autolink standalone raw URLs
     text = text.replace(/(^|[\s(])(https?:\/\/[^\s<)"']+)/g, '$1<a href="$2" target="_blank" rel="noopener noreferrer">$2</a>');
 
-    // 8. Modules
+    // Modules
+    // Frames module: [module:frames|amount=1881] or [module:frames|amount=1881|fps=60]
+    text = text.replace(/\[(?:module:)?frames(?:\s*\|\s*([^\]]*))?\]/gi, (_, paramStr) => {
+        if (!paramStr) return "";
+        const params = {};
+        for (const part of paramStr.split("|")) {
+            const eq = part.indexOf("=");
+            if (eq !== -1) params[part.slice(0, eq).trim().toLowerCase()] = part.slice(eq + 1).trim();
+            else if (!params.amount && /^\d+$/.test(part.trim())) params.amount = part.trim();
+        }
+        const amount = parseInt(params.amount || params.frames || "0", 10);
+        const fps = parseFloat(params.fps || "60");
+        if (isNaN(amount)) return "";
+        const totalSec = amount / fps;
+        const hours = Math.floor(totalSec / 3600);
+        const minutes = Math.floor((totalSec % 3600) / 60);
+        const seconds = Math.floor(totalSec % 60);
+        const centis = Math.round((totalSec - Math.floor(totalSec)) * 100).toString().padStart(2, "0");
+
+        let timeStr = "";
+        if (hours > 0) {
+            timeStr = `${hours}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}.${centis}`;
+        } else if (minutes > 0) {
+            timeStr = `${minutes}:${seconds.toString().padStart(2, "0")}.${centis}`;
+        } else {
+            timeStr = `0:${seconds.toString().padStart(2, "0")}.${centis}`;
+        }
+        return timeStr;
+    });
+
+    // NicoVideo module: [module:nicovideo|v=sm20146907]
+    text = text.replace(/\[(?:module:)?nicovideo(?:\s*\|\s*([^\]]*))?\]/gi, (_, paramStr) => {
+        if (!paramStr) return "";
+        const parts = paramStr.split("|");
+        let videoId = "";
+        for (const part of parts) {
+            const eq = part.indexOf("=");
+            if (eq !== -1) {
+                const key = part.slice(0, eq).trim().toLowerCase();
+                const val = part.slice(eq + 1).trim();
+                if (key === "v" || key === "id") videoId = val;
+            } else if (!videoId) {
+                videoId = part.trim();
+            }
+        }
+        videoId = videoId.replace(/[^a-zA-Z0-9_-]/g, "");
+        if (!videoId) return "";
+        const watchUrl = `https://www.nicovideo.jp/watch/${encodeURIComponent(videoId)}`;
+        return `<div class="youtube-embed"><div class="youtube-link"><a href="${watchUrl}" target="_blank" rel="noopener noreferrer">Watch on NicoNico (${videoId})</a></div></div>`;
+    });
+
     // YouTube Module: [module:youtube|v=CODE|w=WIDTH|h=HEIGHT|align=left/right/center|start=SECONDS|loop=SECONDS|hidelink]
     text = text.replace(/\[(?:module:)?youtube(?:\s*\|\s*([^\]]*))?\]/gi, (_, paramStr) => {
         if (!paramStr) return "";
@@ -244,7 +379,10 @@ export function parseMarkup(input) {
         return html;
     });
 
-    // 9. Table Row Parser Helper
+    // Cleanup other misc layout modules
+    text = text.replace(/\[(?:module:)?(?:settableattributes|DisplayMovie)[^\]]*\]/gi, "");
+
+    // Table Row Parser Helper
     function parseTableRow(line) {
         if (!line.startsWith("|")) return null;
 
@@ -308,12 +446,13 @@ export function parseMarkup(input) {
         return cells;
     }
 
-    // 10. Line-by-line block generation
-    const lines = text.split("\n");
+    // Line-by-line block generation
+    const rawLines = text.split("\n");
     const output = [];
     let listStack = []; // Array of 'ul' | 'ol'
     let paragraphBuffer = [];
     let tableRows = [];
+    let preBuffer = [];
 
     function flushParagraph() {
         if (paragraphBuffer.length > 0) {
@@ -347,8 +486,28 @@ export function parseMarkup(input) {
         tableRows = [];
     }
 
-    for (let i = 0; i < lines.length; i++) {
-        const line = lines[i].trim();
+    function flushPre() {
+        if (preBuffer.length > 0) {
+            output.push("<pre><code>" + preBuffer.join("\n") + "</code></pre>");
+            preBuffer = [];
+        }
+    }
+
+    for (let i = 0; i < rawLines.length; i++) {
+        const rawLine = rawLines[i];
+        const line = rawLine.trim();
+
+        // Check for preformatted lines (leading space or tab)
+        if (/^[ \t]+[^\s]/.test(rawLine)) {
+            flushParagraph();
+            closeLists();
+            flushTable();
+            preBuffer.push(rawLine.replace(/^[ \t]/, "").replace(/%%ESCAPED_PIPE%%/g, "|"));
+            continue;
+        }
+
+        // Non-indented line -> flush any pending preformatted block
+        flushPre();
 
         if (!line) {
             flushParagraph();
@@ -372,7 +531,7 @@ export function parseMarkup(input) {
         flushTable();
 
         // Check if line is a Heading or other block element
-        if (/^<(h[1-6]|blockquote|pre|div|hr)/i.test(line)) {
+        if (/^<(h[1-6]|blockquote|pre|div|\/div|button|\/button|hr|details|\/details|summary)/i.test(line)) {
             flushParagraph();
             closeLists();
             output.push(line);
@@ -435,6 +594,7 @@ export function parseMarkup(input) {
         paragraphBuffer.push(line.replace(/%%ESCAPED_PIPE%%/g, "|"));
     }
 
+    flushPre();
     flushParagraph();
     closeLists();
     flushTable();

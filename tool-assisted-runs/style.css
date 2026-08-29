@@ -58,6 +58,27 @@ a:focus-visible {
     text-decoration: underline;
 }
 
+a[href*="tasvideos.org"] {
+    color: #a870e0;
+}
+
+a[href*="tasvideos.org"]:hover,
+a[href*="tasvideos.org"]:focus-visible {
+    color: #c499f5;
+}
+
+a[href*="tasvideos.org"]::after {
+    content: "";
+    display: inline-block;
+    width: 0.8em;
+    height: 0.8em;
+    margin-left: 3px;
+    vertical-align: -0.05em;
+    background-color: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'%3E%3C/path%3E%3Cpolyline points='15 3 21 3 21 9'%3E%3C/polyline%3E%3Cline x1='10' y1='14' x2='21' y2='3'%3E%3C/line%3E%3C/svg%3E") no-repeat center / contain;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'%3E%3C/path%3E%3Cpolyline points='15 3 21 3 21 9'%3E%3C/polyline%3E%3Cline x1='10' y1='14' x2='21' y2='3'%3E%3C/line%3E%3C/svg%3E") no-repeat center / contain;
+}
+
 a:focus-visible,
 button:focus-visible {
     outline: 2px solid var(--sand);
@@ -600,6 +621,76 @@ section.records {
     color: var(--sand);
     border-bottom-color: var(--sand);
     text-decoration: none;
+}
+
+/* ---------- Interactive Tab Widget (%%TAB%%) ---------- */
+
+.tabs-container {
+    margin: 18px 0;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    background: var(--bg-panel);
+    overflow: hidden;
+}
+
+.tabs-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    background: var(--bg-row-alt);
+    border-bottom: 1px solid var(--rule);
+    padding: 6px 6px 0;
+}
+
+.tab-btn {
+    appearance: none;
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-radius: 3px 3px 0 0;
+    background: transparent;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    user-select: none;
+}
+
+.tab-btn:hover,
+.tab-btn:focus-visible {
+    color: var(--parchment);
+    background: rgba(207, 167, 54, 0.06);
+}
+
+.tab-btn.active {
+    background: var(--bg-panel);
+    color: var(--sand);
+    border-color: var(--rule);
+    border-bottom-color: var(--bg-panel);
+    margin-bottom: -1px;
+    font-weight: 600;
+}
+
+.tabs-panes {
+    padding: 16px;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+.tab-pane > :first-child {
+    margin-top: 0;
+}
+
+.tab-pane > :last-child {
+    margin-bottom: 0;
 }
 
 /* ---------- Responsive: card layout on small screens ---------- */

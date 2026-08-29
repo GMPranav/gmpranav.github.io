@@ -208,6 +208,34 @@ function renderTable() {
 function init() {
     renderBio();
     renderTable();
+
+    // Event delegation for tab switching inside notes
+    document.addEventListener("click", function (e) {
+        var tabBtn = e.target.closest(".tab-btn");
+        if (!tabBtn) return;
+
+        var container = tabBtn.closest(".tabs-container");
+        if (!container) return;
+
+        var tabIndex = tabBtn.getAttribute("data-tab-index");
+        if (tabIndex === null) return;
+
+        // Update active tab buttons
+        var buttons = container.querySelectorAll(".tab-btn");
+        for (var b = 0; b < buttons.length; b++) {
+            var isTargetBtn = buttons[b].getAttribute("data-tab-index") === tabIndex;
+            buttons[b].classList.toggle("active", isTargetBtn);
+            buttons[b].setAttribute("aria-selected", isTargetBtn ? "true" : "false");
+        }
+
+        // Update active tab panes
+        var panes = container.querySelectorAll(".tab-pane");
+        for (var p = 0; p < panes.length; p++) {
+            var isTargetPane = panes[p].getAttribute("data-tab-index") === tabIndex;
+            panes[p].classList.toggle("active", isTargetPane);
+            panes[p].style.display = isTargetPane ? "block" : "none";
+        }
+    });
 }
 
 document.addEventListener("DOMContentLoaded", init);
