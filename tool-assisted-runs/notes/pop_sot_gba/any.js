@@ -1,10 +1,5 @@
 export default `This is a TAS of Prince of Persia: The Sands of Time, the GBA 'demake' of the PC/PS2/GCN classic. All the known glitches and sequence breaks known as of making it are used.
 
-!! Commentary
-
-[module:youtube|v=df-jXeRRQ1w]
-Co-commentary by toca_1
-
 !! Game objectives
 
 * Emulator used: BizHawk 2.7 (mGBA core v0.8)
@@ -184,9 +179,7 @@ FINENC - I was able to improve this fight a little by deflecting his second proj
 
 !! Other Comments
 
-I really enjoyed working for this game, and I am really happy to have achived the sub 30 goal especially under time pressure to make it in time for our self-organised marathon. Given that I try my best to focus on the run quality and also how much I tend to procastinate it feels like a bit like a miracle honestly. I would like to thank 'theenglishman' first and foremost. I would not have been able to pull this off without the base that he has worked hard to build. Special thanks goes out to '7eraser7', 'toca', 'Smathlax', 'DevilSnake74' and the RTA PoP speedrunning community in general. One of the things that was different about this project compared to the previous ones is the fact that I have neither played this game casually nor have done RTA speedruns of this game, not very extensively anyways. So I was a bit too cautious at the start to make sure I wasn't missing anything obvious due to my lack of casual knowledge of the game. As the project went on however, it got used to the game mechanics and it became just like my previous projects, perhaps even more comfortable thanks to amazing features presented in the BizHawk emulator.
-
-__Suggested Screenshot__ - Frame #95404
+I really enjoyed working for this game, and I am really happy to have achived the sub 30 goal especially under time pressure to make it in time for our self-organised marathon. Given that I try my best to focus on the run quality and also how much I tend to procastinate it feels like a bit like a miracle honestly. I would like to thank 'theenglishman' first and foremost. I would not have been able to pull this off without the base that he has worked hard to build. Special thanks to 'toca' for doing commentary with me and to '7eraser7', 'Smathlax', 'DevilSnake74', the RTA PoP speedrunning community in general. One of the things that was different about this project compared to the previous ones is the fact that I have neither played this game casually nor have done RTA speedruns of this game, not very extensively anyways. So I was a bit too cautious at the start to make sure I wasn't missing anything obvious due to my lack of casual knowledge of the game. As the project went on however, it got used to the game mechanics and it became just like my previous projects, perhaps even more comfortable thanks to amazing features presented in the BizHawk emulator.
 
 !! Big Fat Statistics Table
 All numbers are  given in number of frames. I compare everything with the [UserFiles/Info/637802813363307799|re-synced version] of the previous TAS. It doesn't make much difference anyway since I am excluding the lag frames in the comparison. Speaking of which, all comparisons, start from the first non-lag frame of the room and end at the last non-lag frame. 99% of the time there is a lone lag frame, followed by a non-lag frame, followed by bunch of lag frames at the room transition. The tally stops at the non-lag frame, and hence includes the lone lag frame mentioned, just to clarify.

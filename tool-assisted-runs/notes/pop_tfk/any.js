@@ -1,10 +1,5 @@
 export default `This is a TAS of Prince of Persia: The Fallen King, the spin-off sequel to the 2008 reboot of Prince of Persia. All the known glitches and sequence breaks as making it are used.
 
-!! Commentary
-
-[module:youtube|v=MeJ-Le27JuM]
-Co-commentary by Smathlax
-
 !! Game objectives
 
 * Emulator used: DeSmuME v0.9.9
@@ -258,4 +253,4 @@ Q.E.D.
 
 !! Other comments
 
-Like I already said, I had a blast working on this. It made me appreciate this game more as I was forced to look at the little details it contains for being a mere spin-off. I have never casually played this game and hence didn't know the lore at all lol, but while frame advancing through the dialouges I thought it was a good idea to read it and I found it actually pretty interesting. There is definitely potential for improvement, the experience I gained and the technique I developed while making this will obviously help if I do a second round, but I will wait until a bigger skip is found. The ceiling clip I found and used in 5-8 was actually a new one that I found while making the TAS. So far I haven't found any big application of it in Worlds 1 and 2 but admittedly I have not looked at it extremely rigorously and there are 2 more worlds to test it on, so we will see.`;
+Thanks to Smathlax for doing commentary with me. Like I already said, I had a blast working on this. It made me appreciate this game more as I was forced to look at the little details it contains for being a mere spin-off. I have never casually played this game and hence didn't know the lore at all lol, but while frame advancing through the dialouges I thought it was a good idea to read it and I found it actually pretty interesting. There is definitely potential for improvement, the experience I gained and the technique I developed while making this will obviously help if I do a second round, but I will wait until a bigger skip is found. The ceiling clip I found and used in 5-8 was actually a new one that I found while making the TAS. So far I haven't found any big application of it in Worlds 1 and 2 but admittedly I have not looked at it extremely rigorously and there are 2 more worlds to test it on, so we will see.`;

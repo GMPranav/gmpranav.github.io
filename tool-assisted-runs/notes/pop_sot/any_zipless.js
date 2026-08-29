@@ -62,9 +62,6 @@ If we drop down at precise point after hitting the transition to get out of the 
 !! ⏳Rubble Boost
 This really has only one use in the run and is basically impossible to control in a real time run. But essentially if we do some action near a crumbing platform, that can result in a massive boost to that action if the distance and angle are just right. The best action I found for this was the torpedo attack.
 
-!!! Audio Commentary
-[module:youtube|v=klUmBuYTLmE|w=1280|h=720]
-
 !!! Stage by stage comments
 Usually in this section I try to explain every action exhaustively but here I am going to mention the decisions that I think are noteworthy and my reasoning behind them. For the rest, the above section should cover explanations for what is happening.
 !! Pre-Dagger

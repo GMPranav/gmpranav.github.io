@@ -29,8 +29,5 @@ The power attack, which the prince generally performs as a finishing blow, can b
 ! ⏳ Combat Guide
 With the dagger, the fastest way to defeat the enemies is with a torpedo attack off a wall. But if a wall is too far away to rebound from, the power attack is the faster option. The vault combos are also used in some situations. If a double or triple knock down can be setup with a torpedo then that is worth some time spent. The moon tank route is carefully planned in a way that the mega freeze power once obtained can be used with maximum effect.
 
-!!! Commentary
-[module:youtube|v=dS-zpj31Ers|w=1280|h=720]
-
 !!! Thank You Note
 I want to specially thank toca and Jaka for organizing and doing commentary with me. Shoutouts to solarplex for their inspiring [UserFiles/Info/638009996522613999|partially completed TAS]. I'm grateful to the PoP community for the strategies and support.`;

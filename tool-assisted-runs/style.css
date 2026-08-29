@@ -147,7 +147,6 @@ section.records {
 }
 
 .section-head h2 {
-    font-family: var(--font-display);
     font-weight: 500;
     font-size: 26px;
     margin: 0;
@@ -174,7 +173,7 @@ section.records {
     caption-side: top;
     text-align: left;
     font-family: var(--font-body);
-    font-size: 16px;
+    font-size: 15px;
     color: var(--muted);
     padding: 0 4px 12px;
 }
@@ -196,9 +195,7 @@ section.records {
 .records-table thead th:nth-child(2) { width: auto; }   /* Game */
 .records-table thead th:nth-child(3) { width: 105px; }  /* Time */
 .records-table thead th:nth-child(4) { width: 135px; }  /* Emulator */
-.records-table thead th:nth-child(5) { width: 100px; }  /* Input File */
-.records-table thead th:nth-child(6) { width: 125px; }  /* Video */
-.records-table thead th:nth-child(7) { width: 125px; }  /* Commentary */
+.records-table thead th:nth-child(5) { width: 110px; }  /* Input File */
 
 .records-table tbody td {
     padding: 16px 8px;
@@ -321,6 +318,36 @@ section.records {
     border-left: 3px solid var(--sand);
     color: var(--parchment);
     overflow-wrap: break-word;
+}
+
+.notes-media-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--rule);
+}
+
+.notes-media-item {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.notes-media-item .notes-header {
+    margin-bottom: 8px;
+}
+
+.notes-media-item .youtube-embed {
+    margin: 0;
+    max-width: 100% !important;
+}
+
+.notes-media-item p {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 4px 0;
 }
 
 .notes-header {
@@ -735,6 +762,11 @@ section.records {
 
     .notes-content {
         padding: 16px;
+    }
+
+    .notes-media-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
 
     .youtube-embed.align-left,

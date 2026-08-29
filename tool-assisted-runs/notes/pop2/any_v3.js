@@ -12,8 +12,6 @@ export default `This is the DOS version of Prince of Persia 2: The Shadow and th
 ! Input Viewer and in-game frame counter:
 [module:youtube|v=VgSzpFG7NHU]
 This shows that the in-game is 13:32.83 at 12fps. This helps in accurate comparison to RTA records.
-! Commentary with Samabam:
-[module:youtube|v=Ikz2azVfqyc]
 
 !!Comments
 This is a game which features both plenty of glitches and satisfying movement. Almost all the inputs can be buffered in this game. Unlike its predecessor, this game is relatively more free of RNG, mainly because of the strategies being devised in such a way that enemies are dealt with as little as possible. This is the fourth edition of this TAS. I did not submit the [UserFiles/Info/637766954513149096|third edition] because as much as there were a lot of improved tech like sword clipping, I really did not want another run with the PC Speaker (which is the only sound device that didn't crash the game in JPC-RR). The fact that the PC speaker sounds are annoying was one of the major criticisms of the published [4531M|second edition] as well. Thanks to new PCem + libTAS setup, this is no longer a limitation, and one of my biggest motivation to do an improvement.
@@ -49,9 +47,7 @@ This level starts with some specific movement to tightly get under the door as w
 In this level, normally we would need to have 11 potions to get to the flame form, which is achieved by continuously turning left and right alternatively. But we can do so with nine potions only with a clever trick. By placing ourselves really close to the cutscene trigger at the start, we can use the cutscene to interrupt the animation of turning into the shadow which is what normally happens if we have only 9 potions. At the end of cutscene, we magically appear in the flame form, albeit in a slightly different graphics which arguably looks cooler. We proceed to take down the clones of Jaffar. We need to kill only 2 because game counts the prince's body as well, but since we left it in the previous level, the game miscalculates the number of remaining clones. Then we take Jaffar himself by following a specific path at the end chase segment to finish him off quickly.
 
 !!Final Thoughts and acknowledgements
-This was a fun little project, and I was happy to revisit the game and its nice to have a new movie with good sound as well as more optimisations. PS: The time of the movie seems slower, but considering the fact that the boot takes 35 seconds, it beats the current publication by about 15 seconds, assuming the emulators run the game at relatively the same speed.
-! Suggested Screenshot:
-Frame #82543
+Thanks to Samabam for doing commentary with me. This was a fun little project, and I was happy to revisit the game and its nice to have a new movie with good sound as well as more optimisations. PS: The time of the movie seems slower, but considering the fact that the boot takes 35 seconds, it beats the current publication by about 15 seconds, assuming the emulators run the game at relatively the same speed.
 
 !!Files used with MD5 hashes
 !Files used to make the image:

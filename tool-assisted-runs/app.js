@@ -14,15 +14,13 @@ function renderBio() {
 
 function makeLinkCell(record, fieldKey) {
     var td = document.createElement("td");
-    td.setAttribute("data-label", "Links");
+    td.setAttribute("data-label", "Input File");
 
     var wrap = document.createElement("div");
     wrap.className = "links";
 
     var fields = [
         { key: "inputFile", text: "File" },
-        { key: "encode", text: "Watch" },
-        { key: "commentary", text: "Watch" },
     ];
 
     var field = fields.find(f => f.key === fieldKey);
@@ -101,10 +99,30 @@ function makeRow(record) {
     tr.appendChild(emulatorTd);
 
     tr.appendChild(makeLinkCell(record, "inputFile"));
-    tr.appendChild(makeLinkCell(record, "encode"));
-    tr.appendChild(makeLinkCell(record, "commentary"));
 
     return tr;
+}
+
+function createMediaItem(title, value, emptyText) {
+    var item = document.createElement("div");
+    item.className = "notes-media-item";
+
+    var header = document.createElement("div");
+    header.className = "notes-header";
+    header.textContent = title;
+    item.appendChild(header);
+
+    var body = document.createElement("div");
+    body.className = "notes-media-body";
+
+    if (value && value.href) {
+        body.innerHTML = parseMarkup("[module:youtube|v=" + value.href + "]");
+    } else {
+        body.innerHTML = parseMarkup("''" + (emptyText || "No " + title.toLowerCase() + " available.") + "''");
+    }
+
+    item.appendChild(body);
+    return item;
 }
 
 function makeNotesRow(record) {
@@ -113,10 +131,16 @@ function makeNotesRow(record) {
     notesTr.hidden = true;
 
     var td = document.createElement("td");
-    td.setAttribute("colspan", "7");
+    td.setAttribute("colspan", "5");
 
     var content = document.createElement("div");
     content.className = "notes-content";
+
+    var mediaGrid = document.createElement("div");
+    mediaGrid.className = "notes-media-grid";
+    mediaGrid.appendChild(createMediaItem("Video", record.encode, "No video available."));
+    mediaGrid.appendChild(createMediaItem("Commentary", record.commentary, "No commentary track available."));
+    content.appendChild(mediaGrid);
 
     var header = document.createElement("div");
     header.className = "notes-header";
