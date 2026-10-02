@@ -1,6 +1,13 @@
 body {
     font-family: Arial, sans-serif;
     background-color: black;
+    background-image:
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.88) 100%),
+        url("../static/images/background.webp");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    background-attachment: fixed;
     color: white;
     color-scheme: dark;
     display: flex;
@@ -8,6 +15,7 @@ body {
     align-items: center;
     gap: 1.5vw;
     font-size: 1vw;
+    min-height: 100vh;
 }
 
 label {
