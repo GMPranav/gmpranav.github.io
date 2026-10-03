@@ -13,6 +13,7 @@ export const tasProfileData = {
 
     completedProjects: [
         {
+            slug: "prince-of-persia-1/no-major-glitches",
             platform: "DOS",
             game: "Prince of Persia",
             branch: "No Major Glitches",
@@ -25,6 +26,7 @@ export const tasProfileData = {
             notesLoader: notesLoaders.pop1_any_nmg,
         },
         {
+            slug: "prince-of-persia-2/any-1450",
             platform: "DOS",
             game: "Prince of Persia 2: The Shadow and the Flame",
             branch: "Any%",
@@ -37,6 +39,7 @@ export const tasProfileData = {
             notesLoader: notesLoaders.pop2_any,
         },
         {
+            slug: "prince-of-persia-2/any-1411",
             platform: "DOS",
             game: "Prince of Persia 2: The Shadow and the Flame",
             branch: "Any%",
@@ -49,6 +52,7 @@ export const tasProfileData = {
             notesLoader: notesLoaders.pop2_any_v2,
         },
         {
+            slug: "prince-of-persia-the-fallen-king/any",
             platform: "DS",
             game: "Prince of Persia: The Fallen King",
             branch: "Any%",
@@ -61,6 +65,7 @@ export const tasProfileData = {
             notesLoader: notesLoaders.pop_tfk_any,
         },
         {
+            slug: "prince-of-persia-sands-of-time-gba/any",
             platform: "GBA",
             game: "Prince of Persia: The Sands of Time",
             branch: "Any%",
@@ -73,6 +78,7 @@ export const tasProfileData = {
             notesLoader: notesLoaders.pop_sot_gba_any,
         },
         {
+            slug: "the-amazing-dare-dozen/any",
             platform: "Flash",
             game: "The Amazing Dare Dozen",
             branch: "Any%",
@@ -84,6 +90,7 @@ export const tasProfileData = {
             commentary: null,
         },
         {
+            slug: "raft-wars/any",
             platform: "Flash",
             game: "Raft Wars",
             branch: "Any%",
@@ -96,6 +103,7 @@ export const tasProfileData = {
             notesLoader: notesLoaders.raftwars_any,
         },
         {
+            slug: "stick-with-it/any",
             platform: "Linux",
             game: "Stick With It",
             branch: "Any%",
@@ -108,6 +116,7 @@ export const tasProfileData = {
             notesLoader: notesLoaders.stick_with_it_any,
         },
         {
+            slug: "prince-of-persia-2/any",
             platform: "DOS",
             game: "Prince of Persia 2: The Shadow and the Flame",
             branch: "Any%",
@@ -120,6 +129,7 @@ export const tasProfileData = {
             notesLoader: notesLoaders.pop2_any_v3,
         },
         {
+            slug: "prince-of-persia-warrior-within/zipless",
             platform: "GC",
             game: "Prince of Persia: Warrior Within",
             branch: "Zipless",
@@ -132,6 +142,7 @@ export const tasProfileData = {
             notesLoader: notesLoaders.pop_ww_any_zipless,
         },
         {
+            slug: "prince-of-persia-sands-of-time/no-major-glitches",
             platform: "GC",
             game: "Prince of Persia: The Sands of Time",
             branch: "No Major Glitches",
@@ -144,6 +155,7 @@ export const tasProfileData = {
             notesLoader: notesLoaders.pop_sot_any_nmg,
         },
         {
+            slug: "prince-of-persia-sands-of-time/zipless",
             platform: "GC",
             game: "Prince of Persia: The Sands of Time",
             branch: "Zipless",
