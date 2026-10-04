@@ -52,8 +52,8 @@
       featuredNav: true,
       featuredNavOrder: 1,
       icon: "fa-solid fa-fire",
-      shortDesc: "Dynarmic JIT x64 ARMv7 binary bridge",
-      description: "Authentic native Windows x64 PC port of Prince of Persia: The Shadow and the Flame (ShiVa3D) running via Dynarmic ARMv7 JIT dynamic binary retranslation, Desktop OpenGL, OpenAL Soft, and dedicated 2000s-style launcher.",
+      shortDesc: "PC Port of SnF Android/iOS remake",
+      description: "Authentic native Windows x64 PC port of Prince of Persia: The Shadow and the Flame Android/iOS remake running via Dynarmic ARMv7 JIT dynamic binary retranslation, Desktop OpenGL, OpenAL Soft, and a dedicated launcher with an old-school theme.",
       actionText: "Explore PC Port",
       tags: [
         "prince of persia", "shadow and the flame", "snf", "pc port", "dynarmic",
@@ -72,8 +72,8 @@
       featuredNav: true,
       featuredNavOrder: 2,
       icon: "fa-solid fa-gamepad",
-      shortDesc: "Archive of PoP speedrun movie files",
-      description: "Archive of completed TAS projects across classic Prince of Persia games. Includes downloadable JRSR/movie input files, YouTube video encodes, audio commentary tracks, and deep technical notes.",
+      shortDesc: "Archive of my TAS movie files, notes",
+      description: "Archive of completed TAS projects across classic Prince of Persia games and few others. Includes downloadable JRSR/movie input files, YouTube video encodes, audio commentary tracks, and technical notes.",
       actionText: "Explore TAS Archive",
       tags: [
         "prince of persia", "dos", "jpc-rr", "tas", "movie files", "speedrun",
@@ -90,7 +90,7 @@
       featured: false,
       featuredNav: false,
       icon: "fa-solid fa-puzzle-piece",
-      shortDesc: "T2T & TFS speedrun bruteforce solvers",
+      shortDesc: "Prince of Persia puzzles bruteforce solvers",
       description: "State-space puzzle simulators and bruteforce searchers for Prince of Persia speedruns, featuring interactive playable solvers for T2T King's Statue, TFS Water Pillar 3, and TFS Wii Gems.",
       actionText: "Play Simulators",
       tags: [
@@ -148,7 +148,7 @@
       featuredNavOrder: 4,
       icon: "fa-solid fa-bolt",
       shortDesc: "Raji, AppleWin, DOSBox-X IGT",
-      description: "Collection of LiveSplit auto splitter scripts (.asl) with memory scanning and frame-accurate timing for Raji: An Ancient Epic, Prince of Persia Apple II (AppleWin), Cell Machine / Game Inside a Game, and DOSBox-X IGT practice.",
+      description: "Collection of LiveSplit auto-splitter scripts (.asl) with memory scanning and automatic start, split, reset based on game state.",
       actionText: "Browse ASL Scripts",
       tags: [
         "livesplit", "asl", "auto splitter", "speedrun", "raji", "cell machine",
@@ -202,7 +202,7 @@
       featuredNav: false,
       icon: "fa-solid fa-timeline",
       shortDesc: "Development news in absolute scale",
-      description: "A comprehensive timeline plotting all public info, trailers, Kickstarter blogs, and Reddit updates about the development of Hollow Knight: Silksong in absolute scale.",
+      description: "A timeline in absolute scale plotting all public info, trailers, Kickstarter blogs, and social media updates about the development of Hollow Knight: Silksong.",
       actionText: "View Silksong Timeline",
       tags: [
         "hollow knight", "silksong", "timeline", "team cherry", "news", "reddit",
@@ -220,7 +220,7 @@
       featuredNav: false,
       icon: "fa-solid fa-hashtag",
       shortDesc: "Responsive two-player mini game",
-      description: "A clean, responsive two-player web implementation of the classic Tic-Tac-Toe game with dynamic turn indicators, state evaluation, and restart controls.",
+      description: "A clean, aesthetic two-player web implementation of the classic Tic-Tac-Toe game with dynamic turn indicators, state evaluation, and restart controls.",
       actionText: "Play Game",
       tags: [
         "tic tac toe", "game", "minigame", "javascript", "html", "css", "classic"
