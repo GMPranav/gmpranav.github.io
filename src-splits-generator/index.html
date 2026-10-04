@@ -4,69 +4,120 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Time Splits Generator</title>
+  <title>Time Splits Generator | GMP</title>
   <link rel="icon" href="https://livesplit.org/images/icon.ico" />
 
-  <meta name="description" content="Generate timestamps to use in speedrun.com run descriptions directly using your splits file. This is a replacement for one of the use cases of splits.io (which is now discontinued).">
-  <meta name="keywords" content="src, livesplit, timestamp, time splits, splits.io, speedrun.com">
-  <meta name="author" content="GMP">
+  <meta name="description" content="Generate timestamps to use in speedrun.com run descriptions directly using your LiveSplit splits file. Splits.io replacement utility." />
+  <meta name="keywords" content="src, livesplit, timestamp, time splits, splits.io, speedrun.com, speedrun, lss" />
+  <meta name="author" content="GMP" />
 
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Split Timestamps Generator">
-  <meta property="og:description" content="Generate timestamps to use in speedrun.com run descriptions directly using your splits file. This is a replacement for one of the use cases of splits.io (which is now discontinued).">
-  <meta property="og:url" content="https://gmpranav.github.io/src-splits-generator/">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Time Splits Generator | GMP" />
+  <meta property="og:description" content="Generate formatted Markdown timestamp tables for speedrun.com submission descriptions directly using your LiveSplit (.lss) file." />
+  <meta property="og:url" content="https://gmpranav.github.io/src-splits-generator/" />
 
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Jost:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Markdown parser -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="../static/navbar.css">
+  <!-- Stylesheets & Global Components -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="../static/navbar.css" />
   <script src="../static/projects-data.js"></script>
   <script src="../static/navbar.js" defer></script>
 </head>
 
 <body>
   <gmp-navbar active="splits"></gmp-navbar>
-  <div style="text-align: center;">
-    <h1>Time Splits Generator</h1>
-    <h2>for <span style="color: gold;">speedrun.com</span></h1>
-  </div>
-  <label class="custom-file-upload">
-    <input type="file" id="fileInput" accept=".lss" onchange="onloadSplitsFile(event)" />
-    <img src="https://livesplit.org/images/icon.ico">
-    <span>Load Splits</span>
-  </label>
 
-  <label>
-    Spacing
-    <input type="range" id="spacing" min="0" max="5" value="1" oninput="onChangeSettings()" />
-  </label>
-
-  <label>
-    Decimals
-    <input type="range" id="decimals" min="0" max="3" value="2" oninput="onChangeSettings()" />
-  </label>
-
-  <div class="select-container">
-    <select id="timing-method" onchange="onChangeSettings()">
-      <option value="RealTime">Real Time</option>
-      <option value="GameTime">Game Time</option>
-    </select>
-  </div>
-
-  <div class="output-container">
-    <div class="text-container">
-      <div class="source-header-flex">
-        <h2>Source</h2>
-        <div class="copy-button" onclick="handleCopyLocation()">Copy</div>
-        <span id="copy-tooltip">Copied!</span>
+  <div class="splits-container">
+    <!-- Hero Header -->
+    <header class="splits-hero">
+      <div class="hero-badge">
+        <i class="fa-solid fa-stopwatch"></i> Speedrun Tool
       </div>
-      <textarea id="markdown" onchange="populatePreview()"></textarea>
-    </div>
-    <div class="text-container">
-      <h2>Preview *</h2>
-      <div id="preview"></div>
-      <p>* Might not match exactly with speedrun.com, but should give a decent idea.</p>
+      <h1 class="splits-title">Time Splits Generator</h1>
+      <p class="splits-subtitle">
+        Generate formatted Markdown timestamp tables for <span class="highlight-src">speedrun.com</span> run descriptions from LiveSplit (<span class="code-pill">.lss</span>) files.
+      </p>
+    </header>
+
+    <!-- Toolbar / Settings Controls -->
+    <section class="controls-toolbar" aria-label="Splits configuration and file loader">
+      <div class="file-control-item">
+        <label class="custom-file-upload" for="fileInput" tabindex="0">
+          <input type="file" id="fileInput" accept=".lss" onchange="onloadSplitsFile(event)" />
+          <img src="https://livesplit.org/images/icon.ico" alt="LiveSplit icon" class="livesplit-icon" width="20" height="20" />
+          <span id="file-upload-label">Load Splits (.lss)</span>
+        </label>
+      </div>
+
+      <div class="settings-group">
+        <div class="control-item">
+          <div class="control-label-row">
+            <label for="spacing">Spacing</label>
+            <span class="control-val" id="spacing-val">1</span>
+          </div>
+          <input type="range" id="spacing" min="0" max="5" value="1" oninput="updateRangeVal('spacing', this.value); onChangeSettings()" />
+        </div>
+
+        <div class="control-item">
+          <div class="control-label-row">
+            <label for="decimals">Decimals</label>
+            <span class="control-val" id="decimals-val">2</span>
+          </div>
+          <input type="range" id="decimals" min="0" max="3" value="2" oninput="updateRangeVal('decimals', this.value); onChangeSettings()" />
+        </div>
+
+        <div class="control-item select-item">
+          <label for="timing-method" class="select-label">Timing Method</label>
+          <div class="select-wrapper">
+            <select id="timing-method" onchange="onChangeSettings()">
+              <option value="RealTime">Real Time (RTA)</option>
+              <option value="GameTime">Game Time (IGT)</option>
+            </select>
+            <i class="fa-solid fa-chevron-down select-chevron" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Output Split Panels -->
+    <div class="output-container">
+      <!-- Source Panel -->
+      <div class="text-container source-container">
+        <div class="source-header-flex">
+          <div class="panel-title">
+            <i class="fa-solid fa-code"></i>
+            <h2>Source Markdown</h2>
+          </div>
+          <div class="copy-wrapper">
+            <button type="button" class="copy-button" onclick="handleCopyLocation()" aria-label="Copy markdown text to clipboard">
+              <i class="fa-solid fa-copy"></i>
+              <span>Copy</span>
+            </button>
+            <span id="copy-tooltip" role="status">Copied!</span>
+          </div>
+        </div>
+        <textarea id="markdown" onchange="populatePreview()" spellcheck="false" placeholder="Splits markdown will appear here..."></textarea>
+      </div>
+
+      <!-- Preview Panel -->
+      <div class="text-container preview-container">
+        <div class="source-header-flex">
+          <div class="panel-title">
+            <i class="fa-solid fa-table-list"></i>
+            <h2>Preview</h2>
+          </div>
+          <span class="preview-note">* speedrun.com table simulation</span>
+        </div>
+        <div id="preview" class="preview-scroll"></div>
+      </div>
     </div>
   </div>
 

@@ -177,6 +177,31 @@ gmp-navbar {
   transform: rotate(180deg);
 }
 
+/* Nav Dropdown Bridge & Hit Area */
+.gmp-nav-item.has-dropdown {
+  position: relative;
+}
+
+.gmp-nav-item.has-dropdown::after,
+.gmp-nav-item:has(.gmp-nav-dropdown)::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: -20px;
+  right: -20px;
+  height: 16px;
+  background: transparent;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.gmp-nav-item.has-dropdown.open::after,
+.gmp-nav-item.has-dropdown:hover::after,
+.gmp-nav-item:has(.gmp-nav-dropdown).open::after,
+.gmp-nav-item:has(.gmp-nav-dropdown):hover::after {
+  pointer-events: auto;
+}
+
 /* Dropdown Menu */
 .gmp-nav-dropdown {
   position: absolute;

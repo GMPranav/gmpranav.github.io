@@ -93,7 +93,7 @@
         ${featuredLinksHtml}
 
         <!-- Projects & Tools Dropdown -->
-        <li class="gmp-nav-item" role="none">
+        <li class="gmp-nav-item has-dropdown" role="none">
           <button type="button" class="gmp-nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false" role="menuitem">
             <span>Projects</span>
             <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -367,41 +367,104 @@
         });
       }
 
-      if (dropdownBtn && dropdownParent) {
-        dropdownBtn.addEventListener("click", (e) => {
-          e.stopPropagation();
-          const isOpen = dropdownParent.classList.toggle("open");
-          dropdownBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
-        });
-      }
+      if (dropdownParent) {
+        let closeTimer = null;
 
-      // Close dropdown or mobile menu when clicking outside
-      document.addEventListener("click", (e) => {
-        if (dropdownParent && !dropdownParent.contains(e.target)) {
-          dropdownParent.classList.remove("open");
-          if (dropdownBtn) dropdownBtn.setAttribute("aria-expanded", "false");
-        }
-        if (drawer && toggle && !this.contains(e.target)) {
-          drawer.classList.remove("open");
-          toggle.setAttribute("aria-expanded", "false");
-          drawer.setAttribute("aria-hidden", "true");
-        }
-      });
+        const openMenu = () => {
+          if (closeTimer) {
+            clearTimeout(closeTimer);
+            closeTimer = null;
+          }
+          dropdownParent.classList.add("open");
+          if (dropdownBtn) dropdownBtn.setAttribute("aria-expanded", "true");
+        };
 
-      // Close on Escape key
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-          if (dropdownParent) {
+        const closeMenu = (immediate = false) => {
+          if (closeTimer) {
+            clearTimeout(closeTimer);
+            closeTimer = null;
+          }
+          if (immediate) {
             dropdownParent.classList.remove("open");
             if (dropdownBtn) dropdownBtn.setAttribute("aria-expanded", "false");
+          } else {
+            closeTimer = setTimeout(() => {
+              dropdownParent.classList.remove("open");
+              if (dropdownBtn) dropdownBtn.setAttribute("aria-expanded", "false");
+              closeTimer = null;
+            }, 280);
           }
-          if (drawer && toggle) {
+        };
+
+        dropdownParent.addEventListener("mouseenter", () => openMenu());
+        dropdownParent.addEventListener("mouseleave", () => closeMenu(false));
+
+        dropdownParent.addEventListener("focusin", () => openMenu());
+        dropdownParent.addEventListener("focusout", (e) => {
+          if (!dropdownParent.contains(e.relatedTarget)) {
+            closeMenu(true);
+          }
+        });
+
+        if (dropdownBtn) {
+          dropdownBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (dropdownParent.classList.contains("open")) {
+              closeMenu(true);
+            } else {
+              openMenu();
+            }
+          });
+        }
+
+        dropdownParent.querySelectorAll(".gmp-dropdown-item").forEach((item) => {
+          item.addEventListener("click", () => {
+            closeMenu(true);
+          });
+        });
+
+        // Close dropdown or mobile menu when clicking outside
+        document.addEventListener("click", (e) => {
+          if (!dropdownParent.contains(e.target)) {
+            closeMenu(true);
+          }
+          if (drawer && toggle && !this.contains(e.target)) {
             drawer.classList.remove("open");
             toggle.setAttribute("aria-expanded", "false");
             drawer.setAttribute("aria-hidden", "true");
           }
-        }
-      });
+        });
+
+        // Close on Escape key
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            closeMenu(true);
+            if (drawer && toggle) {
+              drawer.classList.remove("open");
+              toggle.setAttribute("aria-expanded", "false");
+              drawer.setAttribute("aria-hidden", "true");
+            }
+          }
+        });
+      } else {
+        // Fallback outside click listener if no dropdownParent
+        document.addEventListener("click", (e) => {
+          if (drawer && toggle && !this.contains(e.target)) {
+            drawer.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+            drawer.setAttribute("aria-hidden", "true");
+          }
+        });
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && drawer && toggle) {
+            drawer.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+            drawer.setAttribute("aria-hidden", "true");
+          }
+        });
+      }
     }
   }
 

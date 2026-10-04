@@ -1,6 +1,12 @@
 const textarea = document.getElementById("markdown");
 const preview = document.getElementById("preview");
 
+function updateRangeVal(id, val) {
+  const el = document.getElementById(id + "-val");
+  if (el) el.textContent = val;
+}
+window.updateRangeVal = updateRangeVal;
+
 populateSrc(
   `## Load a splits file to generate timestamps
   \nYou can copy the source and paste it under your speedrun.com run description.`
@@ -20,12 +26,21 @@ function populateSrc(value) {
 }
 
 function populatePreview(value) {
-  preview.innerHTML = marked.parse(value.replaceAll(" ", "&#8193;"));
+  const content = value !== undefined ? value : textarea.value;
+  preview.innerHTML = marked.parse((content || "").replaceAll(" ", "&#8193;"));
 }
+
+textarea.addEventListener("input", () => {
+  populatePreview();
+});
 
 function onloadSplitsFile(e) {
   var file = e.target.files[0];
   if (file) {
+    const label = document.getElementById("file-upload-label");
+    if (label) {
+      label.textContent = file.name;
+    }
     readFile(file);
   }
 }

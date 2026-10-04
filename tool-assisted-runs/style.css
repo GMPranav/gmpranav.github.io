@@ -288,11 +288,21 @@ section.records {
     white-space: nowrap;
 }
 
-.records-table thead th:nth-child(1) { width: 85px; }   /* Platform */
+.records-table thead th:nth-child(1) { width: 80px; }   /* Platform */
 .records-table thead th:nth-child(2) { width: auto; }   /* Game */
-.records-table thead th:nth-child(3) { width: 115px; }  /* Time */
-.records-table thead th:nth-child(4) { width: 140px; }  /* Emulator */
-.records-table thead th:nth-child(5) { width: 120px; }  /* Input File */
+.records-table thead th:nth-child(3) { width: 120px; }  /* Time */
+.records-table thead th:nth-child(4) { width: 170px; }  /* Emulator */
+.records-table thead th:nth-child(5) { width: 160px; }  /* Input File */
+
+.records-table thead th:first-child,
+.records-table tbody td:first-child {
+    padding-left: 20px;
+}
+
+.records-table thead th:last-child,
+.records-table tbody td:last-child {
+    padding-right: 20px;
+}
 
 .records-table tbody td {
     padding: 16px 12px;
@@ -332,22 +342,25 @@ section.records {
 .cell-game .run-link {
     color: inherit;
     text-decoration: none;
-    display: inline-block;
+    display: contents;
 }
 
-.cell-game .run-link:hover .name {
+.cell-game .run-link:hover .name,
+.cell-game .name:hover {
     color: var(--sand-bright);
     text-shadow: 0 0 10px var(--sand-glow);
 }
 
 .cell-game .name {
+    display: block;
     font-weight: 500;
     color: #ffffff;
     transition: color 0.2s ease;
 }
 
 .cell-game .branch {
-    display: block;
+    display: inline-block;
+    vertical-align: middle;
     margin-top: 4px;
     font-size: 12px;
     color: var(--text-muted);
@@ -400,11 +413,16 @@ section.records {
 }
 
 .badge.obsolete-tag {
+    display: inline-block;
+    vertical-align: middle;
     border-color: rgba(224, 108, 95, 0.4);
     background: var(--obsolete-bg);
     color: var(--obsolete);
     box-shadow: 0 0 10px rgba(224, 108, 95, 0.1);
-    margin-top: 6px;
+    margin-top: 4px;
+    margin-left: 8px;
+    font-size: 10px;
+    padding: 2px 8px;
 }
 
 .time {
