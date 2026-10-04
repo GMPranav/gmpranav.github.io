@@ -17,24 +17,24 @@ Prince of Persia: The Sands of Time is a game that needs no introduction. This i
 
 I would like to refer to the "Tricks Used" section of my [8278S|NMG run] for the pure movement tricks and recurring gameplay optimizations, as they are also relevant for some part of this run. And I will list the other glitches that are used in this run below.
 
-!! ⏳First Person Glitch (FPG)
+!! First Person Glitch (FPG)
 This is one of the most versatile glitches in this run. The idea behind this glitch is that when we move the movement stick in a very gradual manner while being in the first person camera, the game doesn't handle that very well and usually results in some kind of drastic action that happens along that direction where the stick was pulled. The exact result depends on where we do it from, so here are the variations that can be seen in this run.
-! 🗡️Ledge FPG
+! Ledge FPG
 When done on a ledge, the prince turns on the ledge at a certain angle. Using this, if we turn straight back, face the other direction, and then turn forward again, it moves the prince ever so slightly away from the edge of the ledge where it's collision ends. If we do it 4 times, there is enough distance created such that when the first person glitch is done perpendicularly this time, the prince can detach from the ledge and walk infinitely in the air. Sometimes the geometry around the ledge allows us to get into that edge of the collision either with a wallrun that can grab the ledge at a precise position or by dropping from a ledge above from a precise spot, which saves us the trouble of having to set up the 4 flips to get the distance. When the prince is in this state, all wall collision is ignored. The only collision that can potentially block the prince is when another ledge that is on the same height as the airwalk, as they can cause the prince to snap to them and lose the detached airwalk state. We can also use the first person glitch to change the angle of airwalk letting us effectively go anywhere. The main limitation of this is that the movement speed in the ledge state is quite slow compared to running and other platforming options, so this glitch is mostly used when a big section can be skipped by the means of going through collision.
 
-! 🗡️Moveable object FPG
+! Moveable object FPG
 Doing FPG while holding a movable object can change the angle the object is facing if the direction is any of the 180° of "forward" directions. But something much more helpful is when it's done in the backward direction. The prince and the object in the direction really quickly, only blocked by any collision that's on the way. And when there is right distance to the collision that's blocking (doors, walls, etc.) it's possible to clip through it.
 
-! 🗡️Swing pole FPG
+! Swing pole FPG
 Just like a ledge, doing it on swing poles also changes the angle the prince is facing. This can be used to instantly turn backwards in some cases, avoiding the really long turnaround animation, and also to turn sideways to snap to something else like ledges on walls.
 
-! 🗡️Fence FPG
+! Fence FPG
 When hanging from a fence or a solid edge, we can jump back at a different angle rather than just straight back.
 
-!! ⏳Enemy Clipping
+!! Enemy Clipping
 When doing a wallrun flip or a vault while directly colliding with enemy collision, we get pushed out by it. And when we do it near doors, we can get pushed to the other side of the door resulting in a clip. This is possible especially when the enemy is knocked down, as the hitbox size is much bigger during that.
 
-!! ⏳Load Rewinds
+!! Load Rewinds
 This glitch is the single biggest timesaver for this run and the reason why it's less than an hour. When the rewind is used on the exact same frame a load trigger is hit, it causes many effects in the area ahead that is loaded, some positive and some negative. This is not an exhaustive list as every area has nuances when this is done but here are the stuff relevant for this run.
 * Cutscenes are disabled - huge timesaver
 * Some event triggers like checking for Farah are disabled - good
@@ -44,22 +44,22 @@ This glitch is the single biggest timesaver for this run and the reason why it's
 * Movable items like boxes, statues, mirrors, etc are non-interactable - bad
 * Some other interactive elements cause the game to black out or trigger something called a 1fps glitch - bad, but there is some glitch potential here for future
 
-!! ⏳Trap Fall Damage Cancel
+!! Trap Fall Damage Cancel
 At the end of a fall from a large height normally enough to kill the prince, getting hit by a trap takes the prince out of the "falling" state.
 
-!! ⏳Rewind Tricks
+!! Rewind Tricks
 When successive rewinds are done in a short span, sometimes a previous action done by the prince restarts completely fresh, but in the new location of the prince, effectively extending the action to enable some skips. They come different flavors - jump, horizontal wallrun, vertical wallrun, wall jump, ledge, drop, and so on. And these variations can take different amount of sands to activate - 2. 3 or 4.
 
-!! ⏳Slo-mo Damage Boost
+!! Slo-mo Damage Boost
 When the prince performs a certain action while getting hit by an enemy or Farah's arrow, he gets some height. This is massively amplified when it's used with the slomo power. This was one of the biggest problems in this version of the game where because it runs on 30fps compared to the PC version's 60fps, we gain roughly only half the height.
 
-!! ⏳Ledge Storage
+!! Ledge Storage
 When the prince gets hit while trying to climb a fence, that action is stored in memory. When he then proceeds to climb on another solid platform, the stored action gets unleashed, teleporting the prince across the map, only blocked by collision.
 
-!! ⏳Zombie Glitch
+!! Zombie Glitch
 If we drop down at precise point after hitting the transition to get out of the underground reservoir, the prince's health becomes zero but because of the cutscene taking over, he is not considered dead. In this state, all the enemies are de-aggroed and in a TAS this is more important for Farah than the prince as the game is much more lenient in checking if Farah is ok. A little fun fact about this glitch is that was found my [https://www.youtube.com/watch?v=r-q61AHmwNM|Mike Uyama] himself.
 
-!! ⏳Rubble Boost
+!! Rubble Boost
 This really has only one use in the run and is basically impossible to control in a real time run. But essentially if we do some action near a crumbing platform, that can result in a massive boost to that action if the distance and angle are just right. The best action I found for this was the torpedo attack.
 
 !!! Stage by stage comments

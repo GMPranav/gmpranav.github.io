@@ -1,8 +1,12 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { createRequire } from "module";
 import { tasProfileData } from "../tool-assisted-runs/data.js";
 import { parseMarkup } from "../tool-assisted-runs/markup.js";
+
+const require = createRequire(import.meta.url);
+const { PROJECTS } = require("../static/projects-data.js");
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -32,9 +36,10 @@ function renderMediaItem(title, value, emptyText) {
     } else {
         bodyHtml = parseMarkup("''" + (emptyText || "No " + title.toLowerCase() + " available.") + "''");
     }
+    const iconClass = title.toLowerCase().includes("video") ? "fa-solid fa-play" : "fa-solid fa-microphone";
     return `
         <div class="notes-media-item">
-            <div class="notes-header">${escapeHtml(title)}</div>
+            <div class="notes-header"><i class="${iconClass}"></i> ${escapeHtml(title)}</div>
             <div class="notes-media-body">${bodyHtml}</div>
         </div>`;
 }
@@ -50,7 +55,7 @@ function renderRowOnly(record, isExpanded = false) {
         : '';
 
     const inputFileHtml = record.inputFile
-        ? `<a href="${escapeHtml(record.inputFile.href)}" target="_blank" rel="noopener noreferrer" download="">File (${escapeHtml(record.inputFile.label)})</a>`
+        ? `<a href="${escapeHtml(record.inputFile.href)}" target="_blank" rel="noopener noreferrer" download=""><i class="fa-solid fa-file-arrow-down"></i> File (${escapeHtml(record.inputFile.label)})</a>`
         : '<span class="dash">&mdash;</span>';
 
     return `
@@ -81,7 +86,7 @@ function renderActiveNotesRow(record, notesHtml) {
                     ${renderMediaItem("Video", record.encode, "No video available.")}
                     ${renderMediaItem("Commentary", record.commentary, "No commentary track available.")}
                 </div>
-                <div class="notes-header">Author Notes</div>
+                <div class="notes-header"><i class="fa-solid fa-book-open"></i> Author Notes</div>
                 <div class="notes-body">${notesHtml || "<p><em>No author notes provided.</em></p>"}</div>
             </div>
         </td>
@@ -204,6 +209,10 @@ function generateRunPageHtml(currentRecord, allRecords, notesHtmlMap) {
     <link rel="icon" href="https://avatars.githubusercontent.com/u/54983451?v=4" />
     <link rel="canonical" href="${canonicalUrl}" />
     <link rel="stylesheet" href="/tool-assisted-runs/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/static/navbar.css" />
+    <script src="/static/projects-data.js"></script>
+    <script src="/static/navbar.js" defer></script>
 
     <!-- Open Graph / SEO -->
     <meta property="og:type" content="video.other" />
@@ -235,6 +244,8 @@ ${jsonLd}
 </head>
 
 <body>
+
+    <gmp-navbar active="tas"></gmp-navbar>
 
     <header class="hero">
         <div class="wrap">
@@ -316,6 +327,10 @@ function generateHubIndexHtml(allRecords) {
     <link rel="icon" href="https://avatars.githubusercontent.com/u/54983451?v=4" />
     <link rel="canonical" href="https://gmpranav.github.io/tool-assisted-runs/" />
     <link rel="stylesheet" href="/tool-assisted-runs/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/static/navbar.css" />
+    <script src="/static/projects-data.js"></script>
+    <script src="/static/navbar.js" defer></script>
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
@@ -336,6 +351,8 @@ function generateHubIndexHtml(allRecords) {
 </head>
 
 <body>
+
+    <gmp-navbar active="tas"></gmp-navbar>
 
     <header class="hero">
         <div class="wrap hero-grid">
@@ -404,10 +421,11 @@ function updateSitemap(allRecords) {
 
     const staticUrls = [
         { loc: "https://gmpranav.github.io/", changefreq: "weekly", priority: "1.0" },
-        { loc: "https://gmpranav.github.io/skong-timeline/", changefreq: "daily", priority: "0.9" },
-        { loc: "https://gmpranav.github.io/tool-assisted-runs/", changefreq: "weekly", priority: "0.9" },
-        { loc: "https://gmpranav.github.io/src-splits-generator/", changefreq: "monthly", priority: "0.7" },
-        { loc: "https://gmpranav.github.io/tic-tac-toe/", changefreq: "yearly", priority: "0.5" }
+        ...PROJECTS.map(p => ({
+            loc: `https://gmpranav.github.io/${p.url}`,
+            changefreq: p.sitemap?.changefreq || "monthly",
+            priority: p.sitemap?.priority || "0.8"
+        }))
     ];
 
     let xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;

@@ -1,0 +1,4947 @@
+{
+  "regions": {
+    "africa": {
+      "id": "africa",
+      "name": "Africa",
+      "icon": "🌍",
+      "description": "54 nations: Maghreb, Sahel, Horn of Africa, Great Lakes & Southern Africa",
+      "center": [
+        20,
+        2
+      ],
+      "scale": 400
+    },
+    "west-asia": {
+      "id": "west-asia",
+      "name": "West Asia (Middle East)",
+      "icon": "🕌",
+      "description": "Levant, Persian Gulf, Arabian Peninsula & South Caucasus chokepoints",
+      "center": [
+        46,
+        28
+      ],
+      "scale": 700
+    },
+    "europe": {
+      "id": "europe",
+      "name": "Europe",
+      "icon": "🏰",
+      "description": "Iberian, Nordic, Central Europe, Balkans & Black Sea littoral",
+      "center": [
+        15,
+        54
+      ],
+      "scale": 600
+    },
+    "east-central-asia": {
+      "id": "east-central-asia",
+      "name": "East & Central Asia",
+      "icon": "🏔️",
+      "description": "Central Asian 'Stans', China, Mongolia, Japan & Korean Peninsula",
+      "center": [
+        85,
+        42
+      ],
+      "scale": 450
+    },
+    "south-se-asia": {
+      "id": "south-se-asia",
+      "name": "South & SE Asia & Oceania",
+      "icon": "🏝️",
+      "description": "SAARC, ASEAN, Malacca Strait, Australia & Pacific gateways",
+      "center": [
+        105,
+        5
+      ],
+      "scale": 380
+    },
+    "south-america": {
+      "id": "south-america",
+      "name": "South America",
+      "icon": "🌿",
+      "description": "Lithium Triangle, Amazon Basin, Andean states & Guianas",
+      "center": [
+        -58,
+        -22
+      ],
+      "scale": 420
+    },
+    "north-america": {
+      "id": "north-america",
+      "name": "North America",
+      "icon": "🍁",
+      "description": "USA, Canada, Mexico, Central America & Caribbean chokepoints",
+      "center": [
+        -95,
+        38
+      ],
+      "scale": 350
+    },
+    "world": {
+      "id": "world",
+      "name": "World (All Continents)",
+      "icon": "🌐",
+      "description": "Complete global political outline with full UPSC syllabus facts",
+      "center": [
+        15,
+        20
+      ],
+      "scale": 190
+    }
+  },
+  "countries": {
+    "716": {
+      "id": "716",
+      "name": "Zimbabwe",
+      "topoName": "Zimbabwe",
+      "capital": "Harare",
+      "continent": "Africa",
+      "subregion": "Southern Africa",
+      "mnemonic": "",
+      "notes": "Landlocked between Zambezi and Limpopo rivers. World's 3rd largest platinum reserves (Great Dyke mineral complex). Massive lithium deposits (Bikita mine; banned raw lithium exports to promote domestic refining). Victoria Falls.",
+      "tags": [
+        "Landlocked",
+        "Great Dyke",
+        "Platinum",
+        "Lithium",
+        "Zambezi",
+        "Limpopo"
+      ],
+      "aliases": [
+        "zimbabwe"
+      ]
+    },
+    "894": {
+      "id": "894",
+      "name": "Zambia",
+      "topoName": "Zambia",
+      "capital": "Lusaka",
+      "continent": "Africa",
+      "subregion": "Southern Africa",
+      "mnemonic": "",
+      "notes": "Landlocked country. Copperbelt province is Africa's 2nd largest copper producer and major cobalt source. Victoria Falls (Mosi-oa-Tunya) on Zambezi River border with Zimbabwe. Lake Kariba hydroelectric dam.",
+      "tags": [
+        "Landlocked",
+        "Copperbelt",
+        "Zambezi",
+        "Victoria Falls",
+        "Lake Kariba"
+      ],
+      "aliases": [
+        "zambia"
+      ]
+    },
+    "887": {
+      "id": "887",
+      "name": "Yemen",
+      "topoName": "Yemen",
+      "capital": "Sanaa / Aden",
+      "continent": "West Asia",
+      "subregion": "Arabian Peninsula",
+      "mnemonic": "Lord Yeman (Yemen) | Bab-el-Mandeb | Red Sea (MEN SOW SEEDS)",
+      "notes": "Southern tip of Arabian Peninsula. Controls northern shore of Bab-el-Mandeb Strait, connecting Red Sea and Gulf of Aden (critical chokepoint targeted by Houthi rebel drone/missile strikes). Port of Aden and island of Socotra (UNESCO World Heritage site known for dragon blood trees).",
+      "tags": [
+        "Bab-el-Mandeb",
+        "Chokepoint",
+        "Socotra Island",
+        "Red Sea",
+        "Gulf of Aden",
+        "Houthis",
+        "MEN SOW SEEDS"
+      ],
+      "aliases": [
+        "yemen"
+      ]
+    },
+    "704": {
+      "id": "704",
+      "name": "Vietnam",
+      "topoName": "Vietnam",
+      "capital": "Hanoi",
+      "continent": "South & Southeast Asia",
+      "subregion": "Southeast Asia",
+      "mnemonic": "",
+      "notes": "S-shaped country along South China Sea coastline (>3,200 km). Red River Delta in north (Hanoi, Haiphong) and Mekong River Delta in south (Ho Chi Minh City). Disputed Paracel and Spratly island chains. Major global manufacturing hub (smartphones, electronics, footwear, EV supply chains). World's #2 coffee producer (robusta).",
+      "tags": [
+        "South China Sea",
+        "Mekong Delta",
+        "Paracel & Spratly",
+        "Robusta Coffee",
+        "Manufacturing Hub"
+      ],
+      "aliases": [
+        "viet nam",
+        "vietnam"
+      ]
+    },
+    "862": {
+      "id": "862",
+      "name": "Venezuela",
+      "topoName": "Venezuela",
+      "capital": "Caracas",
+      "continent": "South America",
+      "subregion": "South America",
+      "mnemonic": "",
+      "notes": "Holds the world's largest proven crude oil reserves (~303 billion barrels, primarily heavy crude in the Orinoco Belt). Orinoco River basin; Guri Dam provides most electricity. Lake Maracaibo is largest lake in South America. Angel Falls (Salto Ángel) in Guiana Highlands is world's highest uninterrupted waterfall (979 m). Border dispute over Guyana's Essequibo region. OPEC founding member.",
+      "tags": [
+        "Oil Reserves #1",
+        "Orinoco Belt",
+        "Angel Falls",
+        "Lake Maracaibo",
+        "Essequibo Dispute",
+        "OPEC"
+      ],
+      "aliases": [
+        "venezuela"
+      ]
+    },
+    "336": {
+      "id": "336",
+      "name": "Vatican",
+      "topoName": "Vatican",
+      "capital": "",
+      "continent": "Europe",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Vatican.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "vatican",
+        "vatican"
+      ]
+    },
+    "548": {
+      "id": "548",
+      "name": "Vanuatu",
+      "topoName": "Vanuatu",
+      "capital": "",
+      "continent": "South & Southeast Asia",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Vanuatu.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "vanuatu",
+        "vanuatu"
+      ]
+    },
+    "860": {
+      "id": "860",
+      "name": "Uzbekistan",
+      "topoName": "Uzbekistan",
+      "capital": "Tashkent",
+      "continent": "East & Central Asia",
+      "subregion": "Central Asia",
+      "mnemonic": "",
+      "notes": "One of only two doubly landlocked countries in the world (surrounded exclusively by landlocked countries; the other is Liechtenstein). Aral Sea catastrophe: diversion of Amu Darya and Syr Darya for cotton monoculture caused sea to shrink by >90%. Muruntau mine is one of world's largest open-pit gold mines. Silk Road cities: Samarkand, Bukhara, Khiva. Fergana Valley.",
+      "tags": [
+        "Doubly Landlocked",
+        "Aral Sea",
+        "Cotton",
+        "Muruntau Gold",
+        "Fergana Valley",
+        "Silk Road"
+      ],
+      "aliases": [
+        "uzbekistan"
+      ]
+    },
+    "858": {
+      "id": "858",
+      "name": "Uruguay",
+      "topoName": "Uruguay",
+      "capital": "Montevideo",
+      "continent": "South America",
+      "subregion": "South America",
+      "mnemonic": "",
+      "notes": "2nd smallest country in South America. Sits along Río de la Plata estuary and Atlantic Ocean. High per-capita GDP; major exporter of beef, soy, and cellulose pulp. Powered almost entirely by renewable energy (wind, hydro, biomass).",
+      "tags": [
+        "Rio de la Plata",
+        "Renewable Energy",
+        "Beef",
+        "Pampa"
+      ],
+      "aliases": [
+        "uruguay"
+      ]
+    },
+    "583": {
+      "id": "583",
+      "name": "Micronesia",
+      "topoName": "Micronesia",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Micronesia.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "micronesia",
+        "micronesia"
+      ]
+    },
+    "584": {
+      "id": "584",
+      "name": "Marshall Is.",
+      "topoName": "Marshall Is.",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Marshall Is..",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "marshall is.",
+        "marshall is."
+      ]
+    },
+    "580": {
+      "id": "580",
+      "name": "N. Mariana Is.",
+      "topoName": "N. Mariana Is.",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for N. Mariana Is..",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "n. mariana is.",
+        "n. mariana is."
+      ]
+    },
+    "850": {
+      "id": "850",
+      "name": "U.South Virgin Is.",
+      "topoName": "U.S. Virgin Is.",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for U.South Virgin Is..",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "u.s. virgin is.",
+        "u.south virgin is."
+      ]
+    },
+    "316": {
+      "id": "316",
+      "name": "Guam",
+      "topoName": "Guam",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Guam.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "guam",
+        "guam"
+      ]
+    },
+    "016": {
+      "id": "016",
+      "name": "American Samoa",
+      "topoName": "American Samoa",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for American Samoa.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "american samoa",
+        "american samoa"
+      ]
+    },
+    "630": {
+      "id": "630",
+      "name": "Puerto Rico",
+      "topoName": "Puerto Rico",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Puerto Rico.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "puerto rico",
+        "puerto rico"
+      ]
+    },
+    "840": {
+      "id": "840",
+      "name": "United States of America",
+      "topoName": "United States of America",
+      "capital": "Washington, D.C.",
+      "continent": "North America",
+      "subregion": "North America",
+      "mnemonic": "",
+      "notes": "World's largest economy and #1 producer of crude oil and natural gas (shale revolution: Permian, Bakken basins). Mississippi-Missouri river system drains central agricultural heartland. St. Lawrence Seaway connects Great Lakes to Atlantic. Strategic territories: Alaska (separated from Russia by Bering Strait, 82 km wide) and Hawaii in central Pacific.",
+      "tags": [
+        "Shale Oil #1",
+        "Mississippi River",
+        "Bering Strait",
+        "Great Lakes",
+        "Permian Basin"
+      ],
+      "aliases": [
+        "us",
+        "usa",
+        "america",
+        "united states",
+        "united states of america"
+      ]
+    },
+    "239": {
+      "id": "239",
+      "name": "South Geo. and the Is.",
+      "topoName": "S. Geo. and the Is.",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for South Geo. and the Is..",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "s. geo. and the is.",
+        "south geo. and the is."
+      ]
+    },
+    "086": {
+      "id": "086",
+      "name": "Br. Indian Ocean Ter.",
+      "topoName": "Br. Indian Ocean Ter.",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Br. Indian Ocean Ter..",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "br. indian ocean ter.",
+        "br. indian ocean ter."
+      ]
+    },
+    "654": {
+      "id": "654",
+      "name": "Saint Helena",
+      "topoName": "Saint Helena",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Saint Helena.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "saint helena",
+        "saint helena"
+      ]
+    },
+    "612": {
+      "id": "612",
+      "name": "Pitcairn Is.",
+      "topoName": "Pitcairn Is.",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Pitcairn Is..",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "pitcairn is.",
+        "pitcairn is."
+      ]
+    },
+    "660": {
+      "id": "660",
+      "name": "Anguilla",
+      "topoName": "Anguilla",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Anguilla.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "anguilla",
+        "anguilla"
+      ]
+    },
+    "238": {
+      "id": "238",
+      "name": "Falkland Is.",
+      "topoName": "Falkland Is.",
+      "capital": "",
+      "continent": "South America",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Falkland Is..",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "falkland is.",
+        "falkland is."
+      ]
+    },
+    "136": {
+      "id": "136",
+      "name": "Cayman Is.",
+      "topoName": "Cayman Is.",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Cayman Is..",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "cayman is.",
+        "cayman is."
+      ]
+    },
+    "060": {
+      "id": "060",
+      "name": "Bermuda",
+      "topoName": "Bermuda",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Bermuda.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "bermuda",
+        "bermuda"
+      ]
+    },
+    "092": {
+      "id": "092",
+      "name": "British Virgin Is.",
+      "topoName": "British Virgin Is.",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for British Virgin Is..",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "british virgin is.",
+        "british virgin is."
+      ]
+    },
+    "796": {
+      "id": "796",
+      "name": "Turks and Caicos Is.",
+      "topoName": "Turks and Caicos Is.",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Turks and Caicos Is..",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "turks and caicos is.",
+        "turks and caicos is."
+      ]
+    },
+    "500": {
+      "id": "500",
+      "name": "Montserrat",
+      "topoName": "Montserrat",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Montserrat.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "montserrat",
+        "montserrat"
+      ]
+    },
+    "832": {
+      "id": "832",
+      "name": "Jersey",
+      "topoName": "Jersey",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Jersey.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "jersey",
+        "jersey"
+      ]
+    },
+    "831": {
+      "id": "831",
+      "name": "Guernsey",
+      "topoName": "Guernsey",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Guernsey.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "guernsey",
+        "guernsey"
+      ]
+    },
+    "833": {
+      "id": "833",
+      "name": "Isle of Man",
+      "topoName": "Isle of Man",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Isle of Man.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "isle of man",
+        "isle of man"
+      ]
+    },
+    "826": {
+      "id": "826",
+      "name": "United Kingdom",
+      "topoName": "United Kingdom",
+      "capital": "London",
+      "continent": "Europe",
+      "subregion": "Western Europe",
+      "mnemonic": "",
+      "notes": "Comprises England, Scotland, Wales, and Northern Ireland. Controls strategic territory of Gibraltar at entrance to Mediterranean Sea. North Sea oil & gas (Brent benchmark). English Channel separates from mainland France. Dover Strait.",
+      "tags": [
+        "Gibraltar",
+        "English Channel",
+        "North Sea Oil",
+        "Dover Strait"
+      ],
+      "aliases": [
+        "britain",
+        "united kingdom",
+        "great britain",
+        "uk"
+      ]
+    },
+    "784": {
+      "id": "784",
+      "name": "United Arab Emirates",
+      "topoName": "United Arab Emirates",
+      "capital": "Abu Dhabi",
+      "continent": "West Asia",
+      "subregion": "Arabian Peninsula",
+      "mnemonic": "Ignite button (UAE) | Persian Gulf (I B SO QUIK)",
+      "notes": "Federation of 7 emirates (Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah, Fujairah). Coastline along Persian Gulf; Fujairah has coast on Gulf of Oman (bypassing Strait of Hormuz for oil exports). Barakah nuclear power plant. Major global aviation, financial, and logistics hub.",
+      "tags": [
+        "Persian Gulf",
+        "OPEC",
+        "Fujairah",
+        "Strait of Hormuz",
+        "Barakah",
+        "I B SO QUIK"
+      ],
+      "aliases": [
+        "emirates",
+        "uae",
+        "united arab emirates"
+      ]
+    },
+    "804": {
+      "id": "804",
+      "name": "Ukraine",
+      "topoName": "Ukraine",
+      "capital": "Kyiv",
+      "continent": "Europe",
+      "subregion": "Eastern Europe",
+      "mnemonic": "BURGER T (Black Sea)",
+      "notes": "2nd largest country by area in Europe. 'Breadbasket of Europe' due to fertile Chernozem (black soil); major exporter of wheat, corn, sunflower oil. Black Sea and Sea of Azov coastlines; Crimean Peninsula occupied by Russia. Kerch Strait. Dnieper River bisects country. Donbas coal and heavy industrial basin. Zaporizhzhia nuclear plant.",
+      "tags": [
+        "Black Sea",
+        "Sea of Azov",
+        "Chernozem",
+        "Kerch Strait",
+        "Crimea",
+        "Dnieper",
+        "BURGER T"
+      ],
+      "aliases": [
+        "ukraine"
+      ]
+    },
+    "800": {
+      "id": "800",
+      "name": "Uganda",
+      "topoName": "Uganda",
+      "capital": "Kampala",
+      "continent": "Africa",
+      "subregion": "East Africa",
+      "mnemonic": "",
+      "notes": "Landlocked country on equator. Lake Victoria shoreline; source of White Nile at Jinja (Owen Falls Dam). Ruwenzori Mountains ('Mountains of the Moon'). Major robusta coffee and tea exporter. East African Crude Oil Pipeline (EACOP) to Tanga port, Tanzania.",
+      "tags": [
+        "Landlocked",
+        "Equator",
+        "Lake Victoria",
+        "White Nile",
+        "EACOP",
+        "Coffee"
+      ],
+      "aliases": [
+        "uganda"
+      ]
+    },
+    "795": {
+      "id": "795",
+      "name": "Turkmenistan",
+      "topoName": "Turkmenistan",
+      "capital": "Ashgabat",
+      "continent": "East & Central Asia",
+      "subregion": "Central Asia",
+      "mnemonic": "TARIK (Caspian Sea)",
+      "notes": "Dominated by Karakum Desert (~80% area). Holds world's 4th largest natural gas reserves (Galkynysh gas field). Darvaza gas crater ('Door to Hell'). TAPI pipeline project (Turkmenistan-Afghanistan-Pakistan-India). Caspian Sea coastline with Turkmenbashi port.",
+      "tags": [
+        "Caspian Sea",
+        "Natural Gas",
+        "Galkynysh",
+        "Karakum",
+        "TAPI Pipeline",
+        "Door to Hell",
+        "TARIK"
+      ],
+      "aliases": [
+        "turkmenistan"
+      ]
+    },
+    "792": {
+      "id": "792",
+      "name": "Türkiye",
+      "topoName": "Turkey",
+      "capital": "Ankara",
+      "continent": "West Asia",
+      "subregion": "Middle East / Eurasia",
+      "mnemonic": "Turkey Biryani | LIST (Med) | BURGER T (Black Sea)",
+      "notes": "Straddles Europe and Asia (Anatolian peninsula + East Thrace). Controls the Turkish Straits (Bosporus & Dardanelles via Sea of Marmara), regulated by 1936 Montreux Convention. Headwaters of Tigris and Euphrates rivers (GAP dam project). Borders Black Sea, Aegean Sea, and Mediterranean Sea. Earthquake-prone (North Anatolian Fault).",
+      "tags": [
+        "Bosporus",
+        "Dardanelles",
+        "Montreux Convention",
+        "LIST",
+        "BURGER T",
+        "Tigris-Euphrates",
+        "NATO"
+      ],
+      "aliases": [
+        "turkey",
+        "turkiye",
+        "türkiye"
+      ]
+    },
+    "788": {
+      "id": "788",
+      "name": "Tunisia",
+      "topoName": "Tunisia",
+      "capital": "Tunis",
+      "continent": "Africa",
+      "subregion": "North Africa / Maghreb",
+      "mnemonic": "Play TUNE (Tunisia)",
+      "notes": "Northernmost country in Africa (Cape Angela). Major producer and exporter of olive oil and dates. Birthplace of the Arab Spring (2010 Jasmine Revolution). Ancient Carthage ruins near Tunis.",
+      "tags": [
+        "Maghreb",
+        "Olive Oil",
+        "Arab Spring",
+        "Mediterranean"
+      ],
+      "aliases": [
+        "tunisie",
+        "tunisia"
+      ]
+    },
+    "780": {
+      "id": "780",
+      "name": "Trinidad and Tobago",
+      "topoName": "Trinidad and Tobago",
+      "capital": "",
+      "continent": "North America",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Trinidad and Tobago.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "trinidad and tobago",
+        "trinidad and tobago"
+      ]
+    },
+    "776": {
+      "id": "776",
+      "name": "Tonga",
+      "topoName": "Tonga",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Tonga.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "tonga",
+        "tonga"
+      ]
+    },
+    "768": {
+      "id": "768",
+      "name": "Togo",
+      "topoName": "Togo",
+      "capital": "",
+      "continent": "Africa",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Togo.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "togo",
+        "togo"
+      ]
+    },
+    "626": {
+      "id": "626",
+      "name": "Timor-Leste",
+      "topoName": "Timor-Leste",
+      "capital": "",
+      "continent": "South & Southeast Asia",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Timor-Leste.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "timor-leste",
+        "timor-leste"
+      ]
+    },
+    "764": {
+      "id": "764",
+      "name": "Thailand",
+      "topoName": "Thailand",
+      "capital": "Bangkok",
+      "continent": "South & Southeast Asia",
+      "subregion": "Southeast Asia",
+      "mnemonic": "Golden Triangle",
+      "notes": "Gulf of Thailand to east, Andaman Sea to west. Chao Phraya river basin. World leader in natural rubber and rice exports; 'Detroit of Southeast Asia' for automotive assembly. Kra Isthmus: proposed Kra Canal (or Landbridge) to connect Andaman Sea with Gulf of Thailand, bypassing Malacca Strait.",
+      "tags": [
+        "Kra Isthmus",
+        "Chao Phraya",
+        "Rubber",
+        "Rice",
+        "Golden Triangle",
+        "Andaman Sea"
+      ],
+      "aliases": [
+        "siam",
+        "thailand"
+      ]
+    },
+    "834": {
+      "id": "834",
+      "name": "Tanzania",
+      "topoName": "Tanzania",
+      "capital": "Dodoma",
+      "continent": "Africa",
+      "subregion": "East Africa",
+      "mnemonic": "",
+      "notes": "Mount Kilimanjaro (highest peak in Africa, 5,895 m). Serengeti National Park and Ngorongoro Crater. Zanzibar archipelago (cloves, spice island). Dar es Salaam commercial port. Contains parts of 3 Great Lakes: Lake Victoria, Lake Tanganyika (2nd deepest in world), Lake Malawi.",
+      "tags": [
+        "Kilimanjaro",
+        "Serengeti",
+        "Zanzibar",
+        "Dar es Salaam",
+        "Great Lakes",
+        "Graphite"
+      ],
+      "aliases": [
+        "tanzania"
+      ]
+    },
+    "762": {
+      "id": "762",
+      "name": "Tajikistan",
+      "topoName": "Tajikistan",
+      "capital": "Dushanbe",
+      "continent": "East & Central Asia",
+      "subregion": "Central Asia",
+      "mnemonic": "",
+      "notes": "Dominated by Pamir Mountains ('Roof of the World', Ismoil Somoni Peak 7,495 m). Rogun Dam on Vakhsh River (world's tallest dam under construction, 335 m). Shares Wakhan Corridor border with Afghanistan. Amu Darya headwaters.",
+      "tags": [
+        "Pamir Mountains",
+        "Rogun Dam",
+        "Roof of the World",
+        "Wakhan Corridor",
+        "Landlocked"
+      ],
+      "aliases": [
+        "tajikistan"
+      ]
+    },
+    "158": {
+      "id": "158",
+      "name": "Taiwan",
+      "topoName": "Taiwan",
+      "capital": "Taipei",
+      "continent": "East & Central Asia",
+      "subregion": "East Asia",
+      "mnemonic": "",
+      "notes": "Island separated from mainland China by Taiwan Strait (~160 km wide). World's dominant contract manufacturer of advanced microchips / semiconductors (TSMC produces >90% of sub-7nm chips; 'Silicon Shield'). First Island Chain component. East coast borders Philippine Sea / Pacific Ocean. Mount Jade (Yushan).",
+      "tags": [
+        "Taiwan Strait",
+        "TSMC",
+        "Silicon Shield",
+        "First Island Chain",
+        "Semiconductors"
+      ],
+      "aliases": [
+        "republic of china",
+        "roc",
+        "taiwan"
+      ]
+    },
+    "760": {
+      "id": "760",
+      "name": "Syria",
+      "topoName": "Syria",
+      "capital": "Damascus",
+      "continent": "West Asia",
+      "subregion": "Levant",
+      "mnemonic": "Cereal (Syria) | LIST (Med)",
+      "notes": "Crossed by Euphrates River (Tabqa Dam/Lake Assad). Mediterranean coastline (Tartus naval base, Latakia). Golan Heights occupied by Israel since 1967 Six-Day War. Ancient cities of Damascus, Aleppo, Palmyra. Civil war flashpoints: Idlib, Rojava (Kurdish northeast).",
+      "tags": [
+        "Levant",
+        "Golan Heights",
+        "Euphrates",
+        "LIST",
+        "Tartus Port",
+        "Mediterranean"
+      ],
+      "aliases": [
+        "syria"
+      ]
+    },
+    "756": {
+      "id": "756",
+      "name": "Switzerland",
+      "topoName": "Switzerland",
+      "capital": "Bern",
+      "continent": "Europe",
+      "subregion": "Central Europe",
+      "mnemonic": "",
+      "notes": "Landlocked alpine federal republic. Renowned for historic armed neutrality (joined UN in 2002). Alps and Jura mountains; Matterhorn peak. Source of Rhine and Rhône rivers. Geneva hosts numerous UN and international agencies (WTO, WHO, ICRC, CERN).",
+      "tags": [
+        "Landlocked",
+        "Alps",
+        "Rhine",
+        "Rhone",
+        "Neutrality",
+        "Geneva"
+      ],
+      "aliases": [
+        "schweiz",
+        "switzerland",
+        "suisse"
+      ]
+    },
+    "752": {
+      "id": "752",
+      "name": "Sweden",
+      "topoName": "Sweden",
+      "capital": "Stockholm",
+      "continent": "Europe",
+      "subregion": "Nordic / Scandinavia",
+      "mnemonic": "",
+      "notes": "Scandinavian Peninsula bordering Gulf of Bothnia and Baltic Sea. Major high-grade iron ore reserves in Kiruna (LKAB mine). Joined NATO in 2024. Gotland island in Baltic.",
+      "tags": [
+        "Scandinavia",
+        "Baltic Sea",
+        "Kiruna Iron Ore",
+        "Gotland",
+        "NATO 2024"
+      ],
+      "aliases": [
+        "sweden",
+        "sverige"
+      ]
+    },
+    "748": {
+      "id": "748",
+      "name": "Eswatini",
+      "topoName": "eSwatini",
+      "capital": "Mbabane / Lobamba",
+      "continent": "Africa",
+      "subregion": "Southern Africa",
+      "mnemonic": "",
+      "notes": "Formerly Swaziland. Small landlocked kingdom bordering South Africa and Mozambique. Sugar cane and forestry.",
+      "tags": [
+        "Landlocked",
+        "Swaziland",
+        "Southern Africa"
+      ],
+      "aliases": [
+        "swaziland",
+        "eswatini"
+      ]
+    },
+    "740": {
+      "id": "740",
+      "name": "Suriname",
+      "topoName": "Suriname",
+      "capital": "Paramaribo",
+      "continent": "South America",
+      "subregion": "Guianas",
+      "mnemonic": "",
+      "notes": "Smallest sovereign country in South America. Former Dutch colony (Dutch-speaking). Significant Indian origin population (Indo-Surinamese). Heavily forested (>90% forest cover, carbon negative). Bauxite and gold producer; recent offshore oil discoveries.",
+      "tags": [
+        "Guianas",
+        "Indian Diaspora",
+        "Carbon Negative",
+        "Bauxite",
+        "Dutch-speaking South America"
+      ],
+      "aliases": [
+        "suriname"
+      ]
+    },
+    "728": {
+      "id": "728",
+      "name": "South Sudan",
+      "topoName": "S. Sudan",
+      "capital": "Juba",
+      "continent": "Africa",
+      "subregion": "East Africa",
+      "mnemonic": "Sailing south (South Sudan)",
+      "notes": "Youngest internationally recognized country in the world (gained independence in 2011 from Sudan). Completely landlocked. Vast oilfields (Melut and Muglad basins) piped north to Port Sudan. Contains the Sudd, one of the world's largest tropical freshwater wetlands.",
+      "tags": [
+        "Landlocked",
+        "Oil",
+        "Sudd Wetland",
+        "Juba",
+        "UN 193rd Member"
+      ],
+      "aliases": [
+        "s sudan",
+        "s. sudan",
+        "south sudan"
+      ]
+    },
+    "729": {
+      "id": "729",
+      "name": "Sudan",
+      "topoName": "Sudan",
+      "capital": "Khartoum",
+      "continent": "Africa",
+      "subregion": "East Africa / Sahel",
+      "mnemonic": "SHOOTING (Sudan) | Red Sea (MEN SOW SEEDS)",
+      "notes": "Confluence of Blue Nile (from Lake Tana, Ethiopia) and White Nile (from Lake Victoria) at Khartoum. Red Sea coastline with Port Sudan. Conflict epicenter: Darfur region, Kordofan, and ongoing SAF vs RSF conflict. Gum arabic world leader (~70% supply).",
+      "tags": [
+        "Sahel",
+        "Darfur",
+        "Blue Nile",
+        "White Nile",
+        "Red Sea",
+        "MEN SOW SEEDS",
+        "Port Sudan"
+      ],
+      "aliases": [
+        "sudan",
+        "north sudan"
+      ]
+    },
+    "144": {
+      "id": "144",
+      "name": "Sri Lanka",
+      "topoName": "Sri Lanka",
+      "capital": "Sri Jayawardenepura Kotte / Colombo",
+      "continent": "South & Southeast Asia",
+      "subregion": "South Asia",
+      "mnemonic": "",
+      "notes": "Tear-shaped island in Indian Ocean separated from India by Palk Strait, Gulf of Mannar, and Adam's Bridge (Ram Setu). Straddles busy East-West international shipping lane. Hambantota Port (99-year lease to China) and Colombo Port (transshipment hub for Indian container traffic). High-grade Ceylon tea and vein graphite.",
+      "tags": [
+        "Palk Strait",
+        "Adam's Bridge",
+        "Hambantota",
+        "Colombo Port",
+        "Graphite",
+        "Indian Ocean"
+      ],
+      "aliases": [
+        "ceylon",
+        "sri lanka"
+      ]
+    },
+    "724": {
+      "id": "724",
+      "name": "Spain",
+      "topoName": "Spain",
+      "capital": "Madrid",
+      "continent": "Europe",
+      "subregion": "Iberian Peninsula",
+      "mnemonic": "Sprain Leg (Spain)",
+      "notes": "Dominates Iberian Peninsula. World's largest olive oil producer (~40-50% global production, Andalusia). Controls Ceuta and Melilla enclaves in North Africa bordering Morocco. Separated from France by Pyrenees mountains. Catalan and Basque autonomy movements. Controls Balearic and Canary Islands.",
+      "tags": [
+        "Iberian Peninsula",
+        "Olive Oil #1",
+        "Ceuta & Melilla",
+        "Pyrenees",
+        "Canary Islands",
+        "Sprain Leg"
+      ],
+      "aliases": [
+        "espana",
+        "spain",
+        "españa"
+      ]
+    },
+    "410": {
+      "id": "410",
+      "name": "South Korea",
+      "topoName": "South Korea",
+      "capital": "Seoul",
+      "continent": "East & Central Asia",
+      "subregion": "East Asia",
+      "mnemonic": "",
+      "notes": "Southern half of Korean Peninsula. Separated from North Korea by 38th Parallel Demilitarized Zone (DMZ). Bordered by Yellow Sea and Sea of Japan (East Sea). Global powerhouse in memory semiconductors (Samsung, SK Hynix), display panels, electric vehicle batteries, shipbuilding (Ulsan), and automobiles. Jeju Island.",
+      "tags": [
+        "Korean Peninsula",
+        "DMZ",
+        "Semiconductors #1",
+        "Shipbuilding",
+        "EV Batteries"
+      ],
+      "aliases": [
+        "rok",
+        "korea",
+        "republic of korea",
+        "south korea"
+      ]
+    },
+    "710": {
+      "id": "710",
+      "name": "South Africa",
+      "topoName": "South Africa",
+      "capital": "Pretoria (Exec), Cape Town (Leg), Bloemfontein (Jud)",
+      "continent": "Africa",
+      "subregion": "Southern Africa",
+      "mnemonic": "",
+      "notes": "World leader in Platinum Group Metals (PGMs - >70% of world supply from Bushveld Igneous Complex), chromium, manganese, gold (Witwatersrand basin), and diamonds (Kimberley). Cape of Good Hope & Cape Agulhas (southernmost point of Africa, boundary between Atlantic & Indian Oceans). BRICS member.",
+      "tags": [
+        "Bushveld Complex",
+        "PGMs",
+        "Chromium",
+        "Cape Agulhas",
+        "BRICS",
+        "Witwatersrand",
+        "Durban Port"
+      ],
+      "aliases": [
+        "za",
+        "rsa",
+        "south africa"
+      ]
+    },
+    "706": {
+      "id": "706",
+      "name": "Somalia",
+      "topoName": "Somalia",
+      "capital": "Mogadishu",
+      "continent": "Africa",
+      "subregion": "Horn of Africa",
+      "mnemonic": "Horn of Africa (SEED)",
+      "notes": "Longest coastline on mainland Africa (~3,300 km), along Gulf of Aden and Indian Ocean. Geopolitical flashpoint: Gulf of Aden piracy, Al-Shabaab insurgency. De-facto autonomous Somaliland in the north (Berbera port deal with Ethiopia) and Puntland. Cape Guardafui tip.",
+      "tags": [
+        "Horn of Africa",
+        "Indian Ocean",
+        "Gulf of Aden",
+        "Somaliland",
+        "Puntland",
+        "Piracy",
+        "SEED"
+      ],
+      "aliases": [
+        "somalie",
+        "somalia"
+      ]
+    },
+    "None": {
+      "id": "None",
+      "name": "Siachen Glacier",
+      "topoName": "Siachen Glacier",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Siachen Glacier.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "siachen glacier",
+        "siachen glacier"
+      ]
+    },
+    "090": {
+      "id": "090",
+      "name": "Solomon Is.",
+      "topoName": "Solomon Is.",
+      "capital": "",
+      "continent": "South & Southeast Asia",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Solomon Is..",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "solomon is.",
+        "solomon is."
+      ]
+    },
+    "703": {
+      "id": "703",
+      "name": "Slovakia",
+      "topoName": "Slovakia",
+      "capital": "",
+      "continent": "Europe",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Slovakia.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "slovakia",
+        "slovakia"
+      ]
+    },
+    "705": {
+      "id": "705",
+      "name": "Slovenia",
+      "topoName": "Slovenia",
+      "capital": "",
+      "continent": "Europe",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Slovenia.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "slovenia",
+        "slovenia"
+      ]
+    },
+    "702": {
+      "id": "702",
+      "name": "Singapore",
+      "topoName": "Singapore",
+      "capital": "Singapore",
+      "continent": "South & Southeast Asia",
+      "subregion": "Southeast Asia",
+      "mnemonic": "",
+      "notes": "Island city-state at southern tip of Malay Peninsula. Sits directly atop the Strait of Malacca and Singapore Strait (world's busiest maritime transit route handling ~25-30% of global sea trade). World's 2nd busiest container port (Tuas Mega Port) and leading global financial/oil-trading hub.",
+      "tags": [
+        "Strait of Malacca",
+        "Chokepoint",
+        "Tuas Port",
+        "Maritime Hub",
+        "Financial Center"
+      ],
+      "aliases": [
+        "singapore"
+      ]
+    },
+    "694": {
+      "id": "694",
+      "name": "Sierra Leone",
+      "topoName": "Sierra Leone",
+      "capital": "",
+      "continent": "Africa",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Sierra Leone.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "sierra leone",
+        "sierra leone"
+      ]
+    },
+    "690": {
+      "id": "690",
+      "name": "Seychelles",
+      "topoName": "Seychelles",
+      "capital": "",
+      "continent": "Africa",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Seychelles.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "seychelles",
+        "seychelles"
+      ]
+    },
+    "688": {
+      "id": "688",
+      "name": "Serbia",
+      "topoName": "Serbia",
+      "capital": "",
+      "continent": "Europe",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Serbia.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "serbia",
+        "serbia"
+      ]
+    },
+    "686": {
+      "id": "686",
+      "name": "Senegal",
+      "topoName": "Senegal",
+      "capital": "Dakar",
+      "continent": "Africa",
+      "subregion": "West Africa",
+      "mnemonic": "",
+      "notes": "Cap-Vert Peninsula is the westernmost point of mainland Africa. Dakar is a major Atlantic port. Encloses The Gambia on three sides. Major peanut/groundnut producer; new offshore oil & gas producer (Sangomar, Greater Tortue Ahmeyim).",
+      "tags": [
+        "Westernmost Mainland Africa",
+        "Cap-Vert",
+        "Dakar",
+        "Atlantic Coast",
+        "Groundnuts"
+      ],
+      "aliases": [
+        "senegal"
+      ]
+    },
+    "682": {
+      "id": "682",
+      "name": "Saudi Arabia",
+      "topoName": "Saudi Arabia",
+      "capital": "Riyadh",
+      "continent": "West Asia",
+      "subregion": "Arabian Peninsula",
+      "mnemonic": "Audi (Saudi Arabia) | Red Sea (MEN SOW SEEDS) | Persian Gulf (I B SO QUIK)",
+      "notes": "Dominates Arabian Peninsula. Bordered by Red Sea on west and Persian Gulf on east. Holds world's 2nd largest proven oil reserves (Ghawar field, world's largest conventional onshore oil field). Rub' al Khali ('Empty Quarter') sand desert. Holy cities of Mecca and Medina. NEOM futuristic megacity on Gulf of Aqaba. OPEC de facto leader.",
+      "tags": [
+        "Arabian Peninsula",
+        "Ghawar",
+        "OPEC",
+        "Red Sea",
+        "Persian Gulf",
+        "Rub al Khali",
+        "MEN SOW SEEDS",
+        "I B SO QUIK"
+      ],
+      "aliases": [
+        "saudi arabia",
+        "saudi",
+        "ksa"
+      ]
+    },
+    "678": {
+      "id": "678",
+      "name": "São Tomé and Principe",
+      "topoName": "São Tomé and Principe",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for São Tomé and Principe.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "são tomé and principe",
+        "são tomé and principe"
+      ]
+    },
+    "674": {
+      "id": "674",
+      "name": "San Marino",
+      "topoName": "San Marino",
+      "capital": "",
+      "continent": "Europe",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for San Marino.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "san marino",
+        "san marino"
+      ]
+    },
+    "882": {
+      "id": "882",
+      "name": "Samoa",
+      "topoName": "Samoa",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Samoa.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "samoa",
+        "samoa"
+      ]
+    },
+    "670": {
+      "id": "670",
+      "name": "St. Vin. and Gren.",
+      "topoName": "St. Vin. and Gren.",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for St. Vin. and Gren..",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "st. vin. and gren.",
+        "st. vin. and gren."
+      ]
+    },
+    "662": {
+      "id": "662",
+      "name": "Saint Lucia",
+      "topoName": "Saint Lucia",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Saint Lucia.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "saint lucia",
+        "saint lucia"
+      ]
+    },
+    "659": {
+      "id": "659",
+      "name": "St. Kitts and Nevis",
+      "topoName": "St. Kitts and Nevis",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for St. Kitts and Nevis.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "st. kitts and nevis",
+        "st. kitts and nevis"
+      ]
+    },
+    "646": {
+      "id": "646",
+      "name": "Rwanda",
+      "topoName": "Rwanda",
+      "capital": "Kigali",
+      "continent": "Africa",
+      "subregion": "East/Central Africa",
+      "mnemonic": "",
+      "notes": "'Land of a Thousand Hills'. Highly dense landlocked nation in Great Lakes region. Lake Kivu (contains dissolved methane). Major coltan and tantalum processor. Virunga volcanic mountains.",
+      "tags": [
+        "Landlocked",
+        "Great Lakes",
+        "Kigali",
+        "Coltan",
+        "Virunga"
+      ],
+      "aliases": [
+        "rwanda"
+      ]
+    },
+    "643": {
+      "id": "643",
+      "name": "Russia",
+      "topoName": "Russia",
+      "capital": "Moscow",
+      "continent": "Europe",
+      "subregion": "Eurasia",
+      "mnemonic": "BURGER T (Black Sea) | TARIK (Caspian Sea)",
+      "notes": "Largest country in world by area (~17.1M km²), spanning 11 time zones across Europe and Asia. Ural Mountains mark Europe-Asia boundary. Volga River is longest in Europe (empties into Caspian Sea). Lake Baikal is deepest and oldest freshwater lake on Earth. Massive oil, natural gas, nickel (Norilsk), palladium, and timber reserves. Exclave of Kaliningrad on Baltic Sea.",
+      "tags": [
+        "Black Sea",
+        "Caspian Sea",
+        "Lake Baikal",
+        "Urals",
+        "Volga",
+        "Norilsk",
+        "BURGER T",
+        "TARIK",
+        "Kaliningrad"
+      ],
+      "aliases": [
+        "russian federation",
+        "russia"
+      ]
+    },
+    "642": {
+      "id": "642",
+      "name": "Romania",
+      "topoName": "Romania",
+      "capital": "Bucharest",
+      "continent": "Europe",
+      "subregion": "Eastern Europe",
+      "mnemonic": "BURGER T (Black Sea)",
+      "notes": "Borders Black Sea (Constanța port, largest Black Sea port). Danube River empties via Danube Delta (UNESCO biosphere reserve). Carpathian Mountains arc through center. Transylvania plateau.",
+      "tags": [
+        "Black Sea",
+        "Danube Delta",
+        "Carpathians",
+        "Constanta Port",
+        "BURGER T"
+      ],
+      "aliases": [
+        "romania"
+      ]
+    },
+    "634": {
+      "id": "634",
+      "name": "Qatar",
+      "topoName": "Qatar",
+      "capital": "Doha",
+      "continent": "West Asia",
+      "subregion": "Arabian Peninsula",
+      "mnemonic": "Tar hits face (Qatar) | Persian Gulf (I B SO QUIK)",
+      "notes": "Peninsula protruding into the Persian Gulf. Shares the world's largest natural gas field, the North Dome / South Pars field, with Iran. One of the world's top LNG exporters. Ras Laffan industrial port. Only land border with Saudi Arabia.",
+      "tags": [
+        "Persian Gulf",
+        "LNG #1",
+        "North Dome Gas Field",
+        "Ras Laffan",
+        "I B SO QUIK"
+      ],
+      "aliases": [
+        "qatar"
+      ]
+    },
+    "620": {
+      "id": "620",
+      "name": "Portugal",
+      "topoName": "Portugal",
+      "capital": "Lisbon",
+      "continent": "Europe",
+      "subregion": "Iberian Peninsula",
+      "mnemonic": "Boat to port (Portugal)",
+      "notes": "Western part of Iberian Peninsula facing Atlantic Ocean. World's #1 cork producer (>50% global harvest from cork oak forests in Alentejo). Cabo da Roca is the westernmost point of continental Europe. Azores and Madeira autonomous Atlantic archipelagos. Douro River port wine.",
+      "tags": [
+        "Iberian Peninsula",
+        "Cork #1",
+        "Cabo da Roca",
+        "Atlantic Coast",
+        "Douro River",
+        "Boat to port"
+      ],
+      "aliases": [
+        "portugal"
+      ]
+    },
+    "616": {
+      "id": "616",
+      "name": "Poland",
+      "topoName": "Poland",
+      "capital": "Warsaw",
+      "continent": "Europe",
+      "subregion": "Central/Eastern Europe",
+      "mnemonic": "",
+      "notes": "Baltic Sea coastline (Gdańsk port). Vistula and Oder rivers. Suwałki Gap: narrow 65-km land corridor between Poland and Lithuania, flanked by Russian Kaliningrad exclave and Belarus (critical NATO choke point).",
+      "tags": [
+        "Baltic Sea",
+        "Suwalki Gap",
+        "Vistula River",
+        "NATO Chokepoint"
+      ],
+      "aliases": [
+        "polska",
+        "poland"
+      ]
+    },
+    "608": {
+      "id": "608",
+      "name": "Philippines",
+      "topoName": "Philippines",
+      "capital": "Manila",
+      "continent": "South & Southeast Asia",
+      "subregion": "Southeast Asia",
+      "mnemonic": "",
+      "notes": "Archipelago of >7,000 islands grouped into Luzon, Visayas, and Mindanao. Flanked by South China Sea (West Philippine Sea) and Philippine Sea (Pacific Ocean). Luzon Strait separates from Taiwan. Major nickel ore exporter to China. Flashpoints: Second Thomas Shoal (BRP Sierra Madre) and Scarborough Shoal. Pacific Ring of Fire (Mayon volcano, Mount Pinatubo).",
+      "tags": [
+        "Luzon Strait",
+        "South China Sea",
+        "Second Thomas Shoal",
+        "Nickel",
+        "Pacific Ring of Fire"
+      ],
+      "aliases": [
+        "philippines",
+        "pilipinas"
+      ]
+    },
+    "604": {
+      "id": "604",
+      "name": "Peru",
+      "topoName": "Peru",
+      "capital": "Lima",
+      "continent": "South America",
+      "subregion": "Andean / South America",
+      "mnemonic": "",
+      "notes": "World's 2nd largest copper producer and 3rd largest silver producer. Andes mountain range runs north-south (Huascarán peak). Headwaters of Amazon River (Marañón and Ucayali confluence). Lake Titicaca on Bolivia border. Humboldt (Peru) Current creates hyper-rich marine fisheries (anchoveta) and dry coastal desert.",
+      "tags": [
+        "Copper #2",
+        "Silver #3",
+        "Amazon Headwaters",
+        "Lake Titicaca",
+        "Humboldt Current",
+        "Andes"
+      ],
+      "aliases": [
+        "peru"
+      ]
+    },
+    "600": {
+      "id": "600",
+      "name": "Paraguay",
+      "topoName": "Paraguay",
+      "capital": "Asunción",
+      "continent": "South America",
+      "subregion": "South America",
+      "mnemonic": "",
+      "notes": "Landlocked country divided by Paraguay River into fertile Oriental region and semi-arid Gran Chaco. Itaipu Dam (shared with Brazil) and Yacyretá Dam (shared with Argentina) make it one of world's top net exporters of renewable hydroelectricity. Major soy and beef exporter.",
+      "tags": [
+        "Landlocked",
+        "Itaipu Dam",
+        "Hydroelectricity Exporter",
+        "Gran Chaco",
+        "Parana River"
+      ],
+      "aliases": [
+        "paraguay"
+      ]
+    },
+    "598": {
+      "id": "598",
+      "name": "Papua New Guinea",
+      "topoName": "Papua New Guinea",
+      "capital": "Port Moresby",
+      "continent": "South & Southeast Asia",
+      "subregion": "Oceania / Melanesia",
+      "mnemonic": "",
+      "notes": "Occupies eastern half of New Guinea island. Separated from Australia by Torres Strait. Highly rich in copper, gold (Porgera, Lihir mines), LNG, and nickel. Bougainville autonomous region voted for independence.",
+      "tags": [
+        "Torres Strait",
+        "Gold & Copper",
+        "LNG",
+        "Bougainville",
+        "Melanesia"
+      ],
+      "aliases": [
+        "png",
+        "papua new guinea"
+      ]
+    },
+    "591": {
+      "id": "591",
+      "name": "Panama",
+      "topoName": "Panama",
+      "capital": "Panama City",
+      "continent": "North America",
+      "subregion": "Central America",
+      "mnemonic": "",
+      "notes": "Is thmus connecting North and South America. Panama Canal (82 km long, opened 1914, expanded in 2016 for Neopanamax ships) connects Pacific Ocean with Caribbean Sea / Atlantic, saving ~13,000 km around Cape Horn. Darién Gap dense roadless jungle on Colombia border.",
+      "tags": [
+        "Panama Canal",
+        "Chokepoint",
+        "Darien Gap",
+        "Neopanamax",
+        "Isthmus"
+      ],
+      "aliases": [
+        "panama"
+      ]
+    },
+    "585": {
+      "id": "585",
+      "name": "Palau",
+      "topoName": "Palau",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Palau.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "palau",
+        "palau"
+      ]
+    },
+    "586": {
+      "id": "586",
+      "name": "Pakistan",
+      "topoName": "Pakistan",
+      "capital": "Islamabad",
+      "continent": "South & Southeast Asia",
+      "subregion": "South Asia",
+      "mnemonic": "Golden Crescent",
+      "notes": "Indus River system (Indus, Jhelum, Chenab, Ravi, Beas, Sutlej; governed by 1960 Indus Waters Treaty). Arabian Sea coastline featuring Gwadar Port (flagship hub of China-Pakistan Economic Corridor / CPEC). Karakoram Highway connects via Khunjerab Pass to China. K2 (2nd highest peak in world, 8,611 m) in Gilgit-Baltistan.",
+      "tags": [
+        "Indus River",
+        "Gwadar Port",
+        "CPEC",
+        "K2",
+        "Golden Crescent",
+        "Arabian Sea"
+      ],
+      "aliases": [
+        "pakistan"
+      ]
+    },
+    "512": {
+      "id": "512",
+      "name": "Oman",
+      "topoName": "Oman",
+      "capital": "Muscat",
+      "continent": "West Asia",
+      "subregion": "Arabian Peninsula",
+      "mnemonic": "Oh Man! (Oman) | Strait of Hormuz | Persian Gulf (I B SO QUIK)",
+      "notes": "Controls the southern shore of the Strait of Hormuz via its northern Musandam Peninsula exclave. Strategic coastlines along Gulf of Oman and Arabian Sea. Duqm deepwater port bypasses Strait of Hormuz (India granted logistics access). Al Hajar Mountains.",
+      "tags": [
+        "Strait of Hormuz",
+        "Musandam",
+        "Duqm Port",
+        "Arabian Sea",
+        "I B SO QUIK"
+      ],
+      "aliases": [
+        "oman"
+      ]
+    },
+    "578": {
+      "id": "578",
+      "name": "Norway",
+      "topoName": "Norway",
+      "capital": "Oslo",
+      "continent": "Europe",
+      "subregion": "Nordic / Scandinavia",
+      "mnemonic": "",
+      "notes": "Western part of Scandinavian Peninsula. Highly indented coastline with famous fjords. Major oil and natural gas producer from North Sea and Barents Sea (Sovereign Wealth Fund). Svalbard archipelago in Arctic (Svalbard Global Seed Vault).",
+      "tags": [
+        "Scandinavia",
+        "Fjords",
+        "North Sea Oil",
+        "Svalbard",
+        "Arctic"
+      ],
+      "aliases": [
+        "norway",
+        "norge"
+      ]
+    },
+    "408": {
+      "id": "408",
+      "name": "North Korea",
+      "topoName": "North Korea",
+      "capital": "Pyongyang",
+      "continent": "East & Central Asia",
+      "subregion": "East Asia",
+      "mnemonic": "",
+      "notes": "Northern half of Korean Peninsula. Yalu and Tumen rivers border China and Russia. Mount Paektu sacred active volcano. Nuclear-armed state with missile testing in Sea of Japan.",
+      "tags": [
+        "Korean Peninsula",
+        "Yalu River",
+        "DMZ",
+        "Mount Paektu"
+      ],
+      "aliases": [
+        "dprk",
+        "north korea"
+      ]
+    },
+    "566": {
+      "id": "566",
+      "name": "Nigeria",
+      "topoName": "Nigeria",
+      "capital": "Abuja",
+      "continent": "Africa",
+      "subregion": "West Africa",
+      "mnemonic": "",
+      "notes": "Most populous country in Africa (~220M). Leading crude oil exporter in Africa (Bonny Light crude from Niger Delta). Major gas reserves (NLNG Bonny Island, proposed Nigeria-Morocco Gas Pipeline). Lagos is commercial mega-city. Security challenges: Boko Haram in Lake Chad basin, banditry in Zamfara.",
+      "tags": [
+        "Niger Delta",
+        "OPEC",
+        "Oil & Gas",
+        "Lagos",
+        "Boko Haram",
+        "Most Populous Africa"
+      ],
+      "aliases": [
+        "nigeria"
+      ]
+    },
+    "562": {
+      "id": "562",
+      "name": "Niger",
+      "topoName": "Niger",
+      "capital": "Niamey",
+      "continent": "Africa",
+      "subregion": "Sahel",
+      "mnemonic": "",
+      "notes": "Landlocked Sahelian country. Major uranium producer in Africa (Arlit and Imouraren mines, key supplier to French nuclear reactors). Member of Alliance of Sahel States (AES) following 2023 military coup. Niger River flows through.",
+      "tags": [
+        "Sahel",
+        "Uranium",
+        "Arlit",
+        "Landlocked",
+        "Alliance of Sahel States",
+        "Niger River"
+      ],
+      "aliases": [
+        "niger"
+      ]
+    },
+    "558": {
+      "id": "558",
+      "name": "Nicaragua",
+      "topoName": "Nicaragua",
+      "capital": "",
+      "continent": "North America",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Nicaragua.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "nicaragua",
+        "nicaragua"
+      ]
+    },
+    "554": {
+      "id": "554",
+      "name": "New Zealand",
+      "topoName": "New Zealand",
+      "capital": "Wellington",
+      "continent": "South & Southeast Asia",
+      "subregion": "Oceania",
+      "mnemonic": "",
+      "notes": "Comprises North Island (volcanic, geothermal power) and South Island (Southern Alps, Mount Cook/Aoraki), separated by Cook Strait. World leader in dairy exports (~20-25% of global market, Fonterra cooperative) and sheep meat/wool. Alpine Fault earthquake zone.",
+      "tags": [
+        "Cook Strait",
+        "Dairy #1 Exporter",
+        "Southern Alps",
+        "Geothermal Energy"
+      ],
+      "aliases": [
+        "nz",
+        "new zealand",
+        "aotearoa"
+      ]
+    },
+    "570": {
+      "id": "570",
+      "name": "Niue",
+      "topoName": "Niue",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Niue.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "niue",
+        "niue"
+      ]
+    },
+    "184": {
+      "id": "184",
+      "name": "Cook Is.",
+      "topoName": "Cook Is.",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Cook Is..",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "cook is.",
+        "cook is."
+      ]
+    },
+    "528": {
+      "id": "528",
+      "name": "Netherlands",
+      "topoName": "Netherlands",
+      "capital": "Amsterdam / The Hague",
+      "continent": "Europe",
+      "subregion": "Western Europe",
+      "mnemonic": "",
+      "notes": "About a third of land below sea level (protected by dikes, polders, and Delta Works). Port of Rotterdam is largest seaport in Europe. Rhine-Meuse-Scheldt delta. ASML semiconductor lithography hub (Veldhoven).",
+      "tags": [
+        "Rotterdam Port",
+        "Polders",
+        "Rhine Delta",
+        "Semiconductors",
+        "North Sea"
+      ],
+      "aliases": [
+        "netherlands",
+        "holland"
+      ]
+    },
+    "533": {
+      "id": "533",
+      "name": "Aruba",
+      "topoName": "Aruba",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Aruba.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "aruba",
+        "aruba"
+      ]
+    },
+    "531": {
+      "id": "531",
+      "name": "Curaçao",
+      "topoName": "Curaçao",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Curaçao.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "curaçao",
+        "curaçao"
+      ]
+    },
+    "524": {
+      "id": "524",
+      "name": "Nepal",
+      "topoName": "Nepal",
+      "capital": "Kathmandu",
+      "continent": "South & Southeast Asia",
+      "subregion": "South Asia",
+      "mnemonic": "",
+      "notes": "Landlocked Himalayan country between India and China. Contains 8 of the world's 14 peaks above 8,000 meters, including Mount Everest (Sagarmatha, 8,848.86 m) and Kanchenjunga border. Headwaters of Ganges tributaries: Kosi ('Sorrow of Bihar'), Gandak, Karnali (Ghaghara), Mahakali (Sharada; Kalapani border dispute).",
+      "tags": [
+        "Landlocked",
+        "Mount Everest",
+        "Himalayas",
+        "Ganges Tributaries",
+        "Kalapani"
+      ],
+      "aliases": [
+        "nepal"
+      ]
+    },
+    "520": {
+      "id": "520",
+      "name": "Nauru",
+      "topoName": "Nauru",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Nauru.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "nauru",
+        "nauru"
+      ]
+    },
+    "516": {
+      "id": "516",
+      "name": "Namibia",
+      "topoName": "Namibia",
+      "capital": "Windhoek",
+      "continent": "Africa",
+      "subregion": "Southern Africa",
+      "mnemonic": "",
+      "notes": "Namib Desert along Atlantic coast (oldest desert in world, Sossusvlei dunes). Major uranium producer (Rössing and Husab mines, #3 in world). Marine diamond dredging. Walvis Bay deepwater port. Caprivi Strip connects to Zambezi River.",
+      "tags": [
+        "Namib Desert",
+        "Uranium",
+        "Diamonds",
+        "Walvis Bay",
+        "Caprivi Strip"
+      ],
+      "aliases": [
+        "namibia"
+      ]
+    },
+    "508": {
+      "id": "508",
+      "name": "Mozambique",
+      "topoName": "Mozambique",
+      "capital": "Maputo",
+      "continent": "Africa",
+      "subregion": "Southern Africa",
+      "mnemonic": "",
+      "notes": "Coastline along Mozambique Channel (Indian Ocean). Giant offshore natural gas reserves in Rovuma Basin (Cabo Delgado province; hit by Islamist insurgency). Major graphite producer (Balama mine, world's largest). Zambezi river delta; Cahora Bassa dam.",
+      "tags": [
+        "Mozambique Channel",
+        "Rovuma Basin",
+        "LNG",
+        "Cabo Delgado",
+        "Graphite",
+        "Zambezi"
+      ],
+      "aliases": [
+        "mozambique"
+      ]
+    },
+    "504": {
+      "id": "504",
+      "name": "Morocco",
+      "topoName": "Morocco",
+      "capital": "Rabat",
+      "continent": "Africa",
+      "subregion": "North Africa / Maghreb",
+      "mnemonic": "Rabbit says MALE (M - Morocco)",
+      "notes": "Controls ~70% of world's rock phosphate reserves (essential for NPK fertilizers). Borders Mediterranean Sea, Atlantic Ocean, and Strait of Gibraltar. Contains the High Atlas Mountains (Toubkal peak). Administers Western Sahara territory (disputed with Polisario Front).",
+      "tags": [
+        "Maghreb",
+        "Phosphates",
+        "Strait of Gibraltar",
+        "Atlas Mountains",
+        "Rabbit says MALE"
+      ],
+      "aliases": [
+        "morocco",
+        "al maghrib",
+        "maroc"
+      ]
+    },
+    "732": {
+      "id": "732",
+      "name": "Western Sahara",
+      "topoName": "W. Sahara",
+      "capital": "",
+      "continent": "Africa",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Western Sahara.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "w. sahara",
+        "western sahara"
+      ]
+    },
+    "499": {
+      "id": "499",
+      "name": "Montenegro",
+      "topoName": "Montenegro",
+      "capital": "",
+      "continent": "Europe",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Montenegro.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "montenegro",
+        "montenegro"
+      ]
+    },
+    "496": {
+      "id": "496",
+      "name": "Mongolia",
+      "topoName": "Mongolia",
+      "capital": "Ulaanbaatar",
+      "continent": "East & Central Asia",
+      "subregion": "East Asia",
+      "mnemonic": "",
+      "notes": "2nd largest landlocked country, sandwiched between Russia and China. Gobi Desert in south, Altai Mountains in west. Massive mineral deposits: Oyu Tolgoi (one of world's largest copper-gold deposits) and Tavan Tolgoi (coking coal). Lowest population density of any sovereign state.",
+      "tags": [
+        "Landlocked",
+        "Gobi Desert",
+        "Oyu Tolgoi Copper",
+        "Coking Coal",
+        "Buffer State"
+      ],
+      "aliases": [
+        "mongolia"
+      ]
+    },
+    "498": {
+      "id": "498",
+      "name": "Moldova",
+      "topoName": "Moldova",
+      "capital": "",
+      "continent": "Europe",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Moldova.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "moldova",
+        "moldova"
+      ]
+    },
+    "492": {
+      "id": "492",
+      "name": "Monaco",
+      "topoName": "Monaco",
+      "capital": "",
+      "continent": "Europe",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Monaco.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "monaco",
+        "monaco"
+      ]
+    },
+    "484": {
+      "id": "484",
+      "name": "Mexico",
+      "topoName": "Mexico",
+      "capital": "Mexico City",
+      "continent": "North America",
+      "subregion": "North America",
+      "mnemonic": "",
+      "notes": "Borders Pacific Ocean and Gulf of Mexico. Rio Grande (Río Bravo) forms border with USA. World's #1 silver producer (Fresnillo mine). Major crude oil producer in Bay of Campeche (Cantarell field, Pemex). Yucatán Peninsula features limestone sinkholes (cenotes) and borders Caribbean Sea. Isthmus of Tehuantepec (Interoceanic Corridor rail project).",
+      "tags": [
+        "Silver #1",
+        "Gulf of Mexico",
+        "Rio Grande",
+        "Yucatan",
+        "Interoceanic Corridor"
+      ],
+      "aliases": [
+        "mejico",
+        "mexico"
+      ]
+    },
+    "480": {
+      "id": "480",
+      "name": "Mauritius",
+      "topoName": "Mauritius",
+      "capital": "",
+      "continent": "Africa",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Mauritius.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "mauritius",
+        "mauritius"
+      ]
+    },
+    "478": {
+      "id": "478",
+      "name": "Mauritania",
+      "topoName": "Mauritania",
+      "capital": "Nouakchott",
+      "continent": "Africa",
+      "subregion": "Sahel / West Africa",
+      "mnemonic": "",
+      "notes": "Connects North Africa (Maghreb) with sub-Saharan Africa. Major iron ore exporter (Zouérat mines connected to Nouadhibou port by the famous 2.5-km Mauritania Railway train). Rich Atlantic fisheries.",
+      "tags": [
+        "Sahel",
+        "Iron Ore",
+        "Zouerete Train",
+        "Sahara",
+        "Atlantic Coast"
+      ],
+      "aliases": [
+        "mauritania"
+      ]
+    },
+    "470": {
+      "id": "470",
+      "name": "Malta",
+      "topoName": "Malta",
+      "capital": "",
+      "continent": "Europe",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Malta.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "malta",
+        "malta"
+      ]
+    },
+    "466": {
+      "id": "466",
+      "name": "Mali",
+      "topoName": "Mali",
+      "capital": "Bamako",
+      "continent": "Africa",
+      "subregion": "Sahel",
+      "mnemonic": "",
+      "notes": "Landlocked Sahelian country. 3rd largest gold producer in Africa. Historic city of Timbuktu. Inland Niger Delta (wetland in semi-arid Sahel). Northern Tuareg / Azawad separatist and Islamist insurgency. AES member.",
+      "tags": [
+        "Sahel",
+        "Gold",
+        "Timbuktu",
+        "Inland Niger Delta",
+        "Azawad",
+        "Alliance of Sahel States"
+      ],
+      "aliases": [
+        "mali"
+      ]
+    },
+    "462": {
+      "id": "462",
+      "name": "Maldives",
+      "topoName": "Maldives",
+      "capital": "Malé",
+      "continent": "South & Southeast Asia",
+      "subregion": "South Asia",
+      "mnemonic": "",
+      "notes": "Archipelago of 26 natural atolls (1,192 coral islands) in central Indian Ocean. Lowest average elevation country on Earth (~1.5 m above sea level, highly threatened by climate change). Eight Degree Channel separates northern Maldives from India's Minicoy Island. Strategic location along Persian Gulf to Malacca shipping lanes.",
+      "tags": [
+        "Atolls",
+        "Eight Degree Channel",
+        "Indian Ocean Chokepoint",
+        "Climate Vulnerability"
+      ],
+      "aliases": [
+        "maldives"
+      ]
+    },
+    "458": {
+      "id": "458",
+      "name": "Malaysia",
+      "topoName": "Malaysia",
+      "capital": "Kuala Lumpur / Putrajaya",
+      "continent": "South & Southeast Asia",
+      "subregion": "Southeast Asia",
+      "mnemonic": "",
+      "notes": "Divided into Peninsular Malaysia and East Malaysia (Sabah & Sarawak on Borneo island), separated by South China Sea. Borders Strait of Malacca (Port of Tanjung Pelepas, Port Klang). World's 2nd largest palm oil producer after Indonesia; major semiconductor assembly and testing (ATP) hub in Penang.",
+      "tags": [
+        "Strait of Malacca",
+        "Borneo",
+        "Palm Oil",
+        "Semiconductors",
+        "Port Klang"
+      ],
+      "aliases": [
+        "malaysia"
+      ]
+    },
+    "454": {
+      "id": "454",
+      "name": "Malawi",
+      "topoName": "Malawi",
+      "capital": "Lilongwe",
+      "continent": "Africa",
+      "subregion": "Southern Africa",
+      "mnemonic": "",
+      "notes": "Narrow landlocked country dominated by Lake Malawi (Lake Nyasa, 3rd largest lake in Africa, renowned for endemic cichlid fish). Major tobacco, tea, and sugar exporter.",
+      "tags": [
+        "Landlocked",
+        "Lake Malawi",
+        "Tobacco",
+        "Rift Valley"
+      ],
+      "aliases": [
+        "malawi"
+      ]
+    },
+    "450": {
+      "id": "450",
+      "name": "Madagascar",
+      "topoName": "Madagascar",
+      "capital": "Antananarivo",
+      "continent": "Africa",
+      "subregion": "Indian Ocean Island",
+      "mnemonic": "",
+      "notes": "4th largest island in the world. Separated from Africa by Mozambique Channel. Global leader in natural vanilla (~80% supply), nickel-cobalt (Ambatovy mine), and ilmenite. Extreme biodiversity endemism (>90% species found nowhere else, including lemurs). Canal des Pangalanes.",
+      "tags": [
+        "Indian Ocean",
+        "Vanilla",
+        "Mozambique Channel",
+        "Biodiversity Hotspot",
+        "Lemurs"
+      ],
+      "aliases": [
+        "madagascar"
+      ]
+    },
+    "807": {
+      "id": "807",
+      "name": "Macedonia",
+      "topoName": "Macedonia",
+      "capital": "",
+      "continent": "Europe",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Macedonia.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "macedonia",
+        "macedonia"
+      ]
+    },
+    "442": {
+      "id": "442",
+      "name": "Luxembourg",
+      "topoName": "Luxembourg",
+      "capital": "",
+      "continent": "Europe",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Luxembourg.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "luxembourg",
+        "luxembourg"
+      ]
+    },
+    "440": {
+      "id": "440",
+      "name": "Lithuania",
+      "topoName": "Lithuania",
+      "capital": "",
+      "continent": "Europe",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Lithuania.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "lithuania",
+        "lithuania"
+      ]
+    },
+    "438": {
+      "id": "438",
+      "name": "Liechtenstein",
+      "topoName": "Liechtenstein",
+      "capital": "",
+      "continent": "Europe",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Liechtenstein.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "liechtenstein",
+        "liechtenstein"
+      ]
+    },
+    "434": {
+      "id": "434",
+      "name": "Libya",
+      "topoName": "Libya",
+      "capital": "Tripoli",
+      "continent": "Africa",
+      "subregion": "North Africa",
+      "mnemonic": "Rabbit says MALE (L - Libya)",
+      "notes": "Largest proven crude oil reserves in Africa (Sirte Basin). Bordered by Mediterranean Sea (Gulf of Sirte). Great Man-Made River fossil water aquifer system. Post-Gaddafi division between Tripoli (west) and Tobruk/Benghazi (east).",
+      "tags": [
+        "North Africa",
+        "OPEC",
+        "Sirte Basin",
+        "Crude Oil",
+        "Rabbit says MALE"
+      ],
+      "aliases": [
+        "libye",
+        "libya"
+      ]
+    },
+    "430": {
+      "id": "430",
+      "name": "Liberia",
+      "topoName": "Liberia",
+      "capital": "",
+      "continent": "Africa",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Liberia.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "liberia",
+        "liberia"
+      ]
+    },
+    "426": {
+      "id": "426",
+      "name": "Lesotho",
+      "topoName": "Lesotho",
+      "capital": "Maseru",
+      "continent": "Africa",
+      "subregion": "Southern Africa",
+      "mnemonic": "",
+      "notes": "Enclaved completely within South Africa. Drakensberg / Maloti Mountains; entire country sits above 1,000 m ('Kingdom in the Sky'). Lesotho Highlands Water Project supplies water to South Africa's Gauteng industrial hub.",
+      "tags": [
+        "Enclave",
+        "Landlocked",
+        "Drakensberg",
+        "Highlands Water Project"
+      ],
+      "aliases": [
+        "lesotho"
+      ]
+    },
+    "422": {
+      "id": "422",
+      "name": "Lebanon",
+      "topoName": "Lebanon",
+      "capital": "Beirut",
+      "continent": "West Asia",
+      "subregion": "Levant",
+      "mnemonic": "Naan (Lebanon) | LIST (Med)",
+      "notes": "Small mountainous Mediterranean coastal state. Mount Lebanon and Anti-Lebanon ranges; fertile Beqaa Valley between them. Litani River (only major river entirely within Lebanon). Borders Israel (Blue Line boundary) and Syria. Cedars of Lebanon.",
+      "tags": [
+        "Levant",
+        "Mediterranean",
+        "Beqaa Valley",
+        "Litani River",
+        "LIST",
+        "Blue Line"
+      ],
+      "aliases": [
+        "lebanon"
+      ]
+    },
+    "428": {
+      "id": "428",
+      "name": "Latvia",
+      "topoName": "Latvia",
+      "capital": "",
+      "continent": "Europe",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Latvia.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "latvia",
+        "latvia"
+      ]
+    },
+    "418": {
+      "id": "418",
+      "name": "Laos",
+      "topoName": "Laos",
+      "capital": "Vientiane",
+      "continent": "South & Southeast Asia",
+      "subregion": "Southeast Asia",
+      "mnemonic": "Golden Triangle",
+      "notes": "Only landlocked country in Southeast Asia. Traversed by Mekong River. Aims to be the 'Battery of Southeast Asia' through extensive Mekong hydropower dam construction, raising downstream environmental concerns. Boten-Vientiane high-speed railway connects to China.",
+      "tags": [
+        "Landlocked Southeast Asia",
+        "Mekong Dams",
+        "Golden Triangle",
+        "Hydropower"
+      ],
+      "aliases": [
+        "lao pdr",
+        "laos"
+      ]
+    },
+    "417": {
+      "id": "417",
+      "name": "Kyrgyzstan",
+      "topoName": "Kyrgyzstan",
+      "capital": "Bishkek",
+      "continent": "East & Central Asia",
+      "subregion": "Central Asia",
+      "mnemonic": "",
+      "notes": "Highly mountainous landlocked country dominated by Tian Shan mountain range ('Switzerland of Central Asia'). Issyk-Kul is world's 2nd largest alpine lake after Lake Titicaca (saline, never freezes). Kumtor gold mine. Fergana Valley enclaves.",
+      "tags": [
+        "Tian Shan",
+        "Issyk-Kul Lake",
+        "Kumtor Gold",
+        "Fergana Valley",
+        "Landlocked"
+      ],
+      "aliases": [
+        "kyrgyz republic",
+        "kyrgyzstan"
+      ]
+    },
+    "414": {
+      "id": "414",
+      "name": "Kuwait",
+      "topoName": "Kuwait",
+      "capital": "Kuwait City",
+      "continent": "West Asia",
+      "subregion": "Arabian Peninsula",
+      "mnemonic": "Wait (Kuwait) | Persian Gulf (I B SO QUIK)",
+      "notes": "Northwestern corner of Persian Gulf. Burgan oil field is 2nd largest conventional sandstone reservoir in the world. Borders Iraq and Saudi Arabia. Strategic Bubiyan Island.",
+      "tags": [
+        "Persian Gulf",
+        "Burgan Oil Field",
+        "Bubiyan Island",
+        "OPEC",
+        "I B SO QUIK"
+      ],
+      "aliases": [
+        "kuwait"
+      ]
+    },
+    "296": {
+      "id": "296",
+      "name": "Kiribati",
+      "topoName": "Kiribati",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Kiribati.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "kiribati",
+        "kiribati"
+      ]
+    },
+    "404": {
+      "id": "404",
+      "name": "Kenya",
+      "topoName": "Kenya",
+      "capital": "Nairobi",
+      "continent": "Africa",
+      "subregion": "East Africa",
+      "mnemonic": "",
+      "notes": "Crossed by Equator and Great Rift Valley. Mombasa port is gateway to East Africa (Northern Corridor to Uganda, Rwanda, South Sudan). World leader in black tea export, horticulture, cut flowers, and geothermal energy (Olkaria). Mount Kenya (2nd highest peak in Africa). Lake Victoria coast.",
+      "tags": [
+        "East Africa",
+        "Equator",
+        "Mombasa",
+        "Tea",
+        "Rift Valley",
+        "Lake Victoria"
+      ],
+      "aliases": [
+        "kenya"
+      ]
+    },
+    "398": {
+      "id": "398",
+      "name": "Kazakhstan",
+      "topoName": "Kazakhstan",
+      "capital": "Astana",
+      "continent": "East & Central Asia",
+      "subregion": "Central Asia",
+      "mnemonic": "TARIK (Caspian Sea)",
+      "notes": "World's largest landlocked country. Leading producer of uranium in the world (~43% global mined supply; Kazatomprom). Massive oil and gas reserves around Caspian Sea (Tengiz, Kashagan, Karachaganak fields; CPC pipeline). Baikonur Cosmodrome (leased by Russia). Altai and Tian Shan mountains on east. Shrinking Aral Sea on southwest.",
+      "tags": [
+        "Central Asia",
+        "Landlocked #1",
+        "Uranium #1",
+        "Caspian Sea",
+        "Baikonur",
+        "TARIK",
+        "Aral Sea"
+      ],
+      "aliases": [
+        "kazakhstan"
+      ]
+    },
+    "400": {
+      "id": "400",
+      "name": "Jordan",
+      "topoName": "Jordan",
+      "capital": "Amman",
+      "continent": "West Asia",
+      "subregion": "Levant / Middle East",
+      "mnemonic": "Cardboard train (Jordan) | Aqaba (Red Sea)",
+      "notes": "Nearly landlocked except for a 26-km coastline on Gulf of Aqaba (Red Sea). Borders Dead Sea and Jordan River on west. Vast eastern desert plateau. Ancient rock-cut city of Petra. Major potash and phosphate producer from Dead Sea.",
+      "tags": [
+        "Gulf of Aqaba",
+        "Dead Sea",
+        "Jordan River",
+        "Petra",
+        "Phosphate"
+      ],
+      "aliases": [
+        "jordan"
+      ]
+    },
+    "392": {
+      "id": "392",
+      "name": "Japan",
+      "topoName": "Japan",
+      "capital": "Tokyo",
+      "continent": "East & Central Asia",
+      "subregion": "East Asia",
+      "mnemonic": "",
+      "notes": "Stratovolcanic archipelago along Pacific Ring of Fire. 4 main islands: Hokkaido (north), Honshu (largest, Tokyo/Osaka), Shikoku, and Kyushu (south), plus Ryukyu/Okinawa islands. Mount Fuji. Bordered by Sea of Japan, Pacific Ocean, Sea of Okhotsk, and East China Sea. Kuril Islands dispute with Russia (Northern Territories); Senkaku Islands dispute with China. Global leader in autos, robotics, and semiconductor equipment.",
+      "tags": [
+        "4 Main Islands",
+        "Pacific Ring of Fire",
+        "Mount Fuji",
+        "Kuril Islands",
+        "Senkaku",
+        "Semiconductors"
+      ],
+      "aliases": [
+        "nippon",
+        "japan"
+      ]
+    },
+    "388": {
+      "id": "388",
+      "name": "Jamaica",
+      "topoName": "Jamaica",
+      "capital": "",
+      "continent": "North America",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Jamaica.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "jamaica",
+        "jamaica"
+      ]
+    },
+    "380": {
+      "id": "380",
+      "name": "Italy",
+      "topoName": "Italy",
+      "capital": "Rome",
+      "continent": "Europe",
+      "subregion": "Southern Europe",
+      "mnemonic": "",
+      "notes": "Boot-shaped peninsula in Mediterranean Sea. Apennine Mountains run down spine; Alps to north. Po River valley is agricultural & industrial core. Active volcanoes: Mount Vesuvius, Mount Etna (Sicily), Stromboli ('Lighthouse of the Mediterranean'). Encloses San Marino and Vatican City.",
+      "tags": [
+        "Mediterranean",
+        "Po Valley",
+        "Alps",
+        "Apennines",
+        "Mount Etna",
+        "Vesuvius"
+      ],
+      "aliases": [
+        "italy",
+        "italia"
+      ]
+    },
+    "376": {
+      "id": "376",
+      "name": "Israel",
+      "topoName": "Israel",
+      "capital": "Jerusalem",
+      "continent": "West Asia",
+      "subregion": "Levant",
+      "mnemonic": "Is a rail? (Israel) | LIST (Med) | MEN SOW SEEDS (Aqaba/Red Sea)",
+      "notes": "Mediterranean coast to north-west; southern outlet to Red Sea via Gulf of Aqaba (Port of Eilat). Jordan River flows south into Dead Sea (lowest land elevation on Earth, -430 m). Sea of Galilee (Lake Tiberias). Negev Desert. Major offshore gas fields: Tamar and Leviathan.",
+      "tags": [
+        "Levant",
+        "Dead Sea",
+        "Gulf of Aqaba",
+        "LIST",
+        "Jordan River",
+        "Negev",
+        "Leviathan Gas"
+      ],
+      "aliases": [
+        "israel"
+      ]
+    },
+    "275": {
+      "id": "275",
+      "name": "Palestine",
+      "topoName": "Palestine",
+      "capital": "Ramallah / East Jerusalem",
+      "continent": "West Asia",
+      "subregion": "Levant",
+      "mnemonic": "",
+      "notes": "Comprises the West Bank (bordering Jordan and Dead Sea) and Gaza Strip (bordering Mediterranean Sea and Egypt/Rafah crossing).",
+      "tags": [
+        "West Bank",
+        "Gaza Strip",
+        "Levant",
+        "Dead Sea",
+        "Rafah"
+      ],
+      "aliases": [
+        "palestine",
+        "west bank",
+        "gaza",
+        "state of palestine"
+      ]
+    },
+    "372": {
+      "id": "372",
+      "name": "Ireland",
+      "topoName": "Ireland",
+      "capital": "",
+      "continent": "Europe",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Ireland.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "ireland",
+        "ireland"
+      ]
+    },
+    "368": {
+      "id": "368",
+      "name": "Iraq",
+      "topoName": "Iraq",
+      "capital": "Baghdad",
+      "continent": "West Asia",
+      "subregion": "Middle East",
+      "mnemonic": "Rocky (Iraq) | Persian Gulf (I B SO QUIK)",
+      "notes": "Heart of ancient Mesopotamia ('cradle of civilization'). Tigris and Euphrates rivers converge into Shatt al-Arab waterway before reaching Persian Gulf (narrow coastline with Basra port and Al-Faw Grand Port). Huge oil reserves (Rumaila, Kirkuk). OPEC founding member.",
+      "tags": [
+        "Mesopotamia",
+        "Tigris",
+        "Euphrates",
+        "Shatt al-Arab",
+        "Basra",
+        "Rumaila",
+        "I B SO QUIK"
+      ],
+      "aliases": [
+        "iraq"
+      ]
+    },
+    "364": {
+      "id": "364",
+      "name": "Iran",
+      "topoName": "Iran",
+      "capital": "Tehran",
+      "continent": "West Asia",
+      "subregion": "Middle East",
+      "mnemonic": "X ran (Iran) | Strait of Hormuz | TARIK (Caspian) | I B SO QUIK (Gulf)",
+      "notes": "Dominates northern shore of Strait of Hormuz (chokepoint handling ~20% of world's petroleum). Borders Persian Gulf, Gulf of Oman, and Caspian Sea. Zagros and Elburz mountain ranges (Mount Damavand, highest volcano in Asia). Chabahar Port (developed with India to access Afghanistan & Central Asia). South Pars gas field.",
+      "tags": [
+        "Strait of Hormuz",
+        "Chabahar Port",
+        "Caspian Sea",
+        "Persian Gulf",
+        "Zagros Mountains",
+        "TARIK",
+        "I B SO QUIK"
+      ],
+      "aliases": [
+        "persia",
+        "iran"
+      ]
+    },
+    "360": {
+      "id": "360",
+      "name": "Indonesia",
+      "topoName": "Indonesia",
+      "capital": "Jakarta / Nusantara",
+      "continent": "South & Southeast Asia",
+      "subregion": "Southeast Asia",
+      "mnemonic": "",
+      "notes": "World's largest archipelagic state (>17,000 islands; major islands: Sumatra, Java, Kalimantan/Borneo, Sulawesi, Papua). New capital Nusantara under construction in East Kalimantan. Holds world's largest nickel reserves and mine production (essential for EV batteries); banned raw nickel ore exports to force domestic smelting. #1 palm oil producer, major coal exporter. Key maritime chokepoints: Malacca Strait, Sunda Strait, Lombok Strait, Makassar Strait. Pacific Ring of Fire volcanoes (Krakatoa, Merapi).",
+      "tags": [
+        "Nickel #1",
+        "Palm Oil #1",
+        "Sunda Strait",
+        "Lombok Strait",
+        "Nusantara",
+        "Pacific Ring of Fire",
+        "Archipelago"
+      ],
+      "aliases": [
+        "indonesia"
+      ]
+    },
+    "356": {
+      "id": "356",
+      "name": "India",
+      "topoName": "India",
+      "capital": "New Delhi",
+      "continent": "South & Southeast Asia",
+      "subregion": "South Asia",
+      "mnemonic": "",
+      "notes": "Central position atop the Indian Ocean between Strait of Hormuz and Strait of Malacca. Himalayan mountain barrier in north; peninsular plateau with Western Ghats (UNESCO biodiversity hotspot) and Eastern Ghats. Crossed by Tropic of Cancer through 8 states (Gujarat, Rajasthan, MP, Chhattisgarh, Jharkhand, WB, Tripura, Mizoram). Major river basins: Ganga, Brahmaputra, Indus, Godavari, Krishna, Cauvery. Island territories: Andaman & Nicobar (Ten Degree Channel, Great Channel near Malacca) and Lakshadweep (Nine Degree & Eight Degree Channels).",
+      "tags": [
+        "Indian Ocean",
+        "Himalayas",
+        "Western Ghats",
+        "Tropic of Cancer",
+        "Ten Degree Channel",
+        "Andaman & Nicobar"
+      ],
+      "aliases": [
+        "india",
+        "bharat"
+      ]
+    },
+    "352": {
+      "id": "352",
+      "name": "Iceland",
+      "topoName": "Iceland",
+      "capital": "",
+      "continent": "Europe",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Iceland.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "iceland",
+        "iceland"
+      ]
+    },
+    "348": {
+      "id": "348",
+      "name": "Hungary",
+      "topoName": "Hungary",
+      "capital": "",
+      "continent": "Europe",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Hungary.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "hungary",
+        "hungary"
+      ]
+    },
+    "340": {
+      "id": "340",
+      "name": "Honduras",
+      "topoName": "Honduras",
+      "capital": "",
+      "continent": "North America",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Honduras.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "honduras",
+        "honduras"
+      ]
+    },
+    "332": {
+      "id": "332",
+      "name": "Haiti",
+      "topoName": "Haiti",
+      "capital": "",
+      "continent": "North America",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Haiti.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "haiti",
+        "haiti"
+      ]
+    },
+    "328": {
+      "id": "328",
+      "name": "Guyana",
+      "topoName": "Guyana",
+      "capital": "Georgetown",
+      "continent": "South America",
+      "subregion": "Guianas / Caribbean",
+      "mnemonic": "",
+      "notes": "Only English-speaking country in South America. Significant population of Indian descent (Indo-Guyanese). Center of massive deepwater offshore oil boom in Stabroek Block (ExxonMobil), making it world's fastest-growing economy. Disputed with Venezuela (Essequibo region covers 2/3 of its territory). Bauxite and gold mining.",
+      "tags": [
+        "Stabroek Oil Boom",
+        "Essequibo Dispute",
+        "Indian Diaspora",
+        "Guianas"
+      ],
+      "aliases": [
+        "guyana"
+      ]
+    },
+    "624": {
+      "id": "624",
+      "name": "Guinea-Bissau",
+      "topoName": "Guinea-Bissau",
+      "capital": "",
+      "continent": "Africa",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Guinea-Bissau.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "guinea-bissau",
+        "guinea-bissau"
+      ]
+    },
+    "324": {
+      "id": "324",
+      "name": "Guinea",
+      "topoName": "Guinea",
+      "capital": "Conakry",
+      "continent": "Africa",
+      "subregion": "West Africa",
+      "mnemonic": "",
+      "notes": "World's largest bauxite exporter (~25% global bauxite reserves). Simandou mountain range holds world's largest untapped high-grade iron ore reserve. Source of Niger, Senegal, and Gambia rivers in Fouta Djallon highlands.",
+      "tags": [
+        "Bauxite #1",
+        "Simandou Iron Ore",
+        "Fouta Djallon",
+        "Water Tower of West Africa"
+      ],
+      "aliases": [
+        "guinea",
+        "guinee"
+      ]
+    },
+    "320": {
+      "id": "320",
+      "name": "Guatemala",
+      "topoName": "Guatemala",
+      "capital": "",
+      "continent": "North America",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Guatemala.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "guatemala",
+        "guatemala"
+      ]
+    },
+    "308": {
+      "id": "308",
+      "name": "Grenada",
+      "topoName": "Grenada",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Grenada.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "grenada",
+        "grenada"
+      ]
+    },
+    "300": {
+      "id": "300",
+      "name": "Greece",
+      "topoName": "Greece",
+      "capital": "Athens",
+      "continent": "Europe",
+      "subregion": "Southern Europe / Balkans",
+      "mnemonic": "",
+      "notes": "Southernmost tip of Balkan Peninsula. Aegean Sea, Ionian Sea, and Mediterranean Sea. Over 2,000 islands (Crete, Rhodes, Cyclades). Corinth Canal cuts through Isthmus of Corinth. Pindus mountain range. Mount Olympus.",
+      "tags": [
+        "Aegean Sea",
+        "Crete",
+        "Corinth Canal",
+        "Balkans",
+        "Mediterranean"
+      ],
+      "aliases": [
+        "greece",
+        "hellas"
+      ]
+    },
+    "288": {
+      "id": "288",
+      "name": "Ghana",
+      "topoName": "Ghana",
+      "capital": "Accra",
+      "continent": "Africa",
+      "subregion": "West Africa",
+      "mnemonic": "",
+      "notes": "Top gold producer in Africa (former 'Gold Coast'). World's 2nd largest cocoa exporter. Lake Volta is world's largest manmade reservoir by surface area (created by Akosombo Dam).",
+      "tags": [
+        "Gold Coast",
+        "Cocoa",
+        "Lake Volta",
+        "Akosombo Dam",
+        "Gulf of Guinea"
+      ],
+      "aliases": [
+        "ghana"
+      ]
+    },
+    "276": {
+      "id": "276",
+      "name": "Germany",
+      "topoName": "Germany",
+      "capital": "Berlin",
+      "continent": "Europe",
+      "subregion": "Central Europe",
+      "mnemonic": "",
+      "notes": "Largest economy in Europe. Coasts on North Sea and Baltic Sea connected by Kiel Canal. Major rivers: Rhine, Danube (flows east to Black Sea), Elbe, Oder. Ruhr valley industrial heartland. Black Forest (source of Danube).",
+      "tags": [
+        "Central Europe",
+        "Rhine River",
+        "Danube River",
+        "Kiel Canal",
+        "Ruhr Valley",
+        "Baltic Sea"
+      ],
+      "aliases": [
+        "deutschland",
+        "germany"
+      ]
+    },
+    "268": {
+      "id": "268",
+      "name": "Georgia",
+      "topoName": "Georgia",
+      "capital": "Tbilisi",
+      "continent": "West Asia",
+      "subregion": "South Caucasus",
+      "mnemonic": "BURGER T (Black Sea)",
+      "notes": "Borders Black Sea (ports of Batumi and Poti). Greater Caucasus Mountains (Mount Shkhara). Breakaway Russian-occupied regions: Abkhazia and South Ossetia. Transit corridor for Caspian oil and gas pipelines bypassing Russia.",
+      "tags": [
+        "Black Sea",
+        "Caucasus",
+        "Batumi",
+        "Abkhazia",
+        "South Ossetia",
+        "BURGER T"
+      ],
+      "aliases": [
+        "georgia"
+      ]
+    },
+    "270": {
+      "id": "270",
+      "name": "The Gambia",
+      "topoName": "Gambia",
+      "capital": "Banjul",
+      "continent": "Africa",
+      "subregion": "West Africa",
+      "mnemonic": "",
+      "notes": "Smallest country in mainland Africa. Narrow strip surrounding Gambia River, entirely bordered by Senegal except for short Atlantic coast.",
+      "tags": [
+        "Gambia River",
+        "Smallest Mainland Africa",
+        "Enclave within Senegal"
+      ],
+      "aliases": [
+        "the gambia",
+        "gambia"
+      ]
+    },
+    "266": {
+      "id": "266",
+      "name": "Gabon",
+      "topoName": "Gabon",
+      "capital": "Libreville",
+      "continent": "Africa",
+      "subregion": "Central Africa",
+      "mnemonic": "",
+      "notes": "Crossed by Equator. World's 2nd largest producer of manganese ore (Moanda mine). Heavily forested (~88% forest cover), major carbon sink. Oil exporter, former OPEC member.",
+      "tags": [
+        "Equator",
+        "Manganese",
+        "Congo Basin",
+        "Moanda",
+        "Oil"
+      ],
+      "aliases": [
+        "gabon"
+      ]
+    },
+    "250": {
+      "id": "250",
+      "name": "France",
+      "topoName": "France",
+      "capital": "Paris",
+      "continent": "Europe",
+      "subregion": "Western Europe",
+      "mnemonic": "",
+      "notes": "Hexagon shape. Coasts on English Channel, Bay of Biscay (Atlantic), and Mediterranean Sea. Mont Blanc in Alps (highest peak in Western Europe). World leader in nuclear energy share (~70% electricity). Major agricultural producer in EU. Controls Corsica island and overseas territories (French Guiana, Réunion, New Caledonia).",
+      "tags": [
+        "Western Europe",
+        "Nuclear Power",
+        "Alps",
+        "Mont Blanc",
+        "Corsica",
+        "English Channel"
+      ],
+      "aliases": [
+        "france"
+      ]
+    },
+    "666": {
+      "id": "666",
+      "name": "St. Pierre and Miquelon",
+      "topoName": "St. Pierre and Miquelon",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for St. Pierre and Miquelon.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "st. pierre and miquelon",
+        "st. pierre and miquelon"
+      ]
+    },
+    "876": {
+      "id": "876",
+      "name": "Wallis and Futuna Is.",
+      "topoName": "Wallis and Futuna Is.",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Wallis and Futuna Is..",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "wallis and futuna is.",
+        "wallis and futuna is."
+      ]
+    },
+    "663": {
+      "id": "663",
+      "name": "St-Martin",
+      "topoName": "St-Martin",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for St-Martin.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "st-martin",
+        "st-martin"
+      ]
+    },
+    "652": {
+      "id": "652",
+      "name": "St-Barthélemy",
+      "topoName": "St-Barthélemy",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for St-Barthélemy.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "st-barthélemy",
+        "st-barthélemy"
+      ]
+    },
+    "258": {
+      "id": "258",
+      "name": "Fr. Polynesia",
+      "topoName": "Fr. Polynesia",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Fr. Polynesia.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "fr. polynesia",
+        "fr. polynesia"
+      ]
+    },
+    "540": {
+      "id": "540",
+      "name": "New Caledonia",
+      "topoName": "New Caledonia",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for New Caledonia.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "new caledonia",
+        "new caledonia"
+      ]
+    },
+    "260": {
+      "id": "260",
+      "name": "Fr. South Antarctic Lands",
+      "topoName": "Fr. S. Antarctic Lands",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Fr. South Antarctic Lands.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "fr. s. antarctic lands",
+        "fr. south antarctic lands"
+      ]
+    },
+    "248": {
+      "id": "248",
+      "name": "Åland",
+      "topoName": "Åland",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Åland.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "åland",
+        "åland"
+      ]
+    },
+    "246": {
+      "id": "246",
+      "name": "Finland",
+      "topoName": "Finland",
+      "capital": "Helsinki",
+      "continent": "Europe",
+      "subregion": "Nordic",
+      "mnemonic": "",
+      "notes": "'Land of a Thousand Lakes' (~188,000 lakes). 1,340-km land border with Russia. Joined NATO in 2023. Åland Islands autonomous demilitarized zone in Baltic. Saimaa Canal.",
+      "tags": [
+        "Nordic",
+        "Lakes",
+        "Baltic Sea",
+        "NATO 2023",
+        "Aland Islands"
+      ],
+      "aliases": [
+        "suomi",
+        "finland"
+      ]
+    },
+    "242": {
+      "id": "242",
+      "name": "Fiji",
+      "topoName": "Fiji",
+      "capital": "",
+      "continent": "South & Southeast Asia",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Fiji.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "fiji",
+        "fiji"
+      ]
+    },
+    "231": {
+      "id": "231",
+      "name": "Ethiopia",
+      "topoName": "Ethiopia",
+      "capital": "Addis Ababa",
+      "continent": "Africa",
+      "subregion": "Horn of Africa",
+      "mnemonic": "HOP (Ethiopia) | Horn of Africa (SEED)",
+      "notes": "Most populous landlocked country in the world. Headwaters of Blue Nile (Lake Tana). Constructed the Grand Ethiopian Renaissance Dam (GERD), sparking downstream disputes with Egypt and Sudan. Birthplace of Arabica coffee (Kaffa). Headquarters of African Union (Addis Ababa). Conflict: Tigray region.",
+      "tags": [
+        "Horn of Africa",
+        "Landlocked",
+        "GERD Dam",
+        "Blue Nile",
+        "Coffee",
+        "Tigray",
+        "African Union"
+      ],
+      "aliases": [
+        "ethiopia",
+        "ethiopie"
+      ]
+    },
+    "233": {
+      "id": "233",
+      "name": "Estonia",
+      "topoName": "Estonia",
+      "capital": "",
+      "continent": "Europe",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Estonia.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "estonia",
+        "estonia"
+      ]
+    },
+    "232": {
+      "id": "232",
+      "name": "Eritrea",
+      "topoName": "Eritrea",
+      "capital": "Asmara",
+      "continent": "Africa",
+      "subregion": "Horn of Africa",
+      "mnemonic": "Stand EDge (Eritrea) | Red Sea (MEN SOW SEEDS) | Horn of Africa (SEED)",
+      "notes": "Stretches along the southern Red Sea coast. Ports of Massawa and Assab. Seceded from Ethiopia in 1993, making Ethiopia landlocked. Dahlak Archipelago. Danakil Depression border.",
+      "tags": [
+        "Horn of Africa",
+        "Red Sea",
+        "Asmara",
+        "MEN SOW SEEDS",
+        "SEED"
+      ],
+      "aliases": [
+        "eritrea"
+      ]
+    },
+    "226": {
+      "id": "226",
+      "name": "Equatorial Guinea",
+      "topoName": "Eq. Guinea",
+      "capital": "Malabo",
+      "continent": "Africa",
+      "subregion": "Central Africa",
+      "mnemonic": "",
+      "notes": "Only Spanish-speaking sovereign country in Africa. Capital Malabo is on Bioko Island in Gulf of Guinea, while continental territory is Rio Muni. Major offshore oil producer.",
+      "tags": [
+        "Oil",
+        "Bioko Island",
+        "Gulf of Guinea",
+        "Spanish-speaking Africa"
+      ],
+      "aliases": [
+        "eq. guinea",
+        "eq guinea",
+        "equatorial guinea"
+      ]
+    },
+    "222": {
+      "id": "222",
+      "name": "El Salvador",
+      "topoName": "El Salvador",
+      "capital": "",
+      "continent": "North America",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for El Salvador.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "el salvador",
+        "el salvador"
+      ]
+    },
+    "818": {
+      "id": "818",
+      "name": "Egypt",
+      "topoName": "Egypt",
+      "capital": "Cairo",
+      "continent": "Africa",
+      "subregion": "North Africa",
+      "mnemonic": "Rabbit says MALE (E - Egypt) | Red Sea (MEN SOW SEEDS)",
+      "notes": "Suez Canal (opened 1869, 193 km, connects Port Said on Mediterranean to Port Tewfik on Red Sea; handles ~12% global trade). Sinai Peninsula forms land bridge between Africa and Asia. Nile River basin; Aswan High Dam and Lake Nasser. Bordered by Red Sea and Mediterranean.",
+      "tags": [
+        "Suez Canal",
+        "Nile",
+        "Red Sea",
+        "Sinai",
+        "Rabbit says MALE",
+        "MEN SOW SEEDS"
+      ],
+      "aliases": [
+        "misr",
+        "egypt"
+      ]
+    },
+    "218": {
+      "id": "218",
+      "name": "Ecuador",
+      "topoName": "Ecuador",
+      "capital": "Quito",
+      "continent": "South America",
+      "subregion": "Andean / South America",
+      "mnemonic": "",
+      "notes": "Named after the Equator which passes through it. Controls Galápagos Islands in Pacific (biodiversity hotspot, Charles Darwin's evolution theory). Mount Chimborazo's summit is point on Earth's surface closest to the Sun (due to Earth's equatorial bulge). Major crude oil, banana, and shrimp exporter. Guayaquil is chief port.",
+      "tags": [
+        "Equator",
+        "Galapagos Islands",
+        "Mount Chimborazo",
+        "Oil",
+        "Bananas"
+      ],
+      "aliases": [
+        "ecuador"
+      ]
+    },
+    "214": {
+      "id": "214",
+      "name": "Dominican Rep.",
+      "topoName": "Dominican Rep.",
+      "capital": "",
+      "continent": "North America",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Dominican Rep..",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "dominican rep.",
+        "dominican rep."
+      ]
+    },
+    "212": {
+      "id": "212",
+      "name": "Dominica",
+      "topoName": "Dominica",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Dominica.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "dominica",
+        "dominica"
+      ]
+    },
+    "262": {
+      "id": "262",
+      "name": "Djibouti",
+      "topoName": "Djibouti",
+      "capital": "Djibouti City",
+      "continent": "Africa",
+      "subregion": "Horn of Africa",
+      "mnemonic": "Stand EDge (Djibouti) | Bab-el-Mandeb | Horn of Africa (SEED)",
+      "notes": "Guards the western gate of Bab-el-Mandeb Strait ('Gate of Tears') linking Red Sea to Gulf of Aden. Prime maritime logistics hub hosting military bases from USA (Camp Lemonnier), China, France, and Japan. Lake Assal is the lowest point in Africa (-155 m). Main sea outlet for landlocked Ethiopia.",
+      "tags": [
+        "Bab-el-Mandeb",
+        "Chokepoint",
+        "Military Bases",
+        "Lake Assal",
+        "Horn of Africa",
+        "SEED",
+        "MEN SOW SEEDS"
+      ],
+      "aliases": [
+        "djibouti"
+      ]
+    },
+    "304": {
+      "id": "304",
+      "name": "Greenland",
+      "topoName": "Greenland",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Greenland.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "greenland",
+        "greenland"
+      ]
+    },
+    "234": {
+      "id": "234",
+      "name": "Faeroe Is.",
+      "topoName": "Faeroe Is.",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Faeroe Is..",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "faeroe is.",
+        "faeroe is."
+      ]
+    },
+    "208": {
+      "id": "208",
+      "name": "Denmark",
+      "topoName": "Denmark",
+      "capital": "",
+      "continent": "Europe",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Denmark.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "denmark",
+        "denmark"
+      ]
+    },
+    "203": {
+      "id": "203",
+      "name": "Czechia",
+      "topoName": "Czechia",
+      "capital": "",
+      "continent": "Europe",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Czechia.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "czechia",
+        "czechia"
+      ]
+    },
+    "196": {
+      "id": "196",
+      "name": "Cyprus",
+      "topoName": "Cyprus",
+      "capital": "",
+      "continent": "Europe",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Cyprus.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "cyprus",
+        "cyprus"
+      ]
+    },
+    "192": {
+      "id": "192",
+      "name": "Cuba",
+      "topoName": "Cuba",
+      "capital": "Havana",
+      "continent": "North America",
+      "subregion": "Caribbean",
+      "mnemonic": "",
+      "notes": "Largest island in Caribbean Sea. Controls entrance to Gulf of Mexico via Straits of Florida and Yucatán Channel. Major nickel and cobalt reserves (Moa). US naval base at Guantanamo Bay. Sugar cane and tobacco.",
+      "tags": [
+        "Caribbean",
+        "Gulf of Mexico Entrance",
+        "Nickel",
+        "Guantanamo Bay",
+        "Straits of Florida"
+      ],
+      "aliases": [
+        "cuba"
+      ]
+    },
+    "191": {
+      "id": "191",
+      "name": "Croatia",
+      "topoName": "Croatia",
+      "capital": "",
+      "continent": "Europe",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Croatia.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "croatia",
+        "croatia"
+      ]
+    },
+    "384": {
+      "id": "384",
+      "name": "Côte d'Ivoire",
+      "topoName": "Côte d'Ivoire",
+      "capital": "Yamoussoukro / Abidjan",
+      "continent": "Africa",
+      "subregion": "West Africa",
+      "mnemonic": "",
+      "notes": "World's #1 producer and exporter of cocoa beans (~45% of global market). Major cashew producer. Abidjan is major West African seaport and financial center.",
+      "tags": [
+        "Cocoa #1",
+        "Cashews",
+        "Abidjan",
+        "Gulf of Guinea"
+      ],
+      "aliases": [
+        "cote d'ivoire",
+        "côte d'ivoire",
+        "cote divoire",
+        "ivory coast"
+      ]
+    },
+    "188": {
+      "id": "188",
+      "name": "Costa Rica",
+      "topoName": "Costa Rica",
+      "capital": "",
+      "continent": "North America",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Costa Rica.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "costa rica",
+        "costa rica"
+      ]
+    },
+    "180": {
+      "id": "180",
+      "name": "Democratic Republic of the Congo",
+      "topoName": "Dem. Rep. Congo",
+      "capital": "Kinshasa",
+      "continent": "Africa",
+      "subregion": "Central Africa",
+      "mnemonic": "",
+      "notes": "Controls ~70% of world's cobalt production and massive reserves of coltan, copper, lithium, and tantalum. Congo River is 2nd largest river by discharge in world, crosses Equator twice, Grand Inga Dam potential. Eastern conflict in Kivu and Ituri (M23 rebel group, FDLR).",
+      "tags": [
+        "Cobalt",
+        "Critical Minerals",
+        "Congo River",
+        "Kivu",
+        "Ituri",
+        "M23",
+        "Katanga Copperbelt",
+        "Equator"
+      ],
+      "aliases": [
+        "democratic republic of the congo",
+        "congo kinshasa",
+        "dem rep congo",
+        "democratic republic of congo",
+        "dr congo",
+        "drc",
+        "dem. rep. congo"
+      ]
+    },
+    "178": {
+      "id": "178",
+      "name": "Republic of the Congo",
+      "topoName": "Congo",
+      "capital": "Brazzaville",
+      "continent": "Africa",
+      "subregion": "Central Africa",
+      "mnemonic": "",
+      "notes": "Separated from DRC across Congo River (Brazzaville & Kinshasa are closest capitals in world). Atlantic port of Pointe-Noire. Major oil and timber exporter. Crossed by Equator.",
+      "tags": [
+        "Congo River",
+        "Equator",
+        "Brazzaville",
+        "Oil",
+        "Timber"
+      ],
+      "aliases": [
+        "congo brazzaville",
+        "republic of the congo",
+        "congo"
+      ]
+    },
+    "174": {
+      "id": "174",
+      "name": "Comoros",
+      "topoName": "Comoros",
+      "capital": "",
+      "continent": "Africa",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Comoros.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "comoros",
+        "comoros"
+      ]
+    },
+    "170": {
+      "id": "170",
+      "name": "Colombia",
+      "topoName": "Colombia",
+      "capital": "Bogotá",
+      "continent": "South America",
+      "subregion": "South America",
+      "mnemonic": "",
+      "notes": "Only country in South America with coastlines on both the Pacific Ocean and Caribbean Sea. World's #1 emerald producer; famous for high-grade Arabica coffee. Cerrejón open-pit coal mine. Magdalena and Cauca river valleys between three Andean cordilleras. Borders Panama at Darién Gap.",
+      "tags": [
+        "Pacific & Caribbean Coasts",
+        "Emeralds #1",
+        "Coffee",
+        "Darien Gap",
+        "Cerrejon Coal"
+      ],
+      "aliases": [
+        "colombia"
+      ]
+    },
+    "156": {
+      "id": "156",
+      "name": "China",
+      "topoName": "China",
+      "capital": "Beijing",
+      "continent": "East & Central Asia",
+      "subregion": "East Asia",
+      "mnemonic": "",
+      "notes": "2nd most populous country. Dominates global critical mineral supply chains: controls >60% of rare earth mining and >90% of refining; >70% of cobalt refining; >60% of lithium refining. Major rivers: Yangtze (Three Gorges Dam, world's largest power station) and Yellow River (Huang He). Tibetan Plateau ('Water Tower of Asia', headwaters of Indus, Brahmaputra/Yarlung Tsangpo, Mekong, Yangtze). Pearl River Delta and Yangtze Delta economic powerhouses. Nine-Dash Line claims across South China Sea.",
+      "tags": [
+        "Critical Minerals #1",
+        "Rare Earths",
+        "Three Gorges Dam",
+        "Tibetan Plateau",
+        "South China Sea",
+        "Belt & Road"
+      ],
+      "aliases": [
+        "china",
+        "people's republic of china",
+        "prc"
+      ]
+    },
+    "446": {
+      "id": "446",
+      "name": "Macao",
+      "topoName": "Macao",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Macao.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "macao",
+        "macao"
+      ]
+    },
+    "344": {
+      "id": "344",
+      "name": "Hong Kong",
+      "topoName": "Hong Kong",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Hong Kong.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "hong kong",
+        "hong kong"
+      ]
+    },
+    "152": {
+      "id": "152",
+      "name": "Chile",
+      "topoName": "Chile",
+      "capital": "Santiago",
+      "continent": "South America",
+      "subregion": "South America",
+      "mnemonic": "Lithium Triangle (Bolivia, Chile, Argentina)",
+      "notes": "Extraordinarily long and narrow country (>4,200 km north to south). World's #1 copper producer (>25% global supply; Escondida and El Teniente mines). Part of 'Lithium Triangle' (Salar de Atacama has highest concentration of lithium in world). Atacama Desert is driest non-polar desert on Earth, home to major astronomical observatories (ALMA). Strait of Magellan and Cape Horn at southern tip.",
+      "tags": [
+        "Copper #1",
+        "Lithium Triangle",
+        "Atacama Desert",
+        "Strait of Magellan",
+        "Cape Horn"
+      ],
+      "aliases": [
+        "chile"
+      ]
+    },
+    "148": {
+      "id": "148",
+      "name": "Chad",
+      "topoName": "Chad",
+      "capital": "N'Djamena",
+      "continent": "Africa",
+      "subregion": "Sahel / Central Africa",
+      "mnemonic": "",
+      "notes": "Landlocked country dominated by Sahara in north (Tibesti Mountains) and Sahel. Lake Chad has shrunk by >90% since 1960s due to climate change and irrigation, impacting 30 million people. Member of G5 Sahel.",
+      "tags": [
+        "Sahel",
+        "Lake Chad",
+        "Tibesti",
+        "Landlocked",
+        "G5 Sahel"
+      ],
+      "aliases": [
+        "chad",
+        "tchad"
+      ]
+    },
+    "140": {
+      "id": "140",
+      "name": "Central African Republic",
+      "topoName": "Central African Rep.",
+      "capital": "Bangui",
+      "continent": "Africa",
+      "subregion": "Central Africa",
+      "mnemonic": "",
+      "notes": "Landlocked country rich in diamonds, gold, and uranium. Ubangi River forms southern border. Ongoing civil conflict involving rebel coalitions and Russian Wagner/Africa Corps presence.",
+      "tags": [
+        "Landlocked",
+        "Sahel/Savanna",
+        "Diamonds",
+        "Ubangi River",
+        "Wagner"
+      ],
+      "aliases": [
+        "central african rep.",
+        "central african republic",
+        "car"
+      ]
+    },
+    "132": {
+      "id": "132",
+      "name": "Cabo Verde",
+      "topoName": "Cabo Verde",
+      "capital": "",
+      "continent": "Africa",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Cabo Verde.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "cabo verde",
+        "cabo verde"
+      ]
+    },
+    "124": {
+      "id": "124",
+      "name": "Canada",
+      "topoName": "Canada",
+      "capital": "Ottawa",
+      "continent": "North America",
+      "subregion": "North America",
+      "mnemonic": "",
+      "notes": "2nd largest country in world by total area. Longest coastline in world (~243,000 km). Massive Athabasca oil sands in Alberta (world's 3rd largest oil reserves). Athabasca Basin in Saskatchewan produces world's highest-grade uranium (Cigar Lake, McArthur River). #1 world producer of potash (fertilizer) and major nickel, gold, and timber exporter. Great Lakes shared with USA. Northwest Passage in Arctic.",
+      "tags": [
+        "Athabasca Oil Sands",
+        "Uranium #2",
+        "Potash #1",
+        "Arctic Northwest Passage",
+        "Great Lakes"
+      ],
+      "aliases": [
+        "canada"
+      ]
+    },
+    "120": {
+      "id": "120",
+      "name": "Cameroon",
+      "topoName": "Cameroon",
+      "capital": "Yaoundé",
+      "continent": "Africa",
+      "subregion": "Central Africa",
+      "mnemonic": "",
+      "notes": "'Africa in miniature' (diverse biomes from Sahel to rainforest). Mount Cameroon active volcano. Lake Nyos (limnic eruption 1986). Chad-Cameroon oil pipeline terminates at Kribi port.",
+      "tags": [
+        "Gulf of Guinea",
+        "Mount Cameroon",
+        "Lake Nyos",
+        "Kribi"
+      ],
+      "aliases": [
+        "cameroun",
+        "cameroon"
+      ]
+    },
+    "116": {
+      "id": "116",
+      "name": "Cambodia",
+      "topoName": "Cambodia",
+      "capital": "Phnom Penh",
+      "continent": "South & Southeast Asia",
+      "subregion": "Southeast Asia",
+      "mnemonic": "",
+      "notes": "Traversed by Mekong River. Contains Tonlé Sap: largest freshwater lake in Southeast Asia, with a unique pulsing flood-flow reversal system. Ream Naval Base on Gulf of Thailand (Chinese upgrade). Angkor Wat temple complex.",
+      "tags": [
+        "Tonle Sap Lake",
+        "Mekong",
+        "Ream Naval Base",
+        "Gulf of Thailand"
+      ],
+      "aliases": [
+        "cambodia",
+        "kampuchea"
+      ]
+    },
+    "104": {
+      "id": "104",
+      "name": "Myanmar",
+      "topoName": "Myanmar",
+      "capital": "Naypyidaw",
+      "continent": "South & Southeast Asia",
+      "subregion": "Southeast Asia",
+      "mnemonic": "Golden Triangle",
+      "notes": "Borders Bay of Bengal and Andaman Sea. Irrawaddy River is lifeblood. World's foremost source of jadeite jade and rubies; major supplier of heavy rare earths to China (Kachin state). Sittwe Port is key component of India's Kaladan Multi-Modal Transit Transport Project. Part of 'Golden Triangle' opium zone with Thailand and Laos. Dawei deep seaport.",
+      "tags": [
+        "Kaladan Project",
+        "Sittwe Port",
+        "Irrawaddy",
+        "Rare Earths",
+        "Golden Triangle",
+        "Bay of Bengal"
+      ],
+      "aliases": [
+        "myanmar",
+        "burma"
+      ]
+    },
+    "108": {
+      "id": "108",
+      "name": "Burundi",
+      "topoName": "Burundi",
+      "capital": "Gitega",
+      "continent": "Africa",
+      "subregion": "East/Central Africa",
+      "mnemonic": "",
+      "notes": "Small landlocked Great Lakes country bordering Lake Tanganyika, Rwanda, and DRC. Coffee and tea exports, nickel reserves.",
+      "tags": [
+        "Landlocked",
+        "Lake Tanganyika",
+        "Great Lakes"
+      ],
+      "aliases": [
+        "burundi"
+      ]
+    },
+    "854": {
+      "id": "854",
+      "name": "Burkina Faso",
+      "topoName": "Burkina Faso",
+      "capital": "Ouagadougou",
+      "continent": "Africa",
+      "subregion": "Sahel",
+      "mnemonic": "",
+      "notes": "Landlocked country in Sahel. Formerly Upper Volta (Volta river headwaters). Major gold producer. AES member following military coups.",
+      "tags": [
+        "Sahel",
+        "Gold",
+        "Landlocked",
+        "Alliance of Sahel States",
+        "Upper Volta"
+      ],
+      "aliases": [
+        "burkina",
+        "burkina faso"
+      ]
+    },
+    "100": {
+      "id": "100",
+      "name": "Bulgaria",
+      "topoName": "Bulgaria",
+      "capital": "Sofia",
+      "continent": "Europe",
+      "subregion": "Balkans",
+      "mnemonic": "BURGER T (Black Sea)",
+      "notes": "Borders Black Sea on east (Burgas, Varna ports). Danube River forms northern border with Romania. Balkan Mountains (Stara Planina) and Rhodope Mountains. Rose oil producer (Rose Valley).",
+      "tags": [
+        "Black Sea",
+        "Danube",
+        "Balkans",
+        "BURGER T"
+      ],
+      "aliases": [
+        "bulgaria"
+      ]
+    },
+    "096": {
+      "id": "096",
+      "name": "Brunei",
+      "topoName": "Brunei",
+      "capital": "",
+      "continent": "South & Southeast Asia",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Brunei.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "brunei",
+        "brunei"
+      ]
+    },
+    "076": {
+      "id": "076",
+      "name": "Brazil",
+      "topoName": "Brazil",
+      "capital": "Brasília",
+      "continent": "South America",
+      "subregion": "South America",
+      "mnemonic": "",
+      "notes": "Largest country in South America by area and population. Amazon River basin and rainforest (largest rainforest on Earth, 'lungs of the planet', deforestation concerns). Cerrado tropical savanna (major agribusiness belt). World leader in coffee (#1), sugarcane ethanol (#1), soybeans (#1), beef, and orange juice. Carajás mine in Pará is world's largest iron ore deposit (Vale). Pre-salt deepwater offshore oil reserves (Santos Basin). Itaipu Dam on Paraná River border with Paraguay. BRICS founder.",
+      "tags": [
+        "Amazon",
+        "Cerrado",
+        "Soybeans #1",
+        "Coffee #1",
+        "Carajas Iron Ore",
+        "Itaipu Dam",
+        "BRICS",
+        "Pre-salt Oil"
+      ],
+      "aliases": [
+        "brazil",
+        "brasil"
+      ]
+    },
+    "072": {
+      "id": "072",
+      "name": "Botswana",
+      "topoName": "Botswana",
+      "capital": "Gaborone",
+      "continent": "Africa",
+      "subregion": "Southern Africa",
+      "mnemonic": "",
+      "notes": "World's top diamond producer by value (Debswana partnership; Jwaneng & Orapa mines). Completely landlocked; dominated by Kalahari Desert. Okavango Delta: world's largest inland delta, drains into desert sands without reaching sea.",
+      "tags": [
+        "Landlocked",
+        "Kalahari",
+        "Diamonds",
+        "Okavango Delta",
+        "Debswana"
+      ],
+      "aliases": [
+        "botswana"
+      ]
+    },
+    "070": {
+      "id": "070",
+      "name": "Bosnia and Herz.",
+      "topoName": "Bosnia and Herz.",
+      "capital": "",
+      "continent": "Europe",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Bosnia and Herz..",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "bosnia and herz.",
+        "bosnia and herz."
+      ]
+    },
+    "068": {
+      "id": "068",
+      "name": "Bolivia",
+      "topoName": "Bolivia",
+      "capital": "Sucre (Const), La Paz (Gov)",
+      "continent": "South America",
+      "subregion": "Andean / South America",
+      "mnemonic": "Lithium Triangle (Bolivia, Chile, Argentina)",
+      "notes": "Landlocked country (lost Pacific coastline to Chile in War of the Pacific 1879-84). Altiplano high plateau. Salar de Uyuni holds world's single largest lithium resource (~23M tonnes, part of Lithium Triangle). Lake Titicaca on Peru border (highest navigable lake in world, 3,812 m). Historic silver mountain of Cerro Rico at Potosí. Major natural gas exporter.",
+      "tags": [
+        "Landlocked",
+        "Lithium Triangle",
+        "Salar de Uyuni",
+        "Lake Titicaca",
+        "Altiplano",
+        "Potosi"
+      ],
+      "aliases": [
+        "bolivia"
+      ]
+    },
+    "064": {
+      "id": "064",
+      "name": "Bhutan",
+      "topoName": "Bhutan",
+      "capital": "Thimphu",
+      "continent": "South & Southeast Asia",
+      "subregion": "South Asia",
+      "mnemonic": "",
+      "notes": "Landlocked Himalayan kingdom. Carbon-negative country (constitutional requirement for >60% forest cover). Hydroelectricity exported to India (Chukha, Tala, Mangdechhu). Measures Gross National Happiness (GNH). Doklam plateau trijunction flashpoint between India, Bhutan, and China.",
+      "tags": [
+        "Landlocked",
+        "Carbon Negative",
+        "Hydropower",
+        "Doklam",
+        "Himalayas"
+      ],
+      "aliases": [
+        "bhutan"
+      ]
+    },
+    "204": {
+      "id": "204",
+      "name": "Benin",
+      "topoName": "Benin",
+      "capital": "",
+      "continent": "Africa",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Benin.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "benin",
+        "benin"
+      ]
+    },
+    "084": {
+      "id": "084",
+      "name": "Belize",
+      "topoName": "Belize",
+      "capital": "",
+      "continent": "North America",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Belize.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "belize",
+        "belize"
+      ]
+    },
+    "056": {
+      "id": "056",
+      "name": "Belgium",
+      "topoName": "Belgium",
+      "capital": "Brussels",
+      "continent": "Europe",
+      "subregion": "Western Europe",
+      "mnemonic": "",
+      "notes": "Hosts headquarters of European Union (EU) and NATO in Brussels. Port of Antwerp is 2nd largest in Europe and world's foremost diamond-trading hub. Divided between Dutch-speaking Flanders (north) and French-speaking Wallonia (south).",
+      "tags": [
+        "EU HQ",
+        "NATO HQ",
+        "Antwerp Diamonds",
+        "North Sea"
+      ],
+      "aliases": [
+        "belgique",
+        "belgium"
+      ]
+    },
+    "112": {
+      "id": "112",
+      "name": "Belarus",
+      "topoName": "Belarus",
+      "capital": "",
+      "continent": "Europe",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Belarus.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "belarus",
+        "belarus"
+      ]
+    },
+    "052": {
+      "id": "052",
+      "name": "Barbados",
+      "topoName": "Barbados",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Barbados.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "barbados",
+        "barbados"
+      ]
+    },
+    "050": {
+      "id": "050",
+      "name": "Bangladesh",
+      "topoName": "Bangladesh",
+      "capital": "Dhaka",
+      "continent": "South & Southeast Asia",
+      "subregion": "South Asia",
+      "mnemonic": "",
+      "notes": "World's largest delta: Ganges-Brahmaputra-Meghna delta (Sundarbans mangrove forest, Royal Bengal tiger habitat). Extremely vulnerable to sea level rise and cyclones in Bay of Bengal. World's 2nd largest ready-made garment (RMG) exporter after China. Chattogram (Chittagong) port and Matarbari deep seaport.",
+      "tags": [
+        "Ganges Delta",
+        "Sundarbans",
+        "Bay of Bengal",
+        "RMG",
+        "Matarbari Port"
+      ],
+      "aliases": [
+        "bangladesh"
+      ]
+    },
+    "048": {
+      "id": "048",
+      "name": "Bahrain",
+      "topoName": "Bahrain",
+      "capital": "Manama",
+      "continent": "West Asia",
+      "subregion": "Arabian Peninsula",
+      "mnemonic": "Beetroot rain (Bahrain) | Persian Gulf (I B SO QUIK)",
+      "notes": "Island nation in Persian Gulf connected to Saudi Arabia via King Fahd Causeway (25 km). First Arabian Gulf state where oil was discovered (1932). Hosts US Navy Fifth Fleet headquarters. Major aluminium smelter (Alba).",
+      "tags": [
+        "Persian Gulf",
+        "Island Nation",
+        "King Fahd Causeway",
+        "Fifth Fleet",
+        "I B SO QUIK"
+      ],
+      "aliases": [
+        "bahrain"
+      ]
+    },
+    "044": {
+      "id": "044",
+      "name": "Bahamas",
+      "topoName": "Bahamas",
+      "capital": "",
+      "continent": "North America",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Bahamas.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "bahamas",
+        "bahamas"
+      ]
+    },
+    "031": {
+      "id": "031",
+      "name": "Azerbaijan",
+      "topoName": "Azerbaijan",
+      "capital": "Baku",
+      "continent": "West Asia",
+      "subregion": "South Caucasus",
+      "mnemonic": "TARIK (Caspian Sea)",
+      "notes": "Borders Caspian Sea. Baku is historic center of oil & gas industry (Baku-Tbilisi-Ceyhan pipeline, Southern Gas Corridor). Exclave of Nakhchivan separated by Armenia. Regained full control of Nagorno-Karabakh in 2023.",
+      "tags": [
+        "Caspian Sea",
+        "Baku",
+        "BTC Pipeline",
+        "Nakhchivan",
+        "Nagorno-Karabakh",
+        "TARIK"
+      ],
+      "aliases": [
+        "azerbaijan"
+      ]
+    },
+    "040": {
+      "id": "040",
+      "name": "Austria",
+      "topoName": "Austria",
+      "capital": "",
+      "continent": "Europe",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Austria.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "austria",
+        "austria"
+      ]
+    },
+    "036": {
+      "id": "036",
+      "name": "Australia",
+      "topoName": "Ashmore and Cartier Is.",
+      "capital": "Canberra",
+      "continent": "South & Southeast Asia",
+      "subregion": "Oceania",
+      "mnemonic": "B.Sc M.A PhD (Clockwise coastal cities: Brisbane, Sydney, Canberra, Melbourne, Adelaide, Perth, Darwin)",
+      "notes": "World's largest exporter of iron ore (Pilbara region) and mined lithium (#1 hard-rock spodumene producer). Major exporter of metallurgical & thermal coal, bauxite/aluminium, gold, LNG, and uranium (Olympic Dam). Great Barrier Reef (world's largest coral reef system). Murray-Darling river basin. Great Artesian Basin.",
+      "tags": [
+        "Pilbara Iron Ore",
+        "Lithium #1",
+        "Great Barrier Reef",
+        "Murray-Darling",
+        "B.Sc M.A PhD",
+        "Olympic Dam"
+      ],
+      "aliases": [
+        "australia",
+        "ashmore and cartier is.",
+        "oz"
+      ]
+    },
+    "334": {
+      "id": "334",
+      "name": "Heard I. and McDonald Is.",
+      "topoName": "Heard I. and McDonald Is.",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Heard I. and McDonald Is..",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "heard i. and mcdonald is.",
+        "heard i. and mcdonald is."
+      ]
+    },
+    "574": {
+      "id": "574",
+      "name": "Norfolk Island",
+      "topoName": "Norfolk Island",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Norfolk Island.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "norfolk island",
+        "norfolk island"
+      ]
+    },
+    "051": {
+      "id": "051",
+      "name": "Armenia",
+      "topoName": "Armenia",
+      "capital": "Yerevan",
+      "continent": "West Asia",
+      "subregion": "South Caucasus",
+      "mnemonic": "",
+      "notes": "Landlocked country in South Caucasus between Black and Caspian Seas. Mount Ararat national symbol (now inside Turkey). Lake Sevan (major alpine freshwater lake). Border dispute and war over Nagorno-Karabakh with Azerbaijan; Syunik province / Zangezur corridor controversy.",
+      "tags": [
+        "South Caucasus",
+        "Landlocked",
+        "Lake Sevan",
+        "Nagorno-Karabakh",
+        "Zangezur Corridor"
+      ],
+      "aliases": [
+        "armenia"
+      ]
+    },
+    "032": {
+      "id": "032",
+      "name": "Argentina",
+      "topoName": "Argentina",
+      "capital": "Buenos Aires",
+      "continent": "South America",
+      "subregion": "South America",
+      "mnemonic": "Lithium Triangle (Bolivia, Chile, Argentina)",
+      "notes": "2nd largest country in South America. Pampas fertile lowlands: major producer of soy, wheat, and beef. Patagonia arid plateau in south. Andes Mountains form western border (Aconcagua, 6,961 m, highest peak outside Asia). Part of the 'Lithium Triangle' (Hombre Muerto and Olaroz salt flats). Vaca Muerta shale formation is world's 2nd largest shale gas reserve. Claims Falkland Islands (Islas Malvinas, UK).",
+      "tags": [
+        "Lithium Triangle",
+        "Pampas",
+        "Aconcagua",
+        "Vaca Muerta",
+        "Patagonia",
+        "Falkland Claims"
+      ],
+      "aliases": [
+        "argentina"
+      ]
+    },
+    "028": {
+      "id": "028",
+      "name": "Antigua and Barb.",
+      "topoName": "Antigua and Barb.",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Antigua and Barb..",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "antigua and barb.",
+        "antigua and barb."
+      ]
+    },
+    "024": {
+      "id": "024",
+      "name": "Angola",
+      "topoName": "Angola",
+      "capital": "Luanda",
+      "continent": "Africa",
+      "subregion": "Southern Africa",
+      "mnemonic": "",
+      "notes": "One of Africa's top crude oil producers; quit OPEC in 2024 over quota dispute. Rich in alluvial diamonds. Lobito Corridor railway connects DRC & Zambia copper/cobalt belts to Atlantic. Exclave of Cabinda produces ~60% of its oil.",
+      "tags": [
+        "Oil",
+        "Lobito Corridor",
+        "Cabinda",
+        "Diamonds",
+        "OPEC exit 2024"
+      ],
+      "aliases": [
+        "angola"
+      ]
+    },
+    "020": {
+      "id": "020",
+      "name": "Andorra",
+      "topoName": "Andorra",
+      "capital": "",
+      "continent": "Europe",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Andorra.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "andorra",
+        "andorra"
+      ]
+    },
+    "012": {
+      "id": "012",
+      "name": "Algeria",
+      "topoName": "Algeria",
+      "capital": "Algiers",
+      "continent": "Africa",
+      "subregion": "North Africa / Maghreb",
+      "mnemonic": "Rabbit says MALE (A - Algeria)",
+      "notes": "Largest country in Africa by land area. Major crude oil and natural gas supplier to Europe via underwater pipelines (Medgaz, Transmed). Over 80% covered by Sahara Desert. Ahaggar Mountains (Mount Tahat). OPEC member.",
+      "tags": [
+        "Maghreb",
+        "OPEC",
+        "Sahara",
+        "Oil & Gas",
+        "Rabbit says MALE"
+      ],
+      "aliases": [
+        "algerie",
+        "algeria"
+      ]
+    },
+    "008": {
+      "id": "008",
+      "name": "Albania",
+      "topoName": "Albania",
+      "capital": "",
+      "continent": "Europe",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Albania.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "albania",
+        "albania"
+      ]
+    },
+    "004": {
+      "id": "004",
+      "name": "Afghanistan",
+      "topoName": "Afghanistan",
+      "capital": "Kabul",
+      "continent": "East & Central Asia",
+      "subregion": "Central / South Asia",
+      "mnemonic": "Golden Crescent",
+      "notes": "Landlocked country centered around Hindu Kush mountain range. Strategic Wakhan Corridor connects to China's Xinjiang. Part of the 'Golden Crescent' opium-producing area with Iran and Pakistan. Massive untapped mineral wealth estimated at $1T+ including lithium, copper (Mes Aynak), rare earths, and iron ore (Hajigak). Amu Darya border river (Qosh Tepa canal project).",
+      "tags": [
+        "Hindu Kush",
+        "Wakhan Corridor",
+        "Lithium",
+        "Golden Crescent",
+        "Landlocked",
+        "Qosh Tepa Canal"
+      ],
+      "aliases": [
+        "afghanistan"
+      ]
+    },
+    "010": {
+      "id": "010",
+      "name": "Antarctica",
+      "topoName": "Antarctica",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Antarctica.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "antarctica",
+        "antarctica"
+      ]
+    },
+    "534": {
+      "id": "534",
+      "name": "Sint Maarten",
+      "topoName": "Sint Maarten",
+      "capital": "",
+      "continent": "Other",
+      "subregion": "",
+      "mnemonic": "",
+      "notes": "Standard UPSC territorial outline for Sint Maarten.",
+      "tags": [
+        "World Outline"
+      ],
+      "aliases": [
+        "sint maarten",
+        "sint maarten"
+      ]
+    }
+  },
+  "mnemonics": [
+    {
+      "id": "black-sea-burger-t",
+      "title": "Black Sea Littoral Countries",
+      "mnemonic": "BURGER T",
+      "letters": [
+        {
+          "letter": "B",
+          "country": "Bulgaria",
+          "id": "100"
+        },
+        {
+          "letter": "U",
+          "country": "Ukraine",
+          "id": "804"
+        },
+        {
+          "letter": "R",
+          "country": "Russia",
+          "id": "643"
+        },
+        {
+          "letter": "G",
+          "country": "Georgia",
+          "id": "268"
+        },
+        {
+          "letter": "E",
+          "country": "(R) Romania",
+          "id": "642"
+        },
+        {
+          "letter": "R",
+          "country": "(Burger ends with T)",
+          "id": ""
+        },
+        {
+          "letter": "T",
+          "country": "Türkiye (Turkey)",
+          "id": "792"
+        }
+      ],
+      "notes": "Kerch Strait connects Black Sea to Sea of Azov. Bosporus Strait connects Black Sea to Sea of Marmara. Danube, Dnieper, and Don rivers empty into it."
+    },
+    {
+      "id": "med-west-asia-list",
+      "title": "Mediterranean Coastline (West Asia / Levant)",
+      "mnemonic": "LIST",
+      "letters": [
+        {
+          "letter": "L",
+          "country": "Lebanon",
+          "id": "422"
+        },
+        {
+          "letter": "I",
+          "country": "Israel",
+          "id": "376"
+        },
+        {
+          "letter": "S",
+          "country": "Syria",
+          "id": "760"
+        },
+        {
+          "letter": "T",
+          "country": "Türkiye (Turkey)",
+          "id": "792"
+        }
+      ],
+      "notes": "Remember: Jordan does NOT touch the Mediterranean (it accesses only Gulf of Aqaba/Red Sea)."
+    },
+    {
+      "id": "red-sea-men-sow-seeds",
+      "title": "Red Sea Littoral Countries",
+      "mnemonic": "MEN SOW SEEDS",
+      "letters": [
+        {
+          "letter": "M",
+          "country": "Yemen (Ye-Men)",
+          "id": "887"
+        },
+        {
+          "letter": "S",
+          "country": "Saudi Arabia",
+          "id": "682"
+        },
+        {
+          "letter": "E",
+          "country": "Egypt",
+          "id": "818"
+        },
+        {
+          "letter": "E",
+          "country": "Eritrea",
+          "id": "232"
+        },
+        {
+          "letter": "D",
+          "country": "Djibouti",
+          "id": "262"
+        },
+        {
+          "letter": "S",
+          "country": "Sudan",
+          "id": "729"
+        }
+      ],
+      "notes": "Bordered to north by Suez Canal and Gulf of Aqaba (Israel/Jordan via Aqaba), to south by Bab-el-Mandeb Strait. (Mnemonic also known as DESSEY: Djibouti, Eritrea, Sudan, Saudi, Egypt, Yemen)."
+    },
+    {
+      "id": "persian-gulf-i-b-so-quik",
+      "title": "Persian Gulf Littoral Countries",
+      "mnemonic": "I B SO QUIK",
+      "letters": [
+        {
+          "letter": "I",
+          "country": "Iran",
+          "id": "364"
+        },
+        {
+          "letter": "B",
+          "country": "Bahrain",
+          "id": "048"
+        },
+        {
+          "letter": "S",
+          "country": "Saudi Arabia",
+          "id": "682"
+        },
+        {
+          "letter": "O",
+          "country": "Oman (via Musandam)",
+          "id": "512"
+        },
+        {
+          "letter": "Q",
+          "country": "Qatar",
+          "id": "634"
+        },
+        {
+          "letter": "U",
+          "country": "United Arab Emirates (UAE)",
+          "id": "784"
+        },
+        {
+          "letter": "I",
+          "country": "Iraq",
+          "id": "368"
+        },
+        {
+          "letter": "K",
+          "country": "Kuwait",
+          "id": "414"
+        }
+      ],
+      "notes": "8 nations border Persian Gulf. Strait of Hormuz connects Persian Gulf to Gulf of Oman and Arabian Sea."
+    },
+    {
+      "id": "caspian-sea-tarik",
+      "title": "Caspian Sea Littoral Countries",
+      "mnemonic": "TARIK",
+      "letters": [
+        {
+          "letter": "T",
+          "country": "Turkmenistan",
+          "id": "795"
+        },
+        {
+          "letter": "A",
+          "country": "Azerbaijan",
+          "id": "031"
+        },
+        {
+          "letter": "R",
+          "country": "Russia",
+          "id": "643"
+        },
+        {
+          "letter": "I",
+          "country": "Iran",
+          "id": "364"
+        },
+        {
+          "letter": "K",
+          "country": "Kazakhstan",
+          "id": "398"
+        }
+      ],
+      "notes": "Largest inland body of water in world. Volga and Ural rivers empty into it. Rich in caviar (sturgeon) and offshore oil/gas."
+    },
+    {
+      "id": "north-africa-rabbit-male",
+      "title": "North Africa / Mediterranean Front",
+      "mnemonic": "Rabbit says MALE",
+      "letters": [
+        {
+          "letter": "M",
+          "country": "Morocco (Rabbit face/ears)",
+          "id": "504"
+        },
+        {
+          "letter": "A",
+          "country": "Algeria",
+          "id": "012"
+        },
+        {
+          "letter": "L",
+          "country": "Libya",
+          "id": "434"
+        },
+        {
+          "letter": "E",
+          "country": "Egypt",
+          "id": "818"
+        }
+      ],
+      "notes": "From West to East across North Africa: Morocco -> Algeria -> Libya -> Egypt. Plus Tunisia ('Play TUNE') wedged between Algeria and Libya."
+    },
+    {
+      "id": "lithium-triangle",
+      "title": "Lithium Triangle (South America)",
+      "mnemonic": "ABC (Argentina, Bolivia, Chile)",
+      "letters": [
+        {
+          "letter": "B",
+          "country": "Bolivia (Salar de Uyuni)",
+          "id": "068"
+        },
+        {
+          "letter": "C",
+          "country": "Chile (Salar de Atacama)",
+          "id": "152"
+        },
+        {
+          "letter": "A",
+          "country": "Argentina (Salar del Hombre Muerto)",
+          "id": "032"
+        }
+      ],
+      "notes": "Holds >55% of world's identified lithium brine resources in the high-altitude Andean salt flats."
+    },
+    {
+      "id": "australia-cities-bsc-maphd",
+      "title": "Australian Major Cities (Clockwise from NE)",
+      "mnemonic": "B.Sc M.A PhD",
+      "letters": [
+        {
+          "letter": "B",
+          "country": "Brisbane (Queensland)",
+          "id": "036"
+        },
+        {
+          "letter": "S",
+          "country": "Sydney (New South Wales)",
+          "id": "036"
+        },
+        {
+          "letter": "C",
+          "country": "Canberra (ACT capital)",
+          "id": "036"
+        },
+        {
+          "letter": "M",
+          "country": "Melbourne (Victoria)",
+          "id": "036"
+        },
+        {
+          "letter": "A",
+          "country": "Adelaide (South Australia)",
+          "id": "036"
+        },
+        {
+          "letter": "P",
+          "country": "Perth (Western Australia)",
+          "id": "036"
+        },
+        {
+          "letter": "D",
+          "country": "Darwin (Northern Territory)",
+          "id": "036"
+        }
+      ],
+      "notes": "Runs clockwise around the Australian coast starting from Brisbane down to Sydney, Canberra, Melbourne, Adelaide, west to Perth, and north to Darwin."
+    },
+    {
+      "id": "horn-of-africa-seed",
+      "title": "Horn of Africa Countries",
+      "mnemonic": "SEED",
+      "letters": [
+        {
+          "letter": "S",
+          "country": "Somalia",
+          "id": "706"
+        },
+        {
+          "letter": "E",
+          "country": "Ethiopia",
+          "id": "231"
+        },
+        {
+          "letter": "E",
+          "country": "Eritrea",
+          "id": "232"
+        },
+        {
+          "letter": "D",
+          "country": "Djibouti",
+          "id": "262"
+        }
+      ],
+      "notes": "Strategic peninsula in northeast Africa protruding into Arabian Sea and Gulf of Aden."
+    }
+  ],
+  "totalCountries": 236,
+  "upscRichCount": 160
+}

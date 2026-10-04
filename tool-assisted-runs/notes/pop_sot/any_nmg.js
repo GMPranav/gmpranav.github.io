@@ -14,19 +14,19 @@ Prince of Persia: The Sands of Time is a game that needs no introduction. This i
 
 !!! Tricks used
 
-! ⏳ Wallrun Stretch
+! Wallrun Stretch
 If the wallrun key is released instead of letting the wall flip happen, the prince gets a little bit of extra height before jumping off or grabbing a ledge. Starting the wallrun further back from the wall also helps in getting more height.
-! ⏳ Wrong Jump
+! Wrong Jump
 The game let's the prince jump only when near an edge. Otherwise, press the jump key will only result in a roll. But we can get a jump to happen away from the edge by holding the appropriate directions.
-! ⏳ Ladder Dismount
+! Ladder Dismount
 At the top of the ladder, its possible to dismount off the ladder to the left or right, grabbing the ledge. This is generally faster than letting the slow animation of the normal dismount to play out.
-! ⏳ Slomo Cancel
+! Slomo Cancel
 When certain actions are performed for the first time, the game performs a slow motion shot. This can be cancelled by entering the landscape camera.
-! ⏳ First Person Cancel
+! First Person Cancel
 The staggers caused when falling from large heights can be cancelled using the first person camera. It also instantly changes the direction the prince is facing.
-! ⏳ Power Attack
+! Power Attack
 The power attack, which the prince generally performs as a finishing blow, can be forced to happen by tapping the direction towards the enemy 2 times in quick succession following by a sword attack.
-! ⏳ Combat Guide
+! Combat Guide
 With the dagger, the fastest way to defeat the enemies is with a torpedo attack off a wall. But if a wall is too far away to rebound from, the power attack is the faster option. The vault combos are also used in some situations. If a double or triple knock down can be setup with a torpedo then that is worth some time spent. The moon tank route is carefully planned in a way that the mega freeze power once obtained can be used with maximum effect.
 
 !!! Thank You Note

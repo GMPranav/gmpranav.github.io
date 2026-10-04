@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SRCDVD - speedrun.com Deleted Video Detector | GMP</title>
+
+  <link rel="icon" href="https://avatars.githubusercontent.com/u/54983451?v=4" />
+  <link rel="canonical" href="https://gmpranav.github.io/srcdvd/" />
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="SRCDVD - speedrun.com Deleted Video Detector | GMP" />
+  <meta name="description" content="Automated leaderboard audit tool to detect deleted, private, or expired YouTube and Twitch run VODs across speedrun.com games." />
+  <meta name="keywords" content="SRCDVD, speedrun.com, deleted videos, broken vods, YouTube Data API, Twitch API, speedrunning audit, GMP" />
+  <meta name="author" content="GMP" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gmpranav.github.io/srcdvd/" />
+  <meta property="og:title" content="SRCDVD - speedrun.com Deleted Video Detector | GMP" />
+  <meta property="og:description" content="Automated leaderboard audit tool detecting dead, private, and expired run videos on speedrun.com." />
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/54983451?v=4" />
+
+  <!-- Fonts & Stylesheet -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Jost:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="../static/navbar.css" />
+  <script src="../static/projects-data.js"></script>
+  <script src="../static/navbar.js" defer></script>
+</head>
+
+<body>
+
+  <!-- Reusable Navigation Bar -->
+  <gmp-navbar active="srcdvd"></gmp-navbar>
+
+  <!-- Dynamic Atmospheric Background -->
+  <div class="ambient-canvas" aria-hidden="true">
+    <div class="ambient-dot-grid"></div>
+    <div class="ambient-orb ambient-orb-1"></div>
+    <div class="ambient-orb ambient-orb-2"></div>
+  </div>
+
+  <div class="page-container">
+
+    <!-- Hero Header -->
+    <header class="project-hero">
+      <div class="hero-tag-badge">Leaderboard Verification &middot; Speedrun Tooling</div>
+      <h1 class="hero-title"><span class="highlight">SRCDVD</span></h1>
+      <p class="hero-tagline"><strong>s</strong>peed<strong>r</strong>un.<strong>c</strong>om <strong>D</strong>eleted <strong>V</strong>ideo <strong>D</strong>etector</p>
+
+      <p class="hero-summary">
+        An automated auditing utility that detects runs with unviewable (deleted, private, or expired) YouTube and Twitch video links for any given game on <strong>speedrun.com</strong>. By correlating the speedrun.com REST API with Google YouTube API v3 and Twitch API, it isolates dead links and exports actionable audit logs for community moderators.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="#how-it-works" class="btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+          <span>How It Works</span>
+        </a>
+        <a href="#interactive-tool" class="btn-secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+          <span>Live URL Inspector</span>
+        </a>
+        <a href="#api-setup" class="btn-secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+          </svg>
+          <span>API Credentials Setup</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- The Problem / Value Proposition -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-label">The Problem</span>
+        <h2 class="section-title">Why Video Auditing Matters</h2>
+      </div>
+
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="p-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <h4>Link Rot on Leaderboards</h4>
+          <p>
+            Over months and years, runners delete YouTube channels, make videos private, or submit Twitch stream links that automatically expire after 14 to 60 days. This leaves historic verified runs on leaderboards without video proof.
+          </p>
+        </div>
+
+        <div class="problem-card">
+          <div class="p-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+          <h4>Painful Manual Verification</h4>
+          <p>
+            Large leaderboards contain hundreds or thousands of submitted runs. Manually opening every run URL to test whether the video still plays takes dozens of hours and is almost impossible for volunteers to maintain.
+          </p>
+        </div>
+
+        <div class="problem-card">
+          <div class="p-icon"><i class="fa-solid fa-crosshairs"></i></div>
+          <h4>Automated Batch Resolution</h4>
+          <p>
+            SRCDVD scans hundreds of runs concurrently using official batch endpoints (querying up to 50 YouTube IDs in a single HTTP request), outputting a clean report of missing VODs in seconds.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Pipeline -->
+    <section class="section" id="how-it-works">
+      <div class="section-header">
+        <span class="section-label">Pipeline Architecture</span>
+        <h2 class="section-title">4-Stage Detection Pipeline</h2>
+      </div>
+
+      <div class="pipeline-container">
+        <div class="pipeline-step">
+          <div class="step-circle">1</div>
+          <div class="step-content">
+            <h4>Fetch Verified Runs</h4>
+            <p>Queries the speedrun.com REST API for all verified runs of the target game. Outputs full metadata to <code>data.txt</code>.</p>
+          </div>
+        </div>
+
+        <div class="pipeline-step">
+          <div class="step-circle">2</div>
+          <div class="step-content">
+            <h4>Extract &amp; Isolate Video Links</h4>
+            <p>Parses video URLs from the dataset, filters for YouTube and Twitch domains, and saves normalized video URLs to <code>links.txt</code>.</p>
+          </div>
+        </div>
+
+        <div class="pipeline-step">
+          <div class="step-circle">3</div>
+          <div class="step-content">
+            <h4>Batch API Availability Query</h4>
+            <p>Extracts video IDs and executes batch lookups against <strong>Google YouTube API v3</strong> and <strong>Twitch API</strong>. Videos that fail to return are marked missing.</p>
+          </div>
+        </div>
+
+        <div class="pipeline-step">
+          <div class="step-circle">4</div>
+          <div class="step-content">
+            <h4>Cross-Reference &amp; Report</h4>
+            <p>Cross-references missing video IDs against <code>data.txt</code> to retrieve the exact speedrun.com submission links, saved to <code>missinglinks.txt</code>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Inspector Demo -->
+    <section class="section" id="interactive-tool">
+      <div class="section-header">
+        <span class="section-label">Interactive Tool</span>
+        <h2 class="section-title">Client-Side Video Link Parser &amp; Tester</h2>
+      </div>
+
+      <div class="inspector-card">
+        <p class="inspector-desc">
+          Test video ID extraction and inspect sample URL parsing below. Paste YouTube or Twitch video links to test how SRCDVD extracts IDs:
+        </p>
+
+        <div class="input-group">
+          <label for="urlInput" class="input-label">Enter Video URLs (one per line):</label>
+          <textarea id="urlInput" class="url-textarea" rows="4" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ&#10;https://youtu.be/kJQP7kiw5Fk&#10;https://www.twitch.tv/videos/123456789"></textarea>
+        </div>
+
+        <div class="inspector-actions">
+          <button id="parseBtn" class="btn-primary">
+            <span>Parse &amp; Validate IDs</span>
+          </button>
+          <button id="loadSampleBtn" class="btn-secondary">
+            <span>Load Sample URLs</span>
+          </button>
+        </div>
+
+        <div id="inspectorResults" class="results-box" style="display: none;">
+          <div class="results-header">
+            <h4>Parsed Video Identification Report</h4>
+            <span id="resultsCountBadge" class="results-badge">3 detected</span>
+          </div>
+          <div class="table-wrap">
+            <table class="results-table" id="parsedTable">
+              <thead>
+                <tr>
+                  <th>Platform</th>
+                  <th>Extracted ID</th>
+                  <th>Original URL</th>
+                  <th>API Endpoint Used</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- API Setup Prerequisites -->
+    <section class="section" id="api-setup">
+      <div class="section-header">
+        <span class="section-label">Configuration</span>
+        <h2 class="section-title">API Authentication Setup Guide</h2>
+      </div>
+
+      <div class="setup-tabs">
+        <div class="setup-tab-card">
+          <div class="platform-badge yt-badge">YouTube Data API v3</div>
+          <h4>Google Cloud Console Setup</h4>
+          <ol class="setup-steps">
+            <li>Create a new project in the <a href="https://console.cloud.google.com/projectcreate" target="_blank" rel="noopener noreferrer">Google Cloud Console</a>.</li>
+            <li>In the sidebar, navigate to <strong>APIs &amp; Services</strong> &rarr; <strong>Library</strong>.</li>
+            <li>Search for <code>YouTube Data API v3</code> and click <strong>Enable</strong>.</li>
+            <li>Go to <strong>Credentials</strong> &rarr; click <strong>Create Credentials</strong> &rarr; select <strong>API key</strong>.</li>
+            <li>Copy your generated API key and supply it when prompted by SRCDVD (or type <code>skip</code> to bypass YouTube verification).</li>
+          </ol>
+        </div>
+
+        <div class="setup-tab-card">
+          <div class="platform-badge twitch-badge">Twitch Helix API</div>
+          <h4>Twitch Developer Setup</h4>
+          <ol class="setup-steps">
+            <li>Log into the <a href="https://dev.twitch.tv/console" target="_blank" rel="noopener noreferrer">Twitch Developer Console</a>.</li>
+            <li>Click <strong>Register Your Application</strong>, give it a name (e.g. <code>SRCDVD Audit</code>), set OAuth Redirect to <code>http://localhost</code>, and category to <em>Analytics Tool</em>.</li>
+            <li>Copy the <strong>Client ID</strong> and generate a new <strong>Client Secret</strong>.</li>
+            <li>Supply both values when prompted by SRCDVD (or type <code>skip</code> to bypass Twitch verification).</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Output Files Breakdown -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-label">File Artifacts</span>
+        <h2 class="section-title">Generated Output Files</h2>
+      </div>
+
+      <div class="files-grid">
+        <div class="file-card">
+          <div class="file-name"><code>data.txt</code></div>
+          <h4>Raw Run Records</h4>
+          <p>Full JSON dump of verified run objects from speedrun.com's REST API containing player names, dates, times, and submission links.</p>
+        </div>
+
+        <div class="file-card">
+          <div class="file-name"><code>links.txt</code></div>
+          <h4>Isolated Video URLs</h4>
+          <p>Filtered list of YouTube and Twitch URLs extracted from run submissions for batch processing.</p>
+        </div>
+
+        <div class="file-card highlight-card">
+          <div class="file-name"><code>missinglinks.txt</code></div>
+          <h4>Actionable Audit List</h4>
+          <p>Final list of speedrun.com run URLs whose VODs returned deleted, 404, or private status errors during the API batch scan.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="project-footer">
+      <div>
+        <a href="https://github.com/GMPranav/SRCDVD" target="_blank" rel="noopener noreferrer">SRCDVD on GitHub</a>
+      </div>
+      <p class="footer-note">
+        Built by GMP. Free and open source utility for the speedrun community.
+      </p>
+    </footer>
+
+  </div>
+
+  <script>
+    const sampleUrls = [
+      "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "https://youtu.be/kJQP7kiw5Fk?t=42",
+      "https://www.twitch.tv/videos/876543210"
+    ];
+
+    const urlInput = document.getElementById("urlInput");
+    const parseBtn = document.getElementById("parseBtn");
+    const loadSampleBtn = document.getElementById("loadSampleBtn");
+    const inspectorResults = document.getElementById("inspectorResults");
+    const parsedTableBody = document.querySelector("#parsedTable tbody");
+    const resultsCountBadge = document.getElementById("resultsCountBadge");
+
+    loadSampleBtn.addEventListener("click", () => {
+      urlInput.value = sampleUrls.join("\n");
+      parseUrls();
+    });
+
+    parseBtn.addEventListener("click", parseUrls);
+
+    function extractVideoId(url) {
+      // YouTube
+      const ytMatch = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/i);
+      if (ytMatch) {
+        return { platform: "YouTube", id: ytMatch[1], endpoint: "GET /youtube/v3/videos?id={id}" };
+      }
+      // Twitch
+      const twitchMatch = url.match(/twitch\.tv\/videos\/(\d+)/i);
+      if (twitchMatch) {
+        return { platform: "Twitch", id: twitchMatch[1], endpoint: "GET /helix/videos?id={id}" };
+      }
+      return null;
+    }
+
+    function parseUrls() {
+      const lines = urlInput.value.split("\n").map(l => l.trim()).filter(l => l.length > 0);
+      parsedTableBody.innerHTML = "";
+
+      if (lines.length === 0) {
+        inspectorResults.style.display = "none";
+        return;
+      }
+
+      let count = 0;
+      lines.forEach(line => {
+        const info = extractVideoId(line);
+        const tr = document.createElement("tr");
+        if (info) {
+          count++;
+          tr.innerHTML = `
+            <td><span class="platform-tag ${info.platform.toLowerCase()}">${info.platform}</span></td>
+            <td><code>${info.id}</code></td>
+            <td class="url-cell">${escapeHtml(line)}</td>
+            <td><code class="endpoint-code">${info.endpoint}</code></td>
+          `;
+        } else {
+          tr.innerHTML = `
+            <td><span class="platform-tag unknown">Unknown</span></td>
+            <td><em>N/A</em></td>
+            <td class="url-cell">${escapeHtml(line)}</td>
+            <td><span style="color: var(--text-dim);">Unrecognized format</span></td>
+          `;
+        }
+        parsedTableBody.appendChild(tr);
+      });
+
+      resultsCountBadge.textContent = `${count} valid ID${count === 1 ? '' : 's'} identified`;
+      inspectorResults.style.display = "block";
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+  </script>
+
+</body>
+
+</html>

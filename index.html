@@ -33,11 +33,17 @@
   <!-- Performance & Stylesheet -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://avatars.githubusercontent.com" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="static/navbar.css" />
+  <script src="static/projects-data.js"></script>
+  <script src="static/navbar.js" defer></script>
 </head>
 
 <body>
+
+  <!-- Reusable Navigation Bar -->
+  <gmp-navbar active="home"></gmp-navbar>
 
   <!-- Dynamic Atmospheric Background -->
   <div class="ambient-canvas" aria-hidden="true">
@@ -84,6 +90,11 @@
       </div>
     </header>
 
+    <!-- Category Tabs -->
+    <div class="category-tabs-bar" id="categoryTabsBar" role="tablist" aria-label="Project categories">
+      <!-- Generated dynamically from GMP_PROJECTS_DATA -->
+    </div>
+
     <!-- Search & Results Count Row -->
     <div class="search-bar-row">
       <div class="search-box-wrapper">
@@ -91,134 +102,23 @@
           <circle cx="11" cy="11" r="8"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
-        <input type="search" id="searchInput" class="search-input" placeholder="Search projects or tags..." aria-label="Search projects" autocomplete="off" />
+        <input type="search" id="searchInput" class="search-input" placeholder="Search projects..." aria-label="Search projects" autocomplete="off" />
       </div>
 
-      <div class="results-count" id="resultsCount">Showing 4 projects</div>
+      <div class="results-count" id="resultsCount">Showing projects</div>
     </div>
 
     <!-- Projects Grid -->
     <main>
       <div class="projects-grid" id="projectsGrid">
-
-        <!-- 1. Tool-Assisted Speedruns (Featured) -->
-        <a href="tool-assisted-runs/" class="project-card featured" data-tags="prince of persia dos jpc-rr tas movie files speedrun commentary input files">
-          <div class="card-top">
-            <div class="card-meta">
-              <span class="badge-featured">★ Featured</span>
-            </div>
-            <span class="card-icon" aria-hidden="true">🕹️</span>
-            <h2 class="project-title">Tool-Assisted Speedruns</h2>
-            <p class="project-description">
-              Archive of completed TAS projects across classic Prince of Persia games. Includes downloadable JRSR/movie input files, YouTube video encodes, audio commentary tracks, and deep technical notes.
-            </p>
-          </div>
-          <div class="card-bottom">
-            <div class="tags-list">
-              <span class="tag-item">Prince of Persia</span>
-              <span class="tag-item">DOS</span>
-              <span class="tag-item">JPC-RR</span>
-              <span class="tag-item">Author Notes</span>
-            </div>
-            <div class="card-link-action">
-              <span>Explore TAS Archive</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </div>
-          </div>
-        </a>
-
-        <!-- 2. Time Splits Generator (Featured) -->
-        <a href="src-splits-generator/" class="project-card featured" data-tags="livesplit lss speedrun.com splits timestamps markdown generator utility tool">
-          <div class="card-top">
-            <div class="card-meta">
-              <span class="badge-featured">★ Featured</span>
-            </div>
-            <span class="card-icon" aria-hidden="true">⏱️</span>
-            <h2 class="project-title">Time Splits Generator</h2>
-            <p class="project-description">
-              Client-side parser for LiveSplit (.lss) files that automatically generates formatted Markdown timestamp tables for speedrun.com submission descriptions (splits.io replacement).
-            </p>
-          </div>
-          <div class="card-bottom">
-            <div class="tags-list">
-              <span class="tag-item">LiveSplit (.lss)</span>
-              <span class="tag-item">speedrun.com</span>
-              <span class="tag-item">Markdown</span>
-              <span class="tag-item">Client-side</span>
-            </div>
-            <div class="card-link-action">
-              <span>Launch Splits Generator</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </div>
-          </div>
-        </a>
-
-        <!-- 3. Silksong Timeline -->
-        <a href="skong-timeline/" class="project-card" data-tags="hollow knight silksong timeline team cherry news reddit absolute scale interactive">
-          <div class="card-top">
-            <div class="card-meta"></div>
-            <span class="card-icon" aria-hidden="true">🧵</span>
-            <h2 class="project-title">Silksong Timeline</h2>
-            <p class="project-description">
-              A comprehensive timeline plotting all public info, trailers, Kickstarter blogs, and Reddit updates about the development of Hollow Knight: Silksong in absolute scale.
-            </p>
-          </div>
-          <div class="card-bottom">
-            <div class="tags-list">
-              <span class="tag-item">Hollow Knight</span>
-              <span class="tag-item">Silksong</span>
-              <span class="tag-item">Interactive</span>
-              <span class="tag-item">Absolute Scale</span>
-            </div>
-            <div class="card-link-action">
-              <span>View Silksong Timeline</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </div>
-          </div>
-        </a>
-
-        <!-- 4. Tic-Tac-Toe -->
-        <a href="tic-tac-toe/" class="project-card" data-tags="tic tac toe game minigame javascript html css classic">
-          <div class="card-top">
-            <div class="card-meta"></div>
-            <span class="card-icon" aria-hidden="true">🎮</span>
-            <h2 class="project-title">Tic-Tac-Toe</h2>
-            <p class="project-description">
-              A clean, responsive two-player web implementation of the classic Tic-Tac-Toe game with dynamic turn indicators, state evaluation, and restart controls.
-            </p>
-          </div>
-          <div class="card-bottom">
-            <div class="tags-list">
-              <span class="tag-item">Mini Game</span>
-              <span class="tag-item">Vanilla JS</span>
-              <span class="tag-item">Interactive</span>
-            </div>
-            <div class="card-link-action">
-              <span>Play Game</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </div>
-          </div>
-        </a>
-
+        <!-- Generated dynamically from GMP_PROJECTS_DATA -->
       </div>
 
       <!-- Empty state when no search matches -->
       <div class="empty-state" id="emptyState">
         <h3>No projects found</h3>
-        <p>No projects match your current search terms.</p>
-        <button class="reset-btn" id="resetBtn">Clear Search</button>
+        <p>No projects match your current category and search filter.</p>
+        <button class="reset-btn" id="resetBtn">Clear Filters</button>
       </div>
     </main>
 
@@ -233,15 +133,89 @@
     </footer>
   </div>
 
-  <!-- Interactive Search Script -->
+  <!-- Dynamic Project Rendering & Filtering Script -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      const data = window.GMP_PROJECTS_DATA || { CATEGORIES: [], PROJECTS: [] };
+      const categories = data.CATEGORIES || [];
+      const projects = data.PROJECTS || [];
+
+      const categoryTabsBar = document.getElementById("categoryTabsBar");
+      const projectsGrid = document.getElementById("projectsGrid");
       const searchInput = document.getElementById("searchInput");
-      const projectCards = document.querySelectorAll(".project-card");
       const resultsCount = document.getElementById("resultsCount");
       const emptyState = document.getElementById("emptyState");
       const resetBtn = document.getElementById("resetBtn");
 
+      function escapeHtml(str) {
+        if (str == null) return "";
+        return String(str)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+
+      // 1. Render Category Tabs with live counts
+      let tabsHtml = `
+        <button type="button" class="category-tab active" data-category="all" role="tab" aria-selected="true">
+          <span class="tab-label">All Projects</span>
+          <span class="tab-count">${projects.length}</span>
+        </button>
+      `;
+
+      categories.forEach(cat => {
+        const count = projects.filter(p => p.category === cat.id).length;
+        tabsHtml += `
+          <button type="button" class="category-tab" data-category="${escapeHtml(cat.id)}" role="tab" aria-selected="false">
+            <span class="tab-icon"><i class="${escapeHtml(cat.icon)}"></i></span>
+            <span class="tab-label">${escapeHtml(cat.label)}</span>
+            <span class="tab-count">${count}</span>
+          </button>
+        `;
+      });
+      categoryTabsBar.innerHTML = tabsHtml;
+
+      // 2. Render Project Cards
+      let cardsHtml = "";
+      projects.forEach(p => {
+        const featuredBadge = p.featured
+          ? '<span class="badge-featured"><i class="fa-solid fa-star"></i> Featured</span>'
+          : '';
+        const tagsStr = (p.tags || []).join(" ");
+
+        cardsHtml += `
+          <a href="${escapeHtml(p.url)}" class="project-card ${p.featured ? 'featured' : ''}" data-category="${escapeHtml(p.category)}" data-tags="${escapeHtml(tagsStr)}">
+            <div class="card-top">
+              <div class="card-meta">
+                ${featuredBadge}
+              </div>
+              <span class="card-icon" aria-hidden="true"><i class="${escapeHtml(p.icon)}"></i></span>
+              <h2 class="project-title">${escapeHtml(p.title)}</h2>
+              <p class="project-description">
+                ${escapeHtml(p.description)}
+              </p>
+            </div>
+            <div class="card-bottom">
+              <div class="card-link-action">
+                <span>${escapeHtml(p.actionText || 'Explore')}</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+          </a>
+        `;
+      });
+      projectsGrid.innerHTML = cardsHtml;
+
+      // 3. Search and Category Filtering Logic
+      const projectCards = projectsGrid.querySelectorAll(".project-card");
+      const categoryTabs = categoryTabsBar.querySelectorAll(".category-tab");
+
+      let currentCategory = "all";
       let searchQuery = "";
 
       function filterProjects() {
@@ -249,16 +223,18 @@
         const query = searchQuery.trim().toLowerCase();
 
         projectCards.forEach((card) => {
+          const cardCategory = card.getAttribute("data-category") || "";
           const tags = card.getAttribute("data-tags") || "";
           const title = card.querySelector(".project-title")?.textContent.toLowerCase() || "";
           const desc = card.querySelector(".project-description")?.textContent.toLowerCase() || "";
 
+          const categoryMatches = (currentCategory === "all" || cardCategory === currentCategory);
           const searchMatches = !query ||
             title.includes(query) ||
             desc.includes(query) ||
             tags.toLowerCase().includes(query);
 
-          if (searchMatches) {
+          if (categoryMatches && searchMatches) {
             card.style.display = "";
             visibleCount++;
           } else {
@@ -275,6 +251,19 @@
         }
       }
 
+      categoryTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          categoryTabs.forEach((t) => {
+            t.classList.remove("active");
+            t.setAttribute("aria-selected", "false");
+          });
+          tab.classList.add("active");
+          tab.setAttribute("aria-selected", "true");
+          currentCategory = tab.getAttribute("data-category") || "all";
+          filterProjects();
+        });
+      });
+
       searchInput.addEventListener("input", (e) => {
         searchQuery = e.target.value;
         filterProjects();
@@ -283,8 +272,21 @@
       resetBtn.addEventListener("click", () => {
         searchQuery = "";
         searchInput.value = "";
+        categoryTabs.forEach((t) => {
+          t.classList.remove("active");
+          t.setAttribute("aria-selected", "false");
+        });
+        const allTab = categoryTabsBar.querySelector('.category-tab[data-category="all"]');
+        if (allTab) {
+          allTab.classList.add("active");
+          allTab.setAttribute("aria-selected", "true");
+        }
+        currentCategory = "all";
         filterProjects();
       });
+
+      // Initial filter setup
+      filterProjects();
     });
   </script>
 

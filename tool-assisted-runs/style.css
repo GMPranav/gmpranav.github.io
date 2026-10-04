@@ -1,19 +1,54 @@
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Jost:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap");
+/* ==========================================================================
+   GMP Portfolio - Tool-Assisted Speedruns Archive Stylesheet
+   Modern Glassmorphic Dark Theme with Radiant Gold Accents
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Jost:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
 
 :root {
-    --bg: black;
-    --bg-panel: #15171d;
-    --bg-row-alt: #191b22;
-    --rule: #2a2d37;
-    --sand: #cfa736;
-    --sand-dim: #7d6a2e;
-    --parchment: #e9e4d3;
-    --muted: #8b8d9a;
-    --obsolete: #a3564a;
+    /* Backgrounds */
+    --bg-primary: #06070a;
+    --bg-secondary: rgba(18, 20, 28, 0.75);
+    --bg-panel: rgba(18, 20, 28, 0.85);
+    --bg-panel-solid: #12141c;
+    --bg-row-alt: rgba(24, 27, 38, 0.65);
+    --bg-row-hover: rgba(245, 212, 122, 0.08);
+    --bg-expanded: rgba(245, 212, 122, 0.12);
 
+    /* Borders */
+    --rule: rgba(255, 255, 255, 0.08);
+    --rule-gold: rgba(245, 212, 122, 0.25);
+    --border-focus: #f5d47a;
+
+    /* Radiant Gold & Accents (matching modern portfolio palette) */
+    --sand: #cfa736;
+    --sand-bright: #f5d47a;
+    --sand-dim: #8b6e22;
+    --sand-glow: rgba(207, 167, 54, 0.22);
+    --sand-glow-bright: rgba(245, 212, 122, 0.35);
+    --gold-gradient: linear-gradient(135deg, #f5d47a 0%, #cfa736 100%);
+    --gold-gradient-subtle: linear-gradient(135deg, rgba(245, 212, 122, 0.15) 0%, rgba(207, 167, 54, 0.05) 100%);
+
+    /* Typography & Status */
+    --parchment: #e9e4d3;
+    --text-muted: #9da1b5;
+    --text-dim: #65697d;
+    --obsolete: #e06c5f;
+    --obsolete-bg: rgba(224, 108, 95, 0.12);
+
+    /* Typography families */
     --font-display: "Cinzel", "Georgia", serif;
-    --font-body: "Jost", system-ui, sans-serif;
+    --font-body: "Jost", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+    /* Radii & Shadows */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-full: 9999px;
+
+    --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --shadow-hover: 0 14px 40px rgba(0, 0, 0, 0.65), 0 0 25px var(--sand-glow);
 }
 
 * {
@@ -22,6 +57,7 @@
 
 html {
     scroll-behavior: smooth;
+    color-scheme: dark;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -38,11 +74,12 @@ html {
 
 body {
     margin: 0;
-    background: #050608;
+    min-height: 100vh;
+    background-color: var(--bg-primary);
     background-image:
-        radial-gradient(ellipse at 20% -10%, rgba(207, 167, 54, 0.08), transparent 55%),
-        radial-gradient(ellipse at 90% 0%, rgba(163, 86, 74, 0.05), transparent 45%),
-        linear-gradient(to bottom, rgba(5, 6, 8, 0.72) 0%, rgba(5, 6, 8, 0.88) 100%),
+        radial-gradient(ellipse at 50% -10%, rgba(207, 167, 54, 0.14), transparent 60%),
+        radial-gradient(ellipse at 85% 15%, rgba(163, 86, 74, 0.06), transparent 45%),
+        linear-gradient(to bottom, rgba(6, 7, 10, 0.82) 0%, rgba(6, 7, 10, 0.94) 100%),
         url("../static/images/background.webp");
     background-repeat: no-repeat;
     background-position: center top;
@@ -55,22 +92,26 @@ body {
 }
 
 a {
-    color: var(--sand);
+    color: var(--sand-bright);
     text-decoration: none;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
 a:hover,
 a:focus-visible {
-    text-decoration: underline;
+    color: #ffffff;
+    text-shadow: 0 0 12px var(--sand-glow-bright);
+    text-decoration: none;
 }
 
 a[href*="tasvideos.org"] {
-    color: #a870e0;
+    color: #b98bf5;
 }
 
 a[href*="tasvideos.org"]:hover,
 a[href*="tasvideos.org"]:focus-visible {
-    color: #c499f5;
+    color: #dfc8ff;
+    text-shadow: 0 0 12px rgba(185, 139, 245, 0.4);
 }
 
 a[href*="tasvideos.org"]::after {
@@ -87,12 +128,12 @@ a[href*="tasvideos.org"]::after {
 
 a:focus-visible,
 button:focus-visible {
-    outline: 2px solid var(--sand);
+    outline: 2px solid var(--sand-bright);
     outline-offset: 3px;
 }
 
 .wrap {
-    max-width: 980px;
+    max-width: 1040px;
     margin: 0 auto;
     padding: 0 24px;
 }
@@ -100,8 +141,9 @@ button:focus-visible {
 /* ---------- Hero ---------- */
 
 .hero {
-    padding: 30px 0 30px;
+    padding: 40px 0 34px;
     border-bottom: 1px solid var(--rule);
+    position: relative;
 }
 
 .hero-grid {
@@ -111,58 +153,100 @@ button:focus-visible {
 
 .eyebrow {
     font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.28em;
+    font-size: 11px;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--sand);
-    margin: 0 0 18px;
+    color: var(--sand-bright);
+    margin: 0 0 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .hero h1 {
     font-family: var(--font-display);
-    font-weight: 500;
-    font-size: clamp(20px, 3vw, 32px);
-    line-height: 1.05;
-    margin: 0 0 20px;
-    letter-spacing: 0.01em;
+    font-weight: 700;
+    font-size: clamp(24px, 3.5vw, 36px);
+    line-height: 1.15;
+    margin: 0 0 16px;
+    letter-spacing: 0.02em;
+    background: linear-gradient(135deg, #ffffff 45%, var(--sand-bright) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.hero h1 span {
-    color: var(--sand);
+.hero h1 span#handle,
+.hero h1 span.highlight {
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero h1 span#hobby {
+    background: linear-gradient(135deg, #ffffff 50%, var(--parchment) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero h1 span.dim {
+    color: var(--text-muted);
+    -webkit-text-fill-color: var(--text-muted);
+    font-weight: 400;
+    font-size: 0.85em;
 }
 
 .hero p.bio {
-    color: var(--parchment);
-    font-size: 17px;
+    color: var(--text-muted);
+    font-size: 16px;
+    line-height: 1.65;
+    max-width: 840px;
     margin: 0;
+}
+
+/* Run Page Hero Meta Bar */
+.hero-stats {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    margin-top: 18px;
 }
 
 /* ---------- Section shell ---------- */
 
 section.records {
-    padding: 30px 0 30px;
+    padding: 36px 0 44px;
 }
 
 .section-head {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
     gap: 16px;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
     flex-wrap: wrap;
 }
 
 .section-head h2 {
-    font-weight: 500;
-    font-size: 26px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 24px;
     margin: 0;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
+    color: #ffffff;
 }
 
 .section-head .count {
     font-family: var(--font-mono);
-    font-size: 13px;
-    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--sand-bright);
+    background: rgba(245, 212, 122, 0.08);
+    border: 1px solid rgba(245, 212, 122, 0.25);
+    border-radius: var(--radius-full);
+    padding: 4px 14px;
+    letter-spacing: 0.04em;
+    box-shadow: 0 0 12px rgba(245, 212, 122, 0.08);
 }
 
 /* ---------- Records table ---------- */
@@ -170,18 +254,24 @@ section.records {
 .records-table {
     width: 100%;
     table-layout: fixed;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     background: var(--bg-panel);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--rule);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
 }
 
 .records-table caption {
     caption-side: top;
     text-align: left;
     font-family: var(--font-body);
-    font-size: 15px;
-    color: var(--muted);
-    padding: 0 4px 12px;
+    font-size: 14px;
+    color: var(--text-muted);
+    padding: 0 4px 14px;
 }
 
 .records-table thead th {
@@ -189,24 +279,25 @@ section.records {
     font-family: var(--font-mono);
     font-weight: 600;
     font-size: 11px;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--sand);
-    padding: 14px 8px;
+    color: var(--sand-bright);
+    padding: 16px 12px;
+    background: rgba(10, 12, 18, 0.95);
     border-bottom: 1px solid var(--rule);
     white-space: nowrap;
 }
 
-.records-table thead th:nth-child(1) { width: 75px; }   /* Platform */
+.records-table thead th:nth-child(1) { width: 85px; }   /* Platform */
 .records-table thead th:nth-child(2) { width: auto; }   /* Game */
-.records-table thead th:nth-child(3) { width: 105px; }  /* Time */
-.records-table thead th:nth-child(4) { width: 135px; }  /* Emulator */
-.records-table thead th:nth-child(5) { width: 110px; }  /* Input File */
+.records-table thead th:nth-child(3) { width: 115px; }  /* Time */
+.records-table thead th:nth-child(4) { width: 140px; }  /* Emulator */
+.records-table thead th:nth-child(5) { width: 120px; }  /* Input File */
 
 .records-table tbody td {
-    padding: 16px 8px;
+    padding: 16px 12px;
     border-bottom: 1px solid var(--rule);
-    vertical-align: top;
+    vertical-align: middle;
     font-size: 14px;
 }
 
@@ -215,26 +306,26 @@ section.records {
 }
 
 .records-table tbody tr.record-row:nth-child(4n-3) {
-    background: var(--bg-panel);
+    background: rgba(18, 20, 28, 0.7);
 }
 
 .records-table tbody tr.record-row:nth-child(4n-1) {
-    background: var(--bg-row-alt);
+    background: rgba(24, 27, 38, 0.7);
 }
 
 .records-table tbody tr.record-row {
     cursor: pointer;
     user-select: none;
-    transition: background-color 0.15s ease;
-    scroll-margin-top: 24px;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+    scroll-margin-top: 80px;
 }
 
 .records-table tbody tr.record-row:hover {
-    background: rgba(207, 167, 54, 0.08);
+    background: var(--bg-row-hover);
 }
 
 .records-table tbody tr.record-row.is-expanded {
-    background: rgba(207, 167, 54, 0.12);
+    background: var(--bg-expanded);
     border-bottom-color: transparent;
 }
 
@@ -245,68 +336,90 @@ section.records {
 }
 
 .cell-game .run-link:hover .name {
-    color: var(--sand);
-    text-decoration: underline;
+    color: var(--sand-bright);
+    text-shadow: 0 0 10px var(--sand-glow);
 }
 
 .cell-game .name {
     font-weight: 500;
-    color: var(--parchment);
+    color: #ffffff;
+    transition: color 0.2s ease;
 }
 
 .cell-game .branch {
     display: block;
-    margin-top: 3px;
+    margin-top: 4px;
     font-size: 12px;
-    color: var(--muted);
+    color: var(--text-muted);
 }
 
 .breadcrumbs {
-    padding: 16px 0 8px 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 0 0 16px 0;
     font-size: 13px;
-    color: var(--muted);
+    font-family: var(--font-mono);
+    color: var(--text-muted);
 }
 
 .breadcrumbs a {
-    color: var(--sand-dim);
+    color: var(--text-muted);
+    transition: color 0.2s ease;
 }
 
 .breadcrumbs a:hover {
-    color: var(--sand);
+    color: var(--sand-bright);
+    text-shadow: 0 0 10px var(--sand-glow);
 }
 
 .breadcrumbs .sep {
-    margin: 0 8px;
-    color: var(--muted);
+    margin: 0 6px;
+    color: rgba(255, 255, 255, 0.2);
 }
+
+.breadcrumbs span:last-child {
+    color: var(--sand-bright);
+}
+
+/* ---------- Badges & Highlights ---------- */
 
 .badge {
     display: inline-block;
     font-family: var(--font-mono);
     font-size: 11px;
+    font-weight: 600;
     letter-spacing: 0.06em;
-    padding: 3px 8px;
-    border: 1px solid var(--sand-dim);
-    color: var(--sand);
-    border-radius: 2px;
+    padding: 4px 10px;
+    border: 1px solid rgba(245, 212, 122, 0.35);
+    background: rgba(245, 212, 122, 0.08);
+    color: var(--sand-bright);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 0 10px rgba(245, 212, 122, 0.08);
 }
 
 .badge.obsolete-tag {
-    border-color: var(--obsolete);
+    border-color: rgba(224, 108, 95, 0.4);
+    background: var(--obsolete-bg);
     color: var(--obsolete);
+    box-shadow: 0 0 10px rgba(224, 108, 95, 0.1);
     margin-top: 6px;
 }
 
 .time {
     font-family: var(--font-mono);
-    font-weight: 600;
-    color: var(--sand);
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--sand-bright);
     white-space: nowrap;
+    text-shadow: 0 0 10px rgba(245, 212, 122, 0.2);
 }
 
 .emulator {
-    color: var(--muted);
+    color: var(--text-muted);
     font-size: 13px;
+    font-family: var(--font-mono);
 }
 
 .links {
@@ -316,19 +429,29 @@ section.records {
 }
 
 .links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
     font-family: var(--font-mono);
     font-size: 11px;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    color: var(--muted);
-    border-bottom: 1px dotted var(--rule);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--parchment);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: all 0.2s ease;
     white-space: nowrap;
 }
 
 .links a:hover,
 .links a:focus-visible {
-    color: var(--sand);
-    border-bottom-color: var(--sand);
+    color: #ffffff;
+    background: rgba(245, 212, 122, 0.15);
+    border-color: var(--sand-bright);
+    box-shadow: 0 0 12px var(--sand-glow);
     text-decoration: none;
 }
 
@@ -346,13 +469,14 @@ section.records {
 
 .notes-row td {
     padding: 0 !important;
-    background: #111216;
+    background: rgba(11, 13, 19, 0.96);
     border-bottom: 1px solid var(--rule);
 }
 
 .notes-content {
-    padding: 20px 24px;
-    border-left: 3px solid var(--sand);
+    padding: 24px 28px;
+    border-left: 3px solid var(--sand-bright);
+    box-shadow: inset 4px 0 16px rgba(245, 212, 122, 0.08);
     color: var(--parchment);
     overflow-wrap: break-word;
 }
@@ -361,8 +485,8 @@ section.records {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
     border-bottom: 1px solid var(--rule);
 }
 
@@ -373,7 +497,7 @@ section.records {
 }
 
 .notes-media-item .notes-header {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .notes-media-item .youtube-embed {
@@ -382,7 +506,7 @@ section.records {
 }
 
 .notes-media-item p {
-    color: var(--muted);
+    color: var(--text-muted);
     font-size: 14px;
     margin: 4px 0;
 }
@@ -392,8 +516,12 @@ section.records {
     font-size: 11px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--sand);
+    color: var(--sand-bright);
+    font-weight: 600;
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 /* ---------- Notes Content Spacing & Styling ---------- */
@@ -405,18 +533,22 @@ section.records {
 .notes-body h5,
 .notes-body h6 {
     clear: both;
-    color: var(--parchment);
-    margin-top: 14px;
-    margin-bottom: 4px;
-    letter-spacing: 0.02em;
+    color: #ffffff;
+    font-family: var(--font-body);
+    font-weight: 600;
+    margin-top: 18px;
+    margin-bottom: 6px;
+    letter-spacing: 0.01em;
 }
 
 .notes-body h1 {
     font-size: 20px;
+    color: var(--sand-bright);
 }
 
 .notes-body h2 {
     font-size: 18px;
+    color: var(--parchment);
 }
 
 .notes-body h3 {
@@ -433,56 +565,68 @@ section.records {
 }
 
 .notes-body p {
-    margin: 6px 0;
-    line-height: 1.5;
+    margin: 8px 0;
+    line-height: 1.6;
+    color: var(--parchment);
 }
 
 .notes-body ul,
 .notes-body ol {
-    margin: 4px 0 8px;
-    padding-left: 20px;
+    margin: 6px 0 10px;
+    padding-left: 22px;
 }
 
 .notes-body li {
-    margin: 2px 0;
-    line-height: 1.45;
+    margin: 3px 0;
+    line-height: 1.5;
 }
 
 .notes-body ul ul {
-    margin: 2px 0;
+    margin: 3px 0;
     padding-left: 18px;
 }
 
 .notes-body blockquote {
-    margin: 10px 0;
-    padding: 8px 14px;
-    border-left: 2px solid var(--sand-dim);
-    background: rgba(0, 0, 0, 0.35);
+    margin: 14px 0;
+    padding: 10px 16px;
+    border-left: 3px solid var(--sand-bright);
+    background: rgba(245, 212, 122, 0.05);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 
 .notes-body blockquote cite {
     display: block;
     font-family: var(--font-mono);
     font-size: 11px;
-    color: var(--sand);
+    color: var(--sand-bright);
+    font-style: normal;
     margin-bottom: 4px;
 }
 
 .notes-body code,
 .notes-body pre {
     font-family: var(--font-mono);
-    background: rgba(0, 0, 0, 0.45);
-    border-radius: 2px;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-sm);
 }
 
 .notes-body code {
-    padding: 2px 5px;
+    padding: 2px 6px;
     font-size: 13px;
+    color: var(--sand-bright);
 }
 
 .notes-body pre {
-    padding: 10px;
+    padding: 12px 16px;
     overflow-x: auto;
+}
+
+.notes-body pre code {
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--parchment);
 }
 
 /* ---------- Notes Tables & Extra Elements ---------- */
@@ -490,10 +634,10 @@ section.records {
 .table-wrap {
     width: 100%;
     overflow-x: auto;
-    margin: 14px 0;
+    margin: 16px 0;
     -webkit-overflow-scrolling: touch;
     border: 1px solid var(--rule);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     background: var(--bg-panel);
 }
 
@@ -501,12 +645,12 @@ section.records {
     width: 100%;
     border-collapse: collapse;
     font-size: 13px;
-    line-height: 1.45;
+    line-height: 1.5;
 }
 
 .notes-body th,
 .notes-body td {
-    padding: 8px 12px;
+    padding: 10px 14px;
     border: 1px solid var(--rule);
     text-align: left;
     vertical-align: middle;
@@ -517,8 +661,8 @@ section.records {
     font-size: 11px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--sand);
-    background: var(--bg-row-alt);
+    color: var(--sand-bright);
+    background: rgba(10, 12, 18, 0.9);
     font-weight: 600;
     white-space: nowrap;
 }
@@ -532,29 +676,29 @@ section.records {
 }
 
 .notes-body tbody tr:hover {
-    background: rgba(207, 167, 54, 0.06);
+    background: var(--bg-row-hover);
 }
 
 .notes-body hr {
     border: none;
     border-top: 1px solid var(--rule);
-    margin: 16px 0;
+    margin: 20px 0;
 }
 
 .notes-body dl {
-    margin: 8px 0;
+    margin: 10px 0;
 }
 
 .notes-body dt {
     font-family: var(--font-mono);
     font-weight: 600;
-    color: var(--sand);
-    margin-top: 6px;
+    color: var(--sand-bright);
+    margin-top: 8px;
 }
 
 .notes-body dd {
-    margin-left: 18px;
-    margin-bottom: 6px;
+    margin-left: 20px;
+    margin-bottom: 8px;
     color: var(--parchment);
 }
 
@@ -566,26 +710,30 @@ section.records {
 /* ---------- Table of Contents Card ---------- */
 
 .toc-card {
-    background: var(--bg-panel);
+    background: rgba(20, 23, 32, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--rule);
-    border-radius: 4px;
-    margin: 14px 0 18px;
+    border-radius: var(--radius-md);
+    margin: 16px 0 20px;
     overflow: hidden;
+    box-shadow: var(--shadow-card);
 }
 
 .toc-header {
-    padding: 9px 14px;
-    background: var(--bg-row-alt);
-    border-bottom: 1px solid var(--rule);
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     font-family: var(--font-mono);
     font-size: 11px;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--sand);
+    color: var(--sand-bright);
+    font-weight: 600;
 }
 
 .toc-body {
-    padding: 10px 14px 12px;
+    padding: 12px 16px 14px;
 }
 
 .toc-body ul {
@@ -595,7 +743,7 @@ section.records {
 }
 
 .toc-body ul ul {
-    margin: 2px 0;
+    margin: 3px 0;
     padding-left: 18px;
     list-style: circle;
 }
@@ -605,23 +753,21 @@ section.records {
 }
 
 .toc-body li {
-    margin: 3px 0;
+    margin: 4px 0;
     font-size: 13px;
-    line-height: 1.45;
+    line-height: 1.5;
 }
 
 .toc-body a {
-    color: var(--sand);
-    border-bottom: 1px dotted transparent;
+    color: var(--sand-bright);
     text-decoration: none;
-    transition: color 0.15s ease, border-color 0.15s ease;
+    transition: all 0.2s ease;
 }
 
 .toc-body a:hover,
 .toc-body a:focus-visible {
-    color: var(--parchment);
-    border-bottom-color: var(--sand);
-    text-decoration: none;
+    color: #ffffff;
+    text-shadow: 0 0 10px var(--sand-glow);
 }
 
 .notes-body::after {
@@ -633,18 +779,18 @@ section.records {
 /* ---------- YouTube Module Embeds ---------- */
 
 .youtube-embed {
-    margin: 14px 0;
+    margin: 16px 0;
     width: 100%;
 }
 
 .youtube-embed.align-left {
     float: left;
-    margin: 6px 18px 14px 0;
+    margin: 6px 20px 16px 0;
 }
 
 .youtube-embed.align-right {
     float: right;
-    margin: 6px 0 14px 18px;
+    margin: 6px 0 16px 20px;
 }
 
 .youtube-embed.align-center {
@@ -657,8 +803,10 @@ section.records {
     position: relative;
     width: 100%;
     overflow: hidden;
-    border-radius: 4px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     background: #000;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6);
 }
 
 .youtube-video iframe {
@@ -669,76 +817,79 @@ section.records {
 }
 
 .youtube-link {
-    margin-top: 6px;
+    margin-top: 8px;
     font-family: var(--font-mono);
     font-size: 11px;
     letter-spacing: 0.04em;
 }
 
 .youtube-link a {
-    color: var(--muted);
+    color: var(--text-muted);
     border-bottom: 1px dotted var(--rule);
 }
 
 .youtube-link a:hover,
 .youtube-link a:focus-visible {
-    color: var(--sand);
-    border-bottom-color: var(--sand);
-    text-decoration: none;
+    color: var(--sand-bright);
+    border-bottom-color: var(--sand-bright);
+    text-shadow: 0 0 10px var(--sand-glow);
 }
 
 /* ---------- Interactive Tab Widget (%%TAB%%) ---------- */
 
 .tabs-container {
-    margin: 18px 0;
+    margin: 20px 0;
     border: 1px solid var(--rule);
-    border-radius: 4px;
+    border-radius: var(--radius-md);
     background: var(--bg-panel);
+    backdrop-filter: blur(12px);
     overflow: hidden;
+    box-shadow: var(--shadow-card);
 }
 
 .tabs-nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 2px;
-    background: var(--bg-row-alt);
+    gap: 4px;
+    background: rgba(10, 12, 18, 0.95);
     border-bottom: 1px solid var(--rule);
-    padding: 6px 6px 0;
+    padding: 8px 8px 0;
 }
 
 .tab-btn {
     appearance: none;
     border: 1px solid transparent;
     border-bottom: none;
-    border-radius: 3px 3px 0 0;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
     background: transparent;
-    color: var(--muted);
+    color: var(--text-muted);
     font-family: var(--font-mono);
     font-size: 11px;
     letter-spacing: 0.05em;
-    padding: 8px 14px;
+    padding: 8px 16px;
     cursor: pointer;
-    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    transition: all 0.2s ease;
     user-select: none;
 }
 
 .tab-btn:hover,
 .tab-btn:focus-visible {
-    color: var(--parchment);
-    background: rgba(207, 167, 54, 0.06);
+    color: #ffffff;
+    background: rgba(245, 212, 122, 0.06);
 }
 
 .tab-btn.active {
-    background: var(--bg-panel);
-    color: var(--sand);
-    border-color: var(--rule);
-    border-bottom-color: var(--bg-panel);
+    background: rgba(245, 212, 122, 0.1);
+    color: var(--sand-bright);
+    border-color: rgba(245, 212, 122, 0.3);
+    border-bottom-color: transparent;
     margin-bottom: -1px;
     font-weight: 600;
+    box-shadow: 0 -2px 10px rgba(245, 212, 122, 0.05);
 }
 
 .tabs-panes {
-    padding: 16px;
+    padding: 20px;
 }
 
 .tab-pane {
@@ -783,7 +934,7 @@ section.records {
 
     .records-table tbody td {
         border-bottom: none;
-        padding: 4px 0;
+        padding: 6px 0;
     }
 
     .records-table tbody td[data-label]::before {
@@ -793,12 +944,12 @@ section.records {
         font-size: 10px;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: var(--sand);
+        color: var(--sand-bright);
         margin-bottom: 4px;
     }
 
     .notes-content {
-        padding: 16px;
+        padding: 18px 16px;
     }
 
     .notes-media-grid {
@@ -817,9 +968,20 @@ section.records {
 /* ---------- Footer ---------- */
 
 footer {
-    padding: 32px 0 64px;
-    color: var(--muted);
+    padding: 36px 0 64px;
+    color: var(--text-muted);
     font-family: var(--font-mono);
     font-size: 12px;
     border-top: 1px solid var(--rule);
+    text-align: center;
+}
+
+footer a {
+    color: var(--sand-bright);
+    transition: all 0.2s ease;
+}
+
+footer a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px var(--sand-glow);
 }

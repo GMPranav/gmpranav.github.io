@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prince of Persia Series All-Time Leaderboard &amp; Points System | GMP</title>
+
+  <link rel="icon" href="https://avatars.githubusercontent.com/u/54983451?v=4" />
+  <link rel="canonical" href="https://gmpranav.github.io/pop-series-leaderboard/" />
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Prince of Persia Series Leaderboard &amp; Points System | GMP" />
+  <meta name="description" content="All-time ranking and points calculation across every Prince of Persia speedrun game and category, powered by speedrun.com REST API data." />
+  <meta name="keywords" content="Prince of Persia, speedrun leaderboard, series points, speedrun.com API, PoP 1, Sands of Time, Warrior Within, Two Thrones, GMP" />
+  <meta name="author" content="GMP" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gmpranav.github.io/pop-series-leaderboard/" />
+  <meta property="og:title" content="Prince of Persia Series Leaderboard &amp; Points System | GMP" />
+  <meta property="og:description" content="Comprehensive series ranking and points tally for Prince of Persia speedrunners across all games and platforms." />
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/54983451?v=4" />
+
+  <!-- Fonts & Stylesheet -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Jost:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="../static/navbar.css" />
+  <script src="../static/projects-data.js"></script>
+  <script src="../static/navbar.js" defer></script>
+</head>
+
+<body>
+
+  <!-- Reusable Navigation Bar -->
+  <gmp-navbar active="leaderboard"></gmp-navbar>
+
+  <!-- Dynamic Atmospheric Background -->
+  <div class="ambient-canvas" aria-hidden="true">
+    <div class="ambient-dot-grid"></div>
+    <div class="ambient-orb ambient-orb-1"></div>
+    <div class="ambient-orb ambient-orb-2"></div>
+  </div>
+
+  <div class="page-container">
+
+    <!-- Hero Header -->
+    <header class="project-hero">
+      <div class="hero-tag-badge">Cross-Franchise Speedrun Scoring</div>
+      <h1 class="hero-title">Prince of Persia <span class="highlight">Series Leaderboard</span></h1>
+      <p class="hero-tagline">All-time speedrun ranking &amp; cumulative point scoring across the entire Prince of Persia franchise</p>
+
+      <p class="hero-summary">
+        An all-time ranking and points algorithm designed for Prince of Persia speedrunners. By taking every verified run ever performed on <strong>speedrun.com</strong> (including historic and obsoleted personal bests), this system awards points proportional to category competitiveness and sums them into a definitive franchise standing.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="https://docs.google.com/spreadsheets/d/110hfO0Bkzj87bEX6_CFZmptytWzcKLpi0aIL_vt7T0E/view" target="_blank" rel="noopener noreferrer" class="btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+          </svg>
+          <span>View Master Spreadsheet</span>
+        </a>
+        <a href="https://github.com/GMPranav/PoPSeriesLeaderboard" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+          </svg>
+          <span>Source Code on GitHub</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Scoring Formula Card -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-label">Ranking Mathematics</span>
+        <h2 class="section-title">The Scoring Formula</h2>
+      </div>
+
+      <div class="formula-card">
+        <div class="formula-header">
+          <div class="formula-math">
+            <code>Points(Rank) = N_runs - Rank + 1</code>
+          </div>
+          <span class="formula-badge">Total Series Points = &sum; Points</span>
+        </div>
+
+        <div class="formula-grid">
+          <div class="f-col">
+            <h4>Every Run Matters</h4>
+            <p>
+              Unlike traditional leaderboards that only count a runner's active personal best, this system awards points for <strong>every single verified run ever completed</strong> (including obsoleted runs). Dedication and longevity across multiple eras are rewarded.
+            </p>
+          </div>
+          <div class="f-col">
+            <h4>Scaled Competitiveness</h4>
+            <p>
+              In a category with 100 verified runs (<code>N_runs = 100</code>), the World Record holder receives <strong>100 points</strong>, 2nd place receives 99 points, down to 1 point. In smaller categories with 10 runs, WR receives 10 points.
+            </p>
+          </div>
+          <div class="f-col">
+            <h4>Full Franchise Breadth</h4>
+            <p>
+              Covers 17+ games: PoP 1 (DOS, SNES, Apple II, NES, GB, Genesis), PoP 2, PoP 3D, Arabian Nights, Sands of Time (PC, GBA), Warrior Within, The Two Thrones, 2008, and Forgotten Sands (PC, Wii, PSP, DS).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Speedrun.com Game & Category ID Reference -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-label">Developer Reference</span>
+        <h2 class="section-title">Speedrun.com Game IDs &amp; REST Schema</h2>
+      </div>
+
+      <div class="id-ref-card">
+        <p class="id-ref-desc">
+          Extracted directly from the Python backend (<code>Data.py</code> and <code>RunSortC.py</code>). Use these REST API resource IDs when scripting against the speedrun.com API:
+        </p>
+
+        <div class="id-grid">
+          <div class="id-item"><span class="id-name">Prince of Persia (1989)</span><code class="id-code">yd4y2wde</code></div>
+          <div class="id-item"><span class="id-name">Prince of Persia (Mods)</span><code class="id-code">j1ll33j1</code></div>
+          <div class="id-item"><span class="id-name">PoP 2: The Shadow and the Flame</span><code class="id-code">m1mq4xd2</code></div>
+          <div class="id-item"><span class="id-name">Prince of Persia 3D</span><code class="id-code">m1zqnx10</code></div>
+          <div class="id-item"><span class="id-name">PoP: Arabian Nights</span><code class="id-code">3dx2v0y1</code></div>
+          <div class="id-item"><span class="id-name">PoP: The Sands of Time</span><code class="id-code">yd4r0g1e</code></div>
+          <div class="id-item"><span class="id-name">PoP: Warrior Within</span><code class="id-code">46wje7dr</code></div>
+          <div class="id-item"><span class="id-name">PoP: The Two Thrones</span><code class="id-code">v1ppz718</code></div>
+          <div class="id-item"><span class="id-name">Prince of Persia 2008</span><code class="id-code">76rykq18</code></div>
+          <div class="id-item"><span class="id-name">PoP: The Forgotten Sands (PC)</span><code class="id-code">j1l704dg</code></div>
+          <div class="id-item"><span class="id-name">PoP: The Forgotten Sands (Wii)</span><code class="id-code">j1nl5edp</code></div>
+          <div class="id-item"><span class="id-name">PoP: The Forgotten Sands (PSP)</span><code class="id-code">268qr96p</code></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="project-footer">
+      <div>
+        <a href="https://github.com/GMPranav/PoPSeriesLeaderboard" target="_blank" rel="noopener noreferrer">PoP Series Leaderboard on GitHub</a>
+      </div>
+      <p class="footer-note">
+        Maintained by GMP for the Prince of Persia speedrunning community.
+      </p>
+    </footer>
+
+  </div>
+</body>
+</html>

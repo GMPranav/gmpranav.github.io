@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prince of Persia: The Shadow and the Flame - Native PC Port | GMP</title>
+
+  <link rel="icon" href="https://avatars.githubusercontent.com/u/54983451?v=4" />
+  <link rel="canonical" href="https://gmpranav.github.io/pop-snf-pc-bridge/" />
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Prince of Persia: The Shadow and the Flame - Native PC Port | GMP" />
+  <meta name="description" content="Authentic native Windows x64 PC port of Prince of Persia: The Shadow and the Flame (ShiVa3D) powered by Dynarmic ARMv7 JIT, Desktop OpenGL, OpenAL Soft, and a retro launcher." />
+  <meta name="keywords" content="Prince of Persia, Shadow and the Flame, PC Port, Dynarmic, ARMv7 JIT, ShiVa3D, SDL2, OpenGL, OpenAL Soft, reverse engineering, GMP" />
+  <meta name="author" content="GMP" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gmpranav.github.io/pop-snf-pc-bridge/" />
+  <meta property="og:title" content="Prince of Persia: The Shadow and the Flame - Native PC Port" />
+  <meta property="og:description" content="Native x64 Windows execution of Prince of Persia: The Shadow and the Flame via dynamic binary retranslation, zero Android VM overhead, 4K graphics, and full gamepad/mouse support." />
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/54983451?v=4" />
+
+  <!-- Google Verification & Fonts -->
+  <meta name="google-site-verification" content="WBLjyOFlBDM4lh2a0-AgJQqgpCwLH5-hiAJiq1aWtL0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Jost:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="../static/navbar.css" />
+  <script src="../static/projects-data.js"></script>
+  <script src="../static/navbar.js" defer></script>
+</head>
+
+<body>
+
+  <!-- Reusable Navigation Bar -->
+  <gmp-navbar active="snf"></gmp-navbar>
+
+  <!-- Dynamic Atmospheric Background -->
+  <div class="ambient-canvas" aria-hidden="true">
+    <div class="ambient-dot-grid"></div>
+    <div class="ambient-orb ambient-orb-1"></div>
+    <div class="ambient-orb ambient-orb-2"></div>
+    <div class="ambient-orb ambient-orb-3"></div>
+  </div>
+
+  <div class="page-container">
+
+    <!-- Hero Header -->
+    <header class="project-hero">
+      <div class="hero-tag-badge">Native Windows x64 Binary Retranslation</div>
+      <h1 class="hero-title">Prince of Persia<br/><span class="highlight">The Shadow and the Flame</span></h1>
+      <p class="hero-tagline">Native Windows PC Port &middot; ShiVa3D Engine &middot; Dynarmic JIT Runtime</p>
+
+      <p class="hero-summary">
+        An authentic, native Windows x64 PC port of the classic 2013 remake of <em>Prince of Persia: The Shadow and the Flame</em>. Rather than relying on heavy Android emulators that virtualize an entire operating system and kernel, this project runs the original ARMv7 client library (<code>libS3DClient.so</code>) <strong>natively as a standalone 64-bit Windows executable</strong> through Dynarmic dynamic retranslation, Desktop OpenGL, OpenAL Soft, and a dedicated 2000s-style configurator.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="#quickstart" class="btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>Setup &amp; Play</span>
+        </a>
+        <a href="#architecture" class="btn-secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+          </svg>
+          <span>Architecture &amp; Memory</span>
+        </a>
+        <a href="https://github.com/GMPranav/pop-snf-pc-bridge" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <span>View Source</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Key Pillars / Feature Cards -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-label">Engine Capabilities</span>
+        <h2 class="section-title">Core Engineering Highlights</h2>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="card-icon-wrap"><i class="fa-solid fa-bolt"></i></div>
+          <h3>Zero OS Emulation Overhead</h3>
+          <p>
+            No BlueStacks, Nox, or Android VM hypervisors. The game's ARMv7 ELF binary runs directly inside Windows user space with near-zero latency, negligible CPU footprint, and instant startup times.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="card-icon-wrap"><i class="fa-solid fa-brain"></i></div>
+          <h3>Dynarmic Dynamic Retranslation</h3>
+          <p>
+            Employs a custom precompiled <strong>Dynarmic JIT</strong> fat library to retranslate 32-bit ARM machine code directly into host x86-64 machine instructions on the fly with optimized register mapping.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="card-icon-wrap"><i class="fa-solid fa-display"></i></div>
+          <h3>4K UHD &amp; Desktop OpenGL</h3>
+          <p>
+            Bridges mobile OpenGL ES 2.0 to Desktop OpenGL compatibility profile. Features real-time software ETC1 texture decompression, true 16:9 widescreen resolutions up to 3840x2160, MSAA 8x, and 16x Anisotropic Filtering.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="card-icon-wrap"><i class="fa-solid fa-volume-high"></i></div>
+          <h3>OpenAL Soft 3D Spatial Audio</h3>
+          <p>
+            Intercepts Android OpenSL ES and OpenAL calls and bridges them directly to modern 64-bit OpenAL Soft, preserving authentic surround sound, environmental reverb, and crystal-clear music.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="card-icon-wrap"><i class="fa-solid fa-gamepad"></i></div>
+          <h3>Full Controls &amp; Gamepad Support</h3>
+          <p>
+            Powered by SDL2 with support for XInput/DirectInput controllers, mouse buttons (Left, Right, Middle, Extra buttons, Scroll wheel), and customizable keyboard layouts with conflict resolution.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="card-icon-wrap"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+          <h3>Nostalgic Config Launcher</h3>
+          <p>
+            Includes <code>PoPSnF_Launcher.exe</code>, a retro 2000s Prince of Persia style launcher with 1-click APK asset extraction, Dolphin-style key binding, and full undo/redo configuration history.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="section" id="architecture">
+      <div class="section-header">
+        <span class="section-label">System Internals</span>
+        <h2 class="section-title">Subsystem Bridge Architecture</h2>
+      </div>
+
+      <div class="arch-container">
+        <div class="arch-flow">
+          <div class="arch-layer arch-guest">
+            <div class="arch-layer-badge">GUEST EXECUTION LAYER</div>
+            <h4>Prince of Persia: SnF Engine</h4>
+            <div class="arch-box">
+              <code>libS3DClient.so</code>
+              <span>ARMv7 ShiVa3D Game Logic &amp; Assets</span>
+            </div>
+          </div>
+
+          <div class="arch-connector">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="7 13 12 18 17 13"></polyline><line x1="12" y1="6" x2="12" y2="18"></line></svg>
+            <span>SVC Trampolines &amp; Memory Hooks</span>
+          </div>
+
+          <div class="arch-layer arch-bridges">
+            <div class="arch-layer-badge">HOST BRIDGE SUBSYSTEMS</div>
+            <div class="subsystems-grid">
+              <div class="subsystem-item">
+                <span class="subsystem-title">bridge_gles</span>
+                <span class="subsystem-desc">Translates GLES 2.0 to Desktop GL; on-the-fly ETC1 software decompression</span>
+              </div>
+              <div class="subsystem-item">
+                <span class="subsystem-title">bridge_libc</span>
+                <span class="subsystem-desc">Bionic libc emulation, 28-bin segregated heap, POSIX VFS &amp; STK loader</span>
+              </div>
+              <div class="subsystem-item">
+                <span class="subsystem-title">bridge_openal</span>
+                <span class="subsystem-desc">Bridges sound calls to 64-bit OpenAL Soft with 3D spatial listener positioning</span>
+              </div>
+              <div class="subsystem-item">
+                <span class="subsystem-title">bridge_jni</span>
+                <span class="subsystem-desc">Lightweight user-space Android JNIEnv &amp; JavaVM virtual interface structs</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="arch-connector">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="7 13 12 18 17 13"></polyline><line x1="12" y1="6" x2="12" y2="18"></line></svg>
+            <span>Native x64 System Calls</span>
+          </div>
+
+          <div class="arch-layer arch-host">
+            <div class="arch-layer-badge">NATIVE WINDOWS PLATFORM</div>
+            <h4>Modern PC Hardware &amp; OS</h4>
+            <div class="host-chips">
+              <span class="host-chip">SDL2 Windowing &amp; Events</span>
+              <span class="host-chip">Hardware OpenGL Driver</span>
+              <span class="host-chip">OpenAL Audio Device</span>
+              <span class="host-chip">Win32 Filesystem</span>
+              <span class="host-chip">XInput / DirectInput</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Address Space Layout -->
+      <div class="memory-card">
+        <h3>Guest Address Space Layout (512 MB Arena)</h3>
+        <p class="memory-sub">All ARM code, stacks, heaps, and mock Android structures reside inside a deterministic 512 MB virtual memory window:</p>
+
+        <div class="memory-table-wrap">
+          <table class="memory-table">
+            <thead>
+              <tr>
+                <th>Address Range</th>
+                <th>Region</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>0x00000000 - 0x0000FFFF</code></td>
+                <td>Low Scratch</td>
+                <td>Scratchpad memory &amp; argument staging buffers</td>
+              </tr>
+              <tr>
+                <td><code>0x00010000 - 0x0001FFFF</code></td>
+                <td>SVC Trampolines</td>
+                <td>Supervisor Call trampolines (<code>0xEF000000 | idx</code> &rarr; <code>BX LR</code>)</td>
+              </tr>
+              <tr>
+                <td><code>0x00020000 - 0x0002FFFF</code></td>
+                <td>Data Imports</td>
+                <td><code>__stack_chk_guard</code>, <code>_ctype_</code>, <code>__sF</code>, <code>stdout</code>, <code>stderr</code></td>
+              </tr>
+              <tr>
+                <td><code>0x00030000 - 0x0003FFFF</code></td>
+                <td>JNI Structs</td>
+                <td>Virtual <code>JNIEnv</code> &amp; <code>JavaVM</code> pointer tables</td>
+              </tr>
+              <tr>
+                <td><code>0x01000000 - 0x01BD0B6C</code></td>
+                <td>ELF Image</td>
+                <td>Original <code>libS3DClient.so</code> game logic, code segments &amp; static data</td>
+              </tr>
+              <tr>
+                <td><code>0x02000000 - 0x1E000000</code></td>
+                <td>Segregated Heap</td>
+                <td>Dynamic 28-bin segregated free-list heap with 448 MB memory capacity</td>
+              </tr>
+              <tr>
+                <td><code>0x1E000000 - 0x1FFFFFE0</code></td>
+                <td>Guest Stack</td>
+                <td>32 MB downward-growing ARM stack arena with page guards</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Launcher & Configurator Showcase -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-label">User Experience</span>
+        <h2 class="section-title">Dedicated Retro Launcher &amp; Configurator</h2>
+      </div>
+
+      <div class="launcher-grid">
+        <div class="launcher-feature">
+          <div class="l-badge"><i class="fa-solid fa-bolt"></i> 1-Click Asset Extractor</div>
+          <h4>Seamless APK Setup</h4>
+          <p>
+            Drop the original game APK directly onto <code>PoPSnF_Launcher.exe</code>. In under 1 second, it inspects, verifies, and unpacks <code>libS3DClient.so</code>, <code>S3DMain.stk</code>, and game splash screens automatically into the game directory.
+          </p>
+        </div>
+
+        <div class="launcher-feature">
+          <div class="l-badge"><i class="fa-solid fa-palette"></i> Visual Fidelity Controls</div>
+          <h4>Modern Display Settings</h4>
+          <p>
+            Select native 16:9 widescreen resolutions from 720p up to full <strong>4K UHD (3840x2160)</strong>. Toggle Borderless Fullscreen, VSync, MSAA up to 8x, 16x Anisotropic Filtering, and customizable frame limiters (30, 60, 120, 144, 165, 240, or Unlimited).
+          </p>
+        </div>
+
+        <div class="launcher-feature">
+          <div class="l-badge"><i class="fa-solid fa-gamepad"></i> Dolphin-Style Remapping</div>
+          <h4>Advanced Input Mapping</h4>
+          <p>
+            Map any action to keyboard keys, mouse buttons (Left, Right, Middle, Mouse 4/5, Wheel Up/Down), or gamepads. Duplicate bindings automatically swap without collision. Supports Dolphin-style Escape key binding and full Undo/Redo (Ctrl+Z / Ctrl+Y).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Controls Table -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-label">Input Layout</span>
+        <h2 class="section-title">Default Controls Scheme</h2>
+      </div>
+
+      <div class="controls-card">
+        <div class="table-actions">
+          <input type="search" id="controlSearch" class="filter-input" placeholder="Search controls (e.g., Jump, Attack, Gamepad)..." />
+          <span class="controls-hint">Bindings can be customized in Launcher or in <code>game/config.ini</code></span>
+        </div>
+
+        <div class="memory-table-wrap">
+          <table class="memory-table controls-table" id="controlsTable">
+            <thead>
+              <tr>
+                <th>Action</th>
+                <th>Keyboard &amp; Mouse Default</th>
+                <th>Gamepad Default (Xbox / Generic)</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Move Left / Right</strong></td>
+                <td><span class="key-cap">A</span> / <span class="key-cap">D</span> or <span class="key-cap">&larr;</span> / <span class="key-cap">&rarr;</span></td>
+                <td>Left Stick / D-Pad Left &amp; Right</td>
+                <td>Horizontal movement across platforms</td>
+              </tr>
+              <tr>
+                <td><strong>Jump / Climb Up</strong></td>
+                <td><span class="key-cap">W</span> or <span class="key-cap">&uarr;</span> or <span class="key-cap">Space</span></td>
+                <td><span class="btn-cap btn-a">A Button</span> / Left Stick Up</td>
+                <td>Ascend ledges, leap across chasms, wall run upward</td>
+              </tr>
+              <tr>
+                <td><strong>Crouch / Roll / Drop</strong></td>
+                <td><span class="key-cap">S</span> or <span class="key-cap">&darr;</span> or <span class="key-cap">Left Ctrl</span></td>
+                <td><span class="btn-cap btn-b">B Button</span> / Left Stick Down</td>
+                <td>Roll through narrow passages, drop down ledges</td>
+              </tr>
+              <tr>
+                <td><strong>Attack / Strike</strong></td>
+                <td><span class="key-cap">Mouse Left</span> or <span class="key-cap">J</span></td>
+                <td><span class="btn-cap btn-x">X Button</span></td>
+                <td>Execute sword attack combo sequences</td>
+              </tr>
+              <tr>
+                <td><strong>Block / Parry</strong></td>
+                <td><span class="key-cap">Mouse Right</span> or <span class="key-cap">K</span></td>
+                <td><span class="btn-cap btn-y">Y Button</span> / Left Trigger</td>
+                <td>Deflect enemy strikes and prepare counter-attacks</td>
+              </tr>
+              <tr>
+                <td><strong>Drink Health Potion</strong></td>
+                <td><span class="key-cap">E</span> or <span class="key-cap">H</span></td>
+                <td>Right Shoulder (<span class="btn-cap">RB</span>)</td>
+                <td>Restore health from inventory vials</td>
+              </tr>
+              <tr>
+                <td><strong>Interact / Action</strong></td>
+                <td><span class="key-cap">F</span></td>
+                <td><span class="btn-cap btn-x">X Button</span> (Contextual)</td>
+                <td>Pull levers, inspect pressure plates, open gates</td>
+              </tr>
+              <tr>
+                <td><strong>Pause / In-Game Menu</strong></td>
+                <td><span class="key-cap">Escape</span></td>
+                <td>Start / Menu Button</td>
+                <td>Open game pause menu and options</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quickstart / How to Play -->
+    <section class="section" id="quickstart">
+      <div class="section-header">
+        <span class="section-label">Getting Started</span>
+        <h2 class="section-title">Setup &amp; Installation Guide</h2>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <h3>Requirements</h3>
+          <p>
+            - 64-bit Windows 10 or 11<br>
+            - OpenGL 3.3 compatible graphics card<br>
+            - Microsoft Visual C++ 2015-2022 Redistributable (x64)<br>
+            - A legitimate Android <code>.apk</code> of <em>Prince of Persia: The Shadow and the Flame</em> (v1.0.0 or later)
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <h3>Extract Game Files</h3>
+          <p>
+            Download the latest release from GitHub. Launch <code>PoPSnF_Launcher.exe</code> and drag-and-drop your game <code>.apk</code> into the extraction prompt. The launcher will automatically unpack and verify the required assets in seconds.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <h3>Configure &amp; Play</h3>
+          <p>
+            Choose your preferred resolution (e.g. 1080p, 1440p, or 4K UHD), toggle VSync or MSAA, adjust your keybindings or controller layout, and click <strong>Launch Game</strong>!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="project-footer">
+      <div>
+        <a href="https://github.com/GMPranav/pop-snf-pc-bridge" target="_blank" rel="noopener noreferrer">Prince of Persia: The Shadow and the Flame PC Port on GitHub</a>
+      </div>
+      <p class="footer-note">
+        This is an educational reverse engineering and compatibility layer project. All original assets and game code belong to their respective copyright holders.
+      </p>
+    </footer>
+
+  </div>
+
+  <script>
+    // Simple filter for controls table
+    const searchInput = document.getElementById("controlSearch");
+    const controlsTable = document.getElementById("controlsTable");
+    if (searchInput && controlsTable) {
+      searchInput.addEventListener("input", (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        const rows = controlsTable.querySelectorAll("tbody tr");
+        rows.forEach((row) => {
+          const text = row.textContent.toLowerCase();
+          row.style.display = text.includes(query) ? "" : "none";
+        });
+      });
+    }
+  </script>
+
+</body>
+
+</html>

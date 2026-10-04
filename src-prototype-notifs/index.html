@@ -40,9 +40,13 @@
             border-radius: 3rem;
         }
     </style>
+    <link rel="stylesheet" href="../static/navbar.css" />
+    <script src="../static/navbar.js" defer></script>
 </head>
 
-<body data-bs-theme="dark">
+<body data-bs-theme="dark" style="padding-top: 0; padding-left: 0; padding-right: 0;">
+    <gmp-navbar active="splits"></gmp-navbar>
+    <div style="padding: 30px 50px;">
     <div class="x-panel-shadow rounded-lg bg-panel/panel relative">
         <div class="flex flex-col items-start justify-start gap-2">
             <table class="x-table">
@@ -511,6 +515,7 @@
                 </tbody>
             </table>
         </div>
+    </div>
     </div>
 </body>
 </html>

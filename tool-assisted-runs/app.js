@@ -56,7 +56,7 @@ function makeLinkCell(record, fieldKey) {
     if (value) {
         var a = document.createElement("a");
         a.href = value.href;
-        a.textContent = field.text + " (" + value.label + ")";
+        a.innerHTML = '<i class="fa-solid fa-file-arrow-down"></i> ' + field.text + ' (' + value.label + ')';
         a.target = "_blank";
         a.rel = "noopener noreferrer";
         a.download = "";
@@ -144,7 +144,8 @@ function createMediaItem(title, value, emptyText) {
 
     var header = document.createElement("div");
     header.className = "notes-header";
-    header.textContent = title;
+    var icon = title.toLowerCase().includes("video") ? "fa-solid fa-play" : "fa-solid fa-microphone";
+    header.innerHTML = `<i class="${icon}"></i> ` + title;
     item.appendChild(header);
 
     var body = document.createElement("div");
@@ -179,7 +180,7 @@ function makeNotesRow(record) {
 
     var header = document.createElement("div");
     header.className = "notes-header";
-    header.textContent = "Author Notes";
+    header.innerHTML = '<i class="fa-solid fa-book-open"></i> Author Notes';
     content.appendChild(header);
 
     var body = document.createElement("div");
