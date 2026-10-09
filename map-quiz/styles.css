@@ -500,6 +500,7 @@ html, body {
   stroke-width: 0.75px;
   stroke-linejoin: round;
   stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
   cursor: pointer;
   transition: fill 0.22s ease, stroke 0.2s ease, filter 0.2s ease;
 }
@@ -994,29 +995,55 @@ html, body {
 
 /* Mnemonic Card */
 .mnemonic-banner {
-  background: rgba(207, 167, 54, 0.12);
+  background: linear-gradient(135deg, rgba(207, 167, 54, 0.15) 0%, rgba(20, 24, 34, 0.6) 100%);
   border-left: 3px solid var(--sand);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   padding: 12px 14px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
 .mnemonic-header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 6px;
   color: var(--sand-bright);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.mnemonic-header-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mnemonic-tag-pill {
+  font-size: 0.72rem;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(207, 167, 54, 0.2);
+  border: 1px solid var(--sand);
+  color: #fff;
+  text-transform: none;
+  letter-spacing: normal;
+  font-family: var(--font-body);
 }
 
 .mnemonic-text {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #f3f4f6;
+  line-height: 1.5;
+}
+
+.mnemonic-text strong {
+  color: var(--sand-bright);
+  font-weight: 700;
 }
 
 /* Notes Section */
@@ -1179,6 +1206,294 @@ html, body {
   line-height: 1.5;
 }
 
+/* Modal Navigation Tabs */
+.modal-nav-tabs {
+  display: flex;
+  background: rgba(14, 18, 26, 0.95);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 0 20px;
+  gap: 8px;
+}
+
+.modal-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-dim);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-tab-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.modal-tab-btn.active {
+  color: var(--sand-bright);
+  border-bottom-color: var(--sand);
+  background: rgba(207, 167, 54, 0.06);
+}
+
+.modal-tab-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-tab-pane.hidden {
+  display: none !important;
+}
+
+/* Story Mode Prologue */
+.story-prologue-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, rgba(207, 167, 54, 0.12) 0%, rgba(45, 90, 135, 0.12) 100%);
+  border: 1px solid rgba(207, 167, 54, 0.25);
+  border-radius: var(--radius-md);
+}
+
+.prologue-icon {
+  font-size: 1.6rem;
+  color: var(--sand-bright);
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.prologue-text h4 {
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.prologue-text p {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.prologue-text em {
+  color: var(--sand-bright);
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* Story Act Navigator Bar */
+.story-act-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-bottom: 4px;
+}
+
+.act-nav-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.act-nav-pill:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.act-nav-pill.active {
+  background: var(--sand);
+  color: #0c0f16;
+  border-color: var(--sand);
+  font-weight: 700;
+  box-shadow: 0 2px 8px var(--sand-glow);
+}
+
+/* Story Acts Container & Cards */
+.story-acts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.story-act-card {
+  background: rgba(18, 22, 32, 0.85);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: border-color 0.2s ease;
+}
+
+.story-act-card:hover {
+  border-color: rgba(207, 167, 54, 0.4);
+}
+
+.story-act-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 12px;
+}
+
+.story-act-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.story-act-badge {
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  background: rgba(207, 167, 54, 0.15);
+  border: 1px solid var(--sand);
+  color: var(--sand-bright);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.story-act-title {
+  font-family: var(--font-body);
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.story-act-count {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+/* Story Scenes */
+.story-scene-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.story-scene-block {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.story-scene-headline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.story-scene-headline i {
+  color: var(--sand-bright);
+}
+
+.story-narrative-p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #d1d5db;
+}
+
+.story-narrative-p strong {
+  color: #fff;
+}
+
+.story-narrative-p mark {
+  background: rgba(207, 167, 54, 0.2);
+  color: var(--sand-bright);
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+/* Interactive Country / Feature Chips Tray */
+.story-chips-tray {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.story-chip-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  color: #f3f4f6;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.story-chip-btn .chip-name {
+  font-weight: 600;
+}
+
+.story-chip-btn .chip-pun {
+  color: var(--sand-bright);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  background: rgba(207, 167, 54, 0.12);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+.story-chip-btn:hover {
+  background: var(--sand);
+  color: #07080b;
+  border-color: var(--sand);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(207, 167, 54, 0.3);
+}
+
+.story-chip-btn:hover .chip-pun {
+  background: rgba(0, 0, 0, 0.2);
+  color: #07080b;
+  font-weight: 700;
+}
+
+.story-chip-btn:active {
+  transform: translateY(0);
+}
+
 .mnemonics-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
@@ -1334,4 +1649,477 @@ html, body {
     display: none;
   }
 }
+
+/* ==========================================================================
+   Physical Map Mode Styles & Category Filters
+   ========================================================================== */
+
+/* Map Type Segmented Toggle */
+.map-type-toggle {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(10, 12, 18, 0.95);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  padding: 3px;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.map-type-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-full);
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.map-type-btn:hover {
+  color: var(--parchment);
+}
+
+.map-type-btn.active {
+  background: linear-gradient(135deg, rgba(207, 167, 54, 0.95), rgba(245, 212, 122, 0.9));
+  color: #07080b;
+  font-weight: 700;
+  box-shadow: 0 2px 10px rgba(207, 167, 54, 0.35);
+}
+
+/* Physical Feature Category Filter Bar */
+.physical-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 24px;
+  background: rgba(18, 22, 32, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 12px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 28;
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.25s ease-out;
+}
+
+.category-tabs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.category-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.category-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.category-tab-btn:hover {
+  color: var(--parchment);
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.category-tab-btn.active {
+  background: rgba(207, 167, 54, 0.16);
+  border-color: var(--sand);
+  color: var(--sand-bright);
+  font-weight: 600;
+  box-shadow: 0 0 10px var(--sand-glow);
+}
+
+/* Category specific active accent colors */
+.category-tab-btn[data-category="desert"].active {
+  border-color: #eab308;
+  color: #fef08a;
+  background: rgba(234, 179, 8, 0.18);
+  box-shadow: 0 0 10px rgba(234, 179, 8, 0.3);
+}
+
+.category-tab-btn[data-category="mountain"].active {
+  border-color: #f97316;
+  color: #fed7aa;
+  background: rgba(249, 115, 22, 0.18);
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.3);
+}
+
+.category-tab-btn[data-category="river"].active {
+  border-color: #06b6d4;
+  color: #a5f3fc;
+  background: rgba(6, 182, 212, 0.18);
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
+}
+
+.category-tab-btn[data-category="lake"].active {
+  border-color: #38bdf8;
+  color: #bae6fd;
+  background: rgba(56, 189, 248, 0.18);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+.category-tab-btn[data-category="island"].active {
+  border-color: #10b981;
+  color: #a7f3d0;
+  background: rgba(16, 185, 129, 0.18);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+}
+
+.category-tab-btn[data-category="strait"].active {
+  border-color: #a855f7;
+  color: #e9d5ff;
+  background: rgba(168, 85, 247, 0.18);
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
+.category-badge-count {
+  display: inline-block;
+  font-size: 0.72rem;
+  padding: 1px 6px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-dim);
+}
+
+.category-tab-btn.active .category-badge-count {
+  background: rgba(207, 167, 54, 0.3);
+  color: #fff;
+}
+
+.category-meta-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.category-count-badge {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-subtle);
+}
+
+/* ==========================================================================
+   SVG Physical Markers Styling
+   ========================================================================== */
+
+.physical-marker {
+  cursor: pointer;
+  transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.physical-marker:hover {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.marker-hit-area {
+  fill: transparent;
+  pointer-events: all;
+}
+
+.marker-halo {
+  stroke-width: 1.5px;
+  opacity: 0.55;
+  transition: all 0.25s ease;
+}
+
+.physical-marker:hover .marker-halo {
+  opacity: 1;
+  stroke-width: 2.8px;
+}
+
+.marker-core {
+  stroke: #ffffff;
+  stroke-width: 1.5px;
+  transition: all 0.2s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.7));
+}
+
+.physical-marker:hover .marker-core {
+  transform: scale(1.15);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.marker-icon-glyph {
+  font-size: 11px;
+  text-anchor: middle;
+  dominant-baseline: central;
+  user-select: none;
+  pointer-events: none;
+}
+
+.marker-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  fill: var(--parchment);
+  stroke: #07080b;
+  stroke-width: 3.5px;
+  paint-order: stroke fill;
+  pointer-events: none;
+  text-anchor: middle;
+  letter-spacing: 0.02em;
+  transition: opacity 0.2s ease;
+}
+
+/* Answer Status for Physical Markers (Strict Green / Red requirement) */
+.marker-correct .marker-core {
+  fill: var(--color-correct) !important;
+  stroke: #86efac !important;
+  filter: drop-shadow(0 0 10px var(--color-correct-glow)) !important;
+}
+
+.marker-correct .marker-halo {
+  stroke: var(--color-correct) !important;
+  opacity: 0.95;
+}
+
+.marker-wrong .marker-core {
+  fill: var(--color-wrong) !important;
+  stroke: #fca5a5 !important;
+  filter: drop-shadow(0 0 10px var(--color-wrong-glow)) !important;
+}
+
+.marker-wrong .marker-halo {
+  stroke: var(--color-wrong) !important;
+  opacity: 0.95;
+}
+
+.marker-selected .marker-core {
+  stroke: #ffffff !important;
+  stroke-width: 2.5px !important;
+  filter: drop-shadow(0 0 14px var(--sand-bright)) !important;
+}
+
+.marker-selected .marker-halo {
+  stroke: var(--sand-bright) !important;
+  stroke-width: 3px !important;
+  stroke-dasharray: 3 3;
+}
+
+/* Dimmed Base Countries in Physical Map Mode */
+.physical-mode-active .country-path {
+  fill: rgba(18, 22, 32, 0.6);
+  stroke: rgba(255, 255, 255, 0.12);
+  cursor: default;
+}
+
+.physical-mode-active .country-path:hover {
+  fill: rgba(18, 22, 32, 0.6) !important;
+  stroke: rgba(255, 255, 255, 0.2) !important;
+  filter: none !important;
+}
+
+/* ==========================================================================
+   True Vector Outlines for Rivers & Lakes
+   ========================================================================== */
+
+/* Lakes Vector Polygons */
+.lake-path {
+  fill: rgba(56, 189, 248, 0.45);
+  stroke: #38bdf8;
+  stroke-width: 1.2px;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  cursor: pointer;
+  transition: fill 0.25s ease, stroke 0.25s ease, filter 0.25s ease;
+  filter: drop-shadow(0 0 3px rgba(56, 189, 248, 0.4));
+}
+
+.lake-path:hover {
+  fill: rgba(56, 189, 248, 0.85) !important;
+  stroke: #ffffff !important;
+  stroke-width: 2.2px !important;
+  filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.9)) !important;
+}
+
+.lake-selected {
+  stroke: var(--sand-bright) !important;
+  stroke-width: 2.5px !important;
+  fill: rgba(207, 167, 54, 0.4) !important;
+  filter: drop-shadow(0 0 14px var(--sand-glow)) !important;
+}
+
+.lake-correct {
+  fill: var(--color-correct) !important;
+  stroke: #86efac !important;
+  stroke-width: 2px !important;
+  filter: drop-shadow(0 0 12px var(--color-correct-glow)) !important;
+}
+
+.lake-wrong {
+  fill: var(--color-wrong) !important;
+  stroke: #fca5a5 !important;
+  stroke-width: 2px !important;
+  filter: drop-shadow(0 0 12px var(--color-wrong-glow)) !important;
+}
+
+/* Rivers Vector Lines */
+.river-hit-path {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 14px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  cursor: pointer;
+  pointer-events: stroke;
+}
+
+.river-path {
+  fill: none;
+  stroke: #06b6d4;
+  stroke-width: 2.2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  cursor: pointer;
+  pointer-events: stroke;
+  transition: stroke 0.25s ease, stroke-width 0.2s ease, filter 0.25s ease;
+  filter: drop-shadow(0 0 3px rgba(6, 182, 212, 0.5));
+}
+
+.river-path:hover,
+.river-hit-path:hover + .river-path {
+  stroke: #ffffff !important;
+  stroke-width: 3.8px !important;
+  filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.9)) !important;
+}
+
+.river-selected {
+  stroke: var(--sand-bright) !important;
+  stroke-width: 3.5px !important;
+  filter: drop-shadow(0 0 14px var(--sand-glow)) !important;
+}
+
+.river-correct {
+  stroke: var(--color-correct) !important;
+  stroke-width: 3.2px !important;
+  filter: drop-shadow(0 0 12px var(--color-correct-glow)) !important;
+}
+
+.river-wrong {
+  stroke: var(--color-wrong) !important;
+  stroke-width: 3.2px !important;
+  filter: drop-shadow(0 0 12px var(--color-wrong-glow)) !important;
+}
+
+/* ==========================================================================
+   True Span Polygons for Deserts & Mountains
+   ========================================================================== */
+
+/* Deserts Span Polygons */
+.desert-path {
+  fill: rgba(234, 179, 8, 0.22);
+  stroke: #eab308;
+  stroke-width: 1.2px;
+  stroke-dasharray: 4 3;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  cursor: pointer;
+  transition: fill 0.25s ease, stroke 0.25s ease, filter 0.25s ease;
+  filter: drop-shadow(0 0 4px rgba(234, 179, 8, 0.3));
+}
+
+.desert-path:hover {
+  fill: rgba(234, 179, 8, 0.5) !important;
+  stroke: #fef08a !important;
+  stroke-width: 2px !important;
+  stroke-dasharray: none;
+  filter: drop-shadow(0 0 12px rgba(234, 179, 8, 0.7)) !important;
+}
+
+.desert-selected {
+  stroke: var(--sand-bright) !important;
+  stroke-width: 2.5px !important;
+  stroke-dasharray: none !important;
+  fill: rgba(207, 167, 54, 0.4) !important;
+  filter: drop-shadow(0 0 14px var(--sand-glow)) !important;
+}
+
+.desert-correct {
+  fill: rgba(34, 197, 94, 0.45) !important;
+  stroke: #86efac !important;
+  stroke-width: 2px !important;
+  stroke-dasharray: none !important;
+  filter: drop-shadow(0 0 12px var(--color-correct-glow)) !important;
+}
+
+.desert-wrong {
+  fill: rgba(239, 68, 68, 0.45) !important;
+  stroke: #fca5a5 !important;
+  stroke-width: 2px !important;
+  stroke-dasharray: none !important;
+  filter: drop-shadow(0 0 12px var(--color-wrong-glow)) !important;
+}
+
+/* Mountains & Ranges Span Polygons */
+.mountain-path {
+  fill: rgba(249, 115, 22, 0.22);
+  stroke: #f97316;
+  stroke-width: 1.4px;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  cursor: pointer;
+  transition: fill 0.25s ease, stroke 0.25s ease, filter 0.25s ease;
+  filter: drop-shadow(0 0 4px rgba(249, 115, 22, 0.35));
+}
+
+.mountain-path:hover {
+  fill: rgba(249, 115, 22, 0.52) !important;
+  stroke: #fed7aa !important;
+  stroke-width: 2.2px !important;
+  filter: drop-shadow(0 0 12px rgba(249, 115, 22, 0.75)) !important;
+}
+
+.mountain-selected {
+  stroke: var(--sand-bright) !important;
+  stroke-width: 2.5px !important;
+  fill: rgba(207, 167, 54, 0.4) !important;
+  filter: drop-shadow(0 0 14px var(--sand-glow)) !important;
+}
+
+.mountain-correct {
+  fill: rgba(34, 197, 94, 0.45) !important;
+  stroke: #86efac !important;
+  stroke-width: 2px !important;
+  filter: drop-shadow(0 0 12px var(--color-correct-glow)) !important;
+}
+
+.mountain-wrong {
+  fill: rgba(239, 68, 68, 0.45) !important;
+  stroke: #fca5a5 !important;
+  stroke-width: 2px !important;
+  filter: drop-shadow(0 0 12px var(--color-wrong-glow)) !important;
+}
+
 

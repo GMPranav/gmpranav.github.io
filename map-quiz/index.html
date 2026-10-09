@@ -27,7 +27,7 @@
     <!-- Page Title & Tag in Left Slot -->
     <div slot="left" class="nav-title-block">
       <div class="badge-tag">UPSC GS-I Prelims</div>
-      <h1 class="nav-page-title">Political Map <span class="highlight">Trainer</span></h1>
+      <h1 class="nav-page-title" id="page-title"><span id="page-title-map-type">Political</span> Map <span class="highlight">Trainer</span></h1>
     </div>
 
     <!-- Mode Selector in Center Slot -->
@@ -38,7 +38,7 @@
       </button>
       <button type="button" class="mode-btn" data-mode="find-country" id="mode-find-country">
         <span class="mode-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
-        <span class="mode-text">Find Country</span>
+        <span class="mode-text" id="find-mode-text">Find Country</span>
       </button>
       <button type="button" class="mode-btn" data-mode="study" id="mode-study">
         <span class="mode-icon"><i class="fa-solid fa-book-open"></i></span>
@@ -49,10 +49,10 @@
     <!-- Header Actions in Right Slot -->
     <div slot="right" class="nav-actions-group">
       <button type="button" class="action-btn mnemonics-toggle-btn" id="open-mnemonics-btn" aria-haspopup="dialog">
-        <span class="btn-icon"><i class="fa-solid fa-bolt"></i></span>
-        <span>Mnemonics Deck</span>
+        <span class="btn-icon"><i class="fa-solid fa-clapperboard"></i></span>
+        <span>Story &amp; Mnemonics</span>
       </button>
-      <button type="button" class="action-btn icon-only-btn" id="reset-continent-btn" title="Reset Current Continent Map" aria-label="Reset Continent Progress">
+      <button type="button" class="action-btn icon-only-btn" id="reset-continent-btn" title="Reset Current Map Progress" aria-label="Reset Map Progress">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
           <path d="M3 3v5h5"/>
@@ -70,9 +70,20 @@
 
   <div class="app-layout">
 
-
-    <!-- Subheader: Continent Tabs & Search -->
+    <!-- Subheader: Map Type, Continent Tabs & Search -->
     <section class="continent-bar">
+      <!-- Map Type Switcher -->
+      <div class="map-type-toggle" role="group" aria-label="Map Mode">
+        <button type="button" class="map-type-btn active" data-map-type="political" id="type-btn-political">
+          <span class="type-icon"><i class="fa-solid fa-flag"></i></span>
+          <span class="type-text">Political</span>
+        </button>
+        <button type="button" class="map-type-btn" data-map-type="physical" id="type-btn-physical">
+          <span class="type-icon"><i class="fa-solid fa-mountain-sun"></i></span>
+          <span class="type-text">Physical</span>
+        </button>
+      </div>
+
       <div class="continent-tabs" id="continent-tabs-container" role="tablist">
         <!-- Injected via JavaScript -->
       </div>
@@ -81,8 +92,18 @@
           <circle cx="11" cy="11" r="8"/>
           <line x1="21" y1="21" x2="16.65" y2="16.65"/>
         </svg>
-        <input type="search" id="country-search-input" placeholder="Search country (e.g. Djibouti)..." autocomplete="off" />
+        <input type="search" id="country-search-input" placeholder="Search country or physical feature..." autocomplete="off" />
         <div class="search-dropdown hidden" id="search-dropdown"></div>
+      </div>
+    </section>
+
+    <!-- Physical Features Category Filter Bar (Visible in Physical Map mode) -->
+    <section class="physical-filter-bar hidden" id="physical-filter-bar" aria-label="Physical Feature Categories">
+      <div class="category-tabs" id="category-tabs-container" role="tablist">
+        <!-- Injected via JavaScript: All, Deserts, Mountains, Rivers, Lakes, Islands, Straits -->
+      </div>
+      <div class="category-meta-info" id="category-meta-info">
+        <span class="category-count-badge" id="category-count-badge">193 features</span>
       </div>
     </section>
 
@@ -90,11 +111,11 @@
     <main class="main-container">
       <!-- Left / Center: Map Canvas -->
       <section class="map-stage" aria-label="Interactive Map Area">
-        <!-- Target Prompt Bar (for Find Country mode) -->
+        <!-- Target Prompt Bar (for Find Country / Feature mode) -->
         <div class="find-prompt-banner hidden" id="find-prompt-banner">
-          <span class="prompt-badge">TARGET</span>
+          <span class="prompt-badge" id="find-target-badge">TARGET</span>
           <div class="prompt-content">
-            <span class="prompt-label">Locate this country on the map:</span>
+            <span class="prompt-label" id="find-target-type-label">Locate this country on the map:</span>
             <strong class="prompt-country" id="find-target-name">Djibouti</strong>
             <span class="prompt-hint" id="find-target-hint"></span>
           </div>
@@ -161,15 +182,15 @@
       <aside class="sidebar-panel" id="sidebar-panel">
         <!-- Default Idle State -->
         <div class="panel-idle" id="panel-idle">
-          <div class="idle-icon"><i class="fa-solid fa-earth-americas"></i></div>
-          <h3>Select a Territory</h3>
-          <p>Click on any political outline to submit its name or view its UPSC Prelims strategic facts.</p>
-          <div class="quick-hints-box">
+          <div class="idle-icon"><i class="fa-solid fa-earth-americas" id="idle-icon-elem"></i></div>
+          <h3 id="idle-title">Select a Feature or Territory</h3>
+          <p id="idle-desc">Click on any political outline or physical marker to submit its name or view its UPSC Prelims strategic facts.</p>
+          <div class="quick-hints-box" id="idle-hints-box">
             <h4><i class="fa-solid fa-bolt text-gold"></i> High-Yield Prelims Focus:</h4>
             <ul>
-              <li><strong>Straits &amp; Chokepoints:</strong> Bab-el-Mandeb, Hormuz, Malacca, Bosporus, Gibraltar, Kerch.</li>
-              <li><strong>Key Minerals:</strong> Cobalt (DRC), Lithium (Bolivia/Chile/Arg), Uranium (Kazakhstan/Niger), Phosphates (Morocco).</li>
-              <li><strong>Conflict Zones:</strong> Darfur, Tigray, Kivu, Gaza, Nagorno-Karabakh.</li>
+              <li><strong>Physical Straits:</strong> Bab-el-Mandeb, Hormuz, Malacca, Bosporus, Gibraltar, Kerch, Bering.</li>
+              <li><strong>Rift &amp; Tectonic Lakes:</strong> Lake Victoria, Tanganyika, Baikal, Dead Sea, Great Lakes.</li>
+              <li><strong>Key Minerals &amp; Mountains:</strong> Atlas, Drakensberg, Urals, Zagros, Altai, Andes, Rockies.</li>
             </ul>
           </div>
         </div>
@@ -177,16 +198,16 @@
         <!-- Quiz Prompt Card (Click & Name Mode) -->
         <div class="panel-quiz hidden" id="panel-quiz">
           <div class="panel-header">
-            <span class="badge-tag">Territory Selected</span>
+            <span class="badge-tag" id="quiz-selected-tag">Territory Selected</span>
             <button type="button" class="btn-close-panel" id="btn-close-quiz" aria-label="Close panel"><i class="fa-solid fa-xmark"></i></button>
           </div>
           
-          <h2 class="quiz-question-title">What is the name of this country?</h2>
-          <p class="quiz-subtext">Continent: <span class="highlight" id="quiz-continent-label">Africa</span></p>
+          <h2 class="quiz-question-title" id="quiz-question-title">What is the name of this country?</h2>
+          <p class="quiz-subtext"><span id="quiz-continent-label">Continent: Africa</span> <span class="badge-tag hidden" id="quiz-category-tag"></span></p>
 
           <form id="quiz-form" class="quiz-form" autocomplete="off">
             <div class="input-wrapper">
-              <input type="text" id="country-answer-input" placeholder="Type country name..." autofocus required />
+              <input type="text" id="country-answer-input" placeholder="Type name..." autofocus required />
             </div>
             <div class="quiz-btn-row">
               <button type="submit" class="btn-submit" id="btn-submit-answer">Submit Answer</button>
@@ -246,19 +267,54 @@
     <div class="modal-content">
       <div class="modal-header">
         <div class="modal-title-group">
-          <span class="badge-tag">UPSC GS-I Prelims Mnemonics</span>
-          <h2>High-Yield Coastlines &amp; Littorals Deck</h2>
+          <span class="badge-tag"><i class="fa-solid fa-graduation-cap"></i> UPSC GS-I Memory Lab</span>
+          <h2 id="mnemonics-modal-title">Mass Hero Spy Mission &amp; Mnemonics</h2>
         </div>
         <button type="button" class="btn-close-modal" id="btn-close-modal" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
       </div>
 
+      <!-- Segmented View Tabs inside modal -->
+      <div class="modal-nav-tabs" role="tablist">
+        <button type="button" class="modal-tab-btn active" id="modal-tab-story" role="tab" aria-selected="true" data-tab="story">
+          <i class="fa-solid fa-clapperboard"></i>
+          <span>🎬 Mass Hero Spy Mission (130+ Countries)</span>
+        </button>
+        <button type="button" class="modal-tab-btn" id="modal-tab-deck" role="tab" aria-selected="false" data-tab="deck">
+          <i class="fa-solid fa-layer-group"></i>
+          <span>📋 UPSC Acronyms Deck (BURGER T, LIST, etc.)</span>
+        </button>
+      </div>
+
       <div class="modal-body">
-        <p class="modal-intro">
-          Curated directly from map reading notes. Click any country button inside a mnemonic to locate and zoom directly to it on the outline map.
-        </p>
-        
-        <div class="mnemonics-grid" id="mnemonics-grid">
-          <!-- Injected via JavaScript -->
+        <!-- Tab 1: Illogical Mass Hero Spy Mission -->
+        <div class="modal-tab-pane active" id="story-pane">
+          <div class="story-prologue-banner">
+            <div class="prologue-icon"><i class="fa-solid fa-mask"></i></div>
+            <div class="prologue-text">
+              <h4>The Illogical Spy Mission: Pursuing Villain "X" Across the Globe</h4>
+              <p>You are a Tamil movie mass hero on a top-secret global pursuit of villain <strong>"X"</strong>, who stole nuclear codes! Follow this hilariously illogical chain of events from the skies of Africa through Europe, the Americas, and Asia to the Pacific. <em>Click any country or physical feature pill to zoom directly to it on the outline map!</em></p>
+            </div>
+          </div>
+
+          <!-- Act Filter Bar -->
+          <div class="story-act-nav" id="story-act-nav">
+            <!-- Injected via JavaScript -->
+          </div>
+
+          <!-- Story Acts & Scenes Container -->
+          <div class="story-acts-container" id="story-acts-container">
+            <!-- Injected via JavaScript -->
+          </div>
+        </div>
+
+        <!-- Tab 2: Classic UPSC Acronyms Deck -->
+        <div class="modal-tab-pane hidden" id="deck-pane">
+          <p class="modal-intro">
+            Curated littoral seas and high-yield physical features. Click any button inside a mnemonic to locate and zoom directly to it on the outline map.
+          </p>
+          <div class="mnemonics-grid" id="mnemonics-grid">
+            <!-- Injected via JavaScript -->
+          </div>
         </div>
       </div>
     </div>
