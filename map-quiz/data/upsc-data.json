@@ -3688,6 +3688,30 @@
         "turks and caicos is."
       ]
     },
+    "798": {
+      "id": "798",
+      "name": "Tuvalu",
+      "topoName": "Tuvalu",
+      "capital": "Funafuti",
+      "continent": "South & Southeast Asia",
+      "subregion": "Oceania / Polynesia",
+      "mnemonic": "🎬 Spy Story: Hero receives a PoST (Papua New Guinea, Solomon Islands, Tuvalu) with Figs (Fiji) sent by Mr. Rabbit! | 'T' in PoST",
+      "notes": "Pacific island nation in Polynesia, formerly Ellice Islands. Comprises 3 reef islands and 6 true atolls; capital is Funafuti atoll. World's 4th smallest sovereign nation by land area (26 sq km). Extremely vulnerable to climate change and rising sea levels (highest elevation only ~4.6m). Signatory of landmark Falepili Union treaty with Australia providing climate migration pathways. Currency: Tuvaluan Dollar / Australian Dollar.",
+      "tags": [
+        "Oceania",
+        "Polynesia",
+        "PoST",
+        "Funafuti",
+        "Sinking Islands",
+        "Climate Change",
+        "Ellice Islands"
+      ],
+      "aliases": [
+        "tuvalu",
+        "funafuti",
+        "ellice islands"
+      ]
+    },
     "800": {
       "id": "800",
       "name": "Uganda",
@@ -4940,8 +4964,36 @@
         }
       ],
       "notes": "Strategic peninsula in northeast Africa protruding into Arabian Sea and Gulf of Aden."
+    },
+    {
+      "title": "Pacific Island Nations (Oceania)",
+      "mnemonic": "PoST & Figs (Papua New Guinea, Solomon Islands, Tuvalu, Fiji)",
+      "notes": "From West to East across Melanesia and Polynesia: Papua New Guinea (P), Solomon Islands (S), Tuvalu (T), and Fiji (Figs). High-yield island geography in UPSC Prelims.",
+      "type": "political",
+      "letters": [
+        {
+          "letter": "P",
+          "country": "Papua New Guinea",
+          "id": "598"
+        },
+        {
+          "letter": "S",
+          "country": "Solomon Islands",
+          "id": "090"
+        },
+        {
+          "letter": "T",
+          "country": "Tuvalu",
+          "id": "798"
+        },
+        {
+          "letter": "F",
+          "country": "Fiji",
+          "id": "242"
+        }
+      ]
     }
   ],
-  "totalCountries": 236,
+  "totalCountries": 237,
   "upscRichCount": 160
 }

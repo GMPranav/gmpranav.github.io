@@ -84,7 +84,10 @@
     zoomOutBtn: document.getElementById('zoom-out-btn'),
     zoomResetBtn: document.getElementById('zoom-reset-btn'),
 
-    // Sidebar panels
+    // Sidebar panels & Mobile sheet
+    sidebarPanel: document.getElementById('sidebar-panel'),
+    sheetBackdrop: document.getElementById('sheet-backdrop'),
+    sheetDragHandle: document.getElementById('sheet-drag-handle'),
     panelIdle: document.getElementById('panel-idle'),
     panelQuiz: document.getElementById('panel-quiz'),
     panelResult: document.getElementById('panel-result'),
@@ -247,7 +250,7 @@
       btn.type = 'button';
       btn.className = `continent-tab-btn ${region.id === state.activeContinent ? 'active' : ''}`;
       btn.dataset.continent = region.id;
-      btn.innerHTML = `<span>${region.icon}</span> <span>${region.name}</span>`;
+      btn.textContent = region.name;
       btn.addEventListener('click', () => switchContinent(region.id));
       elements.continentTabs.appendChild(btn);
     });
@@ -491,7 +494,7 @@
       case 'west-asia': return cMeta.continent === 'West Asia';
       case 'europe': return cMeta.continent === 'Europe';
       case 'east-central-asia': return cMeta.continent === 'East & Central Asia';
-      case 'south-se-asia': return cMeta.continent === 'South & Southeast Asia' || cMeta.subregion === 'Oceania';
+      case 'south-se-asia': return cMeta.continent === 'South & Southeast Asia' || (cMeta.subregion && cMeta.subregion.includes('Oceania'));
       case 'south-america': return cMeta.continent === 'South America';
       case 'north-america': return cMeta.continent === 'North America';
       default: return true;
@@ -1064,12 +1067,16 @@
 
     hideAllPanels();
     elements.panelIdle.classList.remove('hidden');
+    if (elements.sidebarPanel) elements.sidebarPanel.classList.remove('sheet-open');
+    if (elements.sheetBackdrop) elements.sheetBackdrop.classList.add('hidden');
   }
 
   function hideAllPanels() {
     elements.panelIdle.classList.add('hidden');
     elements.panelQuiz.classList.add('hidden');
     elements.panelResult.classList.add('hidden');
+    if (elements.sidebarPanel) elements.sidebarPanel.classList.remove('sheet-open');
+    if (elements.sheetBackdrop) elements.sheetBackdrop.classList.add('hidden');
   }
 
   // --- Quiz Prompts ---
@@ -1082,6 +1089,8 @@
     elements.answerInput.value = '';
     elements.answerInput.placeholder = 'Type country name...';
     elements.panelQuiz.classList.remove('hidden');
+    if (elements.sidebarPanel) elements.sidebarPanel.classList.add('sheet-open');
+    if (elements.sheetBackdrop) elements.sheetBackdrop.classList.remove('hidden');
 
     setTimeout(() => {
       elements.answerInput.focus();
@@ -1100,6 +1109,8 @@
     elements.answerInput.value = '';
     elements.answerInput.placeholder = `Type ${f.category} name (e.g. ${f.name.split(' ')[0]})...`;
     elements.panelQuiz.classList.remove('hidden');
+    if (elements.sidebarPanel) elements.sidebarPanel.classList.add('sheet-open');
+    if (elements.sheetBackdrop) elements.sheetBackdrop.classList.remove('hidden');
 
     setTimeout(() => {
       elements.answerInput.focus();
@@ -1253,6 +1264,8 @@
 
     hideAllPanels();
     elements.panelResult.classList.remove('hidden');
+    if (elements.sidebarPanel) elements.sidebarPanel.classList.add('sheet-open');
+    if (elements.sheetBackdrop) elements.sheetBackdrop.classList.remove('hidden');
 
     elements.resultBanner.className = 'result-banner';
     if (status === 'correct') {
@@ -1326,6 +1339,8 @@
 
     hideAllPanels();
     elements.panelResult.classList.remove('hidden');
+    if (elements.sidebarPanel) elements.sidebarPanel.classList.add('sheet-open');
+    if (elements.sheetBackdrop) elements.sheetBackdrop.classList.remove('hidden');
 
     elements.resultBanner.className = 'result-banner';
     if (status === 'correct') {
@@ -2129,6 +2144,7 @@
           entities: [
             { id: "598", name: "Papua New Guinea", flag: "🇵🇬", pun: "P in PoST", type: "political" },
             { id: "090", name: "Solomon Is.", flag: "🇸🇧", pun: "S in PoST", type: "political" },
+            { id: "798", name: "Tuvalu", flag: "🇹🇻", pun: "T in PoST", type: "political" },
             { id: "242", name: "Fiji", flag: "🇫🇯", pun: "Figs in package", type: "political" }
           ]
         }
@@ -2669,7 +2685,49 @@
       });
     }
 
+    // Mobile Bottom Sheet backdrop & drag handle click to dismiss
+    if (elements.sheetBackdrop) {
+      elements.sheetBackdrop.addEventListener('click', () => {
+        deselectCurrent();
+        showIdlePanel();
+      });
+    }
+    if (elements.sheetDragHandle) {
+      elements.sheetDragHandle.addEventListener('click', () => {
+        deselectCurrent();
+        showIdlePanel();
+      });
+    }
+
     setupSearch();
+
+    // Responsive mode-tabs relocation:
+    // - On Desktop (> 820px): lives cleanly in the top navbar center slot (#gmpNavCustomCenter)
+    // - On Mobile/Tablet (<= 820px): relocates into #mobile-toolbar-slot right above continent bar
+    const responsiveMql = window.matchMedia('(max-width: 820px)');
+    function syncModeTabsLocation() {
+      const modeTabs = document.getElementById('mode-tabs');
+      const mobileSlot = document.getElementById('mobile-toolbar-slot');
+      const navCenter = document.getElementById('gmpNavCustomCenter') || document.querySelector('.gmp-nav-custom-center');
+
+      if (!modeTabs) return;
+
+      if (responsiveMql.matches) {
+        if (mobileSlot && modeTabs.parentElement !== mobileSlot) {
+          mobileSlot.appendChild(modeTabs);
+        }
+      } else {
+        if (navCenter && modeTabs.parentElement !== navCenter) {
+          navCenter.appendChild(modeTabs);
+        }
+      }
+    }
+
+    responsiveMql.addEventListener('change', syncModeTabsLocation);
+    window.addEventListener('resize', syncModeTabsLocation);
+    syncModeTabsLocation();
+    setTimeout(syncModeTabsLocation, 100);
+    setTimeout(syncModeTabsLocation, 350);
   }
 
   // Kickstart on DOM ready
