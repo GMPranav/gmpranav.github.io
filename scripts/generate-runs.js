@@ -340,7 +340,6 @@ function generateHubIndexHtml(allRecords) {
     <meta property="og:image" content="https://avatars.githubusercontent.com/u/54983451?v=4">
 
     <!-- Meta Tags -->
-    <meta name="google-site-verification" content="WBLjyOFlBDM4lh2a0-AgJQqgpCwLH5-hiAJiq1aWtL0" />
     <meta name="description" content="Archive of Tool-Assisted Speedruns (TAS) developed by Prince of Persia speedrunner GMP. Includes movie input files, YouTube video encodes, audio commentary tracks, and deep technical glitch notes.">
     <meta name="keywords" content="Tool-Assisted Speedrun, TAS, Prince of Persia TAS, Prince of Persia Sands of Time TAS, Prince of Persia speedrun, DOS speedrun, GMP speedrun, GMP Prince of Persia, TAS input files, movie files">
     <meta name="author" content="GMP">
