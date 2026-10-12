@@ -1107,7 +1107,7 @@
     elements.quizCategoryTag.textContent = cat.name;
     elements.quizCategoryTag.classList.remove('hidden');
     elements.answerInput.value = '';
-    elements.answerInput.placeholder = `Type ${f.category} name (e.g. ${f.name.split(' ')[0]})...`;
+    elements.answerInput.placeholder = `Type ${f.category} name...`;
     elements.panelQuiz.classList.remove('hidden');
     if (elements.sidebarPanel) elements.sidebarPanel.classList.add('sheet-open');
     if (elements.sheetBackdrop) elements.sheetBackdrop.classList.remove('hidden');
