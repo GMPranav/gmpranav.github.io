@@ -48,6 +48,9 @@
   let width = 900;
   let height = 650;
   let currentZoomScale = 1;
+  let isInteracting = false;
+  let markerScaleRaf = null;
+  let lastMarkerScaleK = 1;
 
   // DOM Elements
   const elements = {
@@ -398,33 +401,47 @@
       .attr('viewBox', `0 0 ${width} ${height}`)
       .attr('preserveAspectRatio', 'xMidYMid meet');
 
-    // Zoom behavior with counter-scaling for markers
+    // Zoom behavior with throttled marker counter-scaling and GPU-optimized gestures
     zoomBehavior = d3.zoom()
       .scaleExtent([0.6, 25])
+      .on('start', () => {
+        elements.tooltip.classList.add('hidden');
+        elements.tooltip.style.opacity = '0';
+      })
       .on('zoom', (event) => {
+        if (!isInteracting) {
+          isInteracting = true;
+          svg.classed('is-interacting', true);
+        }
         currentZoomScale = event.transform.k;
         mapGroup.attr('transform', event.transform);
-        updateMarkerScales(currentZoomScale);
+        queueMarkerScaleUpdate(currentZoomScale);
+      })
+      .on('end', () => {
+        if (isInteracting) {
+          isInteracting = false;
+          svg.classed('is-interacting', false);
+        }
+        queueMarkerScaleUpdate(currentZoomScale, true);
       });
 
     svg.call(zoomBehavior)
        .on('dblclick.zoom', null);
 
-    // Main map container group
-    mapGroup = svg.append('g').attr('id', 'map-world-group');
-
-    // Ocean background click to deselect
-    mapGroup.append('rect')
-      .attr('width', 10000)
-      .attr('height', 10000)
-      .attr('x', -5000)
-      .attr('y', -5000)
+    // Ocean background click to deselect (at root SVG level so it never needs 10000x10000 scaling)
+    svg.append('rect')
+      .attr('id', 'map-ocean-bg')
+      .attr('width', '100%')
+      .attr('height', '100%')
       .attr('fill', 'transparent')
       .on('click', () => {
         if (state.activeMode !== 'find-country') {
           deselectCurrent();
         }
       });
+
+    // Main map container group
+    mapGroup = svg.append('g').attr('id', 'map-world-group');
 
     // Sub-layers (in strict z-index order)
     countriesLayer = mapGroup.append('g').attr('id', 'countries-layer');
@@ -443,32 +460,62 @@
     window.addEventListener('resize', handleResize);
   }
 
-  // Keep marker pins compact and crisp when zoomed in
-  function updateMarkerScales(k) {
+  // Keep marker pins compact and crisp when zoomed in, with zero overhead during pure pan
+  function applyMarkerScale(k) {
+    lastMarkerScaleK = k;
     const markerScale = Math.max(0.35, Math.min(1, 1.25 / Math.sqrt(k)));
-    if (physicalLayer) {
-      physicalLayer.selectAll('.physical-marker').each(function (d) {
+    if (!physicalLayer) return;
+    const layerNode = physicalLayer.node();
+    if (!layerNode) return;
+    const markers = layerNode.getElementsByClassName('physical-marker');
+    for (let i = 0; i < markers.length; i++) {
+      const el = markers[i];
+      const d = el.__data__;
+      if (!d) continue;
+      if (d._px == null || d._py == null) {
         const coords = projection(d.coords);
         if (coords && !isNaN(coords[0]) && !isNaN(coords[1])) {
-          d3.select(this).attr('transform', `translate(${coords[0]}, ${coords[1]}) scale(${markerScale})`);
+          d._px = coords[0];
+          d._py = coords[1];
+        } else {
+          continue;
         }
-      });
+      }
+      el.setAttribute('transform', `translate(${d._px}, ${d._py}) scale(${markerScale})`);
     }
   }
 
+  function queueMarkerScaleUpdate(k, force = false) {
+    if (!force && Math.abs(k - lastMarkerScaleK) < 0.08) return;
+    if (markerScaleRaf) return;
+    markerScaleRaf = requestAnimationFrame(() => {
+      markerScaleRaf = null;
+      applyMarkerScale(k);
+    });
+  }
+
+  function updateMarkerScales(k) {
+    queueMarkerScaleUpdate(k, true);
+  }
+
+  let resizeTimeout = null;
   function handleResize() {
-    const bbox = elements.viewport.getBoundingClientRect();
-    if (!bbox.width || !bbox.height) return;
-    width = bbox.width;
-    height = bbox.height;
-    svg.attr('viewBox', `0 0 ${width} ${height}`);
-    updateProjection();
-    renderCountries();
-    if (state.mapType === 'physical') {
-      renderLandforms();
-      renderWaterways();
-      renderPhysicalFeatures();
-    }
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const bbox = elements.viewport.getBoundingClientRect();
+      if (!bbox.width || !bbox.height) return;
+      if (Math.abs(bbox.width - width) < 2 && Math.abs(bbox.height - height) < 2) return;
+      width = bbox.width;
+      height = bbox.height;
+      svg.attr('viewBox', `0 0 ${width} ${height}`);
+      updateProjection();
+      renderCountries();
+      if (state.mapType === 'physical') {
+        renderLandforms();
+        renderWaterways();
+        renderPhysicalFeatures();
+      }
+    }, 150);
   }
 
   function updateProjection() {
@@ -481,6 +528,14 @@
       .translate([width / 2, height / 2]);
 
     geoPath = d3.geoPath().projection(projection);
+
+    // Invalidate cached marker projected coordinates so they recalculate on new projection
+    if (state.physicalData && state.physicalData.features) {
+      Object.values(state.physicalData.features).forEach(f => {
+        f._px = null;
+        f._py = null;
+      });
+    }
   }
 
   function isCountryInActiveContinent(feature) {
@@ -843,8 +898,14 @@
     mergedMarkers
       .attr('transform', d => {
         const coords = projection(d.coords);
-        if (!coords || isNaN(coords[0]) || isNaN(coords[1])) return 'translate(-9999,-9999)';
-        return `translate(${coords[0]}, ${coords[1]}) scale(${markerScale})`;
+        if (!coords || isNaN(coords[0]) || isNaN(coords[1])) {
+          d._px = null;
+          d._py = null;
+          return 'translate(-9999,-9999)';
+        }
+        d._px = coords[0];
+        d._py = coords[1];
+        return `translate(${d._px}, ${d._py}) scale(${markerScale})`;
       })
       .each(function (d) {
         updatePhysicalMarkerStyle(d3.select(this), d);
@@ -895,7 +956,7 @@
 
   // --- Mouse & Tooltip Handlers ---
   function handleCountryMouseEnter(event, d) {
-    if (state.mapType === 'physical') return;
+    if (isInteracting || state.mapType === 'physical') return;
     const cid = String(d.id);
     const country = state.upscData.countries[cid];
     if (!country) return;
@@ -920,6 +981,7 @@
   }
 
   function handlePhysicalMouseEnter(event, d) {
+    if (isInteracting) return;
     const result = state.physicalProgress[d.id];
     const cat = CATEGORY_META[d.category] || CATEGORY_META.mountain;
     let tooltipHtml = '';
@@ -941,6 +1003,7 @@
   }
 
   function handleMouseMove(event) {
+    if (isInteracting) return;
     const viewportRect = elements.viewport.getBoundingClientRect();
     const x = event.clientX - viewportRect.left;
     const y = event.clientY - viewportRect.top;

@@ -504,6 +504,8 @@ html, body {
   position: relative;
   overflow: hidden;
   width: 100%;
+  touch-action: none;
+  isolation: isolate;
 }
 
 #map-svg {
@@ -511,10 +513,31 @@ html, body {
   height: 100%;
   cursor: grab;
   user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
 }
 
 #map-svg:active {
   cursor: grabbing;
+}
+
+#map-world-group {
+  will-change: transform;
+  transform-origin: 0 0;
+}
+
+#map-svg.is-interacting {
+  cursor: grabbing;
+}
+
+#map-svg.is-interacting #map-world-group {
+  pointer-events: none;
+}
+
+#map-svg.is-interacting #map-world-group * {
+  pointer-events: none !important;
+  filter: none !important;
+  transition: none !important;
 }
 
 /* Country Outline Styling */
@@ -2298,7 +2321,6 @@ html, body {
   vector-effect: non-scaling-stroke;
   cursor: pointer;
   transition: fill 0.25s ease, stroke 0.25s ease, filter 0.25s ease;
-  filter: drop-shadow(0 0 3px rgba(56, 189, 248, 0.4));
 }
 
 .lake-path:hover {
@@ -2351,7 +2373,6 @@ html, body {
   cursor: pointer;
   pointer-events: stroke;
   transition: stroke 0.25s ease, stroke-width 0.2s ease, filter 0.25s ease;
-  filter: drop-shadow(0 0 3px rgba(6, 182, 212, 0.5));
 }
 
 .river-path:hover,
@@ -2393,7 +2414,6 @@ html, body {
   vector-effect: non-scaling-stroke;
   cursor: pointer;
   transition: fill 0.25s ease, stroke 0.25s ease, filter 0.25s ease;
-  filter: drop-shadow(0 0 4px rgba(234, 179, 8, 0.3));
 }
 
 .desert-path:hover {
@@ -2437,7 +2457,6 @@ html, body {
   vector-effect: non-scaling-stroke;
   cursor: pointer;
   transition: fill 0.25s ease, stroke 0.25s ease, filter 0.25s ease;
-  filter: drop-shadow(0 0 4px rgba(249, 115, 22, 0.35));
 }
 
 .mountain-path:hover {
@@ -2466,6 +2485,43 @@ html, body {
   stroke: #fca5a5 !important;
   stroke-width: 2px !important;
   filter: drop-shadow(0 0 12px var(--color-wrong-glow)) !important;
+}
+
+/* Mobile & Touchscreen Rendering Optimizations */
+@media (max-width: 820px), (hover: none), (pointer: coarse) {
+  .country-path,
+  .country-path:hover,
+  .country-selected,
+  .country-correct,
+  .country-wrong,
+  .lake-path,
+  .lake-path:hover,
+  .lake-selected,
+  .lake-correct,
+  .lake-wrong,
+  .river-path,
+  .river-path:hover,
+  .river-selected,
+  .river-correct,
+  .river-wrong,
+  .desert-path,
+  .desert-path:hover,
+  .desert-selected,
+  .desert-correct,
+  .desert-wrong,
+  .mountain-path,
+  .mountain-path:hover,
+  .mountain-selected,
+  .mountain-correct,
+  .mountain-wrong,
+  .marker-core,
+  .physical-marker:hover .marker-core,
+  .marker-correct .marker-core,
+  .marker-wrong .marker-core,
+  .marker-selected .marker-core {
+    filter: none !important;
+    transition: none !important;
+  }
 }
 
 
