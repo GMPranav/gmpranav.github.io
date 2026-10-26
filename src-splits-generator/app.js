@@ -27,7 +27,7 @@ function populateSrc(value) {
 
 function populatePreview(value) {
   const content = value !== undefined ? value : textarea.value;
-  preview.innerHTML = marked.parse((content || "").replaceAll(" ", "&#8193;"));
+  preview.innerHTML = marked.parse(content || "");
 }
 
 textarea.addEventListener("input", () => {
@@ -108,7 +108,6 @@ function parseXML(xmlString) {
   let parser = new DOMParser();
   let xmlDoc = parser.parseFromString(xmlString, "text/xml");
 
-  const spaceValue = parseInt(document.getElementById("spacing").value);
   const decimals = parseInt(document.getElementById("decimals").value);
   const timingMethod = document.getElementById("timing-method").value;
 
@@ -116,9 +115,8 @@ function parseXML(xmlString) {
   let count = 1;
   let prevTime = 0;
   result += "## [Time Splits](https://gmpranav.github.io/src-splits-generator/)\n\n";
-  const spaceStr = " ".repeat(spaceValue);
-  result += `| **#** | | **Name** | ${spaceStr}| **Finished At** | ${spaceStr}| **Split** |\n`;
-  result += "|---|---|---|---|:---:|---|:---:|\n";
+  result += "| **#** | **Name** | **Finished At** | **Split** |\n";
+  result += "|---|---|:---:|:---:|\n";
 
   xmlDoc.querySelectorAll("Run Segments Segment").forEach((segment) => {
     const splitName = segment
@@ -134,11 +132,11 @@ function parseXML(xmlString) {
       const parsedTime = parseStime(realTime);
       const splitTime = parsedTime - prevTime;
 
-      result += `| ${count} || ${splitName} || ${formatMilliseconds(parsedTime, decimals)} || ${formatMilliseconds(splitTime, decimals)} |\n`;
+      result += `| ${count} | ${splitName} | ${formatMilliseconds(parsedTime, decimals)} | ${formatMilliseconds(splitTime, decimals)} |\n`;
       prevTime = parsedTime;
     }
     else {
-      result += `| ${count} || ${splitName} || - || - |\n`;
+      result += `| ${count} | ${splitName} | - | - |\n`;
       prevTime = "-";
     }
     count++;

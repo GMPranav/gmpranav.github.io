@@ -474,13 +474,13 @@ textarea#markdown::selection {
   overflow-x: auto;
   overflow-y: auto;
   color: #ffffff;
-  font-family: Arial, sans-serif;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   font-size: 14px;
   line-height: 1.4;
 }
 
 #preview h2 {
-  font-family: Arial, sans-serif;
+  font-family: inherit;
   color: #ffffff;
   font-size: 1.5em;
   font-weight: bold;
@@ -488,28 +488,56 @@ textarea#markdown::selection {
 }
 
 #preview a {
-  color: #58a6ff;
+  color: #f5a3ff;
   text-decoration: underline;
 }
 
 #preview a:hover {
-  color: #79c0ff;
+  color: #fbc8ff;
 }
 
 #preview p {
   margin: 1em 0;
 }
 
-#preview table th {
-  text-align: initial;
+#preview table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+  background: #1f262d;
+  border: 1px solid #2c353d;
 }
 
-#preview table th[align="center"] {
+#preview table th,
+#preview table td {
+  padding: 12px 14px;
+  border: 1px solid #2c353d;
+  text-align: left;
+}
+
+#preview table th {
+  background: #313a42;
+  font-weight: 600;
+}
+
+#preview table td {
+  border-top: 1px solid #2c353d;
+}
+
+#preview table th[align="center"],
+#preview table td[align="center"] {
   text-align: center;
 }
 
-#preview table th[align="right"] {
+#preview table th[align="right"],
+#preview table td[align="right"] {
   text-align: right;
+}
+
+#preview table td:first-child,
+#preview table th:first-child {
+  width: 1%;
+  white-space: nowrap;
 }
 
 /* ---------- Responsive Layout ---------- */
