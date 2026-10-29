@@ -43,21 +43,21 @@
   const PROJECTS = [
     {
       id: "snf",
-      title: "PoP: SnF Native PC Port",
-      navTitle: "SnF Native PC Port",
-      headerNavTitle: "SnF PC Port",
-      url: "pop-snf-pc-bridge/",
+      title: "PoP: SnF Reignited",
+      navTitle: "SnF Reignited",
+      headerNavTitle: "SnF Reignited",
+      url: "pop-snf-reignited/",
       category: "pop",
       featured: true,
       featuredNav: true,
       featuredNavOrder: 1,
       icon: "fa-solid fa-fire",
-      shortDesc: "PC Port of SnF Android/iOS remake",
-      description: "Authentic native Windows x64 PC port of Prince of Persia: The Shadow and the Flame Android/iOS remake running via Dynarmic ARMv7 JIT dynamic binary retranslation, Desktop OpenGL, OpenAL Soft, and a dedicated launcher with an old-school theme.",
-      actionText: "Explore PC Port",
+      shortDesc: "Prince of Persia: Shadow and the Flame - Reignited (PC Port)",
+      description: "Authentic native Windows x64 PC port of Prince of Persia: Shadow and the Flame - Reignited running via Dynarmic ARMv7 JIT dynamic binary retranslation, Desktop OpenGL, OpenAL Soft, runtime soft-mods, and a nostalgic config launcher.",
+      actionText: "Explore Reignited",
       tags: [
-        "prince of persia", "shadow and the flame", "snf", "pc port", "dynarmic",
-        "armv7", "jit", "opengl", "openal", "sdl2", "launcher", "reverse engineering"
+        "prince of persia", "shadow and the flame", "reignited", "snf", "pc port", "dynarmic",
+        "armv7", "jit", "opengl", "openal", "sdl2", "launcher", "soft-mods", "reverse engineering"
       ],
       sitemap: { changefreq: "weekly", priority: "0.9" }
     },
