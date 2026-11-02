@@ -113,7 +113,7 @@
           </div>
 
           <p class="puzzle-description">
-            In The Two Thrones, the Prince must navigate a giant statue of his father King Sharaman through the palace courtyard. Each tile on the courtyard track permits specific movements (forward/backward translation or clockwise/anti-clockwise rotation) depending on track orientation.
+            In The Two Thrones, the Prince must navigate a giant statue of his father King Sharaman through the palace courtyard. Each tile on the courtyard track permits specific movements (forward/backward translation or clockwise/anti-clockwise rotation) depending on the direction the statue is facing. The puzzle is solved by moving forward from step 4 while the statue is facing Front.
           </p>
 
           <!-- Interactive Board Display -->
@@ -126,7 +126,7 @@
                 <div class="track-slot" data-pos="2"><span>2</span></div>
                 <div class="track-slot" data-pos="3"><span>3</span></div>
                 <div class="track-slot" data-pos="4"><span>4</span></div>
-                <div class="track-slot" data-pos="5"><span>Goal (5)</span></div>
+                <div class="track-slot" data-pos="5"><span>Exit (5)</span></div>
               </div>
             </div>
 
@@ -193,7 +193,7 @@
           </div>
 
           <p class="puzzle-description">
-            The Water Pillar puzzle features stacked rotating tiers (Lower, Middle, Upper, and Joint valves) that turn water conduits to open locked watergates. Specific cranks turn all rings synchronously, while others manipulate differential gears.
+            The Water Pillar puzzle features three stacked rotating tiers (Lower, Middle and Upper), each sitting at position 1&ndash;4. A <strong>Normal</strong> lever move turns every piece. A <strong>Freeze</strong> move holds back any piece that is at position 4 (clockwise) or position 1 (anti-clockwise); the Upper and Middle tiers each hold back together with a hidden joint piece. The puzzle is solved when all three tiers are at position 4 (the game gives no indication).
           </p>
 
           <div class="sim-display-box">
@@ -225,15 +225,15 @@
                   </button>
                   <button class="ctrl-btn" data-wmove="NA" id="btn-w-na">
                     <strong>NA</strong>
-                    <span>Normal Counter-CW</span>
+                    <span>Normal Anti-CW</span>
                   </button>
                   <button class="ctrl-btn" data-wmove="FC" id="btn-w-fc">
                     <strong>FC</strong>
-                    <span>Full Clockwise</span>
+                    <span>Freeze Clockwise</span>
                   </button>
                   <button class="ctrl-btn" data-wmove="FA" id="btn-w-fa">
                     <strong>FA</strong>
-                    <span>Full Counter-CW</span>
+                    <span>Freeze Anti-CW</span>
                   </button>
                 </div>
               </div>
@@ -259,20 +259,21 @@
           </div>
 
           <p class="puzzle-description">
-            A dual interlocking rotary ring puzzle from the Wii version of The Forgotten Sands. Rotating the Left or Right dials cycles gem arrays <code>c1</code> and <code>c2</code> around their intersection point.
+            A dual interlocking rotary ring puzzle from the Wii version of The Forgotten Sands. Each ring holds eight gems, and the two rings overlap in two slots, so turning one ring also changes the other. A colour is solved when the four gold-ringed slots all hold that colour or the white wildcard (5). Solve all four colours at least once to win.
           </p>
 
           <div class="sim-display-box">
+            <div id="gemsStatusBanner" class="status-banner goal-banner" style="display: none;"></div>
+
             <div class="gems-rings-visual">
-              <div class="gem-ring-box">
-                <h4>Left Ring Slots (c1)</h4>
-                <div class="slots-row" id="c1SlotsRow"></div>
-              </div>
-              <div class="gem-ring-box">
-                <h4>Right Ring Slots (c2)</h4>
-                <div class="slots-row" id="c2SlotsRow"></div>
-              </div>
+              <svg id="gemsRingsSvg" class="gems-rings-svg" viewBox="-200 -140 400 280" role="img" aria-label="Two intersecting rings of gem slots"></svg>
             </div>
+            <p class="gem-legend">
+              Gold ring = slot checked for solving &middot; Dashed border = slot shared by both rings &middot;
+              <span style="color:#eab308">1 Yellow</span>, <span style="color:#22c55e">2 Green</span>,
+              <span style="color:#f97316">3 Orange</span>, <span style="color:#a855f7">4 Purple</span>,
+              <span style="color:#e9e4d3">5 Wildcard</span>
+            </p>
 
             <div class="puzzle-controls-wrap">
               <div class="ctrl-group">
@@ -330,7 +331,7 @@
           <div class="m-badge">T2T STATUE CONSTRAINTS</div>
           <h4>The Two Thrones Matrix</h4>
           <p>
-            The King's Statue puzzle uses a 2D transition table indexed by <code>[rotation][translation]</code>. Certain tiles block forward motion if the statue is facing the walls or dead ends. The C++ simulator validates each candidate move string in sub-microsecond time.
+            The King's Statue puzzle uses a 2D transition table indexed by <code>[rotation][translation]</code>. Certain tiles block forward motion if the statue is facing the walls or dead ends, and the puzzle is only won by moving forward from step 4 while facing Front. The C++ bruteforcer searches these states and finds a shortest solution of <strong>13 moves</strong>.
           </p>
         </div>
 
@@ -338,9 +339,59 @@
           <div class="m-badge">TFS PERMUTATIONS</div>
           <h4>Differential Gear Rings</h4>
           <p>
-            The Forgotten Sands puzzles involve coupled modulo arithmetic (e.g. <code>cw(piece) = (piece == 4) ? 1 : piece + 1</code>). Nested for-loops cycle through permutations to verify the minimum move sequence that solves all alignment constraints simultaneously.
+            The Forgotten Sands puzzles involve coupled modulo arithmetic (e.g. <code>turn(piece, d) = (piece - 1 + d + 4) % 4 + 1</code>) and rings that share slots. The bruteforcer runs a breadth-first search that merges identical states, so searching up to 15 moves stays fast even for the Wii gems puzzle (about 7.3 million states).
           </p>
         </div>
+
+        <div class="meth-card results-card">
+          <div class="m-badge">VERIFIED RESULTS</div>
+          <h4>Shortest Solutions Found</h4>
+          <div class="results-grid">
+            <div class="result-group">
+              <div class="result-head">
+                <span class="result-name">T2T King's Statue</span>
+                <span class="result-count">13 moves &middot; 2 solutions</span>
+              </div>
+              <div class="result-solution">
+                <span class="result-index">1</span>
+                <div class="history-tags"><span class="hist-tag">FW</span><span class="hist-tag">CW</span><span class="hist-tag">CW</span><span class="hist-tag">FW</span><span class="hist-tag">FW</span><span class="hist-tag">CW</span><span class="hist-tag">BW</span><span class="hist-tag">CW</span><span class="hist-tag">FW</span><span class="hist-tag">CW</span><span class="hist-tag">FW</span><span class="hist-tag">AW</span><span class="hist-tag">FW</span></div>
+              </div>
+              <div class="result-solution">
+                <span class="result-index">2</span>
+                <div class="history-tags"><span class="hist-tag">AW</span><span class="hist-tag">FW</span><span class="hist-tag">AW</span><span class="hist-tag">FW</span><span class="hist-tag">FW</span><span class="hist-tag">CW</span><span class="hist-tag">BW</span><span class="hist-tag">CW</span><span class="hist-tag">FW</span><span class="hist-tag">CW</span><span class="hist-tag">FW</span><span class="hist-tag">AW</span><span class="hist-tag">FW</span></div>
+              </div>
+            </div>
+            <div class="result-group">
+              <div class="result-head">
+                <span class="result-name">TFS Water Pillar 3</span>
+                <span class="result-count">4 moves &middot; 1 solution</span>
+              </div>
+              <div class="result-solution">
+                <span class="result-index">1</span>
+                <div class="history-tags"><span class="hist-tag">FA</span><span class="hist-tag">NC</span><span class="hist-tag">FA</span><span class="hist-tag">NA</span></div>
+              </div>
+            </div>
+            <div class="result-group">
+              <div class="result-head">
+                <span class="result-name">TFS Wii Gems</span>
+                <span class="result-count">14 moves &middot; 3 solutions</span>
+              </div>
+              <div class="result-solution">
+                <span class="result-index">1</span>
+                <div class="history-tags"><span class="hist-tag">RA</span><span class="hist-tag">LA</span><span class="hist-tag">RA</span><span class="hist-tag">RA</span><span class="hist-tag">LA</span><span class="hist-tag">RC</span><span class="hist-tag">RC</span><span class="hist-tag">LC</span><span class="hist-tag">RC</span><span class="hist-tag">LC</span><span class="hist-tag">RC</span><span class="hist-tag">LC</span><span class="hist-tag">LC</span><span class="hist-tag">RC</span></div>
+              </div>
+              <div class="result-solution">
+                <span class="result-index">2</span>
+                <div class="history-tags"><span class="hist-tag">RA</span><span class="hist-tag">LA</span><span class="hist-tag">RA</span><span class="hist-tag">RA</span><span class="hist-tag">LC</span><span class="hist-tag">RC</span><span class="hist-tag">RC</span><span class="hist-tag">LA</span><span class="hist-tag">RC</span><span class="hist-tag">LC</span><span class="hist-tag">RC</span><span class="hist-tag">LC</span><span class="hist-tag">LC</span><span class="hist-tag">RC</span></div>
+              </div>
+              <div class="result-solution">
+                <span class="result-index">3</span>
+                <div class="history-tags"><span class="hist-tag">RA</span><span class="hist-tag">LA</span><span class="hist-tag">RA</span><span class="hist-tag">RC</span><span class="hist-tag">RC</span><span class="hist-tag">LC</span><span class="hist-tag">RA</span><span class="hist-tag">LC</span><span class="hist-tag">LC</span><span class="hist-tag">RC</span><span class="hist-tag">LA</span><span class="hist-tag">LA</span><span class="hist-tag">RC</span><span class="hist-tag">LC</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       </div>
     </section>
 
@@ -383,13 +434,13 @@
        ============================================================== */
     const possibleMoves = [
       // Rot 0 (Front)
-      [ ["fw", "aw"], ["bw", "cw"], ["fw", "aw"], ["bw", "cw"], ["fw", "cw"], [] ],
+      [ ["fw", "aw"], ["bw", "cw"], ["fw", "aw"], ["bw", "cw"], ["fw", "cw"], ["bw", "aw"] ],
       // Rot 1 (Left)
-      [ ["fw", "cw"], ["fw", "bw", "aw"], ["fw", "cw"], ["bw", "aw"], ["fw"], ["bw", "cw"] ],
+      [ ["fw", "cw"], ["bw", "aw"], ["fw", "cw"], ["bw", "aw"], ["fw"], ["bw", "cw"] ],
       // Rot 2 (Back)
-      [ [], ["fw", "cw", "aw"], ["fw", "bw"], ["bw", "cw"], ["fw", "aw"], ["bw", "aw"] ],
+      [ ["fw"], ["fw", "cw", "aw"], ["fw", "bw"], ["bw", "cw"], ["fw", "aw"], ["bw", "aw"] ],
       // Rot 3 (Right)
-      [ [], ["cw", "aw"], ["fw"], ["fw", "aw"], ["fw", "bw", "cw", "aw"], ["bw", "cw"] ]
+      [ ["fw"], ["cw", "aw"], ["fw"], ["fw", "aw"], ["fw", "bw", "cw", "aw"], ["bw", "cw"] ]
     ];
 
     const rotNames = ["Front", "Left", "Back", "Right"];
@@ -397,6 +448,7 @@
     let t2tTrans = 0;
     let t2tRot = 0;
     let t2tMoves = [];
+    let t2tWon = false;
 
     function updateT2TUI() {
       document.getElementById("t2tTransPos").textContent = t2tTrans;
@@ -414,7 +466,7 @@
       });
 
       // Update buttons enabled/disabled
-      const allowed = (t2tTrans <= 5) ? possibleMoves[t2tRot][t2tTrans] : [];
+      const allowed = t2tWon ? [] : possibleMoves[t2tRot][t2tTrans];
       ["fw", "bw", "cw", "aw"].forEach(m => {
         const btn = document.getElementById("btn-" + m);
         if (btn) {
@@ -430,10 +482,10 @@
 
       // Status banner
       const banner = document.getElementById("t2tStatusBanner");
-      if (t2tTrans === 5) {
+      if (t2tWon) {
         banner.style.display = "block";
         banner.className = "status-banner goal-banner";
-        banner.innerHTML = `<i class="fa-solid fa-star"></i> Courtyard Puzzle Solved! Statue reached Goal (5) in ${t2tMoves.length} moves!`;
+        banner.innerHTML = `<i class="fa-solid fa-star"></i> Courtyard Puzzle Solved! Moved forward from step 4 facing Front in ${t2tMoves.length} moves!`;
       } else {
         banner.style.display = "none";
       }
@@ -448,15 +500,15 @@
     }
 
     function doT2TMove(move) {
-      const allowed = possibleMoves[t2tRot][t2tTrans];
-      if (!allowed.includes(move)) return;
+      if (t2tWon || !possibleMoves[t2tRot][t2tTrans].includes(move)) return;
 
       if (move === "cw") {
-        t2tRot = (t2tRot === 3) ? 0 : t2tRot + 1;
+        t2tRot = (t2tRot + 3) % 4;
       } else if (move === "aw") {
-        t2tRot = (t2tRot === 0) ? 3 : t2tRot - 1;
+        t2tRot = (t2tRot + 1) % 4;
       } else if (move === "fw") {
         t2tTrans++;
+        if (t2tTrans === 5 && t2tRot === 0) t2tWon = true;
       } else if (move === "bw") {
         t2tTrans--;
       }
@@ -476,6 +528,7 @@
       t2tTrans = 0;
       t2tRot = 0;
       t2tMoves = [];
+      t2tWon = false;
       updateT2TUI();
     });
 
@@ -485,9 +538,10 @@
     /* ==============================================================
        2. TFS WATER PILLAR 3 SIMULATOR (Ported from TFS_WaterPillar3.CPP)
        ============================================================== */
-    function wCw(p) { return (p === 4) ? 1 : p + 1; }
-    function wAcw(p) { return (p === 1) ? 4 : p - 1; }
+    // Pieces are numbered 1-4; d is +1 for clockwise, -1 for anticlockwise.
+    function wTurn(p, d) { return ((p - 1 + d + 4) % 4) + 1; }
 
+    // wJ1 is the Upper tier's hidden joint, wJ2 the Middle tier's.
     let wL = 1, wM = 4, wH = 2, wJ1 = 4, wJ2 = 1;
     let waterMoves = [];
 
@@ -514,15 +568,27 @@
       container.innerHTML = [1, 2, 3, 4].map(i => `<span class="${i === val ? 'active' : ''}"></span>`).join("");
     }
 
+    function waterNormal(d) {
+      wL = wTurn(wL, d); wM = wTurn(wM, d); wH = wTurn(wH, d);
+      wJ1 = wTurn(wJ1, d); wJ2 = wTurn(wJ2, d);
+    }
+
+    // A frozen move leaves alone the pieces that would otherwise pass the blocked position.
+    function waterFreeze(d, blocked) {
+      if (wH !== blocked && wJ1 !== blocked) { wH = wTurn(wH, d); wJ1 = wTurn(wJ1, d); }
+      if (wM !== blocked && wJ2 !== blocked) { wM = wTurn(wM, d); wJ2 = wTurn(wJ2, d); }
+      if (wL !== blocked) { wL = wTurn(wL, d); }
+    }
+
     function doWaterMove(m) {
       if (m === "NC") {
-        wL = wCw(wL); wM = wCw(wM); wH = wCw(wH); wJ1 = wCw(wJ1); wJ2 = wCw(wJ2);
+        waterNormal(1);
       } else if (m === "NA") {
-        wL = wAcw(wL); wM = wAcw(wM); wH = wAcw(wH); wJ1 = wAcw(wJ1); wJ2 = wAcw(wJ2);
+        waterNormal(-1);
       } else if (m === "FC") {
-        wL = wCw(wL); wM = wCw(wM);
+        waterFreeze(1, 4);
       } else if (m === "FA") {
-        wL = wAcw(wL); wM = wAcw(wM);
+        waterFreeze(-1, 1);
       }
       waterMoves.push(m);
       updateWaterUI();
@@ -547,32 +613,111 @@
        3. TFS WII GEMS SIMULATOR (Ported from TFS_Wii_Gems_Simulator.CPP)
        ============================================================== */
     const gemColors = {
-      0: "#65697d", // Empty / Dark
-      1: "#ef4444", // Red
-      2: "#38bdf8", // Blue
-      3: "#22c55e", // Green
-      4: "#eab308", // Yellow
-      5: "#a855f7"  // Purple
+      0: "#65697d", // Empty
+      1: "#eab308", // Yellow
+      2: "#22c55e", // Green
+      3: "#f97316", // Orange
+      4: "#a855f7", // Purple
+      5: "#e9e4d3"  // Wildcard
     };
+    const gemNames = ["Yellow", "Green", "Orange", "Purple"];
+    const GEM_WILDCARD = 5;
 
-    let c1 = [0, 1, 2, 3, 1, 5, 3, 4, 4];
-    let c2 = [0, 2, 1, 0, 4, 3, 1, 2, 3];
-    let gemsMoves = [];
+    // Slots are numbered 1-8 (index 0 is unused). The rings share two slots:
+    // left slot 4 = right slot 2, and left slot 6 = right slot 8.
+    // Slots 1 and 5 of each ring are the ones checked for solving.
+    const GEM_KEY_SLOTS = [1, 5];
+    const GEM_SHARED_LEFT = [4, 6];
+    const GEM_SHARED_RIGHT = [2, 8];
+
+    let c1, c2, gemsMoves, gemsSolved;
+
+    function resetGems() {
+      c1 = [0, 1, 2, 3, 1, 5, 3, 4, 4];
+      c2 = [0, 2, 1, 0, 4, 3, 1, 2, 3];
+      gemsMoves = [];
+      gemsSolved = [false, false, false, false];
+    }
+
+    // Two circles of radius GEM_R whose centres are GEM_R * sqrt(2) apart intersect exactly
+    // where slots are 90 degrees apart, so the shared slots land on the intersection points.
+    const GEM_R = 100;
+    const GEM_SLOT_R = 17;
+    const GEM_CENTER_X = GEM_R * Math.SQRT2 / 2;
+    const SVG_NS = "http://www.w3.org/2000/svg";
+
+    // Slot numbers increase clockwise. Left slot 5 and right slot 1 point at each other, inside the overlap.
+    function gemSlotAngle(isLeft, slot) {
+      return (isLeft ? (slot - 5) * 45 : 180 + (slot - 1) * 45) * Math.PI / 180;
+    }
+
+    function svgEl(name, attrs, text) {
+      const el = document.createElementNS(SVG_NS, name);
+      Object.keys(attrs).forEach(k => el.setAttribute(k, attrs[k]));
+      if (text !== undefined) el.textContent = text;
+      return el;
+    }
+
+    function renderGemRings() {
+      const svg = document.getElementById("gemsRingsSvg");
+      svg.innerHTML = "";
+
+      [true, false].forEach(isLeft => {
+        const cx = isLeft ? -GEM_CENTER_X : GEM_CENTER_X;
+        svg.appendChild(svgEl("circle", { cx, cy: 0, r: GEM_R, class: "gem-ring-outline" }));
+        svg.appendChild(svgEl("text", { x: cx + (isLeft ? -GEM_R * 0.55 : GEM_R * 0.55), y: -GEM_R - 22, class: "gem-ring-label" }, isLeft ? "Left Ring" : "Right Ring"));
+      });
+
+      [true, false].forEach(isLeft => {
+        const ring = isLeft ? c1 : c2;
+        const sharedSlots = isLeft ? GEM_SHARED_LEFT : GEM_SHARED_RIGHT;
+        const cx = isLeft ? -GEM_CENTER_X : GEM_CENTER_X;
+
+        for (let slot = 1; slot <= 8; slot++) {
+          // Shared slots are the same gem on both rings, so draw them once (from the left ring).
+          if (!isLeft && sharedSlots.includes(slot)) continue;
+
+          const angle = gemSlotAngle(isLeft, slot);
+          const x = cx + GEM_R * Math.cos(angle);
+          const y = GEM_R * Math.sin(angle);
+          const col = gemColors[ring[slot]] || "#fff";
+          const shared = sharedSlots.includes(slot);
+          const label = isLeft
+            ? `Left ${slot}` + (shared ? ` / Right ${GEM_SHARED_RIGHT[GEM_SHARED_LEFT.indexOf(slot)]}` : "")
+            : `Right ${slot}`;
+
+          // The solve check looks at slot 1 and 5 of each ring (the shared slots are never among them).
+          if (GEM_KEY_SLOTS.includes(slot)) {
+            svg.appendChild(svgEl("circle", { cx: x, cy: y, r: GEM_SLOT_R + 5, class: "gem-key-ring" }));
+          }
+          const node = svgEl("g", {});
+          node.appendChild(svgEl("title", {}, `${label}: ${ring[slot]}`));
+          node.appendChild(svgEl("circle", {
+            cx: x, cy: y, r: GEM_SLOT_R, class: "gem-node" + (shared ? " shared" : ""),
+            fill: col + "25", stroke: col
+          }));
+          node.appendChild(svgEl("text", { x, y, fill: col, class: "gem-node-text" }, ring[slot]));
+          svg.appendChild(node);
+        }
+      });
+    }
+
+    function isGemSolved(gem) {
+      return [c1[1], c1[5], c2[1], c2[5]].every(v => v === gem || v === GEM_WILDCARD);
+    }
 
     function updateGemsUI() {
-      const c1Row = document.getElementById("c1SlotsRow");
-      const c2Row = document.getElementById("c2SlotsRow");
+      renderGemRings();
 
-      c1Row.innerHTML = "";
-      for (let i = 1; i <= 8; i++) {
-        const col = gemColors[c1[i]] || "#fff";
-        c1Row.innerHTML += `<div class="gem-slot" style="background: ${col}25; border-color: ${col}; color: ${col};"><span>${c1[i]}</span></div>`;
-      }
-
-      c2Row.innerHTML = "";
-      for (let i = 1; i <= 8; i++) {
-        const col = gemColors[c2[i]] || "#fff";
-        c2Row.innerHTML += `<div class="gem-slot" style="background: ${col}25; border-color: ${col}; color: ${col};"><span>${c2[i]}</span></div>`;
+      const banner = document.getElementById("gemsStatusBanner");
+      const solvedNames = gemNames.filter((_, i) => gemsSolved[i]);
+      if (solvedNames.length === 0) {
+        banner.style.display = "none";
+      } else {
+        banner.style.display = "block";
+        banner.innerHTML = solvedNames.length === gemNames.length
+          ? `<i class="fa-solid fa-star"></i> Puzzle Solved! All four gems solved in ${gemsMoves.length} moves!`
+          : `Solved so far (${solvedNames.length}/4): ${solvedNames.join(", ")}`;
       }
 
       const histEl = document.getElementById("gemsHistoryTags");
@@ -583,25 +728,25 @@
       }
     }
 
+    function rotateGemRing(ring, anticlockwise) {
+      const vals = ring.slice(1);
+      if (anticlockwise) vals.push(vals.shift()); else vals.unshift(vals.pop());
+      vals.forEach((v, i) => { ring[i + 1] = v; });
+    }
+
     function doGemsMove(m) {
-      let temp;
-      if (m === "LA") {
-        temp = c1[8];
-        c1[8] = c1[1]; c1[1] = c1[2]; c1[2] = c1[3]; c1[3] = c1[4];
-        c1[4] = c1[5]; c1[5] = c1[6]; c1[6] = c1[7]; c1[7] = temp;
-      } else if (m === "LC") {
-        temp = c1[1];
-        c1[1] = c1[8]; c1[8] = c1[7]; c1[7] = c1[6]; c1[6] = c1[5];
-        c1[5] = c1[4]; c1[4] = c1[3]; c1[3] = c1[2]; c1[2] = temp;
-      } else if (m === "RA") {
-        temp = c2[8];
-        c2[8] = c2[1]; c2[1] = c2[2]; c2[2] = c2[3]; c2[3] = c2[4];
-        c2[4] = c2[5]; c2[5] = c2[6]; c2[6] = c2[7]; c2[7] = temp;
-      } else if (m === "RC") {
-        temp = c2[1];
-        c2[1] = c2[8]; c2[8] = c2[7]; c2[7] = c2[6]; c2[6] = c2[5];
-        c2[5] = c2[4]; c2[4] = c2[3]; c2[3] = c2[2]; c2[2] = temp;
-      }
+      const leftTurned = m[0] === "L";
+      rotateGemRing(leftTurned ? c1 : c2, m[1] === "A");
+
+      // Mirror the turned ring into the two slots it shares with the other ring.
+      GEM_SHARED_LEFT.forEach((slot, i) => {
+        if (leftTurned) c2[GEM_SHARED_RIGHT[i]] = c1[slot];
+        else c1[slot] = c2[GEM_SHARED_RIGHT[i]];
+      });
+
+      gemNames.forEach((_, i) => {
+        if (isGemSolved(i + 1)) gemsSolved[i] = true;
+      });
       gemsMoves.push(m);
       updateGemsUI();
     }
@@ -613,12 +758,11 @@
     });
 
     document.getElementById("gemsResetBtn").addEventListener("click", () => {
-      c1 = [0, 1, 2, 3, 1, 5, 3, 4, 4];
-      c2 = [0, 2, 1, 0, 4, 3, 1, 2, 3];
-      gemsMoves = [];
+      resetGems();
       updateGemsUI();
     });
 
+    resetGems();
     updateGemsUI();
   </script>
 
